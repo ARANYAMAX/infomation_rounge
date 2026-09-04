@@ -2433,6 +2433,69 @@ applyLang();
   setTimeout(()=>input.focus({preventScroll:true}),20);
 })();
 </script>
+').toLowerCase().slice(0,2);
+    if(copy[saved]) return saved;
+    const siteSaved=(localStorage.getItem('aranya_lang')||'').toLowerCase().slice(0,2);
+    if(copy[siteSaved]) return siteSaved;
+    const nav=(navigator.language||'ko').toLowerCase().slice(0,2);
+    return copy[nav] ? nav : 'ko';
+  }
+
+  function applyLang(lang){
+    if(!copy[lang]) lang='ko';
+    localStorage.setItem(LANG_KEY,lang);
+    const c=copy[lang];
+    title.textContent=c.title;
+    desc.textContent=c.desc;
+    input.placeholder=c.placeholder;
+    input.setAttribute('aria-label',c.placeholder);
+    btn.textContent=c.button;
+    err.textContent='';
+    langSelect.value=lang;
+    document.documentElement.lang=lang;
+  }
+
+  const initialLang=detectLang();
+  applyLang(initialLang);
+  langSelect.addEventListener('change',()=>applyLang(langSelect.value));
+
+  async function sha256(value){
+    const data=new TextEncoder().encode(value);
+    const digest=await crypto.subtle.digest('SHA-256',data);
+    return Array.from(new Uint8Array(digest))
+      .map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function unlock(){
+    err.textContent='';
+    try{
+      const hash=await sha256(input.value);
+      if(hash!==ADMIN_HASH){
+        err.textContent=(copy[langSelect.value]||copy.ko).error;
+        input.select();
+        return;
+      }
+
+      sessionStorage.setItem('aranya_admin','1');
+      sessionStorage.setItem('aranya_host_entry','1');
+      location.reload();
+    }catch(e){
+      err.textContent=(copy[langSelect.value]||copy.ko).error;
+    }
+  }
+
+  btn.addEventListener('click',unlock);
+  input.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){
+      e.preventDefault();
+      unlock();
+    }
+  });
+  setTimeout(()=>input.focus({preventScroll:true}),40);
+})();
+</script>
+
+
 
 <script id="v30-host-link-controller">
 (function(){
