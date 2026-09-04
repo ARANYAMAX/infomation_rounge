@@ -20,23 +20,6 @@ html.v45-admin-session #hostLinkTab{display:inline-flex!important}
 </script>
 
 
-<style id="v33-critical-host-boot">
-/* Critical first-paint rules: parsed before the heavy 10MB document. */
-html.v33-host-locked body > *:not(#hostBaseLogin){
-  display:none !important;
-}
-html.v33-host-locked #hostBaseLogin{
-  display:flex !important;
-}
-html.v33-host-locked body{
-  background:#f7f1e7 !important;
-}
-
-/* During logout navigation, hide the old host screen instantly. */
-html.v33-logging-out body{
-  visibility:hidden !important;
-}
-</style>
 <script id="v33-critical-host-boot-script">
 (function(){
   try{
@@ -51,25 +34,6 @@ html.v33-logging-out body{
   }catch(e){}
 })();
 </script>
-
-<style id="v35-no-host-login-flash">
-/* 로그인된 호스트가 새로고침할 때 호스트 로그인 UI가 한 프레임 보이는 현상 방지 */
-#hostBaseLogin{
-  display:none !important;
-}
-
-/* 실제 비로그인 기본주소에서만 호스트 로그인 UI 표시 */
-html.v33-host-locked #hostBaseLogin,
-html.host-base-locked.v33-host-locked #hostBaseLogin{
-  display:flex !important;
-}
-
-/* 호스트 로그인 완료 상태에서는 첫 페인트부터 강제로 숨김 */
-html:not(.v33-host-locked) #hostBaseLogin{
-  display:none !important;
-}
-</style>
-
 
 <script id="v45-host-login-early">
 (function(){
@@ -546,47 +510,151 @@ body,button,input,select,textarea{
 
 
 
-<style id="v44-host-login-font-stability">
+
+<style id="v46-host-login-fixed-layout">
+/* 호스트 로그인 화면은 웹폰트/본문 렌더링과 완전히 분리하여 크기 고정 */
+html.host-base-locked body{
+  margin:0 !important;
+  min-height:100vh !important;
+  background:
+    radial-gradient(circle at 16% 12%,rgba(188,145,86,.10),transparent 26%),
+    linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%) !important;
+}
+
+#hostBaseLogin{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:2147483000 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:24px 18px !important;
+  box-sizing:border-box !important;
+  background:
+    radial-gradient(circle at 16% 12%,rgba(188,145,86,.10),transparent 26%),
+    linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%) !important;
+}
+
+#hostBaseLogin .host-base-card{
+  width:500px !important;
+  max-width:calc(100vw - 36px) !important;
+  min-height:0 !important;
+  box-sizing:border-box !important;
+  padding:38px 30px 30px !important;
+  border-radius:28px !important;
+  background:rgba(255,253,249,.98) !important;
+  border:1px solid rgba(99,80,57,.16) !important;
+  box-shadow:0 24px 60px rgba(54,42,29,.10) !important;
+  text-align:center !important;
+}
+
 #hostBaseLogin,
-#hostBaseLogin .host-base-card,
-#hostBaseLogin .host-base-card h1,
-#hostBaseLogin .host-base-card p,
-#hostBaseLogin .host-base-card input,
-#hostBaseLogin .host-base-card button,
-#hostBaseLogin .host-base-card select,
-#hostBaseLogin .host-base-kicker,
-#hostBaseLogin .host-base-note{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",
-              "Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif !important;
+#hostBaseLogin *{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",
+              "Noto Sans KR","Malgun Gothic",Arial,sans-serif !important;
   font-synthesis:none !important;
+  -webkit-text-size-adjust:100% !important;
+  text-size-adjust:100% !important;
 }
 
-#hostBaseLogin .host-base-card h1{
-  font-size:30px !important;
-  line-height:1.35 !important;
-  font-weight:700 !important;
-  letter-spacing:-0.02em !important;
-}
-
-#hostBaseLogin .host-base-card .desc{
-  font-size:13px !important;
-  line-height:1.8 !important;
-}
-
-#hostBaseLogin .host-base-card input,
-#hostBaseLogin .host-base-card button{
-  font-size:14px !important;
-}
-
-#hostBaseLogin .host-base-language select{
-  font-size:12px !important;
-}
-
-/* 雅 문양만 기존 분위기 유지 */
 #hostBaseLogin .host-base-mark{
+  width:58px !important;
+  height:58px !important;
+  margin:0 auto 18px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border-radius:50% !important;
   font-family:Georgia,"Times New Roman",serif !important;
   font-size:24px !important;
   line-height:1 !important;
+}
+
+#hostBaseLogin .host-base-kicker{
+  margin:0 0 8px !important;
+  font-size:10px !important;
+  line-height:1.2 !important;
+  letter-spacing:.22em !important;
+  font-weight:700 !important;
+}
+
+#hostBaseLogin .host-base-card h1{
+  margin:0 0 10px !important;
+  font-size:30px !important;
+  line-height:1.35 !important;
+  letter-spacing:-.02em !important;
+  font-weight:700 !important;
+}
+
+#hostBaseLogin .host-base-card .desc{
+  margin:0 0 20px !important;
+  font-size:13px !important;
+  line-height:1.8 !important;
+  font-weight:400 !important;
+}
+
+#hostBaseLogin .host-base-form{
+  display:grid !important;
+  grid-template-columns:1fr auto !important;
+  gap:8px !important;
+}
+
+#hostBaseLogin .host-base-form input{
+  height:46px !important;
+  padding:0 14px !important;
+  font-size:14px !important;
+  line-height:46px !important;
+  box-sizing:border-box !important;
+}
+
+#hostBaseLogin .host-base-form button{
+  height:46px !important;
+  padding:0 18px !important;
+  font-size:14px !important;
+  line-height:1 !important;
+  box-sizing:border-box !important;
+}
+
+#hostBaseLogin #hostBaseError{
+  min-height:20px !important;
+  margin:10px 0 0 !important;
+  font-size:12px !important;
+  line-height:20px !important;
+}
+
+#hostBaseLogin .host-base-language{
+  margin-top:18px !important;
+}
+
+#hostBaseLogin .host-base-language select{
+  width:150px !important;
+  height:38px !important;
+  padding:0 12px !important;
+  font-size:12px !important;
+  line-height:38px !important;
+  box-sizing:border-box !important;
+}
+
+#hostBaseLogin .host-base-note{
+  margin:18px 0 0 !important;
+  padding-top:16px !important;
+  font-size:10px !important;
+  line-height:1.2 !important;
+  letter-spacing:.16em !important;
+}
+
+@media(max-width:520px){
+  #hostBaseLogin .host-base-card{
+    width:100% !important;
+    padding:32px 20px 26px !important;
+    border-radius:24px !important;
+  }
+  #hostBaseLogin .host-base-form{
+    grid-template-columns:1fr !important;
+  }
+  #hostBaseLogin .host-base-form button{
+    width:100% !important;
+  }
 }
 </style>
 

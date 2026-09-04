@@ -1958,5 +1958,118 @@ applyLang();
 
 
 
+
+<script id="v46-guest-personalization-restore">
+(function(){
+  function decodeCompact(raw){
+    if(!raw) return null;
+    try{
+      let s=raw.replace(/-/g,'+').replace(/_/g,'/');
+      while(s.length%4)s+='=';
+      const bin=atob(s);
+      const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));
+      const txt=new TextDecoder().decode(bytes);
+      const v=JSON.parse(txt);
+      if(Array.isArray(v)){
+        return {
+          n:v[0]||'',
+          ci:v[1]||'',
+          co:v[2]||'',
+          cit:v[3]||'15:00',
+          cot:v[4]||'11:00',
+          a:Number(v[5]||1),
+          c:Number(v[6]||0),
+          l:v[7]||'ko'
+        };
+      }
+      if(v && typeof v==='object') return v;
+    }catch(e){}
+    try{
+      return JSON.parse(decodeURIComponent(raw));
+    }catch(e){}
+    return null;
+  }
+
+  function applyGuest(){
+    const raw=new URLSearchParams(location.search).get('g');
+    const g=decodeCompact(raw);
+    if(!g) return;
+
+    // language
+    if(g.l){
+      try{
+        localStorage.setItem('aranya_lang',g.l);
+      }catch(e){}
+      document.documentElement.lang=g.l;
+    }
+
+    // name: restore personalized masthead title/greeting
+    const cleanName=(g.n||'').replace(/\+/g,' ').trim();
+
+    const heroTitle=document.getElementById('heroTitle');
+    if(heroTitle){
+      heroTitle.textContent = cleanName ? `${cleanName} 님, 아란야에 오신 것을 환영합니다` : '아란야';
+    }
+
+    // Preserve Aranya brand in smaller greeting area if present
+    const greetTag=document.getElementById('greetTag');
+    if(greetTag && cleanName){
+      const current=(greetTag.textContent||'').trim();
+      if(!current.includes(cleanName)){
+        greetTag.textContent = `${cleanName} 님 · 서울시 종로구 체부동 152-3`;
+      }
+    }
+
+    // booking summary cards
+    const setters=[
+      ['heroName', cleanName || '-'],
+      ['heroCi', g.ci ? `${g.ci} ${g.cit||''}`.trim() : '-'],
+      ['heroCo', g.co ? `${g.co} ${g.cot||''}`.trim() : '-'],
+      ['heroGuests', `${Number(g.a||1)+Number(g.c||0)}명`]
+    ];
+    setters.forEach(([id,val])=>{
+      const el=document.getElementById(id);
+      if(el) el.textContent=val;
+    });
+
+    // Fallback based on the four masthead mini cards when IDs differ.
+    const mast=document.querySelector('.home-masthead,.masthead');
+    if(mast){
+      const cards=mast.querySelectorAll('.mini-card,.stat-card,.booking-card,.hero-stat');
+      const values=[
+        cleanName || '-',
+        g.ci ? `${g.ci} ${g.cit||''}`.trim() : '-',
+        g.co ? `${g.co} ${g.cot||''}`.trim() : '-',
+        `${Number(g.a||1)+Number(g.c||0)}명`
+      ];
+      cards.forEach((card,i)=>{
+        if(i>=values.length) return;
+        const valueEl=card.querySelector('.value,strong,b,span:last-child');
+        if(valueEl) valueEl.textContent=values[i];
+      });
+    }
+
+    // Existing site may expose its own guestInfo/apply function later.
+    try{
+      window.guestInfo=g;
+      if(typeof window.applyGuestInfo==='function'){
+        window.applyGuestInfo();
+      }
+    }catch(e){}
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',applyGuest,{once:true});
+  }else{
+    applyGuest();
+  }
+
+  // Reapply after late masthead rendering.
+  window.addEventListener('load',()=>setTimeout(applyGuest,0),{once:true});
+  setTimeout(applyGuest,120);
+  setTimeout(applyGuest,500);
+})();
+</script>
+
 </body>
 </html>
