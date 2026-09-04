@@ -1881,62 +1881,61 @@ applyLang();
 </script>
 
 
-<script id="v17-calendar-autoclose">
+
+<script id="v18-calendar-real-autoclose">
 (function(){
-  function closeAllCalendars(){
-    document.querySelectorAll('.aranya-calendar.open').forEach(cal=>{
-      cal.classList.remove('open');
-      cal.setAttribute('aria-hidden','true');
-    });
-    document.querySelectorAll('.localized-picker.picker-focus').forEach(w=>{
-      w.classList.remove('picker-focus');
-    });
+  function closeCalendarFrom(target){
+    const wrap = target && target.closest
+      ? target.closest('.localized-picker[data-picker-wrap="date"]')
+      : null;
+
+    if(wrap){
+      wrap.classList.remove('calendar-open');
+      wrap.classList.remove('picker-focus');
+    }
+
+    document.querySelectorAll('.localized-picker[data-picker-wrap="date"].calendar-open')
+      .forEach(el => el.classList.remove('calendar-open'));
   }
 
-  // Close immediately after a date button is chosen.
+  // 날짜 숫자 버튼 선택 시:
+  // 기존 달력의 값 설정 로직이 실행된 직후 닫는다.
   document.addEventListener('click', function(e){
-    const dayBtn = e.target.closest('.aranya-calendar button[data-date], .aranya-calendar [data-date]');
-    if(!dayBtn) return;
+    const day = e.target.closest('.aranya-calendar-day');
+    if(!day || day.disabled) return;
 
-    // Let the existing date-selection code run first, then close the popup.
-    setTimeout(closeAllCalendars, 0);
+    setTimeout(function(){
+      closeCalendarFrom(day);
+    }, 0);
   }, true);
 
-  // Also close on touch selection for iPhone / Galaxy.
+  // iOS/Samsung Internet에서 click 이벤트 지연이 생길 수 있어 touchend도 보강.
   document.addEventListener('touchend', function(e){
-    const dayBtn = e.target.closest('.aranya-calendar button[data-date], .aranya-calendar [data-date]');
-    if(!dayBtn) return;
-    setTimeout(closeAllCalendars, 0);
-  }, {passive:true, capture:true});
+    const day = e.target.closest('.aranya-calendar-day');
+    if(!day || day.disabled) return;
 
-  // If the calendar's existing buttons use day-number classes instead of data-date,
-  // close whenever a selectable day cell/button inside the calendar is pressed,
-  // but not for month navigation or footer controls.
+    setTimeout(function(){
+      closeCalendarFrom(day);
+    }, 30);
+  }, {capture:true, passive:true});
+
+  // '오늘' 버튼도 날짜 선택이므로 바로 닫기
   document.addEventListener('click', function(e){
-    const cal = e.target.closest('.aranya-calendar');
-    if(!cal) return;
-    const btn = e.target.closest('button');
-    if(!btn) return;
+    const today = e.target.closest('.aranya-calendar-action.today');
+    if(!today) return;
 
-    const isNav =
-      btn.matches('[data-prev],[data-next],.cal-prev,.cal-next,.calendar-prev,.calendar-next') ||
-      btn.closest('.calendar-head,.cal-head,.calendar-footer,.cal-footer');
-
-    if(!isNav && !btn.disabled){
-      setTimeout(closeAllCalendars, 0);
-    }
+    setTimeout(function(){
+      closeCalendarFrom(today);
+    }, 0);
   }, true);
 
-  // Clicking outside closes it too.
-  document.addEventListener('click', function(e){
+  // 바깥 누르면 닫기
+  document.addEventListener('pointerdown', function(e){
     if(e.target.closest('.aranya-calendar')) return;
     if(e.target.closest('.localized-picker[data-picker-wrap="date"]')) return;
-    closeAllCalendars();
-  });
 
-  // Escape key support.
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeAllCalendars();
+    document.querySelectorAll('.localized-picker[data-picker-wrap="date"].calendar-open')
+      .forEach(el => el.classList.remove('calendar-open'));
   });
 })();
 </script>
