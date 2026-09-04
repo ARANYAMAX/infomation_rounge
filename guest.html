@@ -1126,8 +1126,7 @@ body,button,input,select,textarea{
     }
   }catch(e){}
 
-  const __guestGenBtn = document.getElementById('genBtn');
-  if(__guestGenBtn) __guestGenBtn.addEventListener('click', () => {
+  document.getElementById('genBtn').addEventListener('click', () => {
     const name = document.getElementById('genName').value.trim();
     const ci = document.getElementById('genCi').value;
     const co = document.getElementById('genCo').value;
