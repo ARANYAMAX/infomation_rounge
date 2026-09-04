@@ -401,10 +401,32 @@ html.host-base-locked body > *:not(#hostBaseLogin){
 }
 </style>
 
+
+<script id="v32-host-prelock">
+(function(){
+  try{
+    const params = new URLSearchParams(location.search);
+    const hasGuest = !!params.get('g');
+    const isAdmin = sessionStorage.getItem('aranya_admin') === '1';
+
+    // Bare/base URL + not logged in => lock immediately before first paint.
+    if(!hasGuest && !isAdmin){
+      document.documentElement.classList.add('host-base-locked');
+    }
+  }catch(e){}
+})();
+</script>
+
+
+<style id="v32-host-prelock-style">
+#hostBaseLogin{display:none}
+html.host-base-locked #hostBaseLogin{display:flex}
+</style>
+
 </head>
 <body>
 
-<div id="hostBaseLogin" hidden>
+<div id="hostBaseLogin">
   <section class="host-base-card">
     <div class="host-base-mark" aria-hidden="true">雅</div>
     <div class="host-base-kicker">ARANYA · HOST</div>
@@ -2314,7 +2336,6 @@ applyLang();
   }
 
   document.documentElement.classList.add('host-base-locked');
-  login.hidden=false;
   const initialLang=detectLang();
   applyLang(initialLang);
   langSelect.addEventListener('change',()=>applyLang(langSelect.value));
