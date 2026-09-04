@@ -310,19 +310,6 @@ body,button,input,select,textarea{
 </style>
 
 
-
-<style id="v48-guest-only-safety">
-#hostBaseLogin,
-#hostLinkTab,
-#hostLinksPage,
-#adminGate,
-#adminGenerator,
-#adminSecretTrigger,
-#hostEarlyLang{
-  display:none !important;
-}
-</style>
-
 </head>
 <body>
 
@@ -1139,8 +1126,7 @@ body,button,input,select,textarea{
     }
   }catch(e){}
 
-  const __guestGenBtn = document.getElementById('genBtn');
-  if(__guestGenBtn) __guestGenBtn.addEventListener('click', () => {
+  document.getElementById('genBtn').addEventListener('click', () => {
     const name = document.getElementById('genName').value.trim();
     const ci = document.getElementById('genCi').value;
     const co = document.getElementById('genCo').value;
