@@ -204,6 +204,14 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
   .home-masthead{grid-template-columns:1fr;min-height:0;border-radius:20px;margin-bottom:20px}.masthead-copy{order:2;padding:18px 18px 18px 23px}.masthead-eyebrow{font-size:9.5px;margin-bottom:7px}.masthead-copy .greet-tag{font-size:10.5px;margin-bottom:7px}.masthead-copy h1{font-size:34px;margin-bottom:8px}.masthead-copy .lede{font-size:12.8px;line-height:1.65;margin-bottom:12px}.masthead-visual{order:1;min-height:120px;max-height:145px}.masthead-seal{width:38px;height:38px;font-size:18px;right:10px;bottom:10px}.masthead-stay .stay-card{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.masthead-stay .stay-card .f{padding:7px 8px}.masthead-stay .stay-card .l{font-size:9px}.masthead-stay .stay-card .v{font-size:12px}
   section h2{font-size:27px}.section-index{font-size:9.5px}.steps,.notice-stack{grid-template-columns:1fr;gap:10px}.step{grid-template-columns:46px 1fr;padding:16px}.step::before{width:36px;height:36px;font-size:12px}.step h3{font-size:16px}.manual-top{grid-template-columns:1fr}.manual-media{padding:10px;border-right:0;border-bottom:1px solid var(--line)}.manual-media img{height:150px;object-fit:cover}.manual-body{padding:16px}.manual-title{font-size:21px}.amen-grid{grid-template-columns:1fr}.gen-row{grid-template-columns:1fr}.place-card{grid-template-columns:1fr}.place-card .dist{justify-self:start}.place-card p,.place-card .links{grid-column:1}.host-row{gap:14px}
 }
+
+/* Brand = Home button */
+.topnav .home-brand{
+  appearance:none;-webkit-appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:'Gowun Batang','Noto Serif KR',serif;text-align:left;
+}
+.topnav .home-brand:hover{color:var(--rust)}
+.topnav .home-brand:focus-visible{outline:2px solid var(--rust);outline-offset:5px;border-radius:8px}
 </style>
 
 </head>
@@ -211,9 +219,8 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 <div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
 <div class="aranya-floating-mark"><span class="mark-ko">아란야</span><span class="mark-en">ARANYA HANOK STAY</span></div><nav class="topnav">
 <div class="inner">
-<span class="brand">아란야 · Aranya</span>
+<button type="button" class="brand home-brand" id="homeBrand" aria-label="Aranya home">아란야 · Aranya</button>
 <div class="nav-tabs">
-<button class="tab active" data-i18n="tab_checkin" data-page="home">체크인</button>
 <button class="tab" data-i18n="tab_house" data-page="rules">숙소 안내</button><button class="tab" data-i18n="tab_manuals" data-page="manuals">기기 안내</button>
 <button class="tab" data-i18n="tab_amenities" data-page="amenities">편의시설</button>
 <button class="tab" data-i18n="tab_around" data-page="around">주변 여행</button>
@@ -441,11 +448,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     ko: {
       tab_checkin:'체크인', tab_checkout:'체크아웃', tab_rules:'이용안내', tab_amenities:'편의시설',
       tab_around:'주변 여행', tab_food:'맛집·카페', tab_contact:'문의',
-      greet_tag:'경복궁역 1번 출구 · 도보 2분',
+      greet_tag:'서울시 종로구 체부동 152-3',
       hero_lede:'서울 한복판, 전통 한옥에서 보내는 조용한 며칠. 체크인부터 근처 맛집까지 이 페이지 하나로 확인하세요.',
       label_guest:'예약자', label_guests:'인원', from:' 부터', until:' 까지',
       checkin_title:'체크인 안내', checkin_sub:'셀프 체크인이에요. 아래 순서대로만 따라오시면 됩니다.',
-      step_addr:'위치 확인', step_addr_p:'경복궁역 1번 출구에서 도보 2분. 정확한 주소는 예약 확정 메시지로 보내드려요.',
+      step_addr:'위치 확인', step_addr_p:'서울시 종로구 체부동 152-3. 경복궁역 1번 출구에서 도보 약 2분이에요.',
       step_lock:'도어록 비밀번호', step_lock_p:'현관 도어록 비밀번호는 체크인 당일 오전에 문자로 안내드려요.',
       step_lock_note:'✎ [체크인 당일 문자 안내 — 호스트가 직접 채워주세요]',
       step_wifi:'와이파이', step_wifi_p:'네트워크명, 비밀번호는 거실 테이블 위 안내 카드에서 확인하실 수 있어요.',
@@ -475,7 +482,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'예약자 이름', gen_name_ph:'예: 김민준 님', gen_ci:'체크인 날짜', gen_co:'체크아웃 날짜',
       gen_cit:'체크인 시간', gen_cot:'체크아웃 시간', gen_a:'성인 인원', gen_c:'아동 인원', gen_btn:'링크 만들기', copied:'✓ 복사했어요',
       footer:'아란야 · 서울 종로구 · 편안한 시간 보내세요',
-      welcome:'{name}님, 환영합니다', greet_booked:'예약 확인 · 경복궁역 1번 출구 도보 2분',
+      welcome:'{name}님, 환영합니다', greet_booked:'예약 확인 · 서울시 종로구 체부동 152-3',
       stay_lede:'{range} 머무시는 동안 필요한 모든 안내를 이 페이지에 담았어요.',
       adults:'성인 {n}', children:'아동 {n}',
       gen_alert:'이름, 체크인/체크아웃 날짜는 꼭 입력해주세요.',
@@ -484,11 +491,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     en: {
       tab_checkin:'Check-in', tab_checkout:'Check-out', tab_rules:'House rules', tab_amenities:'Amenities',
       tab_around:'Nearby', tab_food:'Food & cafes', tab_contact:'Contact',
-      greet_tag:'Gyeongbokgung Stn. Exit 1 · 2 min walk',
+      greet_tag:'152-3 Chebu-dong, Jongno-gu, Seoul',
       hero_lede:'A quiet stay in a traditional hanok, right in the middle of Seoul. Everything from check-in to nearby restaurants is on this one page.',
       label_guest:'Guest', label_guests:'Guests', from:' onward', until:' by',
       checkin_title:'Check-in guide', checkin_sub:'This is a self check-in. Just follow the steps below.',
-      step_addr:'Find the address', step_addr_p:'2 minutes on foot from Gyeongbokgung Station Exit 1. The exact address is sent in your booking confirmation.',
+      step_addr:'Find the address', step_addr_p:'152-3 Chebu-dong, Jongno-gu, Seoul. About a 2-minute walk from Gyeongbokgung Station Exit 1.',
       step_lock:'Door lock code', step_lock_p:'The front door code is sent by text on the morning of check-in.',
       step_lock_note:'✎ [Sent by text on check-in day — host to fill in]',
       step_wifi:'Wi-Fi', step_wifi_p:'The network name and password are on the info card on the living room table.',
@@ -518,7 +525,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'Guest name', gen_name_ph:'e.g. Minjun Kim', gen_ci:'Check-in date', gen_co:'Check-out date',
       gen_cit:'Check-in time', gen_cot:'Check-out time', gen_a:'Adults', gen_c:'Children', gen_btn:'Create link', copied:'✓ Copied',
       footer:'Aranya · Jongno-gu, Seoul · Enjoy your stay',
-      welcome:'{name}, welcome', greet_booked:'Booking confirmed · Gyeongbokgung Stn. Exit 1, 2 min walk',
+      welcome:'{name}, welcome', greet_booked:'Booking confirmed · 152-3 Chebu-dong, Jongno-gu, Seoul',
       stay_lede:'{range}. Everything you need for your stay is on this page.',
       adults:'{n} adults', children:'{n} children',
       gen_alert:'Please enter a name and check-in/check-out dates.',
@@ -527,11 +534,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     zh: {
       tab_checkin:'入住', tab_checkout:'退房', tab_rules:'入住须知', tab_amenities:'设施',
       tab_around:'周边游览', tab_food:'美食·咖啡', tab_contact:'联系',
-      greet_tag:'景福宫站1号出口 · 步行2分钟',
+      greet_tag:'首尔钟路区体府洞 152-3',
       hero_lede:'在首尔市中心的传统韩屋安静小住几天。从入住到附近餐厅，这一页都能查到。',
       label_guest:'客人', label_guests:'人数', from:' 起', until:' 前',
       checkin_title:'入住指南', checkin_sub:'自助入住。按下面步骤即可。',
-      step_addr:'确认位置', step_addr_p:'从景福宫站1号出口步行约2分钟。确切地址会在预订确认消息中发送。',
+      step_addr:'确认位置', step_addr_p:'地址：首尔钟路区体府洞 152-3。从景福宫站1号出口步行约2分钟。',
       step_lock:'门锁密码', step_lock_p:'大门密码锁会在入住当天上午以短信告知。',
       step_lock_note:'✎ [入住当天短信通知 — 请房东填写]',
       step_wifi:'Wi-Fi', step_wifi_p:'网络名称和密码写在客厅桌上的说明卡上。',
@@ -561,7 +568,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'客人姓名', gen_name_ph:'例如：张三', gen_ci:'入住日期', gen_co:'退房日期',
       gen_cit:'入住时间', gen_cot:'退房时间', gen_a:'成人数', gen_c:'儿童数', gen_btn:'生成链接', copied:'✓ 已复制',
       footer:'阿兰雅 · 首尔钟路区 · 祝您住得愉快',
-      welcome:'{name}，欢迎入住', greet_booked:'预订已确认 · 景福宫站1号出口步行2分钟',
+      welcome:'{name}，欢迎入住', greet_booked:'预订已确认 · 首尔钟路区体府洞 152-3',
       stay_lede:'{range}。入住所需说明都在本页。',
       adults:'成人 {n}', children:'儿童 {n}',
       gen_alert:'请填写姓名以及入住/退房日期。',
@@ -570,11 +577,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     ja: {
       tab_checkin:'チェックイン', tab_checkout:'チェックアウト', tab_rules:'滞在ルール', tab_amenities:'設備',
       tab_around:'周辺観光', tab_food:'グルメ・カフェ', tab_contact:'連絡',
-      greet_tag:'景福宮駅1番出口 · 徒歩2分',
+      greet_tag:'ソウル特別市 鍾路区 チェブ洞 152-3',
       hero_lede:'ソウルのど真ん中、伝統韓屋での静かな滞在。チェックインから近くのグルメまで、このページで確認できます。',
       label_guest:'ゲスト', label_guests:'人数', from:' から', until:' まで',
       checkin_title:'チェックイン案内', checkin_sub:'セルフチェックインです。下の手順に従ってください。',
-      step_addr:'場所の確認', step_addr_p:'景福宮駅1番出口から徒歩2分。正確な住所は予約確定メッセージでお送りします。',
+      step_addr:'場所の確認', step_addr_p:'住所：ソウル特別市 鍾路区 チェブ洞 152-3。景福宮駅1番出口から徒歩約2分です。',
       step_lock:'ドアロック暗証番号', step_lock_p:'玄関の暗証番号はチェックイン当日の午前中にSMSでご案内します。',
       step_lock_note:'✎ [チェックイン当日にSMS — ホストが記入]',
       step_wifi:'Wi-Fi', step_wifi_p:'ネットワーク名とパスワードはリビングテーブルの案内カードにあります。',
@@ -604,7 +611,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'ゲスト名', gen_name_ph:'例：山田太郎', gen_ci:'チェックイン日', gen_co:'チェックアウト日',
       gen_cit:'チェックイン時刻', gen_cot:'チェックアウト時刻', gen_a:'大人', gen_c:'子ども', gen_btn:'リンクを作成', copied:'✓ コピーしました',
       footer:'アランヤ · ソウル鐘路区 · ご滞在をお楽しみください',
-      welcome:'{name}さん、ようこそ', greet_booked:'予約確認 · 景福宮駅1番出口 徒歩2分',
+      welcome:'{name}さん、ようこそ', greet_booked:'予約確認 · ソウル特別市 鍾路区 チェブ洞 152-3',
       stay_lede:'{range}。滞在に必要な案内はこのページにまとめています。',
       adults:'大人 {n}', children:'子ども {n}',
       gen_alert:'お名前とチェックイン／アウトの日付を入力してください。',
@@ -613,11 +620,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     de: {
       tab_checkin:'Check-in', tab_checkout:'Check-out', tab_rules:'Hausregeln', tab_amenities:'Ausstattung',
       tab_around:'Umgebung', tab_food:'Essen & Cafés', tab_contact:'Kontakt',
-      greet_tag:'Gyeongbokgung-Bahnhof, Ausgang 1 · 2 Min. zu Fuß',
+      greet_tag:'152-3 Chebu-dong, Jongno-gu, Seoul',
       hero_lede:'Ein ruhiger Aufenthalt in einem traditionellen Hanok mitten in Seoul. Von Check-in bis Restaurants — alles auf einer Seite.',
       label_guest:'Gast', label_guests:'Gäste', from:' ab', until:' bis',
       checkin_title:'Check-in-Anleitung', checkin_sub:'Selbst-Check-in. Folgen Sie einfach den Schritten unten.',
-      step_addr:'Adresse finden', step_addr_p:'2 Minuten zu Fuß vom Ausgang 1 des Bahnhofs Gyeongbokgung. Die genaue Adresse steht in der Buchungsbestätigung.',
+      step_addr:'Adresse finden', step_addr_p:'Adresse: 152-3 Chebu-dong, Jongno-gu, Seoul. Etwa 2 Minuten zu Fuß vom Ausgang 1 des Bahnhofs Gyeongbokgung.',
       step_lock:'Türcode', step_lock_p:'Der Code der Haustür wird am Morgen des Check-in-Tags per SMS geschickt.',
       step_lock_note:'✎ [Per SMS am Check-in-Tag — vom Gastgeber ausfüllen]',
       step_wifi:'WLAN', step_wifi_p:'Netzwerkname und Passwort stehen auf der Infokarte auf dem Wohnzimmertisch.',
@@ -647,7 +654,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'Name des Gastes', gen_name_ph:'z. B. Max Mustermann', gen_ci:'Check-in-Datum', gen_co:'Check-out-Datum',
       gen_cit:'Check-in-Zeit', gen_cot:'Check-out-Zeit', gen_a:'Erwachsene', gen_c:'Kinder', gen_btn:'Link erstellen', copied:'✓ Kopiert',
       footer:'Aranya · Jongno-gu, Seoul · Genießen Sie Ihren Aufenthalt',
-      welcome:'Willkommen, {name}', greet_booked:'Buchung bestätigt · Gyeongbokgung Ausgang 1, 2 Min. zu Fuß',
+      welcome:'Willkommen, {name}', greet_booked:'Buchung bestätigt · 152-3 Chebu-dong, Jongno-gu, Seoul',
       stay_lede:'{range}. Alles für Ihren Aufenthalt steht auf dieser Seite.',
       adults:'{n} Erwachsene', children:'{n} Kinder',
       gen_alert:'Bitte Name sowie Check-in- und Check-out-Datum eingeben.',
@@ -656,11 +663,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     fr: {
       tab_checkin:'Arrivée', tab_checkout:'Départ', tab_rules:'Règles', tab_amenities:'Équipements',
       tab_around:'À proximité', tab_food:'Restaurants & cafés', tab_contact:'Contact',
-      greet_tag:'Station Gyeongbokgung, sortie 1 · 2 min à pied',
+      greet_tag:'152-3 Chebu-dong, Jongno-gu, Séoul',
       hero_lede:'Un séjour calme dans une hanok traditionnelle, en plein cœur de Séoul. De l’arrivée aux restaurants, tout est sur cette page.',
       label_guest:'Voyageur', label_guests:'Personnes', from:' à partir de', until:' avant',
       checkin_title:'Guide d’arrivée', checkin_sub:'Arrivée autonome. Suivez simplement les étapes ci-dessous.',
-      step_addr:'Trouver l’adresse', step_addr_p:'2 minutes à pied depuis la sortie 1 de Gyeongbokgung. L’adresse exacte est envoyée dans la confirmation de réservation.',
+      step_addr:'Trouver l’adresse', step_addr_p:'Adresse : 152-3 Chebu-dong, Jongno-gu, Séoul. Environ 2 minutes à pied depuis la sortie 1 de Gyeongbokgung.',
       step_lock:'Code de la porte', step_lock_p:'Le code de la porte d’entrée est envoyé par SMS le matin du jour d’arrivée.',
       step_lock_note:'✎ [Envoyé par SMS le jour d’arrivée — à remplir par l’hôte]',
       step_wifi:'Wi-Fi', step_wifi_p:'Le nom du réseau et le mot de passe sont sur la carte d’info sur la table du salon.',
@@ -690,7 +697,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'Nom du voyageur', gen_name_ph:'ex. Marie Dupont', gen_ci:'Date d’arrivée', gen_co:'Date de départ',
       gen_cit:'Heure d’arrivée', gen_cot:'Heure de départ', gen_a:'Adultes', gen_c:'Enfants', gen_btn:'Créer le lien', copied:'✓ Copié',
       footer:'Aranya · Jongno-gu, Séoul · Bon séjour',
-      welcome:'Bienvenue, {name}', greet_booked:'Réservation confirmée · Gyeongbokgung sortie 1, 2 min à pied',
+      welcome:'Bienvenue, {name}', greet_booked:'Réservation confirmée · 152-3 Chebu-dong, Jongno-gu, Séoul',
       stay_lede:'{range}. Tout pour votre séjour est sur cette page.',
       adults:'{n} adultes', children:'{n} enfants',
       gen_alert:'Veuillez indiquer un nom et les dates d’arrivée/départ.',
@@ -699,11 +706,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     es: {
       tab_checkin:'Entrada', tab_checkout:'Salida', tab_rules:'Normas', tab_amenities:'Servicios',
       tab_around:'Alrededor', tab_food:'Comida y cafés', tab_contact:'Contacto',
-      greet_tag:'Estación Gyeongbokgung, salida 1 · 2 min a pie',
+      greet_tag:'152-3 Chebu-dong, Jongno-gu, Seúl',
       hero_lede:'Una estancia tranquila en una hanok tradicional, en el centro de Seúl. Desde el check-in hasta restaurantes cercanos, todo en esta página.',
       label_guest:'Huésped', label_guests:'Personas', from:' desde', until:' hasta',
       checkin_title:'Guía de llegada', checkin_sub:'Check-in autónomo. Siga los pasos de abajo.',
-      step_addr:'Encontrar la dirección', step_addr_p:'2 minutos a pie desde la salida 1 de Gyeongbokgung. La dirección exacta se envía en la confirmación de reserva.',
+      step_addr:'Encontrar la dirección', step_addr_p:'Dirección: 152-3 Chebu-dong, Jongno-gu, Seúl. A unos 2 minutos a pie desde la salida 1 de Gyeongbokgung.',
       step_lock:'Código de la puerta', step_lock_p:'El código de la puerta se envía por SMS la mañana del día de llegada.',
       step_lock_note:'✎ [Enviado por SMS el día de llegada — a completar por el anfitrión]',
       step_wifi:'Wi-Fi', step_wifi_p:'El nombre de la red y la contraseña están en la tarjeta de la mesa del salón.',
@@ -733,7 +740,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'Nombre del huésped', gen_name_ph:'ej. Ana García', gen_ci:'Fecha de entrada', gen_co:'Fecha de salida',
       gen_cit:'Hora de entrada', gen_cot:'Hora de salida', gen_a:'Adultos', gen_c:'Niños', gen_btn:'Crear enlace', copied:'✓ Copiado',
       footer:'Aranya · Jongno-gu, Seúl · Disfrute su estancia',
-      welcome:'Bienvenido/a, {name}', greet_booked:'Reserva confirmada · Gyeongbokgung salida 1, 2 min a pie',
+      welcome:'Bienvenido/a, {name}', greet_booked:'Reserva confirmada · 152-3 Chebu-dong, Jongno-gu, Seúl',
       stay_lede:'{range}. Todo lo necesario para su estancia está en esta página.',
       adults:'{n} adultos', children:'{n} niños',
       gen_alert:'Introduzca un nombre y las fechas de entrada y salida.',
@@ -742,11 +749,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     it: {
       tab_checkin:'Check-in', tab_checkout:'Check-out', tab_rules:'Regole', tab_amenities:'Servizi',
       tab_around:'Dintorni', tab_food:'Cibo e caffè', tab_contact:'Contatto',
-      greet_tag:'Stazione Gyeongbokgung, uscita 1 · 2 min a piedi',
+      greet_tag:'152-3 Chebu-dong, Jongno-gu, Seul',
       hero_lede:'Un soggiorno tranquillo in una hanok tradizionale, nel cuore di Seul. Dal check-in ai ristoranti, tutto in questa pagina.',
       label_guest:'Ospite', label_guests:'Persone', from:' da', until:' entro',
       checkin_title:'Guida al check-in', checkin_sub:'Check-in autonomo. Seguite i passaggi qui sotto.',
-      step_addr:'Trovare l’indirizzo', step_addr_p:'2 minuti a piedi dall’uscita 1 di Gyeongbokgung. L’indirizzo esatto è nella conferma di prenotazione.',
+      step_addr:'Trovare l’indirizzo', step_addr_p:'Indirizzo: 152-3 Chebu-dong, Jongno-gu, Seul. Circa 2 minuti a piedi dall’uscita 1 di Gyeongbokgung.',
       step_lock:'Codice della porta', step_lock_p:'Il codice della porta viene inviato via SMS la mattina del giorno di arrivo.',
       step_lock_note:'✎ [Inviato via SMS il giorno del check-in — da compilare dall’host]',
       step_wifi:'Wi-Fi', step_wifi_p:'Nome della rete e password sono sul biglietto informativo sul tavolo del soggiorno.',
@@ -776,7 +783,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'Nome ospite', gen_name_ph:'es. Mario Rossi', gen_ci:'Data check-in', gen_co:'Data check-out',
       gen_cit:'Ora check-in', gen_cot:'Ora check-out', gen_a:'Adulti', gen_c:'Bambini', gen_btn:'Crea link', copied:'✓ Copiato',
       footer:'Aranya · Jongno-gu, Seul · Buon soggiorno',
-      welcome:'Benvenuto/a, {name}', greet_booked:'Prenotazione confermata · Gyeongbokgung uscita 1, 2 min a piedi',
+      welcome:'Benvenuto/a, {name}', greet_booked:'Prenotazione confermata · 152-3 Chebu-dong, Jongno-gu, Seul',
       stay_lede:'{range}. Tutto il necessario per il soggiorno è in questa pagina.',
       adults:'{n} adulti', children:'{n} bambini',
       gen_alert:'Inserite un nome e le date di check-in e check-out.',
@@ -785,11 +792,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     pt: {
       tab_checkin:'Check-in', tab_checkout:'Check-out', tab_rules:'Regras', tab_amenities:'Comodidades',
       tab_around:'Redondezas', tab_food:'Comida e cafés', tab_contact:'Contacto',
-      greet_tag:'Estação Gyeongbokgung, saída 1 · 2 min a pé',
+      greet_tag:'152-3 Chebu-dong, Jongno-gu, Seul',
       hero_lede:'Uma estadia calma numa hanok tradicional, no centro de Seul. Do check-in aos restaurantes, tudo nesta página.',
       label_guest:'Hóspede', label_guests:'Pessoas', from:' a partir de', until:' até',
       checkin_title:'Guia de check-in', checkin_sub:'Check-in autónomo. Siga os passos abaixo.',
-      step_addr:'Encontrar o endereço', step_addr_p:'2 minutos a pé da saída 1 de Gyeongbokgung. O endereço exato é enviado na confirmação da reserva.',
+      step_addr:'Encontrar o endereço', step_addr_p:'Endereço: 152-3 Chebu-dong, Jongno-gu, Seul. Cerca de 2 minutos a pé da saída 1 de Gyeongbokgung.',
       step_lock:'Código da porta', step_lock_p:'O código da porta é enviado por SMS na manhã do dia de check-in.',
       step_lock_note:'✎ [Enviado por SMS no dia de check-in — a preencher pelo anfitrião]',
       step_wifi:'Wi-Fi', step_wifi_p:'O nome da rede e a palavra-passe estão no cartão em cima da mesa da sala.',
@@ -819,7 +826,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'Nome do hóspede', gen_name_ph:'ex. Ana Silva', gen_ci:'Data de check-in', gen_co:'Data de check-out',
       gen_cit:'Hora de check-in', gen_cot:'Hora de check-out', gen_a:'Adultos', gen_c:'Crianças', gen_btn:'Criar link', copied:'✓ Copiado',
       footer:'Aranya · Jongno-gu, Seul · Boa estadia',
-      welcome:'Bem-vindo/a, {name}', greet_booked:'Reserva confirmada · Gyeongbokgung saída 1, 2 min a pé',
+      welcome:'Bem-vindo/a, {name}', greet_booked:'Reserva confirmada · 152-3 Chebu-dong, Jongno-gu, Seul',
       stay_lede:'{range}. Tudo o que precisam para a estadia está nesta página.',
       adults:'{n} adultos', children:'{n} crianças',
       gen_alert:'Introduzam um nome e as datas de check-in e check-out.',
@@ -828,11 +835,11 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     ru: {
       tab_checkin:'Заезд', tab_checkout:'Выезд', tab_rules:'Правила', tab_amenities:'Удобства',
       tab_around:'Рядом', tab_food:'Еда и кафе', tab_contact:'Контакт',
-      greet_tag:'Станция Кёнбоккун, выход 1 · 2 мин пешком',
+      greet_tag:'152-3 Chebu-dong, Jongno-gu, Seoul',
       hero_lede:'Тихое пребывание в традиционном ханоке в центре Сеула. От заезда до ресторанов — всё на этой странице.',
       label_guest:'Гость', label_guests:'Гости', from:' с', until:' до',
       checkin_title:'Инструкция по заезду', checkin_sub:'Самостоятельный заезд. Следуйте шагам ниже.',
-      step_addr:'Как найти', step_addr_p:'2 минуты пешком от выхода 1 станции Кёнбоккун. Точный адрес придёт в подтверждении брони.',
+      step_addr:'Как найти', step_addr_p:'Адрес: 152-3 Chebu-dong, Jongno-gu, Seoul. Около 2 минут пешком от выхода 1 станции Кёнбоккун.',
       step_lock:'Код двери', step_lock_p:'Код входной двери отправляется SMS утром в день заезда.',
       step_lock_note:'✎ [SMS в день заезда — заполняет хозяин]',
       step_wifi:'Wi-Fi', step_wifi_p:'Имя сети и пароль указаны на карточке на столе в гостиной.',
@@ -862,7 +869,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       gen_name:'Имя гостя', gen_name_ph:'напр. Иван Иванов', gen_ci:'Дата заезда', gen_co:'Дата выезда',
       gen_cit:'Время заезда', gen_cot:'Время выезда', gen_a:'Взрослые', gen_c:'Дети', gen_btn:'Создать ссылку', copied:'✓ Скопировано',
       footer:'Аранья · Чонно-гу, Сеул · Приятного пребывания',
-      welcome:'{name}, добро пожаловать', greet_booked:'Бронь подтверждена · Кёнбоккун выход 1, 2 мин пешком',
+      welcome:'{name}, добро пожаловать', greet_booked:'Бронь подтверждена · 152-3 Chebu-dong, Jongno-gu, Seoul',
       stay_lede:'{range}. Всё для проживания собрано на этой странице.',
       adults:'взрослых: {n}', children:'детей: {n}',
       gen_alert:'Укажите имя и даты заезда/выезда.',
@@ -885,6 +892,17 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       window.scrollTo({top: 0, behavior:'smooth'});
     });
   });
+
+  const homeBrand = document.getElementById('homeBrand');
+  if(homeBrand){
+    homeBrand.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      pages.forEach(x => x.classList.remove('active'));
+      const homePage = document.querySelector('.page[data-page="home"]');
+      if(homePage) homePage.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
 
   function detectLang(){
     const params = new URLSearchParams(window.location.search);
@@ -1117,7 +1135,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
   ];
 
   function renderPlaces(){
-    document.getElementById('stationMaps').innerHTML = mapLinks('경복궁역 1번출구');
+    document.getElementById('stationMaps').innerHTML = mapLinks('서울시 종로구 체부동 152-3');
 
     document.getElementById('aroundList').innerHTML = around.map(p => `
       <div class="place-card">
