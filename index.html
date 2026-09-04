@@ -2,6 +2,39 @@
 
 <html lang="ko">
 <head>
+
+<style id="v33-critical-host-boot">
+/* Critical first-paint rules: parsed before the heavy 10MB document. */
+html.v33-host-locked body > *:not(#hostBaseLogin){
+  display:none !important;
+}
+html.v33-host-locked #hostBaseLogin{
+  display:flex !important;
+}
+html.v33-host-locked body{
+  background:#f7f1e7 !important;
+}
+
+/* During logout navigation, hide the old host screen instantly. */
+html.v33-logging-out body{
+  visibility:hidden !important;
+}
+</style>
+<script id="v33-critical-host-boot-script">
+(function(){
+  try{
+    const p=new URLSearchParams(location.search);
+    const hasGuest=!!p.get('g');
+    const isAdmin=sessionStorage.getItem('aranya_admin')==='1';
+
+    // Base URL + not authenticated: lock BEFORE body starts parsing/painting.
+    if(!hasGuest && !isAdmin){
+      document.documentElement.classList.add('v33-host-locked','host-base-locked');
+    }
+  }catch(e){}
+})();
+</script>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>아란야 — 숙소 안내 / Aranya Guide</title>
@@ -401,27 +434,6 @@ html.host-base-locked body > *:not(#hostBaseLogin){
 }
 </style>
 
-
-<script id="v32-host-prelock">
-(function(){
-  try{
-    const params = new URLSearchParams(location.search);
-    const hasGuest = !!params.get('g');
-    const isAdmin = sessionStorage.getItem('aranya_admin') === '1';
-
-    // Bare/base URL + not logged in => lock immediately before first paint.
-    if(!hasGuest && !isAdmin){
-      document.documentElement.classList.add('host-base-locked');
-    }
-  }catch(e){}
-})();
-</script>
-
-
-<style id="v32-host-prelock-style">
-#hostBaseLogin{display:none}
-html.host-base-locked #hostBaseLogin{display:flex}
-</style>
 
 </head>
 <body>
@@ -2285,6 +2297,7 @@ applyLang();
   if(hasGuest){
     const login=document.getElementById('hostBaseLogin');
     if(login) login.remove();
+    document.documentElement.classList.remove('v33-host-locked','host-base-locked');
     return;
   }
 
@@ -2331,11 +2344,11 @@ applyLang();
 
   if(sessionStorage.getItem('aranya_admin')==='1'){
     if(login) login.remove();
-    document.documentElement.classList.remove('host-base-locked');
+    document.documentElement.classList.remove('v33-host-locked','host-base-locked');
     return;
   }
 
-  document.documentElement.classList.add('host-base-locked');
+  document.documentElement.classList.add('v33-host-locked','host-base-locked');
   const initialLang=detectLang();
   applyLang(initialLang);
   langSelect.addEventListener('change',()=>applyLang(langSelect.value));
@@ -2474,12 +2487,15 @@ applyLang();
   langSwitch.insertAdjacentElement('afterend', btn);
 
   btn.addEventListener('click', function(){
+    // 현재 호스트 화면을 즉시 숨겨 로그아웃 순간의 재렌더링/깜빡임을 차단
+    document.documentElement.classList.add('v33-logging-out','v33-host-locked','host-base-locked');
+
     // 호스트 인증만 초기화. 선택한 언어는 유지.
     sessionStorage.removeItem('aranya_admin');
     sessionStorage.removeItem('aranya_host_entry');
 
-    // ?g= 없는 기본 주소로 돌아가면 V28 호스트 비밀번호 화면이 다시 나타남
-    window.location.href = window.location.origin + window.location.pathname;
+    // 기본 주소로 복귀. 다음 문서는 <head> 첫 줄에서 이미 잠금 상태로 시작.
+    window.location.replace(window.location.origin + window.location.pathname);
   });
 
   function refreshLabel(){
@@ -2498,6 +2514,25 @@ applyLang();
     });
   }
 })();
+</script>
+
+
+<script id="v33-pageshow-state-guard">
+window.addEventListener('pageshow', function(){
+  try{
+    const p=new URLSearchParams(location.search);
+    const hasGuest=!!p.get('g');
+    const isAdmin=sessionStorage.getItem('aranya_admin')==='1';
+
+    document.documentElement.classList.remove('v33-logging-out');
+
+    if(!hasGuest && !isAdmin){
+      document.documentElement.classList.add('v33-host-locked','host-base-locked');
+    }else{
+      document.documentElement.classList.remove('v33-host-locked','host-base-locked');
+    }
+  }catch(e){}
+});
 </script>
 
 </body>
