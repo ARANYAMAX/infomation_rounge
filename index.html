@@ -261,117 +261,212 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 </style>
 
 
-
-<style id="v22-public-inquiry-host-gate">
-#hostTabPasswordModal[hidden]{display:none!important}
-#hostTabPasswordModal{
-  position:fixed;
-  inset:0;
-  z-index:99999;
+<style id="v21-host-entry-style">
+html.host-entry-mode body{
+  overflow:auto !important;
+  background:
+    radial-gradient(circle at 14% 10%,rgba(188,145,86,.10),transparent 24%),
+    linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%) !important;
+}
+html.host-entry-mode body > *:not(#hostEntryScreen){
+  display:none !important;
+}
+#hostEntryScreen{
+  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px;
-  background:rgba(25,31,34,.46);
-  backdrop-filter:blur(5px);
-  -webkit-backdrop-filter:blur(5px);
+  padding:28px 18px;
+  color:#26354a;
 }
-.host-tab-modal-card{
-  width:min(430px,100%);
-  background:#fffdf9;
+.host-entry-card{
+  width:min(520px,100%);
+  background:rgba(255,253,249,.97);
   border:1px solid rgba(99,80,57,.16);
-  border-radius:24px;
-  padding:30px 24px 24px;
-  box-shadow:0 28px 70px rgba(25,31,34,.22);
+  border-radius:28px;
+  padding:40px 30px;
   text-align:center;
+  box-shadow:0 24px 60px rgba(54,42,29,.10);
 }
-.host-tab-modal-mark{
-  width:52px;height:52px;margin:0 auto 16px;
+.host-entry-mark{
+  width:58px;height:58px;margin:0 auto 18px;
   display:flex;align-items:center;justify-content:center;
   border-radius:50%;
   background:#f1e7d5;color:#a65b45;
   font-family:'Gowun Batang','Noto Serif KR',serif;
-  font-size:22px;
-}
-.host-tab-modal-card h2{
-  margin:0 0 8px;
-  color:#26354a;
-  font-family:'Gowun Batang','Noto Serif KR',serif;
   font-size:24px;
 }
-.host-tab-modal-card p{
-  margin:0 0 18px;
-  color:#75695d;
-  font-size:13px;
-  line-height:1.7;
+.host-entry-kicker{
+  margin-bottom:8px;
+  color:#9a8262;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.22em;
 }
-.host-tab-modal-form{
+.host-entry-card h1{
+  margin:0 0 10px;
+  font-family:'Gowun Batang','Noto Serif KR',serif;
+  font-size:30px;line-height:1.35;color:#26354a;
+}
+.host-entry-card p{
+  margin:0 0 22px;
+  color:#71675b;font-size:13px;line-height:1.8;
+}
+.host-entry-form{
   display:grid;
   grid-template-columns:1fr auto;
   gap:8px;
 }
-.host-tab-modal-form input{
+.host-entry-form input{
   min-width:0;
-  height:44px;
-  border:1px solid #d7c8b4;
-  border-radius:11px;
-  background:#fff;
-  padding:0 13px;
+  height:46px;
+  padding:0 14px;
+  border:1px solid #d8c9b5;
+  border-radius:12px;
+  background:#fffdfa;
   font-size:14px;
   outline:none;
 }
-.host-tab-modal-form input:focus{
+.host-entry-form input:focus{
   border-color:#9b5c49;
   box-shadow:0 0 0 3px rgba(155,92,73,.10);
 }
-.host-tab-modal-form button{
-  height:44px;
-  padding:0 16px;
+.host-entry-form button{
+  height:46px;
+  padding:0 18px;
   border:0;
-  border-radius:11px;
+  border-radius:12px;
   background:#26483f;
   color:#fffaf0;
   font-weight:700;
   cursor:pointer;
 }
-.host-tab-modal-error{
-  min-height:18px;
-  margin:9px 0 0!important;
-  color:#a4483b!important;
-  font-size:12px!important;
+.host-entry-error{
+  min-height:20px;
+  margin:10px 0 0 !important;
+  color:#a4483b !important;
+  font-size:12px !important;
 }
-.host-tab-modal-close{
-  margin-top:10px;
-  border:0;
-  background:transparent;
-  color:#8b8176;
-  font-size:12px;
-  cursor:pointer;
+.host-entry-note{
+  margin-top:20px !important;
+  padding-top:16px;
+  border-top:1px solid rgba(99,80,57,.12);
+  color:#9a8262 !important;
+  font-size:10px !important;
+  letter-spacing:.16em;
 }
 @media(max-width:520px){
-  .host-tab-modal-form{grid-template-columns:1fr}
-  .host-tab-modal-form button{width:100%}
+  .host-entry-card{padding:34px 20px;border-radius:24px}
+  .host-entry-form{grid-template-columns:1fr}
+  .host-entry-form button{width:100%}
 }
 </style>
 
 </head>
 <body>
 
-<div id="hostTabPasswordModal" hidden aria-modal="true" role="dialog" aria-labelledby="hostTabPasswordTitle">
-  <section class="host-tab-modal-card">
-    <div class="host-tab-modal-mark" aria-hidden="true">雅</div>
-    <h2 id="hostTabPasswordTitle">호스트 전용</h2>
-    <p>숙소 안내를 확인하려면 관리자 비밀번호를 입력해주세요.</p>
-    <div class="host-tab-modal-form">
-      <input id="hostTabPasswordInput" type="password" autocomplete="current-password" placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
-      <button id="hostTabPasswordSubmit" type="button">확인</button>
+<div id="hostEntryScreen" hidden>
+  <section class="host-entry-card">
+    <div class="host-entry-mark" aria-hidden="true">雅</div>
+    <div class="host-entry-kicker">ARANYA · HOST</div>
+    <h1>호스트 전용</h1>
+    <p>게스트 안내 링크 발급 및 숙소 안내 확인을 위한 호스트 페이지입니다.</p>
+    <div class="host-entry-form">
+      <input id="hostEntryPassword" type="password" autocomplete="current-password" placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
+      <button id="hostEntryUnlock" type="button">입장</button>
     </div>
-    <p class="host-tab-modal-error" id="hostTabPasswordError"></p>
-    <button class="host-tab-modal-close" id="hostTabPasswordClose" type="button">닫기</button>
+    <p class="host-entry-error" id="hostEntryError" role="alert"></p>
+    <p class="host-entry-note">ARANYA · SEOCHON HANOK STAY</p>
   </section>
 </div>
 
 
+<script id="v21-host-entry-script">
+(function(){
+  const params=new URLSearchParams(window.location.search);
+  const rawGuest=params.get('g');
+  const screen=document.getElementById('hostEntryScreen');
+
+  // 게스트 링크가 있으면 기존 게스트 흐름을 그대로 사용
+  if(rawGuest){
+    if(screen) screen.remove();
+    return;
+  }
+
+  // 기본 URL은 호스트 전용
+  if(sessionStorage.getItem('aranya_host_entry')==='1'){
+    if(screen) screen.remove();
+    return;
+  }
+
+  document.documentElement.classList.add('host-entry-mode');
+  if(screen) screen.hidden=false;
+
+  const input=document.getElementById('hostEntryPassword');
+  const button=document.getElementById('hostEntryUnlock');
+  const error=document.getElementById('hostEntryError');
+  const ADMIN_HASH='cadc67f132143929beaf6031e09a8999f5fc2f450dee8846ee2d6d1507015d52';
+
+  async function sha256(value){
+    const data=new TextEncoder().encode(value);
+    const digest=await crypto.subtle.digest('SHA-256',data);
+    return Array.from(new Uint8Array(digest))
+      .map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function unlock(){
+    if(!input) return;
+    if(error) error.textContent='';
+    try{
+      const hash=await sha256(input.value);
+      if(hash===ADMIN_HASH){
+        sessionStorage.setItem('aranya_host_entry','1');
+        // 기존 관리자 인증도 함께 활성화해 07 · HOST를 열면 바로 생성기가 보이도록 함
+        sessionStorage.setItem('aranya_admin','1');
+        document.documentElement.classList.remove('host-entry-mode');
+        if(screen) screen.remove();
+        window.scrollTo({top:0,behavior:'instant'});
+      }else{
+        if(error) error.textContent='비밀번호가 올바르지 않습니다.';
+        input.select();
+      }
+    }catch(e){
+      if(error) error.textContent='비밀번호를 확인해주세요.';
+    }
+  }
+
+  if(button) button.addEventListener('click',unlock);
+  if(input){
+    input.addEventListener('keydown',e=>{
+      if(e.key==='Enter'){
+        e.preventDefault();
+        unlock();
+      }
+    });
+    setTimeout(()=>input.focus({preventScroll:true}),50);
+  }
+})();
+</script>
+
+<div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
+<div class="aranya-floating-mark"><span class="mark-ko">아란야</span><span class="mark-en">ARANYA HANOK STAY</span></div><nav class="topnav">
+<div class="inner">
+<button type="button" class="brand home-brand" id="homeBrand" aria-label="Aranya home">아란야 · Aranya</button>
+<div class="nav-tabs">
+<button class="tab" data-i18n="tab_house" data-page="rules">숙소 안내</button><button class="tab" data-i18n="tab_manuals" data-page="manuals">기기 안내</button>
+<button class="tab" data-i18n="tab_amenities" data-page="amenities">편의시설</button>
+<button class="tab" data-i18n="tab_around" data-page="around">주변 여행</button>
+<button class="tab" data-i18n="tab_food" data-page="food">맛집·카페</button>
+<button class="tab" data-i18n="tab_contact" data-page="contact">문의</button>
+</div>
+<div class="lang-switch" id="langSwitch">
+<button aria-expanded="false" aria-haspopup="listbox" class="lang-btn" id="langBtn" type="button">
+<svg class="globe" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 3 4 6 4 9s-1.5 6-4 9c-2.5-3-4-6-4-9s1.5-6 4-9z"></path></svg>
+<span id="langBtnLabel">한국어</span>
+<svg class="chev" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 12 8"><path d="M1 1l5 5 5-5"></path></svg>
+</button>
+<div class="lang-menu" id="langMenu" role="listbox"></div>
+</div>
 </div>
 </nav>
 <header class="hero">
@@ -2204,133 +2299,6 @@ applyLang();
         '<div style="margin-top:24px;padding-top:18px;border-top:1px solid #eee2d2;color:#9a8262;font-size:11px;letter-spacing:.22em">ARANYA · SEOCHON HANOK STAY</div>'+
       '</section>'+
     '</main>';
-})();
-</script>
-
-
-<script id="v22-public-inquiry-host-gate-script">
-(function(){
-  const params = new URLSearchParams(location.search);
-  const hasGuestLink = !!params.get('g');
-
-  // 게스트 링크는 기존 흐름 그대로 사용
-  if(hasGuestLink) return;
-
-  const HOST_SESSION_KEY='aranya_host_entry';
-  const ADMIN_SESSION_KEY='aranya_admin';
-  const ADMIN_HASH='cadc67f132143929beaf6031e09a8999f5fc2f450dee8846ee2d6d1507015d52';
-
-  function isUnlocked(){
-    return sessionStorage.getItem(HOST_SESSION_KEY)==='1' ||
-           sessionStorage.getItem(ADMIN_SESSION_KEY)==='1';
-  }
-
-  async function sha256(value){
-    const data=new TextEncoder().encode(value);
-    const digest=await crypto.subtle.digest('SHA-256',data);
-    return Array.from(new Uint8Array(digest))
-      .map(b=>b.toString(16).padStart(2,'0')).join('');
-  }
-
-  const modal=document.getElementById('hostTabPasswordModal');
-  const input=document.getElementById('hostTabPasswordInput');
-  const submit=document.getElementById('hostTabPasswordSubmit');
-  const closeBtn=document.getElementById('hostTabPasswordClose');
-  const error=document.getElementById('hostTabPasswordError');
-
-  let pendingTarget=null;
-
-  function openModal(target){
-    pendingTarget=target||null;
-    if(error) error.textContent='';
-    if(input) input.value='';
-    if(modal) modal.hidden=false;
-    setTimeout(()=>input && input.focus({preventScroll:true}),30);
-  }
-  function closeModal(){
-    if(modal) modal.hidden=true;
-    pendingTarget=null;
-  }
-
-  async function unlock(){
-    if(!input) return;
-    if(error) error.textContent='';
-    const hash=await sha256(input.value);
-    if(hash!==ADMIN_HASH){
-      if(error) error.textContent='비밀번호가 올바르지 않습니다.';
-      input.select();
-      return;
-    }
-
-    sessionStorage.setItem(HOST_SESSION_KEY,'1');
-    sessionStorage.setItem(ADMIN_SESSION_KEY,'1');
-    if(modal) modal.hidden=true;
-
-    const target=pendingTarget;
-    pendingTarget=null;
-
-    // 원래 눌렀던 탭을 다시 실행
-    if(target){
-      setTimeout(()=>target.click(),0);
-    }
-  }
-
-  if(submit) submit.addEventListener('click',unlock);
-  if(closeBtn) closeBtn.addEventListener('click',closeModal);
-  if(input) input.addEventListener('keydown',e=>{
-    if(e.key==='Enter'){e.preventDefault();unlock();}
-    if(e.key==='Escape'){e.preventDefault();closeModal();}
-  });
-  if(modal) modal.addEventListener('click',e=>{
-    if(e.target===modal) closeModal();
-  });
-
-  // 문의 탭 판별
-  function isContactTab(el){
-    const txt=(el.textContent||'').trim().toLowerCase();
-    const href=(el.getAttribute('href')||'').toLowerCase();
-    const dataTab=(el.getAttribute('data-tab')||'').toLowerCase();
-    const aria=(el.getAttribute('aria-label')||'').toLowerCase();
-
-    return txt.includes('문의') ||
-           txt.includes('contact') ||
-           href.includes('contact') ||
-           dataTab.includes('contact') ||
-           aria.includes('contact');
-  }
-
-  // 기본 URL에서는 문의 외 탭 클릭을 잠금.
-  document.addEventListener('click',function(e){
-    if(isUnlocked()) return;
-
-    const candidate=e.target.closest(
-      '.topnav a, .topnav button, nav a, nav button, [data-tab], .tab-btn, .nav-tab'
-    );
-    if(!candidate) return;
-
-    if(isContactTab(candidate)) return;
-
-    // 브랜드/Home 클릭도 숙소 정보 노출 방지를 위해 잠금
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    openModal(candidate);
-  }, true);
-
-  // 초기 화면은 문의 탭으로 자동 이동.
-  // 기존 사이트의 문의 탭을 찾아 실제 클릭시키되, 보호 리스너가 막지 않게 직접 후보 탐색 후
-  // 임시로 guest-safe marker를 사용.
-  window.addEventListener('load',()=>{
-    if(isUnlocked()) return;
-
-    const candidates=[...document.querySelectorAll(
-      '.topnav a, .topnav button, nav a, nav button, [data-tab], .tab-btn, .nav-tab'
-    )];
-    const contact=candidates.find(isContactTab);
-    if(contact){
-      // 실제 click은 보호 리스너에서 문의로 허용됨
-      contact.click();
-    }
-  });
 })();
 </script>
 
