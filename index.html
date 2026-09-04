@@ -454,52 +454,6 @@ html.host-base-locked body > *:not(#hostBaseLogin){
 
 
 
-<style id="v34-host-lang-immediate-style">
-/* Host session: show a lightweight language control immediately, before late UI scripts finish. */
-#hostEarlyLang{
-  display:none;
-}
-html:not(.host-base-locked) #hostEarlyLang.host-early-visible{
-  display:flex;
-}
-#hostEarlyLang{
-  position:fixed;
-  top:18px;
-  right:18px;
-  z-index:10050;
-  align-items:center;
-  gap:8px;
-}
-#hostEarlyLang select{
-  height:38px;
-  min-width:128px;
-  padding:0 10px;
-  border:1px solid rgba(38,53,74,.16);
-  border-radius:12px;
-  background:#fffdf9;
-  color:#26354a;
-  font-size:12px;
-  box-shadow:0 2px 10px rgba(54,42,29,.05);
-}
-@media(max-width:720px){
-  #hostEarlyLang{
-    top:12px;
-    right:12px;
-  }
-  #hostEarlyLang select{
-    height:34px;
-    min-width:112px;
-    font-size:11px;
-  }
-}
-
-/* As soon as the real language control is ready, hide the early shell. */
-body.v34-real-lang-ready #hostEarlyLang{
-  display:none !important;
-}
-</style>
-
-
 <style id="v36-font-layout-stability">
 html{
   -webkit-text-size-adjust:100%;
@@ -527,26 +481,53 @@ body,button,input,select,textarea{
 </style>
 
 
+
+<style id="v44-host-login-font-stability">
+#hostBaseLogin,
+#hostBaseLogin .host-base-card,
+#hostBaseLogin .host-base-card h1,
+#hostBaseLogin .host-base-card p,
+#hostBaseLogin .host-base-card input,
+#hostBaseLogin .host-base-card button,
+#hostBaseLogin .host-base-card select,
+#hostBaseLogin .host-base-kicker,
+#hostBaseLogin .host-base-note{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",
+              "Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif !important;
+  font-synthesis:none !important;
+}
+
+#hostBaseLogin .host-base-card h1{
+  font-size:30px !important;
+  line-height:1.35 !important;
+  font-weight:700 !important;
+  letter-spacing:-0.02em !important;
+}
+
+#hostBaseLogin .host-base-card .desc{
+  font-size:13px !important;
+  line-height:1.8 !important;
+}
+
+#hostBaseLogin .host-base-card input,
+#hostBaseLogin .host-base-card button{
+  font-size:14px !important;
+}
+
+#hostBaseLogin .host-base-language select{
+  font-size:12px !important;
+}
+
+/* 雅 문양만 기존 분위기 유지 */
+#hostBaseLogin .host-base-mark{
+  font-family:Georgia,"Times New Roman",serif !important;
+  font-size:24px !important;
+  line-height:1 !important;
+}
+</style>
+
 </head>
 <body>
-
-<div id="hostEarlyLang" aria-label="Language">
-  <select id="hostEarlyLangSelect">
-    <option value="ko">한국어</option>
-    <option value="en">English</option>
-    <option value="zh">中文</option>
-    <option value="ja">日本語</option>
-    <option value="de">Deutsch</option>
-    <option value="fr">Français</option>
-    <option value="es">Español</option>
-    <option value="it">Italiano</option>
-    <option value="pt">Português</option>
-    <option value="ru">Русский</option>
-  </select>
-</div>
-
-
-
 
 <div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
 <div class="aranya-floating-mark"><span class="mark-ko">아란야</span><span class="mark-en">ARANYA HANOK STAY</span></div><nav class="topnav">
@@ -2685,65 +2666,6 @@ window.addEventListener('pageshow', function(){
     }
   }catch(e){}
 });
-</script>
-
-
-<script id="v34-host-lang-immediate-script">
-(function(){
-  const params=new URLSearchParams(location.search);
-  const isGuest=!!params.get('g');
-  const isAdmin=sessionStorage.getItem('aranya_admin')==='1';
-  const wrap=document.getElementById('hostEarlyLang');
-  const select=document.getElementById('hostEarlyLangSelect');
-
-  if(!wrap || !select || isGuest || !isAdmin) return;
-
-  wrap.classList.add('host-early-visible');
-
-  function currentLang(){
-    return (
-      document.documentElement.lang ||
-      localStorage.getItem('aranya_lang') ||
-      localStorage.getItem('aranya_host_lang') ||
-      'ko'
-    ).toLowerCase().slice(0,2);
-  }
-
-  const initial=currentLang();
-  if([...select.options].some(o=>o.value===initial)) select.value=initial;
-
-  select.addEventListener('change',function(){
-    const lang=select.value;
-    localStorage.setItem('aranya_lang',lang);
-    localStorage.setItem('aranya_host_lang',lang);
-    document.documentElement.lang=lang;
-
-    // Drive the existing language selector if it is already available.
-    const realBtn=document.querySelector(`#langMenu [data-lang="${lang}"], [data-lang="${lang}"]`);
-    if(realBtn) realBtn.click();
-  });
-
-  // Detect when the original language switch has finished rendering.
-  function realLangReady(){
-    const real=
-      document.getElementById('langSwitch') ||
-      document.getElementById('langMenu') ||
-      document.querySelector('.lang-btn,[data-lang-select]');
-    if(real){
-      document.body.classList.add('v34-real-lang-ready');
-      return true;
-    }
-    return false;
-  }
-
-  if(!realLangReady()){
-    const observer=new MutationObserver(()=>{
-      if(realLangReady()) observer.disconnect();
-    });
-    observer.observe(document.body,{childList:true,subtree:true});
-    setTimeout(()=>{ realLangReady(); observer.disconnect(); },1800);
-  }
-})();
 </script>
 
 
