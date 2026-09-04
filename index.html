@@ -261,79 +261,173 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 </style>
 
 
-<style id="v27-host-lock-at-arrival">
-html.host-locked .page[data-page="home"] section > .wrap > *:not(.section-index):not(#arrivalHostGate){
+
+<style id="v28-host-base-login-style">
+html.host-base-locked body{
+  overflow:auto !important;
+  background:
+    radial-gradient(circle at 16% 12%,rgba(188,145,86,.10),transparent 26%),
+    linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%) !important;
+}
+html.host-base-locked body > *:not(#hostBaseLogin){
   display:none !important;
 }
-html.host-locked .page[data-page="home"] .section-index{
-  cursor:pointer;
-  user-select:none;
-  -webkit-user-select:none;
-}
-#arrivalHostGate{
-  display:none;
-  margin-top:14px;
-  max-width:560px;
-}
-#arrivalHostGate.open{display:block}
-.arrival-host-card{
-  background:#fffdf9;
-  border:1px solid rgba(99,80,57,.16);
-  border-radius:20px;
-  padding:22px;
-  box-shadow:0 18px 42px rgba(54,42,29,.08);
-}
-.arrival-host-card h3{
-  margin:0 0 7px;
+#hostBaseLogin[hidden]{display:none!important}
+#hostBaseLogin{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 18px;
   color:#26354a;
+}
+.host-base-card{
+  width:min(500px,100%);
+  background:rgba(255,253,249,.98);
+  border:1px solid rgba(99,80,57,.16);
+  border-radius:28px;
+  padding:38px 30px 30px;
+  box-shadow:0 24px 60px rgba(54,42,29,.10);
+  text-align:center;
+}
+.host-base-mark{
+  width:58px;height:58px;margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:#f1e7d5;color:#a65b45;
   font-family:'Gowun Batang','Noto Serif KR',serif;
-  font-size:20px;
+  font-size:24px;
 }
-.arrival-host-card p{
-  margin:0 0 14px;
-  color:#75695d;
-  font-size:12.5px;
-  line-height:1.7;
+.host-base-kicker{
+  margin-bottom:8px;color:#9a8262;font-size:10px;font-weight:700;letter-spacing:.22em;
 }
-.arrival-host-form{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:8px;
+.host-base-card h1{
+  margin:0 0 10px;
+  font-family:'Gowun Batang','Noto Serif KR',serif;
+  font-size:30px;line-height:1.35;color:#26354a;
 }
-.arrival-host-form input{
-  min-width:0;
-  height:44px;
-  border:1px solid #d7c8b4;
-  border-radius:11px;
-  background:#fff;
-  padding:0 13px;
-  font-size:14px;
-  outline:none;
+.host-base-card .desc{
+  margin:0 0 20px;color:#71675b;font-size:13px;line-height:1.8;
 }
-.arrival-host-form button{
-  height:44px;
-  padding:0 16px;
-  border:0;
-  border-radius:11px;
-  background:#26483f;
-  color:#fffaf0;
-  font-weight:700;
-  cursor:pointer;
+.host-base-form{
+  display:grid;grid-template-columns:1fr auto;gap:8px;
 }
-#arrivalHostError{
-  min-height:18px;
-  margin:8px 0 0!important;
-  color:#a4483b!important;
-  font-size:12px!important;
+.host-base-form input{
+  min-width:0;height:46px;padding:0 14px;
+  border:1px solid #d8c9b5;border-radius:12px;background:#fffdfa;
+  font-size:14px;outline:none;
+}
+.host-base-form input:focus{
+  border-color:#9b5c49;box-shadow:0 0 0 3px rgba(155,92,73,.10);
+}
+.host-base-form button{
+  height:46px;padding:0 18px;border:0;border-radius:12px;
+  background:#26483f;color:#fffaf0;font-weight:700;cursor:pointer;
+}
+#hostBaseError{
+  min-height:20px;margin:10px 0 0 !important;color:#a4483b !important;font-size:12px !important;
+}
+.host-base-language{
+  margin-top:18px;display:flex;justify-content:center;
+}
+.host-base-language select{
+  min-width:150px;height:38px;padding:0 12px;border:1px solid #d8c9b5;
+  border-radius:10px;background:#fffdfa;color:#4a423b;font-size:12px;
+}
+.host-base-note{
+  margin-top:18px !important;padding-top:16px;border-top:1px solid rgba(99,80,57,.12);
+  color:#9a8262 !important;font-size:10px !important;letter-spacing:.16em;
 }
 @media(max-width:520px){
-  .arrival-host-form{grid-template-columns:1fr}
-  .arrival-host-form button{width:100%}
+  .host-base-card{padding:32px 20px 26px;border-radius:24px}
+  .host-base-form{grid-template-columns:1fr}
+  .host-base-form button{width:100%}
+}
+</style>
+
+
+<style id="v30-host-link-tab-style">
+#hostLinkTab[hidden]{display:none!important}
+#hostLinksPage.host-link-page-hidden{display:none!important}
+
+/* The generator lives permanently on its own page now. */
+#hostLinksPage #adminGenerator{
+  display:block !important;
+}
+
+/* Admin lock button is not needed inside the dedicated page. */
+#hostLinksPage #adminLockBtn{
+  display:none !important;
+}
+
+.host-link-tab{
+  white-space:nowrap;
+}
+</style>
+
+
+<style id="v31-host-logout-style">
+.host-logout-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:38px;
+  padding:0 12px;
+  margin-left:8px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--white);
+  color:var(--ink);
+  font-size:11.5px;
+  font-weight:700;
+  line-height:1;
+  cursor:pointer;
+  white-space:nowrap;
+  flex:0 0 auto;
+  transition:.2s ease;
+}
+.host-logout-btn:hover{
+  background:#f7f1e7;
+  border-color:rgba(166,91,69,.35);
+}
+@media(max-width:640px){
+  .host-logout-btn{
+    height:34px;
+    padding:0 9px;
+    margin-left:6px;
+    border-radius:10px;
+    font-size:10.5px;
+  }
 }
 </style>
 
 </head>
 <body>
+
+<div id="hostBaseLogin" hidden>
+  <section class="host-base-card">
+    <div class="host-base-mark" aria-hidden="true">雅</div>
+    <div class="host-base-kicker">ARANYA · HOST</div>
+    <h1 id="hostBaseTitle">호스트 전용</h1>
+    <p class="desc" id="hostBaseDesc">숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.</p>
+    <div class="host-base-form">
+      <input id="hostBasePassword" type="password" autocomplete="current-password" placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
+      <button id="hostBaseUnlock" type="button">확인</button>
+    </div>
+    <p id="hostBaseError" role="alert"></p>
+    <div class="host-base-language">
+      <select id="hostBaseLang" aria-label="Language">
+        <option value="ko">한국어</option><option value="en">English</option>
+        <option value="zh">中文</option><option value="ja">日本語</option>
+        <option value="de">Deutsch</option><option value="fr">Français</option>
+        <option value="es">Español</option><option value="it">Italiano</option>
+        <option value="pt">Português</option><option value="ru">Русский</option>
+      </select>
+    </div>
+    <p class="host-base-note">ARANYA · SEOCHON HANOK STAY</p>
+  </section>
+</div>
+
 <div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
 <div class="aranya-floating-mark"><span class="mark-ko">아란야</span><span class="mark-en">ARANYA HANOK STAY</span></div><nav class="topnav">
 <div class="inner">
@@ -344,6 +438,9 @@ html.host-locked .page[data-page="home"] .section-index{
 <button class="tab" data-i18n="tab_around" data-page="around">주변 여행</button>
 <button class="tab" data-i18n="tab_food" data-page="food">맛집·카페</button>
 <button class="tab" data-i18n="tab_contact" data-page="contact">문의</button>
+<button class="tab host-link-tab" data-page="hostlinks" id="hostLinkTab" type="button" hidden>
+<span id="hostLinkTabLabel">게스트 링크 생성</span>
+</button>
 </div>
 <div class="lang-switch" id="langSwitch">
 <button aria-expanded="false" aria-haspopup="listbox" class="lang-btn" id="langBtn" type="button">
@@ -374,18 +471,7 @@ html.host-locked .page[data-page="home"] .section-index{
 </header>
 <div class="page active" data-page="home">
 <section>
-<div class="wrap"><div class="section-index" id="arrivalHostTrigger" role="button" tabindex="0">01 · ARRIVAL</div>
-<div id="arrivalHostGate">
-  <div class="arrival-host-card">
-    <h3>호스트 전용</h3>
-    <p>전체 숙소 안내와 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.</p>
-    <div class="arrival-host-form">
-      <input id="arrivalHostPassword" type="password" autocomplete="current-password" placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
-      <button id="arrivalHostUnlock" type="button">확인</button>
-    </div>
-    <p id="arrivalHostError" role="alert"></p>
-  </div>
-</div>
+<div class="wrap"><div class="section-index">01 · ARRIVAL</div>
 <h2 data-i18n="checkin_title">체크인 안내</h2>
 <p class="sub" data-i18n="checkin_sub">셀프 체크인이에요. 아래 순서대로만 따라오시면 됩니다.</p>
 <div class="steps">
@@ -549,7 +635,18 @@ html.host-locked .page[data-page="home"] .section-index{
     <p class="admin-gate-error" id="adminGateError" role="alert"></p>
   </div>
 </div>
-<div class="gen-box admin-generator admin-secret-hidden" id="adminGenerator">
+
+</div>
+</section>
+</div>
+
+<div class="page" data-page="hostlinks" id="hostLinksPage">
+<section class="tint">
+<div class="wrap">
+<div class="section-index">08 · HOST LINK</div>
+<h2 id="hostLinkPageTitle">게스트 링크 생성</h2>
+<p class="sub" id="hostLinkPageDesc">예약자 정보를 입력해 게스트 전용 안내 링크를 생성합니다.</p>
+<div class="gen-box admin-generator" id="adminGenerator">
 <h3 data-i18n="gen_title">게스트용 안내 링크 만들기</h3>
 <p class="sub" data-i18n="gen_sub">예약자 이름과 날짜를 넣으면, 이 페이지 상단에 자동으로 표시되는 개인화 링크를 만들어드려요.</p>
 <div class="gen-row full">
@@ -603,6 +700,7 @@ html.host-locked .page[data-page="home"] .section-index{
 </div>
 </section>
 </div>
+
 <footer data-i18n="footer">아란야 · 서울 종로구 · 편안한 시간 보내세요</footer>
 <script>
   const LANGS = [
@@ -2157,97 +2255,227 @@ applyLang();
 </script>
 
 
-<script id="v27-host-lock-controller">
+
+<script id="v28-host-base-login-script">
 (function(){
   const params=new URLSearchParams(location.search);
   const hasGuest=!!params.get('g');
+  if(hasGuest){
+    const login=document.getElementById('hostBaseLogin');
+    if(login) login.remove();
+    return;
+  }
+
   const ADMIN_HASH='cadc67f132143929beaf6031e09a8999f5fc2f450dee8846ee2d6d1507015d52';
+  const LANG_KEY='aranya_host_lang';
+  const copy={
+    ko:{title:'호스트 전용',desc:'숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.',placeholder:'관리자 비밀번호',button:'확인',error:'비밀번호가 올바르지 않습니다.'},
+    en:{title:'Host Access',desc:'Enter the administrator password to access the full house guide and host tools.',placeholder:'Administrator password',button:'Continue',error:'The password is incorrect.'},
+    zh:{title:'房东专用',desc:'请输入管理员密码以访问完整的住宿指南和房东功能。',placeholder:'管理员密码',button:'确认',error:'密码不正确。'},
+    ja:{title:'ホスト専用',desc:'宿泊案内の全内容とホスト機能を利用するには、管理者パスワードを入力してください。',placeholder:'管理者パスワード',button:'確認',error:'パスワードが正しくありません。'},
+    de:{title:'Host-Zugang',desc:'Geben Sie das Administratorpasswort ein, um auf den vollständigen Unterkunftsführer und die Host-Funktionen zuzugreifen.',placeholder:'Administratorpasswort',button:'Bestätigen',error:'Das Passwort ist nicht korrekt.'},
+    fr:{title:'Accès hôte',desc:'Saisissez le mot de passe administrateur pour accéder au guide complet et aux fonctions réservées à l’hôte.',placeholder:'Mot de passe administrateur',button:'Valider',error:'Le mot de passe est incorrect.'},
+    es:{title:'Acceso para anfitrión',desc:'Introduce la contraseña de administrador para acceder a la guía completa y a las funciones del anfitrión.',placeholder:'Contraseña de administrador',button:'Confirmar',error:'La contraseña es incorrecta.'},
+    it:{title:'Accesso host',desc:'Inserisci la password amministratore per accedere alla guida completa e alle funzioni dell’host.',placeholder:'Password amministratore',button:'Conferma',error:'La password non è corretta.'},
+    pt:{title:'Acesso do anfitrião',desc:'Insira a senha de administrador para acessar o guia completo e as funções do anfitrião.',placeholder:'Senha de administrador',button:'Confirmar',error:'A senha está incorreta.'},
+    ru:{title:'Доступ для хозяина',desc:'Введите пароль администратора, чтобы открыть полное руководство и функции хозяина.',placeholder:'Пароль администратора',button:'Подтвердить',error:'Неверный пароль.'}
+  };
 
-  function unlocked(){
-    return sessionStorage.getItem('aranya_admin')==='1';
+  const login=document.getElementById('hostBaseLogin');
+  const title=document.getElementById('hostBaseTitle');
+  const desc=document.getElementById('hostBaseDesc');
+  const input=document.getElementById('hostBasePassword');
+  const btn=document.getElementById('hostBaseUnlock');
+  const err=document.getElementById('hostBaseError');
+  const langSelect=document.getElementById('hostBaseLang');
+
+  function detectLang(){
+    const saved=(localStorage.getItem(LANG_KEY)||'').toLowerCase().slice(0,2);
+    if(copy[saved]) return saved;
+    const siteSaved=(localStorage.getItem('aranya_lang')||'').toLowerCase().slice(0,2);
+    if(copy[siteSaved]) return siteSaved;
+    const nav=(navigator.language||'ko').toLowerCase().slice(0,2);
+    return copy[nav] ? nav : 'ko';
+  }
+  function applyLang(lang){
+    if(!copy[lang]) lang='ko';
+    localStorage.setItem(LANG_KEY,lang);
+    const c=copy[lang];
+    title.textContent=c.title; desc.textContent=c.desc;
+    input.placeholder=c.placeholder; input.setAttribute('aria-label',c.placeholder);
+    btn.textContent=c.button; err.textContent=''; langSelect.value=lang;
+    document.documentElement.lang=lang;
   }
 
-  // Guest links remain exactly as before.
-  if(hasGuest) return;
-
-  if(!unlocked()){
-    document.documentElement.classList.add('host-locked');
+  if(sessionStorage.getItem('aranya_admin')==='1'){
+    if(login) login.remove();
+    document.documentElement.classList.remove('host-base-locked');
+    return;
   }
 
-  const trigger=document.getElementById('arrivalHostTrigger');
-  const gate=document.getElementById('arrivalHostGate');
-  const input=document.getElementById('arrivalHostPassword');
-  const btn=document.getElementById('arrivalHostUnlock');
-  const err=document.getElementById('arrivalHostError');
-
-  function openGate(){
-    if(unlocked()) return;
-    if(gate) gate.classList.add('open');
-    if(err) err.textContent='';
-    setTimeout(()=>input && input.focus({preventScroll:true}),30);
-  }
+  document.documentElement.classList.add('host-base-locked');
+  login.hidden=false;
+  const initialLang=detectLang();
+  applyLang(initialLang);
+  langSelect.addEventListener('change',()=>applyLang(langSelect.value));
 
   async function sha256(value){
     const data=new TextEncoder().encode(value);
     const digest=await crypto.subtle.digest('SHA-256',data);
-    return Array.from(new Uint8Array(digest))
-      .map(b=>b.toString(16).padStart(2,'0')).join('');
+    return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
   }
-
-  async function doUnlock(){
-    if(!input) return;
-    if(err) err.textContent='';
-
+  async function unlock(){
+    err.textContent='';
     try{
       const hash=await sha256(input.value);
       if(hash!==ADMIN_HASH){
-        if(err) err.textContent='비밀번호가 올바르지 않습니다.';
-        input.select();
-        return;
+        err.textContent=(copy[langSelect.value]||copy.ko).error;
+        input.select(); return;
       }
-
-      // Save the same admin session used by the original host features.
-      // Then reload the untouched original site so ALL tabs/features come back.
       sessionStorage.setItem('aranya_admin','1');
       sessionStorage.setItem('aranya_host_entry','1');
       location.reload();
     }catch(e){
-      if(err) err.textContent='비밀번호를 다시 확인해주세요.';
+      err.textContent=(copy[langSelect.value]||copy.ko).error;
     }
   }
+  btn.addEventListener('click',unlock);
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();unlock();}});
+  setTimeout(()=>input.focus({preventScroll:true}),40);
+})();
+</script>
 
-  if(trigger){
-    trigger.addEventListener('click',openGate);
-    trigger.addEventListener('keydown',e=>{
-      if(e.key==='Enter' || e.key===' '){
-        e.preventDefault();
-        openGate();
+
+<script id="v30-host-link-controller">
+(function(){
+  const hasGuest = !!new URLSearchParams(location.search).get('g');
+  const isAdmin = sessionStorage.getItem('aranya_admin') === '1';
+
+  const tab = document.getElementById('hostLinkTab');
+  const page = document.getElementById('hostLinksPage');
+
+  // Guests and unauthenticated visitors never see the host-link tab/page.
+  if(hasGuest || !isAdmin){
+    if(tab) tab.hidden = true;
+    if(page) page.classList.add('host-link-page-hidden');
+    return;
+  }
+
+  if(tab) tab.hidden = false;
+  if(page) page.classList.remove('host-link-page-hidden');
+
+  const copy = {
+    ko:['게스트 링크 생성','게스트 링크 생성','예약자 정보를 입력해 게스트 전용 안내 링크를 생성합니다.'],
+    en:['Guest Link','Create Guest Link','Enter reservation details to create a private guest guide link.'],
+    zh:['访客链接','创建访客链接','输入预订信息以生成访客专用指南链接。'],
+    ja:['ゲストリンク','ゲストリンクを作成','予約情報を入力してゲスト専用の案内リンクを作成します。'],
+    de:['Gästelink','Gästelink erstellen','Geben Sie die Buchungsdaten ein, um einen privaten Gästelink zu erstellen.'],
+    fr:['Lien invité','Créer un lien invité','Saisissez les informations de réservation pour créer un lien privé pour le voyageur.'],
+    es:['Enlace de huésped','Crear enlace de huésped','Introduce los datos de la reserva para crear un enlace privado para el huésped.'],
+    it:['Link ospite','Crea link ospite','Inserisci i dati della prenotazione per creare un link privato per l’ospite.'],
+    pt:['Link do hóspede','Criar link do hóspede','Insira os dados da reserva para criar um link privado para o hóspede.'],
+    ru:['Гостевая ссылка','Создать гостевую ссылку','Введите данные бронирования, чтобы создать приватную ссылку для гостя.']
+  };
+
+  function currentLang(){
+    const code=(document.documentElement.lang || localStorage.getItem('aranya_lang') || 'ko')
+      .toLowerCase().slice(0,2);
+    return copy[code] ? code : 'ko';
+  }
+
+  function applyLabels(){
+    const c=copy[currentLang()];
+    const label=document.getElementById('hostLinkTabLabel');
+    const title=document.getElementById('hostLinkPageTitle');
+    const desc=document.getElementById('hostLinkPageDesc');
+    if(label) label.textContent=c[0];
+    if(title) title.textContent=c[1];
+    if(desc) desc.textContent=c[2];
+  }
+
+  applyLabels();
+
+  // Site language switch changes the document language asynchronously.
+  document.addEventListener('click', function(e){
+    if(e.target.closest('#langMenu, .lang-btn, [data-lang]')){
+      setTimeout(applyLabels, 80);
+    }
+  });
+  document.addEventListener('change', function(){
+    setTimeout(applyLabels, 80);
+  });
+})();
+</script>
+
+
+<script id="v31-host-logout-script">
+(function(){
+  const params = new URLSearchParams(location.search);
+  const isGuest = !!params.get('g');
+  const isAdmin = sessionStorage.getItem('aranya_admin') === '1';
+
+  // 게스트나 비로그인 상태에서는 로그아웃 버튼 자체를 만들지 않음
+  if(isGuest || !isAdmin) return;
+
+  const langSwitch = document.getElementById('langSwitch');
+  if(!langSwitch || document.getElementById('hostLogoutBtn')) return;
+
+  const labels = {
+    ko:'로그아웃',
+    en:'Log out',
+    zh:'退出',
+    ja:'ログアウト',
+    de:'Abmelden',
+    fr:'Déconnexion',
+    es:'Salir',
+    it:'Esci',
+    pt:'Sair',
+    ru:'Выйти'
+  };
+
+  function currentLang(){
+    const code = (
+      document.documentElement.lang ||
+      localStorage.getItem('aranya_lang') ||
+      'ko'
+    ).toLowerCase().slice(0,2);
+    return labels[code] ? code : 'ko';
+  }
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.id = 'hostLogoutBtn';
+  btn.className = 'host-logout-btn';
+  btn.textContent = labels[currentLang()];
+  btn.setAttribute('aria-label', btn.textContent);
+
+  // 다국어 선택박스 바로 오른쪽에 배치
+  langSwitch.insertAdjacentElement('afterend', btn);
+
+  btn.addEventListener('click', function(){
+    // 호스트 인증만 초기화. 선택한 언어는 유지.
+    sessionStorage.removeItem('aranya_admin');
+    sessionStorage.removeItem('aranya_host_entry');
+
+    // ?g= 없는 기본 주소로 돌아가면 V28 호스트 비밀번호 화면이 다시 나타남
+    window.location.href = window.location.origin + window.location.pathname;
+  });
+
+  function refreshLabel(){
+    const text = labels[currentLang()];
+    btn.textContent = text;
+    btn.setAttribute('aria-label', text);
+  }
+
+  // 기존 언어 메뉴에서 언어가 바뀌면 로그아웃 문구도 같이 변경
+  const langMenu = document.getElementById('langMenu');
+  if(langMenu){
+    langMenu.addEventListener('click', function(e){
+      if(e.target.closest('button[data-lang]')){
+        setTimeout(refreshLabel, 30);
       }
     });
   }
-  if(btn) btn.addEventListener('click',doUnlock);
-  if(input){
-    input.addEventListener('keydown',e=>{
-      if(e.key==='Enter'){
-        e.preventDefault();
-        doUnlock();
-      }
-    });
-  }
-
-  // While locked, any top navigation destination except Contact asks for host password.
-  document.addEventListener('click',function(e){
-    if(unlocked()) return;
-
-    const tab=e.target.closest('.tab[data-page]');
-    if(!tab) return;
-
-    if(tab.getAttribute('data-page')==='contact') return;
-
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    openGate();
-  }, true);
 })();
 </script>
 
