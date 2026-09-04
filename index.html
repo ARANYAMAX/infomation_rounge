@@ -1880,5 +1880,66 @@ applyLang();
 })();
 </script>
 
+
+<script id="v17-calendar-autoclose">
+(function(){
+  function closeAllCalendars(){
+    document.querySelectorAll('.aranya-calendar.open').forEach(cal=>{
+      cal.classList.remove('open');
+      cal.setAttribute('aria-hidden','true');
+    });
+    document.querySelectorAll('.localized-picker.picker-focus').forEach(w=>{
+      w.classList.remove('picker-focus');
+    });
+  }
+
+  // Close immediately after a date button is chosen.
+  document.addEventListener('click', function(e){
+    const dayBtn = e.target.closest('.aranya-calendar button[data-date], .aranya-calendar [data-date]');
+    if(!dayBtn) return;
+
+    // Let the existing date-selection code run first, then close the popup.
+    setTimeout(closeAllCalendars, 0);
+  }, true);
+
+  // Also close on touch selection for iPhone / Galaxy.
+  document.addEventListener('touchend', function(e){
+    const dayBtn = e.target.closest('.aranya-calendar button[data-date], .aranya-calendar [data-date]');
+    if(!dayBtn) return;
+    setTimeout(closeAllCalendars, 0);
+  }, {passive:true, capture:true});
+
+  // If the calendar's existing buttons use day-number classes instead of data-date,
+  // close whenever a selectable day cell/button inside the calendar is pressed,
+  // but not for month navigation or footer controls.
+  document.addEventListener('click', function(e){
+    const cal = e.target.closest('.aranya-calendar');
+    if(!cal) return;
+    const btn = e.target.closest('button');
+    if(!btn) return;
+
+    const isNav =
+      btn.matches('[data-prev],[data-next],.cal-prev,.cal-next,.calendar-prev,.calendar-next') ||
+      btn.closest('.calendar-head,.cal-head,.calendar-footer,.cal-footer');
+
+    if(!isNav && !btn.disabled){
+      setTimeout(closeAllCalendars, 0);
+    }
+  }, true);
+
+  // Clicking outside closes it too.
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.aranya-calendar')) return;
+    if(e.target.closest('.localized-picker[data-picker-wrap="date"]')) return;
+    closeAllCalendars();
+  });
+
+  // Escape key support.
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeAllCalendars();
+  });
+})();
+</script>
+
 </body>
 </html>
