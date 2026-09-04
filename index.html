@@ -232,6 +232,19 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 }
 </style>
 
+
+<style id="ios-date-picker-fix">
+.localized-picker[data-picker-wrap="date"] input[type="hidden"]{
+  display:none !important;
+}
+@media (max-width:720px){
+  .aranya-calendar{
+    width:min(330px, calc(100vw - 32px)) !important;
+    max-width:calc(100vw - 32px) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
@@ -450,14 +463,14 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 <label><span data-i18n="gen_ci">체크인 날짜</span>
   <span class="localized-picker" data-picker-wrap="date">
     <span class="localized-picker-display" id="genCiDisplay"></span>
-    <input aria-label="Check-in date" id="genCi" type="date"/>
+    <input aria-label="Check-in date" id="genCi" type="hidden"/>
     <span class="localized-picker-icon" aria-hidden="true">⌄</span>
   </span>
 </label>
 <label><span data-i18n="gen_co">체크아웃 날짜</span>
   <span class="localized-picker" data-picker-wrap="date">
     <span class="localized-picker-display" id="genCoDisplay"></span>
-    <input aria-label="Check-out date" id="genCo" type="date"/>
+    <input aria-label="Check-out date" id="genCo" type="hidden"/>
     <span class="localized-picker-icon" aria-hidden="true">⌄</span>
   </span>
 </label>
