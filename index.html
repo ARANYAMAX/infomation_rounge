@@ -3,6 +3,58 @@
 <html lang="ko">
 <head>
 
+<style id="v50-host-login-critical">
+html.v33-host-locked body{margin:0!important;padding:0!important;background:#f7f1e7!important}
+html.v33-host-locked #hostBaseLogin{
+  position:fixed!important;inset:0!important;z-index:2147483000!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:24px 18px!important;box-sizing:border-box!important;
+  background:linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%)!important;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif!important;
+  color:#26354a!important;
+}
+html.v33-host-locked #hostBaseLogin .host-base-card{
+  width:min(500px,calc(100vw - 36px))!important;box-sizing:border-box!important;
+  background:#fffdf9!important;border:1px solid rgba(99,80,57,.16)!important;
+  border-radius:28px!important;padding:38px 30px 30px!important;
+  box-shadow:0 24px 60px rgba(54,42,29,.10)!important;text-align:center!important;
+}
+html.v33-host-locked #hostBaseLogin .host-base-mark{
+  width:58px!important;height:58px!important;margin:0 auto 18px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  border-radius:50%!important;background:#f1e7d5!important;color:#a65b45!important;
+  font:24px Georgia,"Times New Roman",serif!important;
+}
+html.v33-host-locked #hostBaseLogin .host-base-kicker{margin-bottom:8px!important;color:#9a8262!important;font-size:10px!important;font-weight:700!important;letter-spacing:.22em!important}
+html.v33-host-locked #hostBaseLogin h1{margin:0 0 10px!important;font-size:30px!important;line-height:1.35!important;font-weight:700!important;letter-spacing:-.02em!important;color:#26354a!important}
+html.v33-host-locked #hostBaseLogin .desc{margin:0 0 20px!important;color:#71675b!important;font-size:13px!important;line-height:1.8!important}
+html.v33-host-locked #hostBaseLogin .host-base-form{display:grid!important;grid-template-columns:1fr auto!important;gap:8px!important}
+html.v33-host-locked #hostBaseLogin input{
+  min-width:0!important;height:46px!important;padding:0 14px!important;border:1px solid #d8c9b5!important;
+  border-radius:12px!important;background:#fffdfa!important;font-size:14px!important;box-sizing:border-box!important
+}
+html.v33-host-locked #hostBaseLogin button{
+  height:46px!important;padding:0 18px!important;border:0!important;border-radius:12px!important;
+  background:#26483f!important;color:#fffaf0!important;font-size:14px!important;font-weight:700!important
+}
+html.v33-host-locked #hostBaseError{min-height:20px!important;margin:10px 0 0!important;color:#a4483b!important;font-size:12px!important}
+html.v33-host-locked #hostBaseLogin .host-base-language{margin-top:18px!important}
+html.v33-host-locked #hostBaseLogin select{
+  min-width:150px!important;height:38px!important;padding:0 12px!important;border:1px solid #d8c9b5!important;
+  border-radius:10px!important;background:#fffdfa!important;color:#4a423b!important;font-size:12px!important
+}
+html.v33-host-locked #hostBaseLogin .host-base-note{
+  margin-top:18px!important;padding-top:16px!important;border-top:1px solid rgba(99,80,57,.12)!important;
+  color:#9a8262!important;font-size:10px!important;letter-spacing:.16em!important
+}
+@media(max-width:520px){
+  html.v33-host-locked #hostBaseLogin .host-base-card{padding:32px 20px 26px!important;border-radius:24px!important}
+  html.v33-host-locked #hostBaseLogin .host-base-form{grid-template-columns:1fr!important}
+  html.v33-host-locked #hostBaseLogin button{width:100%!important}
+}
+</style>
+
+
 <style id="v45-host-tab-first-paint">
 /* default hidden until the tiny preboot below decides */
 #hostLinkTab{display:none!important}
@@ -71,42 +123,97 @@ html:not(.v33-host-locked) #hostBaseLogin{
 </style>
 
 
-<script id="v45-host-login-early">
+
+<script id="v50-host-login-early">
 (function(){
   try{
     const p=new URLSearchParams(location.search);
-    const hasGuest=p.has('g');
     const isAdmin=sessionStorage.getItem('aranya_admin')==='1';
-
-    if(hasGuest || isAdmin) return;
+    if(p.has('g') || isAdmin) return;
 
     document.documentElement.classList.add('v33-host-locked','host-base-locked');
 
+    const ADMIN_HASH='cadc67f132143929beaf6031e09a8999f5fc2f450dee8846ee2d6d1507015d52';
+    const copy={
+      ko:['호스트 전용','숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.','관리자 비밀번호','확인','비밀번호가 올바르지 않습니다.'],
+      en:['Host Access','Enter the administrator password to access the full house guide and host tools.','Administrator password','Continue','The password is incorrect.'],
+      zh:['房东专用','请输入管理员密码以访问完整的住宿指南和房东功能。','管理员密码','确认','密码不正确。'],
+      ja:['ホスト専用','宿泊案内の全内容とホスト機能を利用するには、管理者パスワードを入力してください。','管理者パスワード','確認','パスワードが正しくありません。'],
+      de:['Host-Zugang','Geben Sie das Administratorpasswort ein, um auf den vollständigen Unterkunftsführer und die Host-Funktionen zuzugreifen.','Administratorpasswort','Bestätigen','Das Passwort ist nicht korrekt.'],
+      fr:['Accès hôte','Saisissez le mot de passe administrateur pour accéder au guide complet et aux fonctions réservées à l’hôte.','Mot de passe administrateur','Valider','Le mot de passe est incorrect.'],
+      es:['Acceso para anfitrión','Introduce la contraseña de administrador para acceder a la guía completa y a las funciones del anfitrión.','Contraseña de administrador','Confirmar','La contraseña es incorrecta.'],
+      it:['Accesso host','Inserisci la password amministratore per accedere alla guida completa e alle funzioni dell’host.','Password amministratore','Conferma','La password non è corretta.'],
+      pt:['Acesso do anfitrião','Insira a senha de administrador para acessar o guia completo e as funções do anfitrião.','Senha de administrador','Confirmar','A senha está incorreta.'],
+      ru:['Доступ для хозяина','Введите пароль администратора, чтобы открыть полное руководство и функции хозяина.','Пароль администратора','Подтвердить','Неверный пароль.']
+    };
+
+    function currentLang(){
+      const s=(localStorage.getItem('aranya_host_lang')||localStorage.getItem('aranya_lang')||navigator.language||'ko').toLowerCase().slice(0,2);
+      return copy[s]?s:'ko';
+    }
+    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+    window.__hostLang=function(lang){
+      lang=copy[lang]?lang:'ko';
+      localStorage.setItem('aranya_host_lang',lang);
+      const c=copy[lang];
+      const t=document.getElementById('hostBaseTitle'), d=document.getElementById('hostBaseDesc'),
+            i=document.getElementById('hostBasePassword'), b=document.getElementById('hostBaseUnlock'),
+            e=document.getElementById('hostBaseError');
+      if(t)t.textContent=c[0]; if(d)d.textContent=c[1];
+      if(i){i.placeholder=c[2];i.setAttribute('aria-label',c[2])}
+      if(b)b.textContent=c[3]; if(e)e.textContent='';
+    };
+
+    window.__hostUnlock=async function(){
+      const input=document.getElementById('hostBasePassword');
+      const error=document.getElementById('hostBaseError');
+      const sel=document.getElementById('hostBaseLang');
+      if(!input)return;
+      const lang=(sel&&copy[sel.value])?sel.value:'ko';
+      try{
+        const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(input.value));
+        const hash=Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
+        if(hash!==ADMIN_HASH){
+          if(error)error.textContent=copy[lang][4];
+          input.select();
+          return;
+        }
+        sessionStorage.setItem('aranya_admin','1');
+        sessionStorage.setItem('aranya_host_entry','1');
+        location.reload();
+      }catch(e){
+        if(error)error.textContent=copy[lang][4];
+      }
+    };
+
+    const lang=currentLang(), c=copy[lang];
     document.write(`
       <div id="hostBaseLogin">
         <section class="host-base-card">
           <div class="host-base-mark" aria-hidden="true">雅</div>
           <div class="host-base-kicker">ARANYA · HOST</div>
-          <h1 id="hostBaseTitle">호스트 전용</h1>
-          <p class="desc" id="hostBaseDesc">숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.</p>
+          <h1 id="hostBaseTitle">${esc(c[0])}</h1>
+          <p class="desc" id="hostBaseDesc">${esc(c[1])}</p>
           <div class="host-base-form">
             <input id="hostBasePassword" type="password" autocomplete="current-password"
-                   placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
-            <button id="hostBaseUnlock" type="button">확인</button>
+              placeholder="${esc(c[2])}" aria-label="${esc(c[2])}"
+              onkeydown="if(event.key==='Enter'){event.preventDefault();window.__hostUnlock()}">
+            <button id="hostBaseUnlock" type="button" onclick="window.__hostUnlock()">${esc(c[3])}</button>
           </div>
           <p id="hostBaseError" role="alert"></p>
           <div class="host-base-language">
-            <select id="hostBaseLang" aria-label="Language">
-              <option value="ko">한국어</option>
-              <option value="en">English</option>
-              <option value="zh">中文</option>
-              <option value="ja">日本語</option>
-              <option value="de">Deutsch</option>
-              <option value="fr">Français</option>
-              <option value="es">Español</option>
-              <option value="it">Italiano</option>
-              <option value="pt">Português</option>
-              <option value="ru">Русский</option>
+            <select id="hostBaseLang" aria-label="Language" onchange="window.__hostLang(this.value)">
+              <option value="ko"${lang==='ko'?' selected':''}>한국어</option>
+              <option value="en"${lang==='en'?' selected':''}>English</option>
+              <option value="zh"${lang==='zh'?' selected':''}>中文</option>
+              <option value="ja"${lang==='ja'?' selected':''}>日本語</option>
+              <option value="de"${lang==='de'?' selected':''}>Deutsch</option>
+              <option value="fr"${lang==='fr'?' selected':''}>Français</option>
+              <option value="es"${lang==='es'?' selected':''}>Español</option>
+              <option value="it"${lang==='it'?' selected':''}>Italiano</option>
+              <option value="pt"${lang==='pt'?' selected':''}>Português</option>
+              <option value="ru"${lang==='ru'?' selected':''}>Русский</option>
             </select>
           </div>
           <p class="host-base-note">ARANYA · SEOCHON HANOK STAY</p>
@@ -116,6 +223,7 @@ html:not(.v33-host-locked) #hostBaseLogin{
   }catch(e){}
 })();
 </script>
+
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
