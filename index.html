@@ -270,8 +270,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 <div class="step">
 <div>
 <h3 data-i18n="step_lock">도어록 비밀번호</h3>
-<p data-i18n="step_lock_p">현관 도어록 비밀번호는 체크인 당일 오전에 문자로 안내드려요.</p>
-<span class="fillbox" data-i18n="step_lock_note">✎ [체크인 당일 문자 안내 — 호스트가 직접 채워주세요]</span>
+<p data-i18n="step_lock_p">보안을 위해 도어록 비밀번호는 이 페이지에 표시하지 않으며, 체크인 당일 오전 Airbnb 메시지로 별도 안내드립니다.</p>
 </div>
 </div>
 <div class="step">
@@ -351,7 +350,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 </div>
 <div class="page" data-page="contact">
 <section class="tint">
-<div class="wrap"><div class="section-index">07 · HOST</div>
+<div class="wrap"><div class="section-index" id="adminSecretTrigger" aria-label="07 · HOST">07 · HOST</div>
 <div class="contact-card">
 <h2 data-i18n="contact_title">필요한 게 있으면</h2>
 <p data-i18n="contact_p">도어록이 안 열리거나, 뭔가 고장났거나, 궁금한 게 있어도 편하게 메시지 주세요.</p>
@@ -362,7 +361,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 </div>
 </div>
 
-<div class="admin-gate" id="adminGate" aria-live="polite">
+<div class="admin-gate admin-secret-hidden" id="adminGate" aria-live="polite">
   <div class="admin-gate-mark" aria-hidden="true">鎖</div>
   <div class="admin-gate-copy">
     <div class="admin-gate-kicker" id="adminGateKicker">ADMIN ONLY</div>
@@ -375,7 +374,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
     <p class="admin-gate-error" id="adminGateError" role="alert"></p>
   </div>
 </div>
-<div class="gen-box admin-generator" id="adminGenerator">
+<div class="gen-box admin-generator admin-secret-hidden" id="adminGenerator">
 <h3 data-i18n="gen_title">게스트용 안내 링크 만들기</h3>
 <p class="sub" data-i18n="gen_sub">예약자 이름과 날짜를 넣으면, 이 페이지 상단에 자동으로 표시되는 개인화 링크를 만들어드려요.</p>
 <div class="gen-row full">
@@ -453,8 +452,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'예약자', label_guests:'인원', from:' 부터', until:' 까지',
       checkin_title:'체크인 안내', checkin_sub:'셀프 체크인이에요. 아래 순서대로만 따라오시면 됩니다.',
       step_addr:'위치 확인', step_addr_p:'서울시 종로구 체부동 152-3. 경복궁역 1번 출구에서 도보 약 2분이에요.',
-      step_lock:'도어록 비밀번호', step_lock_p:'현관 도어록 비밀번호는 체크인 당일 오전에 문자로 안내드려요.',
-      step_lock_note:'✎ [체크인 당일 문자 안내 — 호스트가 직접 채워주세요]',
+      step_lock:'도어록 비밀번호', step_lock_p:'보안을 위해 도어록 비밀번호는 이 페이지에 표시하지 않으며, 체크인 당일 오전 Airbnb 메시지로 별도 안내드립니다.',
       step_wifi:'와이파이', step_wifi_p:'네트워크명, 비밀번호는 거실 테이블 위 안내 카드에서 확인하실 수 있어요.',
       step_co_p:'퇴실 시 문만 잠그고 나가시면 됩니다. 쓰레기는 마당 옆 분리수거함에 정리해주세요.',
       rules_title:'머무는 동안 이렇게 부탁드려요',
@@ -496,8 +494,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'Guest', label_guests:'Guests', from:' onward', until:' by',
       checkin_title:'Check-in guide', checkin_sub:'This is a self check-in. Just follow the steps below.',
       step_addr:'Find the address', step_addr_p:'152-3 Chebu-dong, Jongno-gu, Seoul. About a 2-minute walk from Gyeongbokgung Station Exit 1.',
-      step_lock:'Door lock code', step_lock_p:'The front door code is sent by text on the morning of check-in.',
-      step_lock_note:'✎ [Sent by text on check-in day — host to fill in]',
+      step_lock:'Door lock code', step_lock_p:'For security, the door lock code is not shown on this page. It will be sent separately via Airbnb message on the morning of check-in.',
       step_wifi:'Wi-Fi', step_wifi_p:'The network name and password are on the info card on the living room table.',
       step_co_p:'Just lock the door on your way out. Please sort trash into the bins next to the courtyard.',
       rules_title:'A few things to keep in mind',
@@ -539,8 +536,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'客人', label_guests:'人数', from:' 起', until:' 前',
       checkin_title:'入住指南', checkin_sub:'自助入住。按下面步骤即可。',
       step_addr:'确认位置', step_addr_p:'地址：首尔钟路区体府洞 152-3。从景福宫站1号出口步行约2分钟。',
-      step_lock:'门锁密码', step_lock_p:'大门密码锁会在入住当天上午以短信告知。',
-      step_lock_note:'✎ [入住当天短信通知 — 请房东填写]',
+      step_lock:'门锁密码', step_lock_p:'为确保安全，本页面不会显示门锁密码。入住当天上午会通过 Airbnb 消息单独发送。',
       step_wifi:'Wi-Fi', step_wifi_p:'网络名称和密码写在客厅桌上的说明卡上。',
       step_co_p:'离开时锁好门即可。垃圾请分类放入庭院旁的回收箱。',
       rules_title:'入住期间请留意',
@@ -582,8 +578,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'ゲスト', label_guests:'人数', from:' から', until:' まで',
       checkin_title:'チェックイン案内', checkin_sub:'セルフチェックインです。下の手順に従ってください。',
       step_addr:'場所の確認', step_addr_p:'住所：ソウル特別市 鍾路区 チェブ洞 152-3。景福宮駅1番出口から徒歩約2分です。',
-      step_lock:'ドアロック暗証番号', step_lock_p:'玄関の暗証番号はチェックイン当日の午前中にSMSでご案内します。',
-      step_lock_note:'✎ [チェックイン当日にSMS — ホストが記入]',
+      step_lock:'ドアロック暗証番号', step_lock_p:'セキュリティのため、ドアロックの暗証番号はこのページには表示しません。チェックイン当日の午前中にAirbnbメッセージで個別にご案内します。',
       step_wifi:'Wi-Fi', step_wifi_p:'ネットワーク名とパスワードはリビングテーブルの案内カードにあります。',
       step_co_p:'退出時はドアを施錠するだけで大丈夫です。ゴミは中庭横の分別ボックスへ。',
       rules_title:'滞在中のお願い',
@@ -625,8 +620,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'Gast', label_guests:'Gäste', from:' ab', until:' bis',
       checkin_title:'Check-in-Anleitung', checkin_sub:'Selbst-Check-in. Folgen Sie einfach den Schritten unten.',
       step_addr:'Adresse finden', step_addr_p:'Adresse: 152-3 Chebu-dong, Jongno-gu, Seoul. Etwa 2 Minuten zu Fuß vom Ausgang 1 des Bahnhofs Gyeongbokgung.',
-      step_lock:'Türcode', step_lock_p:'Der Code der Haustür wird am Morgen des Check-in-Tags per SMS geschickt.',
-      step_lock_note:'✎ [Per SMS am Check-in-Tag — vom Gastgeber ausfüllen]',
+      step_lock:'Türcode', step_lock_p:'Aus Sicherheitsgründen wird der Türcode nicht auf dieser Seite angezeigt. Er wird am Morgen des Check-in-Tages separat per Airbnb-Nachricht gesendet.',
       step_wifi:'WLAN', step_wifi_p:'Netzwerkname und Passwort stehen auf der Infokarte auf dem Wohnzimmertisch.',
       step_co_p:'Beim Gehen einfach die Tür abschließen. Müll bitte in die Tonnen neben dem Hof sortieren.',
       rules_title:'Bitte beachten Sie',
@@ -668,8 +662,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'Voyageur', label_guests:'Personnes', from:' à partir de', until:' avant',
       checkin_title:'Guide d’arrivée', checkin_sub:'Arrivée autonome. Suivez simplement les étapes ci-dessous.',
       step_addr:'Trouver l’adresse', step_addr_p:'Adresse : 152-3 Chebu-dong, Jongno-gu, Séoul. Environ 2 minutes à pied depuis la sortie 1 de Gyeongbokgung.',
-      step_lock:'Code de la porte', step_lock_p:'Le code de la porte d’entrée est envoyé par SMS le matin du jour d’arrivée.',
-      step_lock_note:'✎ [Envoyé par SMS le jour d’arrivée — à remplir par l’hôte]',
+      step_lock:'Code de la porte', step_lock_p:'Pour des raisons de sécurité, le code de la porte n’est pas affiché sur cette page. Il vous sera envoyé séparément via Airbnb le matin de votre arrivée.',
       step_wifi:'Wi-Fi', step_wifi_p:'Le nom du réseau et le mot de passe sont sur la carte d’info sur la table du salon.',
       step_co_p:'Verrouillez simplement la porte en partant. Merci de trier les déchets dans les bacs près de la cour.',
       rules_title:'Quelques points à retenir',
@@ -711,8 +704,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'Huésped', label_guests:'Personas', from:' desde', until:' hasta',
       checkin_title:'Guía de llegada', checkin_sub:'Check-in autónomo. Siga los pasos de abajo.',
       step_addr:'Encontrar la dirección', step_addr_p:'Dirección: 152-3 Chebu-dong, Jongno-gu, Seúl. A unos 2 minutos a pie desde la salida 1 de Gyeongbokgung.',
-      step_lock:'Código de la puerta', step_lock_p:'El código de la puerta se envía por SMS la mañana del día de llegada.',
-      step_lock_note:'✎ [Enviado por SMS el día de llegada — a completar por el anfitrión]',
+      step_lock:'Código de la puerta', step_lock_p:'Por seguridad, el código de la puerta no se muestra en esta página. Se enviará por separado mediante un mensaje de Airbnb la mañana del check-in.',
       step_wifi:'Wi-Fi', step_wifi_p:'El nombre de la red y la contraseña están en la tarjeta de la mesa del salón.',
       step_co_p:'Al salir, cierre la puerta con llave. Separe la basura en los contenedores junto al patio.',
       rules_title:'Tenga en cuenta',
@@ -754,8 +746,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'Ospite', label_guests:'Persone', from:' da', until:' entro',
       checkin_title:'Guida al check-in', checkin_sub:'Check-in autonomo. Seguite i passaggi qui sotto.',
       step_addr:'Trovare l’indirizzo', step_addr_p:'Indirizzo: 152-3 Chebu-dong, Jongno-gu, Seul. Circa 2 minuti a piedi dall’uscita 1 di Gyeongbokgung.',
-      step_lock:'Codice della porta', step_lock_p:'Il codice della porta viene inviato via SMS la mattina del giorno di arrivo.',
-      step_lock_note:'✎ [Inviato via SMS il giorno del check-in — da compilare dall’host]',
+      step_lock:'Codice della porta', step_lock_p:'Per motivi di sicurezza, il codice della porta non viene mostrato in questa pagina. Verrà inviato separatamente tramite messaggio Airbnb la mattina del check-in.',
       step_wifi:'Wi-Fi', step_wifi_p:'Nome della rete e password sono sul biglietto informativo sul tavolo del soggiorno.',
       step_co_p:'All’uscita chiudete a chiave. Separate i rifiuti nei bidoni accanto al cortile.',
       rules_title:'Da tenere a mente',
@@ -797,8 +788,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'Hóspede', label_guests:'Pessoas', from:' a partir de', until:' até',
       checkin_title:'Guia de check-in', checkin_sub:'Check-in autónomo. Siga os passos abaixo.',
       step_addr:'Encontrar o endereço', step_addr_p:'Endereço: 152-3 Chebu-dong, Jongno-gu, Seul. Cerca de 2 minutos a pé da saída 1 de Gyeongbokgung.',
-      step_lock:'Código da porta', step_lock_p:'O código da porta é enviado por SMS na manhã do dia de check-in.',
-      step_lock_note:'✎ [Enviado por SMS no dia de check-in — a preencher pelo anfitrião]',
+      step_lock:'Código da porta', step_lock_p:'Por segurança, o código da porta não é apresentado nesta página. Será enviado separadamente por mensagem do Airbnb na manhã do check-in.',
       step_wifi:'Wi-Fi', step_wifi_p:'O nome da rede e a palavra-passe estão no cartão em cima da mesa da sala.',
       step_co_p:'Ao sair, trancem a porta. Separem o lixo nos contentores junto ao pátio.',
       rules_title:'Alguns pedidos',
@@ -840,8 +830,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       label_guest:'Гость', label_guests:'Гости', from:' с', until:' до',
       checkin_title:'Инструкция по заезду', checkin_sub:'Самостоятельный заезд. Следуйте шагам ниже.',
       step_addr:'Как найти', step_addr_p:'Адрес: 152-3 Chebu-dong, Jongno-gu, Seoul. Около 2 минут пешком от выхода 1 станции Кёнбоккун.',
-      step_lock:'Код двери', step_lock_p:'Код входной двери отправляется SMS утром в день заезда.',
-      step_lock_note:'✎ [SMS в день заезда — заполняет хозяин]',
+      step_lock:'Код двери', step_lock_p:'В целях безопасности код двери не отображается на этой странице. Утром в день заезда он будет отдельно отправлен в сообщении Airbnb.',
       step_wifi:'Wi-Fi', step_wifi_p:'Имя сети и пароль указаны на карточке на столе в гостиной.',
       step_co_p:'При выезде просто закройте дверь. Мусор отсортируйте в контейнеры у двора.',
       rules_title:'Просьбы на время проживания',
@@ -1768,6 +1757,86 @@ applyLang();
   new MutationObserver(()=>{
     document.querySelectorAll('.localized-picker[data-custom-calendar="1"]').forEach(w=>w._calendarRender&&w._calendarRender());
   }).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+})();
+</script>
+
+
+<style id="admin-secret-entry-style">
+/* 관리자 영역은 07 · HOST 더블클릭 전까지 DOM에 있어도 화면에 표시하지 않음 */
+.admin-secret-hidden{display:none!important}
+#adminSecretTrigger{
+  user-select:none;
+  -webkit-user-select:none;
+  cursor:default;
+  -webkit-tap-highlight-color:transparent;
+}
+</style>
+
+<script id="admin-secret-entry-script">
+(function(){
+  const trigger=document.getElementById('adminSecretTrigger');
+  const gate=document.getElementById('adminGate');
+  const generator=document.getElementById('adminGenerator');
+  const password=document.getElementById('adminPassword');
+  const lockBtn=document.getElementById('adminLockBtn');
+  if(!trigger||!gate||!generator) return;
+
+  function revealAdmin(){
+    gate.classList.remove('admin-secret-hidden');
+    generator.classList.remove('admin-secret-hidden');
+
+    const unlocked=sessionStorage.getItem('aranya_admin')==='1';
+
+    if(unlocked){
+      gate.classList.add('hidden');
+      generator.classList.add('admin-open');
+      setTimeout(()=>generator.scrollIntoView({behavior:'smooth',block:'center'}),30);
+    }else{
+      gate.classList.remove('hidden');
+      generator.classList.remove('admin-open');
+      setTimeout(()=>{
+        gate.scrollIntoView({behavior:'smooth',block:'center'});
+        if(password) password.focus({preventScroll:true});
+      },30);
+    }
+  }
+
+  function hideAdmin(){
+    gate.classList.add('admin-secret-hidden');
+    generator.classList.add('admin-secret-hidden');
+  }
+
+  /* PC: 07 · HOST 더블클릭 */
+  trigger.addEventListener('dblclick', function(e){
+    e.preventDefault();
+    revealAdmin();
+  });
+
+  /*
+    모바일에서는 dblclick 이벤트가 기기마다 불안정할 수 있으므로
+    같은 위치를 짧게 두 번 탭해도 동일하게 열리도록 처리.
+  */
+  let lastTap=0;
+  trigger.addEventListener('touchend', function(e){
+    const now=Date.now();
+    if(now-lastTap < 450){
+      e.preventDefault();
+      revealAdmin();
+      lastTap=0;
+    }else{
+      lastTap=now;
+    }
+  }, {passive:false});
+
+  /* 관리자 잠금 버튼을 누르면 비밀번호 화면조차 다시 숨김 */
+  if(lockBtn){
+    lockBtn.addEventListener('click', function(){
+      setTimeout(hideAdmin,0);
+    });
+  }
+
+  /* 처음에는 관리자 흔적을 화면에 노출하지 않음 */
+  hideAdmin();
 })();
 </script>
 
