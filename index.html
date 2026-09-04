@@ -1744,64 +1744,22 @@ applyLang();
         if(d.getTime()===today.getTime())btn.classList.add('today');
         if(selected&&d.getFullYear()===selected.getFullYear()&&d.getMonth()===selected.getMonth()&&d.getDate()===selected.getDate())btn.classList.add('selected');
         if((min&&d<min)||(max&&d>max))btn.disabled=true;
-        const selectDay=(ev)=>{
-          if(ev){
-            ev.preventDefault();
-            ev.stopPropagation();
-            if(ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-          }
-
+        btn.addEventListener('click',ev=>{
+          ev.stopPropagation();
           input.value=ymd(d);
           input.dispatchEvent(new Event('input',{bubbles:true}));
           input.dispatchEvent(new Event('change',{bubbles:true}));
-
-          // Mobile WebKit/Chrome: force the calendar closed both by state and inline style.
-          wrap.classList.remove('calendar-open');
-          wrap.classList.remove('picker-focus');
-          pop.style.display='none';
-          opened=null;
-
-          // Keep it hidden until the next explicit field tap.
-          requestAnimationFrame(()=>{
-            wrap.classList.remove('calendar-open');
-            pop.style.display='none';
-          });
-        };
-
-        // pointerup handles iPhone Chrome/Safari and Galaxy immediately.
-        btn.addEventListener('pointerup',selectDay);
-        // click is retained only as a fallback for browsers/devices without pointer events.
-        btn.addEventListener('click',ev=>{
-          if(ev.detail===0) selectDay(ev);
-          else{
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
+          wrap.classList.remove('calendar-open');opened=null;
         });
         days.appendChild(btn);
       }
     }
     pop.querySelector('.prev').addEventListener('click',e=>{e.stopPropagation();view=new Date(view.getFullYear(),view.getMonth()-1,1);render();});
     pop.querySelector('.next').addEventListener('click',e=>{e.stopPropagation();view=new Date(view.getFullYear(),view.getMonth()+1,1);render();});
-    const chooseToday=(e)=>{
-      if(e){
-        e.preventDefault();
-        e.stopPropagation();
-        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
-      }
-      const d=new Date();
-      input.value=ymd(d);
-      input.dispatchEvent(new Event('input',{bubbles:true}));
-      input.dispatchEvent(new Event('change',{bubbles:true}));
-      wrap.classList.remove('calendar-open');
-      wrap.classList.remove('picker-focus');
-      pop.style.display='none';
-      opened=null;
-    };
-    pop.querySelector('.today').addEventListener('pointerup',chooseToday);
     pop.querySelector('.today').addEventListener('click',e=>{
-      if(e.detail===0) chooseToday(e);
-      else{e.preventDefault();e.stopPropagation();}
+      e.stopPropagation();const d=new Date();
+      input.value=ymd(d);input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));
+      wrap.classList.remove('calendar-open');opened=null;
     });
     pop.querySelector('.clear').addEventListener('click',e=>{
       e.stopPropagation();input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));render();
@@ -1815,25 +1773,18 @@ applyLang();
       closeAll(willOpen?wrap:null);
       wrap.classList.toggle('calendar-open',willOpen);
       if(willOpen){
-        pop.style.display='';
         const selected=parse(input.value)||new Date();
         view=new Date(selected.getFullYear(),selected.getMonth(),1);
         render();opened=wrap;
-      }else{
-        pop.style.display='none';
-        opened=null;
-      }
+      }else opened=null;
     },true);
     wrap.addEventListener('keydown',e=>{
       if(e.key==='Enter'||e.key===' '){
         e.preventDefault();e.stopImmediatePropagation();
         const willOpen=!wrap.classList.contains('calendar-open');
-        closeAll(willOpen?wrap:null);
-        wrap.classList.toggle('calendar-open',willOpen);
-        if(willOpen){pop.style.display='';render();}
-        else pop.style.display='none';
+        closeAll(willOpen?wrap:null);wrap.classList.toggle('calendar-open',willOpen);if(willOpen)render();
       }
-      if(e.key==='Escape'){wrap.classList.remove('calendar-open');pop.style.display='none';opened=null;}
+      if(e.key==='Escape'){wrap.classList.remove('calendar-open');opened=null;}
     },true);
     input.addEventListener('change',render);
     wrap._calendarRender=render;
@@ -1930,6 +1881,134 @@ applyLang();
 </script>
 
 
+
+<script id="v18-calendar-real-autoclose">
+(function(){
+  function closeCalendarFrom(target){
+    const wrap = target && target.closest
+      ? target.closest('.localized-picker[data-picker-wrap="date"]')
+      : null;
+
+    if(wrap){
+      wrap.classList.remove('calendar-open');
+      wrap.classList.remove('picker-focus');
+    }
+
+    document.querySelectorAll('.localized-picker[data-picker-wrap="date"].calendar-open')
+      .forEach(el => el.classList.remove('calendar-open'));
+  }
+
+  // 날짜 숫자 버튼 선택 시:
+  // 기존 달력의 값 설정 로직이 실행된 직후 닫는다.
+  document.addEventListener('click', function(e){
+    const day = e.target.closest('.aranya-calendar-day');
+    if(!day || day.disabled) return;
+
+    setTimeout(function(){
+      closeCalendarFrom(day);
+    }, 0);
+  }, true);
+
+  // iOS/Samsung Internet에서 click 이벤트 지연이 생길 수 있어 touchend도 보강.
+  document.addEventListener('touchend', function(e){
+    const day = e.target.closest('.aranya-calendar-day');
+    if(!day || day.disabled) return;
+
+    setTimeout(function(){
+      closeCalendarFrom(day);
+    }, 30);
+  }, {capture:true, passive:true});
+
+  // '오늘' 버튼도 날짜 선택이므로 바로 닫기
+  document.addEventListener('click', function(e){
+    const today = e.target.closest('.aranya-calendar-action.today');
+    if(!today) return;
+
+    setTimeout(function(){
+      closeCalendarFrom(today);
+    }, 0);
+  }, true);
+
+  // 바깥 누르면 닫기
+  document.addEventListener('pointerdown', function(e){
+    if(e.target.closest('.aranya-calendar')) return;
+    if(e.target.closest('.localized-picker[data-picker-wrap="date"]')) return;
+
+    document.querySelectorAll('.localized-picker[data-picker-wrap="date"].calendar-open')
+      .forEach(el => el.classList.remove('calendar-open'));
+  });
+})();
+</script>
+
+
+<script id="v19-time-doubleclick-only">
+(function(){
+  const timeIds = ['genCit','genCot'];
+
+  timeIds.forEach(id=>{
+    const input = document.getElementById(id);
+    if(!input) return;
+
+    const wrap = input.closest('.localized-picker[data-picker-wrap="time"]');
+    if(!wrap) return;
+
+    // 기존 싱글클릭 리스너가 있어도 실제 input으로 이벤트가 전달되지 않도록 막습니다.
+    // 싱글 클릭은 아무 동작도 하지 않음.
+    wrap.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+    }, true);
+
+    function openTimePicker(){
+      try{
+        input.focus({preventScroll:true});
+      }catch(e){
+        try{ input.focus(); }catch(_){}
+      }
+
+      try{
+        if(typeof input.showPicker === 'function'){
+          input.showPicker();
+        }else{
+          input.click();
+        }
+      }catch(e){
+        try{ input.click(); }catch(_){}
+      }
+    }
+
+    // PC: 더블클릭
+    wrap.addEventListener('dblclick', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      openTimePicker();
+    });
+
+    // 모바일: 짧게 두 번 탭
+    let lastTap = 0;
+    wrap.addEventListener('touchend', function(e){
+      const now = Date.now();
+
+      if(now - lastTap < 450){
+        e.preventDefault();
+        e.stopPropagation();
+        openTimePicker();
+        lastTap = 0;
+      }else{
+        lastTap = now;
+      }
+    }, {passive:false});
+
+    // 키보드는 Enter/Space 두 번 누를 필요 없이 접근성을 위해 한 번으로 허용
+    wrap.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        openTimePicker();
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
