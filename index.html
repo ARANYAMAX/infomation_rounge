@@ -3,23 +3,23 @@
 <html lang="ko">
 <head>
 
-<style id="v45-host-tab-first-paint">
-/* default hidden until the tiny preboot below decides */
-#hostLinkTab{display:none!important}
-html.v45-admin-session #hostLinkTab{display:inline-flex!important}
+<style id="v33-critical-host-boot">
+/* Critical first-paint rules: parsed before the heavy 10MB document. */
+html.v33-host-locked body > *:not(#hostBaseLogin){
+  display:none !important;
+}
+html.v33-host-locked #hostBaseLogin{
+  display:flex !important;
+}
+html.v33-host-locked body{
+  background:#f7f1e7 !important;
+}
+
+/* During logout navigation, hide the old host screen instantly. */
+html.v33-logging-out body{
+  visibility:hidden !important;
+}
 </style>
-<script id="v45-host-tab-preboot">
-(function(){
-  try{
-    const p=new URLSearchParams(location.search);
-    if(!p.has('g') && sessionStorage.getItem('aranya_admin')==='1'){
-      document.documentElement.classList.add('v45-admin-session');
-    }
-  }catch(e){}
-})();
-</script>
-
-
 <script id="v33-critical-host-boot-script">
 (function(){
   try{
@@ -35,51 +35,23 @@ html.v45-admin-session #hostLinkTab{display:inline-flex!important}
 })();
 </script>
 
-<script id="v45-host-login-early">
-(function(){
-  try{
-    const p=new URLSearchParams(location.search);
-    const hasGuest=p.has('g');
-    const isAdmin=sessionStorage.getItem('aranya_admin')==='1';
+<style id="v35-no-host-login-flash">
+/* 로그인된 호스트가 새로고침할 때 호스트 로그인 UI가 한 프레임 보이는 현상 방지 */
+#hostBaseLogin{
+  display:none !important;
+}
 
-    if(hasGuest || isAdmin) return;
+/* 실제 비로그인 기본주소에서만 호스트 로그인 UI 표시 */
+html.v33-host-locked #hostBaseLogin,
+html.host-base-locked.v33-host-locked #hostBaseLogin{
+  display:flex !important;
+}
 
-    document.documentElement.classList.add('v33-host-locked','host-base-locked');
-
-    document.write(`
-      <div id="hostBaseLogin">
-        <section class="host-base-card">
-          <div class="host-base-mark" aria-hidden="true">雅</div>
-          <div class="host-base-kicker">ARANYA · HOST</div>
-          <h1 id="hostBaseTitle">호스트 전용</h1>
-          <p class="desc" id="hostBaseDesc">숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.</p>
-          <div class="host-base-form">
-            <input id="hostBasePassword" type="password" autocomplete="current-password"
-                   placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
-            <button id="hostBaseUnlock" type="button">확인</button>
-          </div>
-          <p id="hostBaseError" role="alert"></p>
-          <div class="host-base-language">
-            <select id="hostBaseLang" aria-label="Language">
-              <option value="ko">한국어</option>
-              <option value="en">English</option>
-              <option value="zh">中文</option>
-              <option value="ja">日本語</option>
-              <option value="de">Deutsch</option>
-              <option value="fr">Français</option>
-              <option value="es">Español</option>
-              <option value="it">Italiano</option>
-              <option value="pt">Português</option>
-              <option value="ru">Русский</option>
-            </select>
-          </div>
-          <p class="host-base-note">ARANYA · SEOCHON HANOK STAY</p>
-        </section>
-      </div>
-    `);
-  }catch(e){}
-})();
-</script>
+/* 호스트 로그인 완료 상태에서는 첫 페인트부터 강제로 숨김 */
+html:not(.v33-host-locked) #hostBaseLogin{
+  display:none !important;
+}
+</style>
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -510,151 +482,47 @@ body,button,input,select,textarea{
 
 
 
-
-<style id="v46-host-login-fixed-layout">
-/* 호스트 로그인 화면은 웹폰트/본문 렌더링과 완전히 분리하여 크기 고정 */
-html.host-base-locked body{
-  margin:0 !important;
-  min-height:100vh !important;
-  background:
-    radial-gradient(circle at 16% 12%,rgba(188,145,86,.10),transparent 26%),
-    linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%) !important;
-}
-
-#hostBaseLogin{
-  position:fixed !important;
-  inset:0 !important;
-  z-index:2147483000 !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  padding:24px 18px !important;
-  box-sizing:border-box !important;
-  background:
-    radial-gradient(circle at 16% 12%,rgba(188,145,86,.10),transparent 26%),
-    linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%) !important;
-}
-
-#hostBaseLogin .host-base-card{
-  width:500px !important;
-  max-width:calc(100vw - 36px) !important;
-  min-height:0 !important;
-  box-sizing:border-box !important;
-  padding:38px 30px 30px !important;
-  border-radius:28px !important;
-  background:rgba(255,253,249,.98) !important;
-  border:1px solid rgba(99,80,57,.16) !important;
-  box-shadow:0 24px 60px rgba(54,42,29,.10) !important;
-  text-align:center !important;
-}
-
+<style id="v44-host-login-font-stability">
 #hostBaseLogin,
-#hostBaseLogin *{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",
-              "Noto Sans KR","Malgun Gothic",Arial,sans-serif !important;
+#hostBaseLogin .host-base-card,
+#hostBaseLogin .host-base-card h1,
+#hostBaseLogin .host-base-card p,
+#hostBaseLogin .host-base-card input,
+#hostBaseLogin .host-base-card button,
+#hostBaseLogin .host-base-card select,
+#hostBaseLogin .host-base-kicker,
+#hostBaseLogin .host-base-note{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",
+              "Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif !important;
   font-synthesis:none !important;
-  -webkit-text-size-adjust:100% !important;
-  text-size-adjust:100% !important;
-}
-
-#hostBaseLogin .host-base-mark{
-  width:58px !important;
-  height:58px !important;
-  margin:0 auto 18px !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  border-radius:50% !important;
-  font-family:Georgia,"Times New Roman",serif !important;
-  font-size:24px !important;
-  line-height:1 !important;
-}
-
-#hostBaseLogin .host-base-kicker{
-  margin:0 0 8px !important;
-  font-size:10px !important;
-  line-height:1.2 !important;
-  letter-spacing:.22em !important;
-  font-weight:700 !important;
 }
 
 #hostBaseLogin .host-base-card h1{
-  margin:0 0 10px !important;
   font-size:30px !important;
   line-height:1.35 !important;
-  letter-spacing:-.02em !important;
   font-weight:700 !important;
+  letter-spacing:-0.02em !important;
 }
 
 #hostBaseLogin .host-base-card .desc{
-  margin:0 0 20px !important;
   font-size:13px !important;
   line-height:1.8 !important;
-  font-weight:400 !important;
 }
 
-#hostBaseLogin .host-base-form{
-  display:grid !important;
-  grid-template-columns:1fr auto !important;
-  gap:8px !important;
-}
-
-#hostBaseLogin .host-base-form input{
-  height:46px !important;
-  padding:0 14px !important;
+#hostBaseLogin .host-base-card input,
+#hostBaseLogin .host-base-card button{
   font-size:14px !important;
-  line-height:46px !important;
-  box-sizing:border-box !important;
-}
-
-#hostBaseLogin .host-base-form button{
-  height:46px !important;
-  padding:0 18px !important;
-  font-size:14px !important;
-  line-height:1 !important;
-  box-sizing:border-box !important;
-}
-
-#hostBaseLogin #hostBaseError{
-  min-height:20px !important;
-  margin:10px 0 0 !important;
-  font-size:12px !important;
-  line-height:20px !important;
-}
-
-#hostBaseLogin .host-base-language{
-  margin-top:18px !important;
 }
 
 #hostBaseLogin .host-base-language select{
-  width:150px !important;
-  height:38px !important;
-  padding:0 12px !important;
   font-size:12px !important;
-  line-height:38px !important;
-  box-sizing:border-box !important;
 }
 
-#hostBaseLogin .host-base-note{
-  margin:18px 0 0 !important;
-  padding-top:16px !important;
-  font-size:10px !important;
-  line-height:1.2 !important;
-  letter-spacing:.16em !important;
-}
-
-@media(max-width:520px){
-  #hostBaseLogin .host-base-card{
-    width:100% !important;
-    padding:32px 20px 26px !important;
-    border-radius:24px !important;
-  }
-  #hostBaseLogin .host-base-form{
-    grid-template-columns:1fr !important;
-  }
-  #hostBaseLogin .host-base-form button{
-    width:100% !important;
-  }
+/* 雅 문양만 기존 분위기 유지 */
+#hostBaseLogin .host-base-mark{
+  font-family:Georgia,"Times New Roman",serif !important;
+  font-size:24px !important;
+  line-height:1 !important;
 }
 </style>
 
@@ -671,7 +539,7 @@ html.host-base-locked body{
 <button class="tab" data-i18n="tab_around" data-page="around">주변 여행</button>
 <button class="tab" data-i18n="tab_food" data-page="food">맛집·카페</button>
 <button class="tab" data-i18n="tab_contact" data-page="contact">문의</button>
-<button class="tab host-link-tab" data-page="hostlinks" id="hostLinkTab" type="button">
+<button class="tab host-link-tab" data-page="hostlinks" id="hostLinkTab" type="button" hidden>
 <span id="hostLinkTabLabel">게스트 링크 생성</span>
 </button>
 </div>
@@ -2413,18 +2281,152 @@ applyLang();
   // 바깥 누르면 닫기
   document.addEventListener('pointerdown', function(e){
     if(e.target.closest('.aranya-calendar')) return;
-    if(e.target.closest('.localized-picker[data-picker-wrap="date"]'
-<script id="v45-host-login-bind">
-(function(){
-  const params=new URLSearchParams(location.search);
-  const hasGuest=params.has('g');
-  if(hasGuest) return;
+    if(e.target.closest('.localized-picker[data-picker-wrap="date"]')) return;
 
-  const login=document.getElementById('hostBaseLogin');
-  if(!login) return; // already authenticated host
+    document.querySelectorAll('.localized-picker[data-picker-wrap="date"].calendar-open')
+      .forEach(el => el.classList.remove('calendar-open'));
+  });
+})();
+</script>
+
+
+<script id="v19-time-doubleclick-only">
+(function(){
+  const timeIds = ['genCit','genCot'];
+
+  timeIds.forEach(id=>{
+    const input = document.getElementById(id);
+    if(!input) return;
+
+    const wrap = input.closest('.localized-picker[data-picker-wrap="time"]');
+    if(!wrap) return;
+
+    // 기존 싱글클릭 리스너가 있어도 실제 input으로 이벤트가 전달되지 않도록 막습니다.
+    // 싱글 클릭은 아무 동작도 하지 않음.
+    wrap.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+    }, true);
+
+    function openTimePicker(){
+      try{
+        input.focus({preventScroll:true});
+      }catch(e){
+        try{ input.focus(); }catch(_){}
+      }
+
+      try{
+        if(typeof input.showPicker === 'function'){
+          input.showPicker();
+        }else{
+          input.click();
+        }
+      }catch(e){
+        try{ input.click(); }catch(_){}
+      }
+    }
+
+    // PC: 더블클릭
+    wrap.addEventListener('dblclick', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      openTimePicker();
+    });
+
+    // 모바일: 짧게 두 번 탭
+    let lastTap = 0;
+    wrap.addEventListener('touchend', function(e){
+      const now = Date.now();
+
+      if(now - lastTap < 450){
+        e.preventDefault();
+        e.stopPropagation();
+        openTimePicker();
+        lastTap = 0;
+      }else{
+        lastTap = now;
+      }
+    }, {passive:false});
+
+    // 키보드는 Enter/Space 두 번 누를 필요 없이 접근성을 위해 한 번으로 허용
+    wrap.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        openTimePicker();
+      }
+    });
+  });
+})();
+</script>
+
+
+
+
+<script id="v42-host-base-login-script">
+(function(){
+  const params = new URLSearchParams(location.search);
+  const hasGuest = false;
+
+  // 게스트 링크에서는 여기서 즉시 종료.
+  // host UI DOM 자체를 만들지 않으므로 렌더링될 수 없음.
+  if(hasGuest){
+    document.documentElement.classList.add('v42-guest-mode');
+    document.documentElement.classList.remove(
+      'v33-host-locked',
+      'host-base-locked',
+      'v33-logging-out'
+    );
+    return;
+  }
 
   const ADMIN_HASH='cadc67f132143929beaf6031e09a8999f5fc2f450dee8846ee2d6d1507015d52';
   const LANG_KEY='aranya_host_lang';
+
+  // 이미 로그인된 호스트면 기존 사이트 그대로 사용
+  if(sessionStorage.getItem('aranya_admin')==='1'){
+    document.documentElement.classList.remove(
+      'v33-host-locked',
+      'host-base-locked',
+      'v33-logging-out'
+    );
+    return;
+  }
+
+  // 기본 주소 + 비로그인 상태에서만 host UI를 실제 DOM으로 생성
+  const wrap = document.createElement('div');
+  wrap.id = 'hostBaseLogin';
+  wrap.innerHTML = `
+    <section class="host-base-card">
+      <div class="host-base-mark" aria-hidden="true">雅</div>
+      <div class="host-base-kicker">ARANYA · HOST</div>
+      <h1 id="hostBaseTitle">호스트 전용</h1>
+      <p class="desc" id="hostBaseDesc">숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.</p>
+      <div class="host-base-form">
+        <input id="hostBasePassword" type="password" autocomplete="current-password"
+               placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
+        <button id="hostBaseUnlock" type="button">확인</button>
+      </div>
+      <p id="hostBaseError" role="alert"></p>
+      <div class="host-base-language">
+        <select id="hostBaseLang" aria-label="Language">
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+          <option value="ja">日本語</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="it">Italiano</option>
+          <option value="pt">Português</option>
+          <option value="ru">Русский</option>
+        </select>
+      </div>
+      <p class="host-base-note">ARANYA · SEOCHON HANOK STAY</p>
+    </section>
+  `;
+
+  document.body.insertBefore(wrap, document.body.firstChild);
+  document.documentElement.classList.add('v33-host-locked','host-base-locked');
 
   const copy={
     ko:{title:'호스트 전용',desc:'숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.',placeholder:'관리자 비밀번호',button:'확인',error:'비밀번호가 올바르지 않습니다.'},
@@ -2435,7 +2437,7 @@ applyLang();
     fr:{title:'Accès hôte',desc:'Saisissez le mot de passe administrateur pour accéder au guide complet et aux fonctions réservées à l’hôte.',placeholder:'Mot de passe administrateur',button:'Valider',error:'Le mot de passe est incorrect.'},
     es:{title:'Acceso para anfitrión',desc:'Introduce la contraseña de administrador para acceder a la guía completa y a las funciones del anfitrión.',placeholder:'Contraseña de administrador',button:'Confirmar',error:'La contraseña es incorrecta.'},
     it:{title:'Accesso host',desc:'Inserisci la password amministratore per accedere alla guida completa e alle funzioni dell’host.',placeholder:'Password amministratore',button:'Conferma',error:'La password non è corretta.'},
-    pt:{title:'Acesso do anfitrião',desc:'Insira a senha de administrador para acessar o guia completo e as funções do anfitrião.',placeholder:'Senha de administrador',button:'Confirmar',error:'A senha está incorreta.'},
+    pt:{title:'Acesso do anfitrião',desc:'Insira a senha de administrador para acessar o guia completo e as funções dell’host.',placeholder:'Senha de administrador',button:'Confirmar',error:'A senha está incorreta.'},
     ru:{title:'Доступ для хозяина',desc:'Введите пароль администратора, чтобы открыть полное руководство и функции хозяина.',placeholder:'Пароль администратора',button:'Подтвердить',error:'Неверный пароль.'}
   };
 
@@ -2448,60 +2450,6 @@ applyLang();
 
   function detectLang(){
     const saved=(localStorage.getItem(LANG_KEY)||'').toLowerCase().slice(0,2);
-    if(copy[saved]) return saved;
-    const siteSaved=(localStorage.getItem('aranya_lang')||'').toLowerCase().slice(0,2);
-    if(copy[siteSaved]) return siteSaved;
-    const nav=(navigator.language||'ko').toLowerCase().slice(0,2);
-    return copy[nav] ? nav : 'ko';
-  }
-  function applyLang(lang){
-    if(!copy[lang]) lang='ko';
-    localStorage.setItem(LANG_KEY,lang);
-    const c=copy[lang];
-    title.textContent=c.title;
-    desc.textContent=c.desc;
-    input.placeholder=c.placeholder;
-    input.setAttribute('aria-label',c.placeholder);
-    btn.textContent=c.button;
-    err.textContent='';
-    langSelect.value=lang;
-    document.documentElement.lang=lang;
-  }
-
-  const initialLang=detectLang();
-  applyLang(initialLang);
-  langSelect.addEventListener('change',()=>applyLang(langSelect.value));
-
-  async function sha256(value){
-    const data=new TextEncoder().encode(value);
-    const digest=await crypto.subtle.digest('SHA-256',data);
-    return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
-  }
-  async function unlock(){
-    err.textContent='';
-    try{
-      const hash=await sha256(input.value);
-      if(hash!==ADMIN_HASH){
-        err.textContent=(copy[langSelect.value]||copy.ko).error;
-        input.select();
-        return;
-      }
-      sessionStorage.setItem('aranya_admin','1');
-      sessionStorage.setItem('aranya_host_entry','1');
-      location.reload();
-    }catch(e){
-      err.textContent=(copy[langSelect.value]||copy.ko).error;
-    }
-  }
-
-  btn.addEventListener('click',unlock);
-  input.addEventListener('keydown',e=>{
-    if(e.key==='Enter'){e.preventDefault();unlock();}
-  });
-  setTimeout(()=>input.focus({preventScroll:true}),20);
-})();
-</script>
-').toLowerCase().slice(0,2);
     if(copy[saved]) return saved;
     const siteSaved=(localStorage.getItem('aranya_lang')||'').toLowerCase().slice(0,2);
     if(copy[siteSaved]) return siteSaved;
