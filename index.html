@@ -260,8 +260,97 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 }
 </style>
 
+
+<style id="v20-expiry-style">
+html.guest-link-expired body{
+  overflow:auto !important;
+  background:
+    radial-gradient(circle at 15% 12%, rgba(199,157,92,.12), transparent 24%),
+    linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%) !important;
+}
+html.guest-link-expired body > *:not(#guestExpiredScreen){
+  display:none !important;
+}
+#guestExpiredScreen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px 18px;
+  color:#26354a;
+}
+.guest-expired-card{
+  width:min(560px,100%);
+  background:rgba(255,253,249,.96);
+  border:1px solid rgba(99,80,57,.16);
+  border-radius:28px;
+  padding:42px 30px;
+  text-align:center;
+  box-shadow:0 24px 60px rgba(54,42,29,.10);
+}
+.guest-expired-mark{
+  width:58px;height:58px;margin:0 auto 20px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:#f1e7d5;color:#a65b45;
+  font-family:'Gowun Batang','Noto Serif KR',serif;
+  font-size:24px;
+}
+.guest-expired-card h1{
+  margin:0 0 12px;
+  font-family:'Gowun Batang','Noto Serif KR',serif;
+  font-size:30px;line-height:1.35;color:#26354a;
+}
+.guest-expired-card p{
+  margin:0;color:#71675b;font-size:14px;line-height:1.9;
+}
+.guest-expired-card .brand{
+  margin-top:24px;padding-top:18px;
+  border-top:1px solid rgba(99,80,57,.12);
+  color:#9a8262;font-size:11px;letter-spacing:.22em;
+}
+</style>
+
 </head>
 <body>
+
+<script id="v20-expiry-preflight">
+(function(){
+  const params = new URLSearchParams(location.search);
+  const raw = params.get('g');
+  if(!raw) return;
+
+  function decode(rawValue){
+    // V20 base64url compact
+    try{
+      let s=rawValue.replace(/-/g,'+').replace(/_/g,'/');
+      while(s.length%4)s+='=';
+      const bin=atob(s);
+      const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));
+      const v=JSON.parse(new TextDecoder().decode(bytes));
+      if(Array.isArray(v)){
+        return {co:v[2]||'',cot:v[4]||'11:00',l:v[7]||'ko'};
+      }
+      if(v && typeof v==='object') return v;
+    }catch(e){}
+
+    // legacy JSON
+    try{return JSON.parse(decodeURIComponent(rawValue));}catch(e){}
+    return null;
+  }
+
+  const g=decode(raw);
+  if(!g || !g.co) return;
+
+  const cot=/^\d{2}:\d{2}$/.test(g.cot||'') ? g.cot : '11:00';
+  const expiry=Date.parse(`${g.co}T${cot}:00+09:00`);
+  if(Number.isFinite(expiry) && Date.now()>=expiry){
+    document.documentElement.classList.add('guest-link-expired');
+    window.__ARANYA_EXPIRED_GUEST__=g;
+  }
+})();
+</script>
+
 <div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
 <div class="aranya-floating-mark"><span class="mark-ko">아란야</span><span class="mark-en">ARANYA HANOK STAY</span></div><nav class="topnav">
 <div class="inner">
@@ -468,7 +557,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 </div>
 <div class="gen-box admin-generator admin-secret-hidden" id="adminGenerator">
 <h3 data-i18n="gen_title">게스트용 안내 링크 만들기</h3>
-<p class="sub" data-i18n="gen_sub">예약자 이름과 날짜를 넣으면, 이 페이지 상단에 자동으로 표시되는 개인화 링크를 만들어드려요.</p>
+<p class="sub" data-i18n="gen_sub">예약자 정보를 넣으면 짧은 게스트 링크가 생성되며, 체크아웃 시각이 지나면 자동으로 만료됩니다.</p>
 <div class="gen-row full">
 <label><span data-i18n="gen_name">예약자 이름</span>
 <input data-i18n-placeholder="gen_name_ph" id="genName" placeholder="예: 김민준 님" type="text"/>
@@ -568,7 +657,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       chip_all:'전체', chip_food:'식사', chip_cafe:'카페',
       contact_title:'필요한 게 있으면', contact_p:'도어록이 안 열리거나, 뭔가 고장났거나, 궁금한 게 있어도 편하게 메시지 주세요.',
       host:'호스트', response:'응답', response_v:'평균 1시간 이내', contact_v:'에어비앤비 메시지로 연락 주세요',
-      gen_title:'게스트용 안내 링크 만들기', gen_sub:'예약자 이름과 날짜를 넣으면, 이 페이지 상단에 자동으로 표시되는 개인화 링크를 만들어드려요.',
+      gen_title:'게스트용 안내 링크 만들기', gen_sub:'예약자 정보를 넣으면 짧은 게스트 링크가 생성되며, 체크아웃 시각이 지나면 자동으로 만료됩니다.',
       gen_name:'예약자 이름', gen_name_ph:'예: 김민준 님', gen_ci:'체크인 날짜', gen_co:'체크아웃 날짜',
       gen_cit:'체크인 시간', gen_cot:'체크아웃 시간', gen_a:'성인 인원', gen_c:'아동 인원', gen_btn:'링크 만들기', copied:'✓ 복사했어요',
       footer:'아란야 · 서울 종로구 · 편안한 시간 보내세요',
@@ -960,6 +1049,79 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 
   const t = (key) => (I18N[lang] && I18N[lang][key]) || I18N.en[key] || key;
 
+  // ---- compact guest link helpers (V20) ----
+  function base64UrlEncodeUtf8(text){
+    const bytes = new TextEncoder().encode(text);
+    let binary = '';
+    bytes.forEach(b => binary += String.fromCharCode(b));
+    return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  }
+
+  function base64UrlDecodeUtf8(value){
+    let s = value.replace(/-/g,'+').replace(/_/g,'/');
+    while(s.length % 4) s += '=';
+    const binary = atob(s);
+    const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  }
+
+  function encodeGuestPayload(g){
+    // 배열 형태가 키 이름을 반복하지 않아 기존 JSON GET보다 짧습니다.
+    const compact = [
+      g.n || '',
+      g.ci || '',
+      g.co || '',
+      g.cit || '15:00',
+      g.cot || '11:00',
+      Number(g.a || 1),
+      Number(g.c || 0),
+      g.l || lang || 'ko'
+    ];
+    return base64UrlEncodeUtf8(JSON.stringify(compact));
+  }
+
+  function decodeGuestPayload(value){
+    if(!value) return null;
+
+    // 신규 V20 compact payload
+    try{
+      const decoded = JSON.parse(base64UrlDecodeUtf8(value));
+      if(Array.isArray(decoded)){
+        return {
+          n: decoded[0] || '',
+          ci: decoded[1] || '',
+          co: decoded[2] || '',
+          cit: decoded[3] || '15:00',
+          cot: decoded[4] || '11:00',
+          a: Number(decoded[5] || 1),
+          c: Number(decoded[6] || 0),
+          l: decoded[7] || 'ko'
+        };
+      }
+      if(decoded && typeof decoded === 'object') return decoded;
+    }catch(e){}
+
+    // 기존 링크 하위 호환: URI encoded JSON
+    try{
+      const legacy = JSON.parse(decodeURIComponent(value));
+      if(legacy && typeof legacy === 'object') return legacy;
+    }catch(e){}
+
+    return null;
+  }
+
+  function guestCheckoutTimestamp(g){
+    if(!g || !g.co) return NaN;
+    const time = /^\d{2}:\d{2}$/.test(g.cot || '') ? g.cot : '11:00';
+    // 아란야는 서울 기준이므로 방문자의 현지 시간대와 관계없이 KST(+09:00)로 판정
+    return Date.parse(`${g.co}T${time}:00+09:00`);
+  }
+
+  function isGuestExpired(g){
+    const expiresAt = guestCheckoutTimestamp(g);
+    return Number.isFinite(expiresAt) && Date.now() >= expiresAt;
+  }
+
   let lang = 'ko';
 
   const tabs = document.querySelectorAll('.tab');
@@ -987,6 +1149,13 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 
   function detectLang(){
     const params = new URLSearchParams(window.location.search);
+
+    // V20 단일 g 파라미터 안에 언어도 함께 포함
+    const packedGuest = decodeGuestPayload(params.get('g'));
+    const fromPacked = ((packedGuest && packedGuest.l) || '').toLowerCase().slice(0,2);
+    if(I18N[fromPacked]) return fromPacked;
+
+    // 기존 링크의 &lang= 하위 호환
     const fromUrl = (params.get('lang') || '').toLowerCase().slice(0,2);
     if(I18N[fromUrl]) return fromUrl;
     try{
@@ -1054,7 +1223,7 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
   try{
     const params = new URLSearchParams(window.location.search);
     if(params.get('g')){
-      guestInfo = JSON.parse(decodeURIComponent(params.get('g')));
+      guestInfo = decodeGuestPayload(params.get('g'));
     }
   }catch(e){}
 
@@ -1070,9 +1239,9 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
       alert(t('gen_alert'));
       return;
     }
-    const g = { n: name.replace(/ /g,'+'), ci, co, cit, cot, a, c };
+    const g = { n: name, ci, co, cit, cot, a, c, l: lang };
     const base = window.location.origin + window.location.pathname;
-    const url = base + '?g=' + encodeURIComponent(JSON.stringify(g)) + '&lang=' + lang;
+    const url = base + '?g=' + encodeGuestPayload(g);
     const out = document.getElementById('linkOut');
     out.style.display = 'block';
     out.textContent = url;
@@ -2007,6 +2176,42 @@ applyLang();
       }
     });
   });
+})();
+</script>
+
+
+<script id="v20-expiry-screen">
+(function(){
+  if(!document.documentElement.classList.contains('guest-link-expired')) return;
+
+  const g=window.__ARANYA_EXPIRED_GUEST__||{};
+  const lang=((g.l||new URLSearchParams(location.search).get('lang')||navigator.language||'ko')+'').toLowerCase().slice(0,2);
+
+  const copy={
+    ko:['안내 링크가 만료되었습니다','체크아웃이 완료되어 이 게스트용 안내 링크는 더 이상 사용할 수 없습니다. 아란야를 이용해주셔서 감사합니다.'],
+    en:['This guest link has expired','Your checkout is complete, so this guest guide is no longer available. Thank you for staying at Aranya.'],
+    zh:['此访客链接已过期','退房已完成，此访客指南链接已无法继续使用。感谢您入住 Aranya。'],
+    ja:['このゲストリンクは期限切れです','チェックアウトが完了したため、このゲスト用案内リンクはご利用いただけません。Aranyaをご利用いただきありがとうございました。'],
+    de:['Dieser Gästelink ist abgelaufen','Der Check-out ist abgeschlossen. Dieser Gästeführer ist daher nicht mehr verfügbar. Vielen Dank für Ihren Aufenthalt im Aranya.'],
+    fr:['Ce lien invité a expiré','Votre départ est terminé ; ce guide invité n’est donc plus accessible. Merci d’avoir séjourné à Aranya.'],
+    es:['Este enlace de huésped ha caducado','El check-out ha finalizado y esta guía ya no está disponible. Gracias por alojarse en Aranya.'],
+    it:['Questo link ospite è scaduto','Il check-out è stato completato e questa guida non è più disponibile. Grazie per aver soggiornato ad Aranya.'],
+    pt:['Este link de hóspede expirou','O check-out foi concluído e este guia já não está disponível. Obrigado por se hospedar no Aranya.'],
+    ru:['Срок действия гостевой ссылки истёк','Выезд завершён, поэтому эта гостевая ссылка больше недоступна. Спасибо, что остановились в Aranya.']
+  };
+  const c=copy[lang]||copy.en;
+
+  const screen=document.createElement('main');
+  screen.id='guestExpiredScreen';
+  screen.innerHTML=`
+    <section class="guest-expired-card" aria-live="polite">
+      <div class="guest-expired-mark" aria-hidden="true">雅</div>
+      <h1>${c[0]}</h1>
+      <p>${c[1]}</p>
+      <div class="brand">ARANYA · SEOCHON HANOK STAY</div>
+    </section>
+  `;
+  document.body.appendChild(screen);
 })();
 </script>
 
