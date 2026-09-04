@@ -3,78 +3,6 @@
 <html lang="ko">
 <head>
 
-<style id="v50-expiry-critical">
-html.v50-expired body > *{display:none!important}
-html.v50-expired #v50ExpiredPage{
-  display:flex!important;position:fixed!important;inset:0!important;z-index:2147483000!important;
-  align-items:center!important;justify-content:center!important;padding:24px 18px!important;
-  box-sizing:border-box!important;background:linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%)!important
-}
-#v50ExpiredPage{display:none}
-#v50ExpiredPage .expired-card{
-  width:min(540px,calc(100vw - 36px));box-sizing:border-box;padding:42px 30px;border-radius:28px;
-  text-align:center;background:#fffdf9;border:1px solid rgba(99,80,57,.16);
-  box-shadow:0 24px 60px rgba(54,42,29,.10);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;color:#26354a
-}
-#v50ExpiredPage .expired-mark{
-  width:58px;height:58px;margin:0 auto 18px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:#f1e7d5;color:#a65b45;font:24px Georgia,"Times New Roman",serif
-}
-#v50ExpiredPage h1{margin:0 0 12px;font-size:28px;line-height:1.4}
-#v50ExpiredPage p{margin:0;color:#71675b;font-size:14px;line-height:1.8}
-#v50ExpiredPage .expired-brand{
-  margin-top:22px;padding-top:16px;border-top:1px solid rgba(99,80,57,.12);
-  color:#9a8262;font-size:10px;letter-spacing:.18em
-}
-</style>
-<script id="v50-checkout-expiry-early">
-(function(){
-  try{
-    const raw=new URLSearchParams(location.search).get('g');
-    if(!raw)return;
-
-    function decode(raw){
-      try{
-        let s=raw.replace(/-/g,'+').replace(/_/g,'/');
-        while(s.length%4)s+='=';
-        const bin=atob(s), bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));
-        const v=JSON.parse(new TextDecoder().decode(bytes));
-        if(Array.isArray(v))return {n:v[0]||'',ci:v[1]||'',co:v[2]||'',cit:v[3]||'15:00',cot:v[4]||'11:00',a:Number(v[5]||1),c:Number(v[6]||0),l:v[7]||'ko'};
-        if(v&&typeof v==='object')return v;
-      }catch(e){}
-      try{return JSON.parse(decodeURIComponent(raw))}catch(e){}
-      return null;
-    }
-
-    const g=decode(raw);
-    if(!g||!g.co)return;
-
-    const tm=/^\d{2}:\d{2}$/.test(g.cot||'')?g.cot:'11:00';
-    const expiresAt=Date.parse(g.co+'T'+tm+':00+09:00');
-    if(!Number.isFinite(expiresAt)||Date.now()<expiresAt)return;
-
-    document.documentElement.classList.add('v50-expired');
-
-    const C={
-      ko:['안내 링크가 만료되었습니다','체크아웃 시간이 지나 이 게스트용 안내 링크는 더 이상 사용할 수 없습니다. 아란야를 이용해주셔서 감사합니다.'],
-      en:['This guest link has expired','The checkout time has passed, so this guest guide is no longer available. Thank you for staying at Aranya.'],
-      zh:['此访客链接已过期','退房时间已过，此访客指南链接已无法继续使用。感谢您入住 Aranya。'],
-      ja:['このゲストリンクは期限切れです','チェックアウト時刻を過ぎたため、このゲスト用案内リンクはご利用いただけません。Aranyaをご利用いただきありがとうございました。'],
-      de:['Dieser Gästelink ist abgelaufen','Die Check-out-Zeit ist abgelaufen. Dieser Gästeführer ist nicht mehr verfügbar.'],
-      fr:['Ce lien invité a expiré','L’heure de départ est passée. Ce guide invité n’est plus accessible.'],
-      es:['Este enlace ha caducado','La hora de check-out ya ha pasado. Esta guía para huéspedes ya no está disponible.'],
-      it:['Questo link è scaduto','L’orario di check-out è passato. Questa guida per l’ospite non è più disponibile.'],
-      pt:['Este link expirou','O horário de check-out já passou. Este guia do hóspede não está mais disponível.'],
-      ru:['Срок действия ссылки истёк','Время выезда прошло. Эта гостевая ссылка больше недоступна.']
-    };
-    const lang=(g.l||'ko').toLowerCase().slice(0,2);
-    window.__ARANYA_EXPIRED_COPY__=C[lang]||C.ko;
-  }catch(e){}
-})();
-</script>
-
-
 <script id="v43-guest-only-preboot">
 (function(){
   document.documentElement.classList.add('guest-only-page');
@@ -384,24 +312,6 @@ body,button,input,select,textarea{
 
 </head>
 <body>
-
-<div id="v50ExpiredPage">
-  <section class="expired-card">
-    <div class="expired-mark" aria-hidden="true">雅</div>
-    <h1 id="v50ExpiredTitle">안내 링크가 만료되었습니다</h1>
-    <p id="v50ExpiredDesc">체크아웃 시간이 지나 이 게스트용 안내 링크는 더 이상 사용할 수 없습니다.</p>
-    <div class="expired-brand">ARANYA · SEOCHON HANOK STAY</div>
-  </section>
-</div>
-<script id="v50-expired-copy-bind">
-(function(){
-  const c=window.__ARANYA_EXPIRED_COPY__;
-  if(!c)return;
-  const t=document.getElementById('v50ExpiredTitle'),d=document.getElementById('v50ExpiredDesc');
-  if(t)t.textContent=c[0];if(d)d.textContent=c[1];
-})();
-</script>
-
 
 <div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
 <div class="aranya-floating-mark"><span class="mark-ko">아란야</span><span class="mark-en">ARANYA HANOK STAY</span></div><nav class="topnav">
@@ -1216,7 +1126,8 @@ body,button,input,select,textarea{
     }
   }catch(e){}
 
-  const __guestGenBtn=document.getElementById('genBtn'); if(__guestGenBtn) __guestGenBtn.addEventListener('click', () => {
+  const __guestGenBtn = document.getElementById('genBtn');
+  if(__guestGenBtn) __guestGenBtn.addEventListener('click', () => {
     const name = document.getElementById('genName').value.trim();
     const ci = document.getElementById('genCi').value;
     const co = document.getElementById('genCo').value;
