@@ -245,6 +245,21 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 }
 </style>
 
+
+<style id="v16-no-native-date">
+.localized-picker[data-picker-wrap="date"] input{
+  position:absolute !important;
+  width:0 !important;
+  height:0 !important;
+  opacity:0 !important;
+  overflow:hidden !important;
+  pointer-events:none !important;
+  border:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+}
+</style>
+
 </head>
 <body>
 <div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
@@ -463,14 +478,14 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 <label><span data-i18n="gen_ci">체크인 날짜</span>
   <span class="localized-picker" data-picker-wrap="date">
     <span class="localized-picker-display" id="genCiDisplay"></span>
-    <input aria-label="Check-in date" id="genCi" type="hidden"/>
+    <input aria-label="Check-in date" id="genCi" type="text" inputmode="none" readonly tabindex="-1"/>
     <span class="localized-picker-icon" aria-hidden="true">⌄</span>
   </span>
 </label>
 <label><span data-i18n="gen_co">체크아웃 날짜</span>
   <span class="localized-picker" data-picker-wrap="date">
     <span class="localized-picker-display" id="genCoDisplay"></span>
-    <input aria-label="Check-out date" id="genCo" type="hidden"/>
+    <input aria-label="Check-out date" id="genCo" type="text" inputmode="none" readonly tabindex="-1"/>
     <span class="localized-picker-icon" aria-hidden="true">⌄</span>
   </span>
 </label>
@@ -1350,44 +1365,52 @@ applyLang();
     if(el){
       el.addEventListener('input',syncLocalizedPickers);
       el.addEventListener('change',syncLocalizedPickers);
-      // Make every pixel of the visible field (placeholder, padding and icon area) open the picker.
+
       const wrap=el.closest('.localized-picker');
-      if(wrap){
-        wrap.setAttribute('role','button');
-        wrap.setAttribute('tabindex','0');
-        const openPicker=()=>{
-          wrap.classList.add('picker-focus');
-          try{ el.focus({preventScroll:true}); }catch(e){ try{el.focus();}catch(_){} }
-          try{
-            if(typeof el.showPicker==='function'){
-              el.showPicker();
-            }else{
-              // Fallback for browsers without showPicker().
-              el.style.pointerEvents='auto';
-              el.click();
-              setTimeout(()=>{el.style.pointerEvents='none';},0);
-            }
-          }catch(e){
-            try{
-              el.style.pointerEvents='auto';
-              el.click();
-              setTimeout(()=>{el.style.pointerEvents='none';},0);
-            }catch(_){}
+      if(!wrap) return;
+
+      wrap.setAttribute('role','button');
+      wrap.setAttribute('tabindex','0');
+
+      // 날짜는 아래 커스텀 달력만 사용한다.
+      // iPhone / Galaxy의 네이티브 date picker는 절대 호출하지 않는다.
+      if(id==='genCi' || id==='genCo'){
+        return;
+      }
+
+      // 시간 필드만 브라우저 기본 time picker 사용
+      const openPicker=()=>{
+        wrap.classList.add('picker-focus');
+        try{ el.focus({preventScroll:true}); }catch(e){ try{el.focus();}catch(_){} }
+        try{
+          if(typeof el.showPicker==='function'){
+            el.showPicker();
+          }else{
+            el.style.pointerEvents='auto';
+            el.click();
+            setTimeout(()=>{el.style.pointerEvents='none';},0);
           }
-        };
-        wrap.addEventListener('click',e=>{
+        }catch(e){
+          try{
+            el.style.pointerEvents='auto';
+            el.click();
+            setTimeout(()=>{el.style.pointerEvents='none';},0);
+          }catch(_){}
+        }
+      };
+
+      wrap.addEventListener('click',e=>{
+        e.preventDefault();
+        openPicker();
+      });
+      wrap.addEventListener('keydown',e=>{
+        if(e.key==='Enter' || e.key===' '){
           e.preventDefault();
           openPicker();
-        });
-        wrap.addEventListener('keydown',e=>{
-          if(e.key==='Enter' || e.key===' '){
-            e.preventDefault();
-            openPicker();
-          }
-        });
-        el.addEventListener('blur',()=>wrap.classList.remove('picker-focus'));
-        el.addEventListener('change',()=>wrap.classList.remove('picker-focus'));
-      }
+        }
+      });
+      el.addEventListener('blur',()=>wrap.classList.remove('picker-focus'));
+      el.addEventListener('change',()=>wrap.classList.remove('picker-focus'));
     }
   });
 
