@@ -261,193 +261,79 @@ footer{max-width:1180px;margin:8px auto 0;padding:18px 18px 30px;text-align:cent
 </style>
 
 
-<style id="v21-host-entry-style">
-html.host-entry-mode body{
-  overflow:auto !important;
-  background:
-    radial-gradient(circle at 14% 10%,rgba(188,145,86,.10),transparent 24%),
-    linear-gradient(180deg,#f7f1e7 0%,#efe4d3 100%) !important;
-}
-html.host-entry-mode body > *:not(#hostEntryScreen){
+<style id="v27-host-lock-at-arrival">
+html.host-locked .page[data-page="home"] section > .wrap > *:not(.section-index):not(#arrivalHostGate){
   display:none !important;
 }
-#hostEntryScreen{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:28px 18px;
-  color:#26354a;
+html.host-locked .page[data-page="home"] .section-index{
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
 }
-.host-entry-card{
-  width:min(520px,100%);
-  background:rgba(255,253,249,.97);
+#arrivalHostGate{
+  display:none;
+  margin-top:14px;
+  max-width:560px;
+}
+#arrivalHostGate.open{display:block}
+.arrival-host-card{
+  background:#fffdf9;
   border:1px solid rgba(99,80,57,.16);
-  border-radius:28px;
-  padding:40px 30px;
-  text-align:center;
-  box-shadow:0 24px 60px rgba(54,42,29,.10);
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 18px 42px rgba(54,42,29,.08);
 }
-.host-entry-mark{
-  width:58px;height:58px;margin:0 auto 18px;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:50%;
-  background:#f1e7d5;color:#a65b45;
+.arrival-host-card h3{
+  margin:0 0 7px;
+  color:#26354a;
   font-family:'Gowun Batang','Noto Serif KR',serif;
-  font-size:24px;
+  font-size:20px;
 }
-.host-entry-kicker{
-  margin-bottom:8px;
-  color:#9a8262;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.22em;
+.arrival-host-card p{
+  margin:0 0 14px;
+  color:#75695d;
+  font-size:12.5px;
+  line-height:1.7;
 }
-.host-entry-card h1{
-  margin:0 0 10px;
-  font-family:'Gowun Batang','Noto Serif KR',serif;
-  font-size:30px;line-height:1.35;color:#26354a;
-}
-.host-entry-card p{
-  margin:0 0 22px;
-  color:#71675b;font-size:13px;line-height:1.8;
-}
-.host-entry-form{
+.arrival-host-form{
   display:grid;
   grid-template-columns:1fr auto;
   gap:8px;
 }
-.host-entry-form input{
+.arrival-host-form input{
   min-width:0;
-  height:46px;
-  padding:0 14px;
-  border:1px solid #d8c9b5;
-  border-radius:12px;
-  background:#fffdfa;
+  height:44px;
+  border:1px solid #d7c8b4;
+  border-radius:11px;
+  background:#fff;
+  padding:0 13px;
   font-size:14px;
   outline:none;
 }
-.host-entry-form input:focus{
-  border-color:#9b5c49;
-  box-shadow:0 0 0 3px rgba(155,92,73,.10);
-}
-.host-entry-form button{
-  height:46px;
-  padding:0 18px;
+.arrival-host-form button{
+  height:44px;
+  padding:0 16px;
   border:0;
-  border-radius:12px;
+  border-radius:11px;
   background:#26483f;
   color:#fffaf0;
   font-weight:700;
   cursor:pointer;
 }
-.host-entry-error{
-  min-height:20px;
-  margin:10px 0 0 !important;
-  color:#a4483b !important;
-  font-size:12px !important;
-}
-.host-entry-note{
-  margin-top:20px !important;
-  padding-top:16px;
-  border-top:1px solid rgba(99,80,57,.12);
-  color:#9a8262 !important;
-  font-size:10px !important;
-  letter-spacing:.16em;
+#arrivalHostError{
+  min-height:18px;
+  margin:8px 0 0!important;
+  color:#a4483b!important;
+  font-size:12px!important;
 }
 @media(max-width:520px){
-  .host-entry-card{padding:34px 20px;border-radius:24px}
-  .host-entry-form{grid-template-columns:1fr}
-  .host-entry-form button{width:100%}
+  .arrival-host-form{grid-template-columns:1fr}
+  .arrival-host-form button{width:100%}
 }
 </style>
 
 </head>
 <body>
-
-<div id="hostEntryScreen" hidden>
-  <section class="host-entry-card">
-    <div class="host-entry-mark" aria-hidden="true">雅</div>
-    <div class="host-entry-kicker">ARANYA · HOST</div>
-    <h1>호스트 전용</h1>
-    <p>게스트 안내 링크 발급 및 숙소 안내 확인을 위한 호스트 페이지입니다.</p>
-    <div class="host-entry-form">
-      <input id="hostEntryPassword" type="password" autocomplete="current-password" placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
-      <button id="hostEntryUnlock" type="button">입장</button>
-    </div>
-    <p class="host-entry-error" id="hostEntryError" role="alert"></p>
-    <p class="host-entry-note">ARANYA · SEOCHON HANOK STAY</p>
-  </section>
-</div>
-
-
-<script id="v21-host-entry-script">
-(function(){
-  const params=new URLSearchParams(window.location.search);
-  const rawGuest=params.get('g');
-  const screen=document.getElementById('hostEntryScreen');
-
-  // 게스트 링크가 있으면 기존 게스트 흐름을 그대로 사용
-  if(rawGuest){
-    if(screen) screen.remove();
-    return;
-  }
-
-  // 기본 URL은 호스트 전용
-  if(sessionStorage.getItem('aranya_host_entry')==='1'){
-    if(screen) screen.remove();
-    return;
-  }
-
-  document.documentElement.classList.add('host-entry-mode');
-  if(screen) screen.hidden=false;
-
-  const input=document.getElementById('hostEntryPassword');
-  const button=document.getElementById('hostEntryUnlock');
-  const error=document.getElementById('hostEntryError');
-  const ADMIN_HASH='cadc67f132143929beaf6031e09a8999f5fc2f450dee8846ee2d6d1507015d52';
-
-  async function sha256(value){
-    const data=new TextEncoder().encode(value);
-    const digest=await crypto.subtle.digest('SHA-256',data);
-    return Array.from(new Uint8Array(digest))
-      .map(b=>b.toString(16).padStart(2,'0')).join('');
-  }
-
-  async function unlock(){
-    if(!input) return;
-    if(error) error.textContent='';
-    try{
-      const hash=await sha256(input.value);
-      if(hash===ADMIN_HASH){
-        sessionStorage.setItem('aranya_host_entry','1');
-        // 기존 관리자 인증도 함께 활성화해 07 · HOST를 열면 바로 생성기가 보이도록 함
-        sessionStorage.setItem('aranya_admin','1');
-        document.documentElement.classList.remove('host-entry-mode');
-        if(screen) screen.remove();
-        window.scrollTo({top:0,behavior:'instant'});
-      }else{
-        if(error) error.textContent='비밀번호가 올바르지 않습니다.';
-        input.select();
-      }
-    }catch(e){
-      if(error) error.textContent='비밀번호를 확인해주세요.';
-    }
-  }
-
-  if(button) button.addEventListener('click',unlock);
-  if(input){
-    input.addEventListener('keydown',e=>{
-      if(e.key==='Enter'){
-        e.preventDefault();
-        unlock();
-      }
-    });
-    setTimeout(()=>input.focus({preventScroll:true}),50);
-  }
-})();
-</script>
-
 <div class="dancheong"><span class="c1"></span><span class="c2"></span><span class="c3"></span><span class="c4"></span><span class="c5"></span></div>
 <div class="aranya-floating-mark"><span class="mark-ko">아란야</span><span class="mark-en">ARANYA HANOK STAY</span></div><nav class="topnav">
 <div class="inner">
@@ -488,7 +374,18 @@ html.host-entry-mode body > *:not(#hostEntryScreen){
 </header>
 <div class="page active" data-page="home">
 <section>
-<div class="wrap"><div class="section-index">01 · ARRIVAL</div>
+<div class="wrap"><div class="section-index" id="arrivalHostTrigger" role="button" tabindex="0">01 · ARRIVAL</div>
+<div id="arrivalHostGate">
+  <div class="arrival-host-card">
+    <h3>호스트 전용</h3>
+    <p>전체 숙소 안내와 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.</p>
+    <div class="arrival-host-form">
+      <input id="arrivalHostPassword" type="password" autocomplete="current-password" placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
+      <button id="arrivalHostUnlock" type="button">확인</button>
+    </div>
+    <p id="arrivalHostError" role="alert"></p>
+  </div>
+</div>
 <h2 data-i18n="checkin_title">체크인 안내</h2>
 <p class="sub" data-i18n="checkin_sub">셀프 체크인이에요. 아래 순서대로만 따라오시면 됩니다.</p>
 <div class="steps">
@@ -2260,45 +2157,97 @@ applyLang();
 </script>
 
 
-<script id="v21-invalid-guest-link">
+<script id="v27-host-lock-controller">
 (function(){
-  const params=new URLSearchParams(window.location.search);
-  const raw=params.get('g');
-  if(!raw) return;
+  const params=new URLSearchParams(location.search);
+  const hasGuest=!!params.get('g');
+  const ADMIN_HASH='cadc67f132143929beaf6031e09a8999f5fc2f450dee8846ee2d6d1507015d52';
 
-  let valid=null;
-  try{
-    if(typeof decodeGuestCompact==='function'){
-      valid=decodeGuestCompact(raw);
+  function unlocked(){
+    return sessionStorage.getItem('aranya_admin')==='1';
+  }
+
+  // Guest links remain exactly as before.
+  if(hasGuest) return;
+
+  if(!unlocked()){
+    document.documentElement.classList.add('host-locked');
+  }
+
+  const trigger=document.getElementById('arrivalHostTrigger');
+  const gate=document.getElementById('arrivalHostGate');
+  const input=document.getElementById('arrivalHostPassword');
+  const btn=document.getElementById('arrivalHostUnlock');
+  const err=document.getElementById('arrivalHostError');
+
+  function openGate(){
+    if(unlocked()) return;
+    if(gate) gate.classList.add('open');
+    if(err) err.textContent='';
+    setTimeout(()=>input && input.focus({preventScroll:true}),30);
+  }
+
+  async function sha256(value){
+    const data=new TextEncoder().encode(value);
+    const digest=await crypto.subtle.digest('SHA-256',data);
+    return Array.from(new Uint8Array(digest))
+      .map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function doUnlock(){
+    if(!input) return;
+    if(err) err.textContent='';
+
+    try{
+      const hash=await sha256(input.value);
+      if(hash!==ADMIN_HASH){
+        if(err) err.textContent='비밀번호가 올바르지 않습니다.';
+        input.select();
+        return;
+      }
+
+      // Save the same admin session used by the original host features.
+      // Then reload the untouched original site so ALL tabs/features come back.
+      sessionStorage.setItem('aranya_admin','1');
+      sessionStorage.setItem('aranya_host_entry','1');
+      location.reload();
+    }catch(e){
+      if(err) err.textContent='비밀번호를 다시 확인해주세요.';
     }
-  }catch(e){}
+  }
 
-  if(valid) return;
+  if(trigger){
+    trigger.addEventListener('click',openGate);
+    trigger.addEventListener('keydown',e=>{
+      if(e.key==='Enter' || e.key===' '){
+        e.preventDefault();
+        openGate();
+      }
+    });
+  }
+  if(btn) btn.addEventListener('click',doUnlock);
+  if(input){
+    input.addEventListener('keydown',e=>{
+      if(e.key==='Enter'){
+        e.preventDefault();
+        doUnlock();
+      }
+    });
+  }
 
-  const copies={
-    ko:['유효하지 않은 안내 링크입니다','호스트에게 전달받은 게스트 안내 링크를 다시 확인해주세요.'],
-    en:['This guest link is not valid','Please check the guest guide link provided by your host.'],
-    zh:['此访客链接无效','请重新确认房东发送给您的访客指南链接。'],
-    ja:['このゲストリンクは無効です','ホストから送られたゲスト案内リンクをご確認ください。'],
-    de:['Dieser Gästelink ist ungültig','Bitte prüfen Sie den von Ihrem Gastgeber erhaltenen Gästelink.'],
-    fr:['Ce lien invité est invalide','Veuillez vérifier le lien du guide envoyé par votre hôte.'],
-    es:['Este enlace de huésped no es válido','Compruebe el enlace enviado por su anfitrión.'],
-    it:['Questo link ospite non è valido','Controlla il link della guida inviato dall’host.'],
-    pt:['Este link de hóspede não é válido','Verifique o link enviado pelo anfitrião.'],
-    ru:['Гостевая ссылка недействительна','Проверьте ссылку, которую прислал хозяин жилья.']
-  };
-  const code=(document.documentElement.lang||navigator.language||'ko').toLowerCase().slice(0,2);
-  const c=copies[code]||copies.en;
+  // While locked, any top navigation destination except Contact asks for host password.
+  document.addEventListener('click',function(e){
+    if(unlocked()) return;
 
-  document.body.innerHTML=
-    '<main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#f7f1e7">'+
-      '<section style="width:min(560px,100%);background:#fffdf9;border:1px solid #ded2c0;border-radius:28px;padding:42px 30px;text-align:center;box-shadow:0 24px 60px rgba(54,42,29,.10)">'+
-        '<div style="width:58px;height:58px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#f1e7d5;color:#a65b45;font-family:Gowun Batang,serif;font-size:24px">雅</div>'+
-        '<h1 style="margin:0 0 12px;font-family:Gowun Batang,serif;font-size:30px;color:#26354a">'+c[0]+'</h1>'+
-        '<p style="margin:0;color:#71675b;font-size:14px;line-height:1.9">'+c[1]+'</p>'+
-        '<div style="margin-top:24px;padding-top:18px;border-top:1px solid #eee2d2;color:#9a8262;font-size:11px;letter-spacing:.22em">ARANYA · SEOCHON HANOK STAY</div>'+
-      '</section>'+
-    '</main>';
+    const tab=e.target.closest('.tab[data-page]');
+    if(!tab) return;
+
+    if(tab.getAttribute('data-page')==='contact') return;
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    openGate();
+  }, true);
 })();
 </script>
 
