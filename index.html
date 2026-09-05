@@ -1344,19 +1344,107 @@ body,button,input,select,textarea{
   }
   function renderExpiredGuest(g){
     const copies={
-      ko:['안내 링크가 만료되었습니다','체크아웃이 완료되어 이 게스트용 안내 링크는 더 이상 사용할 수 없습니다. 아란야를 이용해주셔서 감사합니다.'],
-      en:['This guest link has expired','Checkout is complete, so this guest guide is no longer available. Thank you for staying at Aranya.'],
-      zh:['此访客链接已过期','退房已完成，此访客指南链接已无法继续使用。感谢您入住 Aranya。'],
-      ja:['このゲストリンクは期限切れです','チェックアウトが完了したため、このゲスト用案内リンクはご利用いただけません。Aranyaをご利用いただきありがとうございました。'],
-      de:['Dieser Gästelink ist abgelaufen','Der Check-out ist abgeschlossen. Dieser Gästeführer ist daher nicht mehr verfügbar. Vielen Dank für Ihren Aufenthalt im Aranya.'],
-      fr:['Ce lien invité a expiré','Votre départ est terminé ; ce guide invité n’est donc plus accessible. Merci d’avoir séjourné à Aranya.'],
-      es:['Este enlace de huésped ha caducado','El check-out ha finalizado y esta guía ya no está disponible. Gracias por alojarse en Aranya.'],
-      it:['Questo link ospite è scaduto','Il check-out è stato completato e questa guida non è più disponibile. Grazie per aver soggiornato ad Aranya.'],
-      pt:['Este link de hóspede expirou','O check-out foi concluído e este guia já não está disponível. Obrigado por se hospedar no Aranya.'],
-      ru:['Срок действия гостевой ссылки истёк','Выезд завершён, поэтому эта гостевая ссылка больше недоступна. Спасибо, что остановились в Aranya.']
+      ko:{
+        title:'안내 링크가 만료되었습니다',
+        desc:'체크아웃이 완료되어 이 게스트용 안내 링크는 더 이상 사용할 수 없습니다. 아란야를 이용해주셔서 감사합니다.'
+      },
+      en:{
+        title:'This guest link has expired',
+        desc:'Checkout is complete, so this guest guide is no longer available. Thank you for staying at Aranya.'
+      },
+      zh:{
+        title:'此访客链接已过期',
+        desc:'退房已完成，此访客指南链接已无法继续使用。感谢您入住 Aranya。'
+      },
+      ja:{
+        title:'このゲストリンクは期限切れです',
+        desc:'チェックアウトが完了したため、このゲスト用案内リンクはご利用いただけません。Aranyaをご利用いただきありがとうございました。'
+      },
+      de:{
+        title:'Dieser Gästelink ist abgelaufen',
+        desc:'Der Check-out ist abgeschlossen. Dieser Gästeführer ist daher nicht mehr verfügbar. Vielen Dank für Ihren Aufenthalt im Aranya.'
+      },
+      fr:{
+        title:'Ce lien invité a expiré',
+        desc:'Votre départ est terminé ; ce guide invité n’est donc plus accessible. Merci d’avoir séjourné à Aranya.'
+      },
+      es:{
+        title:'Este enlace de huésped ha caducado',
+        desc:'El check-out ha finalizado y esta guía ya no está disponible. Gracias por alojarse en Aranya.'
+      },
+      it:{
+        title:'Questo link ospite è scaduto',
+        desc:'Il check-out è stato completato e questa guida non è più disponibile. Grazie per aver soggiornato ad Aranya.'
+      },
+      pt:{
+        title:'Este link de hóspede expirou',
+        desc:'O check-out foi concluído e este guia já não está disponível. Obrigado por se hospedar no Aranya.'
+      },
+      ru:{
+        title:'Срок действия гостевой ссылки истёк',
+        desc:'Выезд завершён, поэтому эта гостевая ссылка больше недоступна. Спасибо, что остановились в Aranya.'
+      }
     };
-    const c=copies[(g&&g.l)||lang]||copies.en;
-    document.body.innerHTML='<main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#f7f1e7"><section style="width:min(560px,100%);background:#fffdf9;border:1px solid #ded2c0;border-radius:28px;padding:42px 30px;text-align:center;box-shadow:0 24px 60px rgba(54,42,29,.10)"><div style="width:58px;height:58px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#f1e7d5;color:#a65b45;font-family:Gowun Batang,serif;font-size:24px">雅</div><h1 style="margin:0 0 12px;font-family:Gowun Batang,serif;font-size:30px;color:#26354a">'+c[0]+'</h1><p style="margin:0;color:#71675b;font-size:14px;line-height:1.9">'+c[1]+'</p><div style="margin-top:24px;padding-top:18px;border-top:1px solid #eee2d2;color:#9a8262;font-size:11px;letter-spacing:.22em">ARANYA · SEOCHON HANOK STAY</div></section></main>';
+
+    const labels={
+      ko:'한국어',
+      en:'English',
+      zh:'中文',
+      ja:'日本語',
+      de:'Deutsch',
+      fr:'Français',
+      es:'Español',
+      it:'Italiano',
+      pt:'Português',
+      ru:'Русский'
+    };
+
+    const initial=((g&&g.l)||lang||detectLang()||'ko').toLowerCase().slice(0,2);
+    const selected=copies[initial]?initial:'ko';
+
+    document.body.innerHTML=
+      '<main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:#f7f1e7;">'+
+        '<section style="width:min(760px,100%);background:#fffdf9;border:1px solid #ded2c0;border-radius:32px;padding:50px 42px 38px;text-align:center;box-shadow:0 24px 60px rgba(54,42,29,.10);">'+
+          '<div style="width:64px;height:64px;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#f1e7d5;color:#a65b45;font-family:Gowun Batang,serif;font-size:27px;">雅</div>'+
+          '<div style="margin:0 0 12px;color:#9a8262;font-size:11px;font-weight:700;letter-spacing:.24em;">ARANYA · EXPIRED LINK</div>'+
+          '<h1 id="expiredGuestTitle" style="margin:0 0 16px;font-family:Gowun Batang,serif;font-size:38px;line-height:1.3;color:#26354a;word-break:keep-all;"></h1>'+
+          '<p id="expiredGuestDesc" style="margin:0 auto 28px;max-width:640px;color:#71675b;font-size:15px;line-height:1.9;word-break:keep-all;"></p>'+
+          '<div style="display:flex;justify-content:center;margin:8px 0 28px;">'+
+            '<select id="expiredLangSelect" aria-label="Language" style="min-width:190px;height:46px;padding:0 14px;border:1px solid #d8c9b5;border-radius:12px;background:#fffdfa;color:#4a423b;font-size:13px;outline:none;"></select>'+
+          '</div>'+
+          '<div style="padding-top:18px;border-top:1px solid #eee2d2;color:#9a8262;font-size:10px;letter-spacing:.18em;">ARANYA · SEOCHON HANOK STAY</div>'+
+        '</section>'+
+      '</main>';
+
+    const select=document.getElementById('expiredLangSelect');
+
+    Object.keys(labels).forEach(code=>{
+      const opt=document.createElement('option');
+      opt.value=code;
+      opt.textContent=labels[code];
+      if(code===selected) opt.selected=true;
+      select.appendChild(opt);
+    });
+
+    function applyExpiredLang(code){
+      if(!copies[code]) code='ko';
+      const c=copies[code];
+
+      document.getElementById('expiredGuestTitle').textContent=c.title;
+      document.getElementById('expiredGuestDesc').textContent=c.desc;
+      document.documentElement.lang=code;
+      select.value=code;
+
+      try{
+        localStorage.setItem('aranya_lang',code);
+      }catch(e){}
+    }
+
+    applyExpiredLang(selected);
+
+    select.addEventListener('change',function(){
+      applyExpiredLang(this.value);
+    });
   }
 
   function detectLang(){
