@@ -544,6 +544,32 @@ body,button,input,select,textarea{
 </style>
 
 
+
+<style id="v54-language-arrow-unify">
+/* 1) 호스트 로그인 화면의 실제 select */
+#hostBaseLang,
+#expiredLangSelect{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  padding-right:42px !important;
+  background-color:#fffdfa !important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234a423b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat:no-repeat !important;
+  background-position:right 9px center !important;
+  background-size:12px 8px !important;
+}
+
+/* 2) 로그인 후 호스트 화면 상단 언어 버튼
+      (select가 아니라 커스텀 버튼 + SVG 화살표 구조) */
+#langBtn{
+  padding-right:16px !important;
+}
+#langBtn .chev{
+  margin-right:-5px !important;
+  flex:0 0 auto !important;
+}
+</style>
+
 </head>
 <body>
 
