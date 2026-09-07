@@ -870,7 +870,7 @@ body,button,input,select,textarea{
     <h3 id="adminGateTitle">관리자 전용</h3>
     <p id="adminGateDesc">게스트용 개인화 링크 생성 기능은 관리자만 사용할 수 있습니다.</p>
     <div class="admin-gate-form">
-      <input id="adminPassword" type="password" autocomplete="current-password" placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
+      <input id="adminPassword" type="password" autocomplete="current-password" placeholder="비밀번호" aria-label="비밀번호">
       <button type="button" class="btn-primary admin-unlock-btn" id="adminUnlockBtn">열기</button>
     </div>
     <p class="admin-gate-error" id="adminGateError" role="alert"></p>
@@ -2560,10 +2560,10 @@ applyLang();
       <div class="host-base-mark" aria-hidden="true">雅</div>
       <div class="host-base-kicker">ARANYA · HOST</div>
       <h1 id="hostBaseTitle">호스트 전용</h1>
-      <p class="desc" id="hostBaseDesc">숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.</p>
+      <p class="desc" id="hostBaseDesc">숙소 안내 전체 내용과 호스트 기능을 사용하려면 비밀번호를 입력해주세요.</p>
       <div class="host-base-form">
         <input id="hostBasePassword" type="password" autocomplete="current-password"
-               placeholder="관리자 비밀번호" aria-label="관리자 비밀번호">
+               placeholder="비밀번호" aria-label="비밀번호">
         <button id="hostBaseUnlock" type="button">확인</button>
       </div>
       <p id="hostBaseError" role="alert"></p>
@@ -2589,16 +2589,16 @@ applyLang();
   document.documentElement.classList.add('v33-host-locked','host-base-locked');
 
   const copy={
-    ko:{title:'호스트 전용',desc:'숙소 안내 전체 내용과 호스트 기능을 사용하려면 관리자 비밀번호를 입력해주세요.',placeholder:'관리자 비밀번호',button:'확인',error:'비밀번호가 올바르지 않습니다.'},
-    en:{title:'Host Access',desc:'Enter the administrator password to access the full house guide and host tools.',placeholder:'Administrator password',button:'Continue',error:'The password is incorrect.'},
-    zh:{title:'房东专用',desc:'请输入管理员密码以访问完整的住宿指南和房东功能。',placeholder:'管理员密码',button:'确认',error:'密码不正确。'},
-    ja:{title:'ホスト専用',desc:'宿泊案内の全内容とホスト機能を利用するには、管理者パスワードを入力してください。',placeholder:'管理者パスワード',button:'確認',error:'パスワードが正しくありません。'},
-    de:{title:'Host-Zugang',desc:'Geben Sie das Administratorpasswort ein, um auf den vollständigen Unterkunftsführer und die Host-Funktionen zuzugreifen.',placeholder:'Administratorpasswort',button:'Bestätigen',error:'Das Passwort ist nicht korrekt.'},
-    fr:{title:'Accès hôte',desc:'Saisissez le mot de passe administrateur pour accéder au guide complet et aux fonctions réservées à l’hôte.',placeholder:'Mot de passe administrateur',button:'Valider',error:'Le mot de passe est incorrect.'},
-    es:{title:'Acceso para anfitrión',desc:'Introduce la contraseña de administrador para acceder a la guía completa y a las funciones del anfitrión.',placeholder:'Contraseña de administrador',button:'Confirmar',error:'La contraseña es incorrecta.'},
-    it:{title:'Accesso host',desc:'Inserisci la password amministratore per accedere alla guida completa e alle funzioni dell’host.',placeholder:'Password amministratore',button:'Conferma',error:'La password non è corretta.'},
-    pt:{title:'Acesso do anfitrião',desc:'Insira a senha de administrador para acessar o guia completo e as funções dell’host.',placeholder:'Senha de administrador',button:'Confirmar',error:'A senha está incorreta.'},
-    ru:{title:'Доступ для хозяина',desc:'Введите пароль администратора, чтобы открыть полное руководство и функции хозяина.',placeholder:'Пароль администратора',button:'Подтвердить',error:'Неверный пароль.'}
+    ko:{title:'호스트 전용',desc:'숙소 안내 전체 내용과 호스트 기능을 사용하려면 비밀번호를 입력해주세요.',placeholder:'비밀번호',button:'확인',error:'비밀번호가 올바르지 않습니다.'},
+    en:{title:'Host Access',desc:'Enter the password to access the full house guide and host tools.',placeholder:'Password',button:'Continue',error:'The password is incorrect.'},
+    zh:{title:'房东专用',desc:'请输入密码以访问完整的住宿指南和房东功能。',placeholder:'密码',button:'确认',error:'密码不正确。'},
+    ja:{title:'ホスト専用',desc:'宿泊案内の全内容とホスト機能を利用するには、パスワードを入力してください。',placeholder:'パスワード',button:'確認',error:'パスワードが正しくありません。'},
+    de:{title:'Host-Zugang',desc:'Geben Sie das Passwort ein, um auf den vollständigen Unterkunftsführer und die Host-Funktionen zuzugreifen.',placeholder:'Passwort',button:'Bestätigen',error:'Das Passwort ist nicht korrekt.'},
+    fr:{title:'Accès hôte',desc:'Saisissez le mot de passe pour accéder au guide complet et aux fonctions réservées à l’hôte.',placeholder:'Mot de passe',button:'Valider',error:'Le mot de passe est incorrect.'},
+    es:{title:'Acceso para anfitrión',desc:'Introduce la contraseña para acceder a la guía completa y a las funciones del anfitrión.',placeholder:'Contraseña',button:'Confirmar',error:'La contraseña es incorrecta.'},
+    it:{title:'Accesso host',desc:'Inserisci la password per accedere alla guida completa e alle funzioni dell’host.',placeholder:'Password',button:'Conferma',error:'La password non è corretta.'},
+    pt:{title:'Acesso do anfitrião',desc:'Insira a senha para acessar o guia completo e as funções do anfitrião.',placeholder:'Senha',button:'Confirmar',error:'A senha está incorreta.'},
+    ru:{title:'Доступ для хозяина',desc:'Введите пароль, чтобы открыть полное руководство и функции хозяина.',placeholder:'Пароль',button:'Подтвердить',error:'Неверный пароль.'}
   };
 
   const title=document.getElementById('hostBaseTitle');
