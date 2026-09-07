@@ -400,8 +400,8 @@ html.host-base-locked body > *:not(#hostBaseLogin){
   margin-top:18px;display:flex;justify-content:center;
 }
 .host-base-language select{
-  min-width:150px;height:38px;padding:0 12px;border:1px solid #d8c9b5;
-  border-radius:10px;background:#fffdfa;color:#4a423b;font-size:12px;
+  min-width:150px;height:38px;padding:0 36px 0 34px;border:1px solid #d8c9b5;
+  border-radius:10px;background-color:#fffdfa;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23635b52%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M3%2012h18%22%2F%3E%3Cpath%20d%3D%22M12%203c2.5%203%204%206%204%209s-1.5%206-4%209c-2.5-3-4-6-4-9s1.5-6%204-9z%22%2F%3E%3C%2Fsvg%3E");background-repeat:no-repeat;background-position:12px center;background-size:14px 14px;color:#4a423b;font-size:12px;
 }
 .host-base-note{
   margin-top:18px !important;padding-top:16px;border-top:1px solid rgba(99,80,57,.12);
@@ -491,10 +491,14 @@ html:not(.host-base-locked) #hostEarlyLang.host-early-visible{
 #hostEarlyLang select{
   height:38px;
   min-width:128px;
-  padding:0 10px;
+  padding:0 32px 0 32px;
   border:1px solid rgba(38,53,74,.16);
   border-radius:12px;
-  background:#fffdf9;
+  background-color:#fffdf9;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23635b52%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M3%2012h18%22%2F%3E%3Cpath%20d%3D%22M12%203c2.5%203%204%206%204%209s-1.5%206-4%209c-2.5-3-4-6-4-9s1.5-6%204-9z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat:no-repeat;
+  background-position:10px center;
+  background-size:14px 14px;
   color:#26354a;
   font-size:12px;
   box-shadow:0 2px 10px rgba(54,42,29,.05);
@@ -508,6 +512,9 @@ html:not(.host-base-locked) #hostEarlyLang.host-early-visible{
     height:34px;
     min-width:112px;
     font-size:11px;
+    padding:0 30px 0 30px;
+    background-position:9px center;
+    background-size:13px 13px;
   }
 }
 
@@ -641,6 +648,37 @@ body,button,input,select,textarea{
 #foodList .dining-guide-row span{font-size:13px;line-height:1.78;color:var(--muted);overflow-wrap:anywhere}
 #foodList .dining-status{margin:0;padding-top:10px;border-top:1px dashed var(--line);font-size:12px;line-height:1.7;color:var(--rust-deep)}
 </style>
+
+
+<style id="v55-host-expired-lang-globe-match">
+/* Host login page + expired link page language select: globe on the left, chevron on the right */
+#hostBaseLang,
+#expiredLangSelect{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  padding-left:38px !important;
+  padding-right:40px !important;
+  background-color:#fffdfa !important;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%232f3e56%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M3%2012h18%22%2F%3E%3Cpath%20d%3D%22M12%203c2.6%202.8%204.1%205.8%204.1%209S14.6%2018.2%2012%2021c-2.6-2.8-4.1-5.8-4.1-9S9.4%205.8%2012%203z%22%2F%3E%3C%2Fsvg%3E"), url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M1%201.25%206%206.25%2011%201.25%22%20stroke%3D%22%232f3e56%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E") !important;
+  background-repeat:no-repeat, no-repeat !important;
+  background-position:left 12px center, right 9px center !important;
+  background-size:15px 15px, 12px 8px !important;
+}
+
+/* Keep the same look on the small early host selector too for consistency */
+#hostEarlyLang select{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  padding-left:32px !important;
+  padding-right:30px !important;
+  background-color:#fffdf9 !important;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%232f3e56%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M3%2012h18%22%2F%3E%3Cpath%20d%3D%22M12%203c2.6%202.8%204.1%205.8%204.1%209S14.6%2018.2%2012%2021c-2.6-2.8-4.1-5.8-4.1-9S9.4%205.8%2012%203z%22%2F%3E%3C%2Fsvg%3E"), url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%228%22%20viewBox%3D%220%200%2012%208%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M1%201.25%206%206.25%2011%201.25%22%20stroke%3D%22%232f3e56%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E") !important;
+  background-repeat:no-repeat, no-repeat !important;
+  background-position:left 9px center, right 9px center !important;
+  background-size:14px 14px, 11px 7px !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -1515,7 +1553,7 @@ body,button,input,select,textarea{
           '<h1 id="expiredGuestTitle" style="max-width:640px;margin:0 auto 16px;font-family:Gowun Batang,serif;font-size:clamp(26px,6vw,38px);line-height:1.28;color:#26354a;word-break:normal;overflow-wrap:anywhere;line-break:anywhere;hyphens:auto;"></h1>'+
           '<p id="expiredGuestDesc" style="margin:0 auto 28px;max-width:640px;color:#71675b;font-size:15px;line-height:1.9;word-break:normal;overflow-wrap:anywhere;line-break:strict;"></p>'+
           '<div style="display:flex;justify-content:center;margin:8px 0 28px;">'+
-            '<select id="expiredLangSelect" aria-label="Language" style="min-width:190px;height:46px;padding:0 14px;border:1px solid #d8c9b5;border-radius:12px;background:#fffdfa;color:#4a423b;font-size:13px;outline:none;"></select>'+
+            '<select id="expiredLangSelect" aria-label="Language" style="min-width:190px;height:46px;padding:0 14px 0 36px;border:1px solid #d8c9b5;border-radius:12px;background-color:#fffdfa;background-image:url(&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23635b52%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229%22%2F%3E%3Cpath%20d%3D%22M3%2012h18%22%2F%3E%3Cpath%20d%3D%22M12%203c2.5%203%204%206%204%209s-1.5%206-4%209c-2.5-3-4-6-4-9s1.5-6%204-9z%22%2F%3E%3C%2Fsvg%3E&quot;);background-repeat:no-repeat;background-position:12px center;background-size:14px 14px;color:#4a423b;font-size:13px;outline:none;"></select>'+
           '</div>'+
           '<div style="padding-top:18px;border-top:1px solid #eee2d2;color:#9a8262;font-size:10px;letter-spacing:.18em;">ARANYA · SEOCHON HANOK STAY</div>'+
         '</section>'+
