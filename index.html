@@ -1398,8 +1398,8 @@ const food = [{"search":"대련집 서울 종로구 종로16길 37","cat":"food"
         <div class="card-grid">${around.filter(p=>p.group===group).map((p,i)=>renderTravelCard(p,i)).join('')}</div>
       </div>`;
     document.getElementById('aroundList').innerHTML =
-      renderTravelGroup('pick','around_pick_title','around_pick_sub')+
-      renderTravelGroup('walk','around_walk_title','around_walk_sub');
+      renderTravelGroup('walk','around_walk_title','around_walk_sub')+
+      renderTravelGroup('pick','around_pick_title','around_pick_sub');
 
     document.getElementById('aranyaLocalIntro').textContent={"ko":"아란야가 추천하는 서울의 먹거리를 소개합니다.","en":"Discover Seoul’s food, recommended by Aranya.","zh":"为您介绍阿兰雅推荐的首尔美食。","ja":"Aranyaがおすすめするソウルのグルメをご紹介します。","de":"Entdecken Sie Seouls kulinarische Spezialitäten, empfohlen von Aranya.","fr":"Découvrez les spécialités culinaires de Séoul recommandées par Aranya.","es":"Descubre la gastronomía de Seúl recomendada por Aranya.","it":"Scopri le specialità gastronomiche di Seul consigliate da Aranya.","pt":"Conheça a gastronomia de Seul recomendada pela Aranya.","ru":"Откройте для себя кухню Сеула, рекомендованную Aranya."}[lang]||"Discover Seoul’s food, recommended by Aranya.";
 
