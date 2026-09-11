@@ -19,6 +19,7 @@ function walk(value,block,path=[]){
  if(typeof value.ko==='string'){add(block,path,'text',Object.fromEntries(languages.map(l=>[l,value[l]||value.en||value.ko])),Object.fromEntries(languages.map(l=>[l,[...path,l]])));return;}
  if(block==='I18N'&&path.length===0){for(const key of Object.keys(value.ko)){if(typeof value.ko[key]!=='string')continue;add(block,[key],'text',Object.fromEntries(languages.map(l=>[l,value[l]?.[key]||value.en?.[key]||value.ko[key]])),Object.fromEntries(languages.map(l=>[l,[l,key]])));}return;}
  for(const [key,item] of Object.entries(value)){
+   if((key==='group'||key==='cat')&&typeof item==='string'){const vals=Object.fromEntries(languages.map(l=>[l,item]));add(block,[...path,key],'select',vals,Object.fromEntries(languages.map(l=>[l,[...path,key]])));continue;}
    if(key==='image'&&typeof item==='string')add(block,[...path,key],'image',{ko:item},{ko:[...path,key]});
    else walk(item,block,[...path,key]);
  }

@@ -33,7 +33,11 @@ function render(){
    const hint=document.createElement('p');hint.className='hint';hint.textContent=images?'JPG · PNG · WebP / 최대 2MB. 초안을 공개하면 반영됩니다.':'이미지 저장소 연결 후 사진을 교체할 수 있습니다.';
    file.onchange=()=>run(async()=>{const selected=file.files[0];if(!selected)return;if(selected.size>2*1024*1024)throw Error('사진은 2MB 이하로 선택해주세요.');const response=await fetch('/api/image',{method:'POST',body:selected,headers:{'Content-Type':selected.type}}),data=await response.json();if(!response.ok)throw Error(data.error);entry.values.ko=data.url;img.src=data.url;changed();});card.append(img,file,hint);
   }else{
-   const input=document.createElement('textarea');input.value=entry.values.ko;input.maxLength=12000;label.htmlFor=input.id='field-'+catalog.indexOf(field);input.oninput=()=>{entry.values.ko=input.value;changed();};card.append(input);
+   const isBadge=field.type==='select'||field.path.at(-1)==='group';
+   const input=isBadge?document.createElement('select'):document.createElement('textarea');
+   if(isBadge){input.setAttribute('aria-label','표시 배지');for(const [value,text] of [['','없음'],['walk','NEARBY WALK'],['pick','ARANYA PICK']]){const option=document.createElement('option');option.value=value;option.textContent=text;input.append(option);}input.value=entry.values.ko||'';}
+   else {input.value=entry.values.ko;input.maxLength=12000;}
+   input.id='field-'+catalog.indexOf(field);input.oninput=()=>{entry.values.ko=input.value;changed();};card.append(input);
    if(entry.values.ko!==entry.translatedFrom){const badge=document.createElement('span');badge.className='badge';badge.textContent='번역 필요';card.append(badge);}
    const retry=document.createElement('button');retry.type='button';retry.textContent='이 문구 다시 번역';retry.onclick=()=>run(async()=>{const id=field.id;if(!ai)throw Error('Cloudflare AI 연결이 필요합니다.');if(dirty)await save();message('선택한 문구를 9개 언어로 다시 번역 중입니다. 잠시 기다려주세요.');accept(await api('translate',{revision,id}));render();refreshGuide();$('saveState').textContent='번역 저장됨 · 공개 전';message('선택한 문구의 번역을 다시 저장했습니다. 번역 확인 후 공개해주세요.');});const retryHint=document.createElement('p');retryHint.className='hint';retryHint.textContent='번역이 빠졌다면 다시 번역하세요. 이 문구의 다른 언어 번역을 새 결과로 교체합니다.';card.append(retry,retryHint);
    const details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='다국어 번역 확인 · 직접 수정';details.append(summary);
