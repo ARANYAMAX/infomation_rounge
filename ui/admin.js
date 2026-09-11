@@ -18,10 +18,12 @@ function fieldName(field){
 function selectField(id){selectedId=id;const field=catalog.find(f=>f.id===id);if(!field)return;active=group(field);$('search').value='';render();$('editorPanel').classList.add('is-open');highlightGuide();}
 function render(){
  $('sectionTitle').textContent=sections[active];$('fields').replaceChildren();
+ if(active==='food'||active==='around'){const add=document.createElement('button');add.className='primary add-custom';add.type='button';add.textContent=active==='food'?'＋ 맛집·카페 추가':'＋ 주변 여행지 추가';add.onclick=()=>openCustom(active);$('fields').append(add);}
  document.querySelectorAll('#sections button').forEach(b=>b.classList.toggle('active',b.dataset.section===active));
  const query=$('search').value.toLowerCase();$('fieldChoices').replaceChildren();
  const available=catalog.filter(f=>group(f)===active&&(!query||(draft[f.id].values.ko+' '+fieldName(f)).toLowerCase().includes(query)));
  for(const field of available){const choice=document.createElement('button');choice.type='button';choice.textContent=fieldName(field);choice.className='field-choice';choice.onclick=()=>selectField(field.id);$('fieldChoices').append(choice);}
+ if(active==='food'||active==='around')for(const item of (draft.__custom?.[active]||[])){if(item.hidden)continue;const choice=document.createElement('button');choice.type='button';choice.className='field-choice';choice.textContent='추가됨 · '+(item.name?.ko||item.query);choice.onclick=()=>openCustom(active,item);$('fieldChoices').append(choice);}
  const chosen=catalog.find(f=>f.id===selectedId);$('selectionPath').textContent=chosen?sections[group(chosen)]+' → '+fieldName(chosen):'왼쪽에서 수정할 위치를 선택해주세요.';
  for(const field of catalog.filter(f=>f.id===selectedId)){
   const entry=draft[field.id],card=document.createElement('article');card.className='card';
@@ -41,6 +43,7 @@ function render(){
  if(!$('fields').children.length){const empty=document.createElement('p');empty.className='empty-editor';empty.textContent='문구와 사진을 누르면 이곳에서 수정할 수 있어요. 찾기 어려운 항목은 아래 목록을 펼쳐주세요.';$('fields').append(empty);}
  if(busy)$('editorPanel').querySelectorAll('button,input,textarea').forEach(input=>input.disabled=true);
 }
+function openCustom(type,item){const edit=!!item;$('customTitle').textContent=edit?'추가 항목 수정':(type==='food'?'새 맛집·카페 추가':'새 주변 여행지 추가');$('customName').value=item?.name?.ko||'';$('customQuery').value=item?.query||'';$('customDesc').value=item?.desc?.ko||'';$('customMap').value=item?.map||'';$('customDialog').dataset.type=type;$('customDialog').dataset.id=item?.id||'';$('customDialog').showModal();}
 async function run(task){if(busy)return;busy=true;document.querySelectorAll('button,input,textarea').forEach(b=>b.disabled=true);try{await task();}catch(error){message(error.message);}finally{busy=false;document.querySelectorAll('button,input,textarea').forEach(b=>b.disabled=false);if(!images)document.querySelectorAll('input[type=file]').forEach(b=>b.disabled=true);}}
 async function load(){const data=await api('content');catalog=data.catalog;ai=data.translationAvailable;images=data.imagesAvailable;accept(data);$('login').hidden=true;$('manager').hidden=false;$('logout').hidden=false;render();refreshGuide();$('saveState').textContent='저장된 초안';message('초안을 불러왔습니다. 저장한 내용은 공개하기 전까지 손님에게 보이지 않습니다.');}
 async function save(){accept(await api('draft',{revision,draft}));render();refreshGuide();$('saveState').textContent='초안 저장됨 · 공개 전';message('초안을 저장했습니다.');}
@@ -85,5 +88,7 @@ $('guideFrame').onload=()=>{
 };
 $('browseMode').onclick=()=>{browseMode=!browseMode;$('browseMode').setAttribute('aria-pressed',String(browseMode));$('browseMode').textContent=browseMode?'수정할 위치 선택':'화면 둘러보기';$('guideHint').textContent=browseMode?'화면의 버튼을 눌러 안내를 둘러보세요. 수정하려면 위치 선택으로 돌아오세요.':'수정할 문구·사진을 누르세요. 탭과 펼치기 버튼은 그대로 사용할 수 있어요.';};
 $('closeEditor').onclick=()=>$('editorPanel').classList.remove('is-open');
+$('cancelCustom').onclick=()=>$('customDialog').close();
+$('saveCustom').onclick=()=>{const dialog=$('customDialog'),type=dialog.dataset.type,id=dialog.dataset.id||crypto.randomUUID(),list=draft.__custom[type]||(draft.__custom[type]=[]),item=list.find(x=>x.id===id)||{id,hidden:false,order:list.length};item.query=$('customQuery').value.trim();item.name={ko:$('customName').value.trim()};item.desc={ko:$('customDesc').value.trim()};if($('customMap').value.trim())item.map=$('customMap').value.trim();if(!item.query||!item.name.ko)return message('이름과 주소·검색어를 입력해주세요.');if(!list.includes(item))list.push(item);dialog.close();dirty=true;render();message('추가 항목을 저장하려면 초안 저장을 눌러주세요.');};
 window.addEventListener('beforeunload',e=>{if(dirty||busy){e.preventDefault();e.returnValue='';}});
 load().catch(error=>message(error.message));
