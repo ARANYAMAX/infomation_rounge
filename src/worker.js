@@ -1,4 +1,5 @@
-import {template,blocks,catalog,seed} from './generated.js';
+import {template,blocks,catalog,seed,expiredTemplate} from './generated.js';
+import {guestLinkStatus} from './guest-expiry.js';
 import {validateDraft,pending,renderGuide,languages,translationFragments} from './content.js';
 const encoder=new TextEncoder();
 const json=(body,status=200,extra={})=>Response.json(body,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});
@@ -82,6 +83,8 @@ export default {async fetch(request,env){
    return new Response(object.body,{headers:{'Content-Type':object.httpMetadata.contentType,'Cache-Control':'public,max-age=31536000,immutable','X-Content-Type-Options':'nosniff'}});
   }
   if(path==='/'||path==='/index.html'){
+   const guest=guestLinkStatus(url.searchParams.get('g'));
+   if(guest.expired){const language=languages.includes(guest.language)?guest.language:'ko';return new Response(expiredTemplate.replace('__EXPIRED_LANGUAGE__',language),{status:410,headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store','X-Robots-Tag':'noindex'}});}
    return new Response(await publishedGuide(env),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store'}});
   }
   if(path==='/admin')return env.ASSETS.fetch(request);
