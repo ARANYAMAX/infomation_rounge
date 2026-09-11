@@ -1,5 +1,5 @@
 import {template,blocks,catalog,seed} from './generated.js';
-import {validateDraft,pending,renderGuide,languages} from './content.js';
+import {validateDraft,pending,renderGuide,languages,translationFragments} from './content.js';
 const encoder=new TextEncoder();
 const json=(body,status=200,extra={})=>Response.json(body,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});
 const hex=bytes=>Array.from(new Uint8Array(bytes),b=>b.toString(16).padStart(2,'0')).join('');
@@ -55,7 +55,7 @@ export default {async fetch(request,env){
      if(text.length>2000)fail('자동 번역은 항목당 2,000자까지 지원합니다. 문구를 나눠주세요.');
      const translated={ko:text};
      // Preserve markup and substitutions by translating only text fragments.
-     const fragments=text.split(/(<[^>]+>|\{[^}]+\}|https?:\/\/[^\s<]+|\d+(?:[.:/-]\d+)*)/g);
+     const fragments=translationFragments(text);
      for(const l of languages.filter(l=>l!=='ko')){
       let output='';for(const fragment of fragments){if(!fragment.trim()||/^(?:<|\{|https?:\/\/|\d)/.test(fragment)){output+=fragment;continue;}
        const answer=await env.AI.run('@cf/meta/m2m100-1.2b',{text:fragment,source_lang:'ko',target_lang:l});

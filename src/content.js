@@ -1,4 +1,9 @@
 export const languages=['ko','en','zh','ja','de','fr','es','it','pt','ru'];
+// Keep each sentence separate: M2M100 can omit trailing sentences in a paragraph.
+export function translationFragments(text){
+ return text.split(/(<[^>]+>|\{[^}]+\}|https?:\/\/[^\s<]+|\d+(?:[.:/-]\d+)*)/g).flatMap(part=>
+  /^(?:<|\{|https?:\/\/|\d)/.test(part)?[part]:part.split(/(?<=[.!?。！？])(?=\s)|(?<=\n)/u));
+}
 export function validateDraft(input,catalog,previous){
  if(!input||typeof input!=='object'||Array.isArray(input))throw Error('초안 형식이 올바르지 않습니다.');
  if(Object.keys(input).length!==catalog.length)throw Error('항목이 누락되었습니다. 새로고침해주세요.');
