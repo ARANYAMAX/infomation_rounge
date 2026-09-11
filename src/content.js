@@ -11,7 +11,7 @@ export function validateDraft(input,catalog,previous){
  for(const field of catalog){
   const entry=input[field.id],old=previous[field.id];if(!entry?.values)throw Error('항목 누락');
   const values={};for(const l of field.type==='image'?['ko']:languages){const v=entry.values[l];if(typeof v!=='string'||v.length>12000)throw Error('문구 길이나 언어를 확인해주세요.');if(v!==old.values[l]&&/<(?!\/?(?:b|strong|em|i|small|br)\s*\/?>)[^>]*>/i.test(v))throw Error('문구에는 일반 텍스트와 기본 강조 태그만 사용할 수 있습니다.');values[l]=v;}
-  if(field.type==='image'&&!/^\/(?:assets\/[a-f0-9]{24}\.(?:png|jpeg|webp|gif)|media\/[a-f0-9-]{36}\.(?:png|jpg|webp))$/.test(values.ko))throw Error('사진을 업로드해 선택해주세요.');
+  if(field.type==='image'&&values.ko!==''&&!/^\/(?:assets\/[a-f0-9]{24}\.(?:png|jpeg|webp|gif)|media\/[a-f0-9-]{36}\.(?:png|jpg|webp))$/.test(values.ko))throw Error('사진을 업로드해 선택해주세요.');
   // Translation status comes only from the server, never from the browser.
   result[field.id]={values,translatedFrom:old.translatedFrom,reviewed:old.reviewed&&JSON.stringify(values)===JSON.stringify(old.values)};
  }

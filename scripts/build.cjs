@@ -23,7 +23,7 @@ function walk(value,block,path=[]){
    else walk(item,block,[...path,key]);
  }
 }
-for(const b of blocks)walk(b.value,b.name);
+for(const b of blocks){if(['food','ARANYA_CURATED_PLACES'].includes(b.name))for(const place of b.value)place.image=place.image||'';walk(b.value,b.name);}
 for(const b of [...blocks].sort((a,b)=>b.start-a.start))html=html.slice(0,b.start)+'__ARANYA_BLOCK_'+b.name+'__'+html.slice(b.end);
 // Main photograph is outside the data objects.
 const hero=/<img\b[^>]*src="(\/assets\/[^"]+)"[^>]*>/i.exec(html);
