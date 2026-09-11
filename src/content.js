@@ -6,9 +6,7 @@ export function translationFragments(text){
 }
 export function validateDraft(input,catalog,previous){
  if(!input||typeof input!=='object'||Array.isArray(input))throw Error('초안 형식이 올바르지 않습니다.');
- const custom=input.__custom||{food:[],around:[]};
- if(!Array.isArray(custom.food)||!Array.isArray(custom.around))throw Error('추가 목록 형식이 올바르지 않습니다.');
- if(Object.keys(input).filter(k=>k!=='__custom').length!==catalog.length)throw Error('항목이 누락되었습니다. 새로고침해주세요.');
+ if(Object.keys(input).length!==catalog.length)throw Error('항목이 누락되었습니다. 새로고침해주세요.');
  const result={};
  for(const field of catalog){
   const entry=input[field.id],old=previous[field.id];if(!entry?.values)throw Error('항목 누락');
@@ -17,14 +15,7 @@ export function validateDraft(input,catalog,previous){
   // Translation status comes only from the server, never from the browser.
   result[field.id]={values,translatedFrom:old.translatedFrom,reviewed:old.reviewed&&JSON.stringify(values)===JSON.stringify(old.values)};
  }
- result.__custom={food:custom.food.map(validateCustom),around:custom.around.map(validateCustom)};
  return result;
-}
-function validateCustom(item){
- if(!item||typeof item!=='object'||!item.id||typeof item.query!=='string')throw Error('추가 항목 형식이 올바르지 않습니다.');
- const clean={id:String(item.id).slice(0,48),query:item.query.slice(0,300),hidden:Boolean(item.hidden),order:Number.isFinite(item.order)?item.order:0};
- for(const key of ['name','dist','desc','tip']){if(item[key]!==undefined){if(!item[key]||typeof item[key]!=='object')throw Error('추가 항목 문구를 확인해주세요.');clean[key]={};for(const l of languages){const v=typeof item[key][l]==='string'?item[key][l]:'';if(v.length>4000)throw Error('추가 항목 문구가 너무 깁니다.');clean[key][l]=v;}}}
- return clean;
 }
 export function pending(draft,catalog){return catalog.filter(f=>f.type==='text'&&draft[f.id].values.ko!==draft[f.id].translatedFrom).map(f=>f.id);}
 export function renderGuide(template,blocks,catalog,content){
@@ -32,11 +23,6 @@ export function renderGuide(template,blocks,catalog,content){
  for(const field of catalog){const entry=content[field.id];if(!entry)continue;
   if(field.block==='hero'){template=template.replace('__ARANYA_HERO__',entry.values.ko);continue;}
   for(const [l,path] of Object.entries(field.paths)){let target=copy[field.block];for(const key of path.slice(0,-1))target=target[key];target[path.at(-1)]=entry.values[l];}
- }
- const custom=content.__custom||{};
- for(const [key,block] of [['food','food'],['around','ARANYA_CURATED_PLACES']]){
-  const list=Array.isArray(custom[key])?custom[key].filter(x=>!x.hidden).sort((a,b)=>(a.order||0)-(b.order||0)):[];
-  if(list.length)copy[block]=[...(copy[block]||[]),...list];
  }
  return template.replace(/__ARANYA_BLOCK_([\w-]+)__/g,(_,name)=>JSON.stringify(copy[name]).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029'));
 }
