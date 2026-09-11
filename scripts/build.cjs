@@ -23,8 +23,10 @@ function walk(value,block,path=[]){
    else walk(item,block,[...path,key]);
  }
 }
-for(const b of blocks){if(['food','ARANYA_CURATED_PLACES'].includes(b.name))for(const place of b.value)place.image=place.image||'';if(b.name==='aranya-essentials-data')for(const place of b.value.places)place.image=place.image||'';walk(b.value,b.name);if(b.name==='aranya-essentials-data')for(const f of catalog.filter(f=>f.block===b.name&&f.type==='image'))f.label=b.value.places[f.path[1]].nameI18n?.ko||b.value.places[f.path[1]].name||'편의시설';}
+for(const b of blocks){if(['food','ARANYA_CURATED_PLACES'].includes(b.name))for(const place of b.value)place.image=place.image||'';walk(b.value,b.name);}
 for(const b of [...blocks].sort((a,b)=>b.start-a.start))html=html.slice(0,b.start)+'__ARANYA_BLOCK_'+b.name+'__'+html.slice(b.end);
+html=html.replace('<span>TV</span>','<span data-photo-key="a_tv">TV</span>');
+html=html.replace(/<div class="amen">((?:(?!<\/div>)[\s\S])*?<span (?:data-i18n|data-photo-key)="(a_[^"]+)">([^<]+)<\/span>)<\/div>/g,(_,body,key,label)=>{add('amenityPhotos',[key],'image',{ko:''},{});catalog.at(-1).label=label;return '<div class="amen" style="flex-wrap:wrap">'+body+'__AMEN_PHOTO_'+key+'__</div>';});
 // Main photograph is outside the data objects.
 const hero=/<img\b[^>]*src="(\/assets\/[^"]+)"[^>]*>/i.exec(html);
 if(hero){add('hero',['image'],'image',{ko:hero[1]},{ko:[]});html=html.replace(hero[0],hero[0].replace(hero[1],'__ARANYA_HERO__'));}

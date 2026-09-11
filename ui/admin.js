@@ -10,7 +10,7 @@ function changed(){dirty=true;$('saveState').textContent='수정 중 · 아직 �
 function plain(value){const doc=new DOMParser().parseFromString(String(value),'text/html');return doc.body.textContent.replace(/\s+/g,' ').trim();}
 function fieldName(field){
  if(field.block==='hero')return '첫 화면 대표 사진';
- if(field.type==='image'&&field.block==='aranya-essentials-data')return '편의시설 · '+field.label+' · 사진';
+ if(field.type==='image'&&field.block==='amenityPhotos')return '편의시설 · '+field.label+' · 사진';
  if(field.type==='image'&&['food','ARANYA_CURATED_PLACES'].includes(field.block)){const name=draft[field.block+':'+field.path[0]+'.name'];return (field.block==='food'?'맛집·카페':'주변여행')+' · '+plain(name?.values.ko||'장소')+' · 사진';}
  const prefix=field.path.slice(0,1).join('.'),title=catalog.find(f=>f.block===field.block&&f.path.join('.')===prefix+'.title');
  const roles={title:'제목',lead:'소개 문구',body:'설명',image:'사진',category:'분류',quick:'버튼 안내',steps:'사용 순서',desc:'설명',name:'이름'};

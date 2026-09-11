@@ -21,6 +21,7 @@ export function pending(draft,catalog){return catalog.filter(f=>f.type==='text'&
 export function renderGuide(template,blocks,catalog,content){
  const copy=structuredClone(blocks);
  for(const field of catalog){const entry=content[field.id];if(!entry)continue;
+  if(field.block==='amenityPhotos'){template=template.replace('__AMEN_PHOTO_'+field.path[0]+'__',entry.values.ko?'<img src="'+entry.values.ko+'" alt="" loading="lazy" style="width:100%;height:180px;object-fit:cover;border-radius:10px;flex-basis:100%">':'');continue;}
   if(field.block==='hero'){template=template.replace('__ARANYA_HERO__',entry.values.ko);continue;}
   for(const [l,path] of Object.entries(field.paths)){let target=copy[field.block];for(const key of path.slice(0,-1))target=target[key];target[path.at(-1)]=entry.values[l];}
  }
