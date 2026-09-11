@@ -1,0 +1,10 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';
+const base='http://127.0.0.1:8790',expected=JSON.parse(fs.readFileSync('.wrangler/review/browser-result.json','utf8'));
+const login=await fetch(base+'/api/login',{method:'POST',headers:{Origin:base,'Content-Type':'application/json','CF-Connecting-IP':'persistence-review'},body:JSON.stringify({password:'local-review-only'})});assert.equal(login.status,200);
+const cookie=login.headers.get('set-cookie').split(';')[0];
+const data=await(await fetch(base+'/api/content',{headers:{Cookie:cookie}})).json();
+assert.equal(data.draft['I18N:step_wifi_p'].values.en,'QA storage persistence check');assert.equal(data.draft['hero:image'].values.ko,expected.photo);
+const html=await(await fetch(base+'/')).text();assert(html.includes('QA storage persistence check'));assert(html.includes(expected.photo));
+const photo=await fetch(base+expected.photo);assert.equal(photo.status,200);assert.equal(photo.headers.get('Content-Type'),'image/png');assert((await photo.arrayBuffer()).byteLength>32);
+assert.equal((await fetch(base+'/api/content')).status,401);assert.equal((await fetch(base+'/preview')).status,401);
+console.log('PASS: after Worker process restart, D1 draft/public content and R2 photo bytes persist; anonymous management and preview remain blocked.');

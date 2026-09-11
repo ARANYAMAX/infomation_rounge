@@ -1,0 +1,55 @@
+const fs=require('fs'),assert=require('node:assert/strict');
+const {chromium}=require('C:/Users/hot90/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const base='http://127.0.0.1:8790';
+const guest='?g='+Buffer.from(JSON.stringify(['Review','2099-01-01','2099-01-03','15:00','11:00',2,0,'en'])).toString('base64url');
+(async()=>{
+ const browser=await chromium.launch({channel:'msedge',headless:true});
+ const context=await browser.newContext({viewport:{width:1365,height:950}}),page=await context.newPage(),errors=[],dialogs=[],checks=[];
+ const pass=name=>{checks.push(name);console.log('PASS:',name);};
+ page.on('pageerror',e=>errors.push(e.message));page.on('dialog',async d=>{dialogs.push(d.type()+':'+d.message());await d.accept();});
+ try{
+  await page.goto(base+'/');await page.locator('#hostBasePassword').fill('local-review-only');await page.locator('#hostBaseUnlock').click();
+  await page.getByRole('link',{name:'내용 관리',exact:true}).waitFor();pass('existing host login and management link');
+  await page.getByRole('link',{name:'내용 관리',exact:true}).click();await page.locator('#manager').waitFor();
+  const initial=await (await context.request.get(base+'/api/content',{headers:{Cookie:(await context.cookies()).map(c=>c.name+'='+c.value).join('; ')}})).json();
+  const idx=initial.catalog.findIndex(f=>f.id==='I18N:step_wifi_p'),original=initial.draft['I18N:step_wifi_p'].values.ko;
+  await page.locator('#search').fill(original);await page.locator('#field-'+idx).fill('검증용 한국어 초안');await page.locator('#save').click();
+  await page.getByRole('status').filter({hasText:'초안을 저장했습니다.'}).waitFor();await page.reload();await page.locator('#manager').waitFor();
+  assert.equal(await page.locator('#field-'+idx).inputValue(),'검증용 한국어 초안');pass('Korean draft survives browser refresh');
+  await page.locator('#publish').click();await page.getByRole('status').filter({hasText:'먼저 자동 번역'}).waitFor();pass('untranslated Korean cannot publish');
+  await page.locator('#field-'+idx).fill(original);
+  const card=page.locator('.card').filter({has:page.locator('#field-'+idx)});await card.locator('summary').click();await card.getByRole('textbox',{name:'영어 번역',exact:true}).fill('QA storage persistence check');
+  await page.locator('#save').click();await page.getByRole('status').filter({hasText:'초안을 저장했습니다.'}).waitFor();
+  await page.locator('#sections').getByRole('button',{name:'사진',exact:true}).click();
+  const photoCard=page.locator('.card').filter({hasText:'첫 화면 대표 사진'});
+  await photoCard.locator('input[type=file]').setInputFiles({name:'qa-photo.png',mimeType:'image/png',buffer:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a4WQAAAAASUVORK5CYII=','base64')});
+  await page.waitForFunction(()=>[...document.querySelectorAll('.card img')].some(i=>i.getAttribute('src').startsWith('/media/')));
+  const photo=await photoCard.locator('img').getAttribute('src');
+  await page.locator('#save').click();await page.getByRole('status').filter({hasText:'초안을 저장했습니다.'}).waitFor();pass('real PNG upload and draft photo save to local R2/D1');
+  await page.locator('#preview').click();const preview=page.frameLocator('#previewFrame');await preview.locator('.home-masthead').waitFor();
+  assert.equal(await preview.locator('.masthead-visual img').getAttribute('src'),photo);
+  assert.equal(await preview.getByRole('link',{name:'내용 관리',exact:true}).count(),0);pass('draft preview photo and no management link');
+  await page.locator('#closePreview').click();await page.locator('#publish').click();await page.locator('#reviewed').check();await page.locator('#confirmPublish').click();
+  await page.getByRole('status').filter({hasText:'공개 완료'}).waitFor();pass('publish through confirmation dialog');
+  const guestContext=await browser.newContext(),guestPage=await guestContext.newPage();guestPage.on('pageerror',e=>errors.push('guest:'+e.message));
+  await guestPage.goto(base+'/'+guest);await guestPage.waitForFunction(()=>document.querySelector('[data-i18n=step_wifi_p]')?.textContent==='QA storage persistence check');
+  assert.equal(await guestPage.locator('.masthead-visual img').getAttribute('src'),photo);
+  for(const selector of ['#hostLinkTab','#hostLinksPage','#hostLogoutBtn','#adminLockBtn'])assert.equal(await guestPage.locator(selector).isVisible(),false,selector+' visible to guest');
+  assert.equal((await guestContext.request.get(base+'/api/content')).status(),401);
+  assert.equal((await guestContext.request.post(base+'/api/publish',{headers:{Origin:base},data:{revision:0,reviewed:true}})).status(),401);
+  await guestPage.reload();await guestPage.waitForFunction(()=>document.querySelector('[data-i18n=step_wifi_p]')?.textContent==='QA storage persistence check');pass('fresh guest, published text/photo refresh, no admin UI or API access');
+  await page.locator('#logout').click();await page.locator('#login').waitFor();
+  assert.equal((await context.request.get(base+'/api/content',{headers:{Cookie:(await context.cookies()).map(c=>c.name+'='+c.value).join('; ')}})).status(),401);pass('logout revokes browser access');
+  await page.locator('#password').fill('local-review-only');await page.locator('#loginForm button').click();await page.locator('#manager').waitFor();
+  const after=await (await context.request.get(base+'/api/content',{headers:{Cookie:(await context.cookies()).map(c=>c.name+'='+c.value).join('; ')}})).json();assert.equal(after.draft['I18N:step_wifi_p'].values.en,'QA storage persistence check');assert.equal(after.draft['hero:image'].values.ko,photo);
+  await page.reload();await page.locator('#manager').waitFor();pass('relogin and refresh retain published text and image');
+  await page.screenshot({path:'.wrangler/review/admin-desktop.png',fullPage:true});await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));pass('mobile width');
+  await page.setViewportSize({width:1365,height:950});await page.goto(base+'/');await page.locator('#hostLogoutBtn').waitFor();
+  await page.route('**/api/logout',async route=>{await new Promise(r=>setTimeout(r,500));await route.continue();});
+  await page.locator('#hostLogoutBtn').click();await page.locator('#hostBasePassword').waitFor();
+  assert.equal((await context.request.get(base+'/api/content',{headers:{Cookie:(await context.cookies()).map(c=>c.name+'='+c.value).join('; ')}})).status(),401,'guide logout left server session active');pass('guide logout awaits server cookie removal');
+  console.log('DIALOGS:',dialogs);console.log('BROWSER ERRORS:',errors);assert.deepEqual(errors,[]);assert.deepEqual(dialogs,[],'unexpected navigation prompt');
+  fs.writeFileSync('.wrangler/review/browser-result.json',JSON.stringify({checks,errors,dialogs,photo},null,2));
+ }catch(e){await page.screenshot({path:'.wrangler/review/failure.png',fullPage:true});console.error('CHECKS:',checks,'DIALOGS:',dialogs,'BROWSER ERRORS:',errors);throw e;}finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});
+

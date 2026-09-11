@@ -1,0 +1,11 @@
+{
+  "$schema":"node_modules/wrangler/config-schema.json",
+  "name":"infomation-rounge",
+  "main":"src/worker.js",
+  "compatibility_date":"2026-09-10",
+  "build":{"command":"node scripts/build.cjs"},
+  "assets":{"directory":"./dist","binding":"ASSETS","run_worker_first":true},
+  "d1_databases":[{"binding":"DB","database_name":"aranya-content","database_id":"c6d7ceb6-20c1-4575-83e2-5aae8937f106","migrations_dir":"migrations"}],
+  "r2_buckets":[{"binding":"IMAGES","bucket_name":"aranya-images"}],
+  "ai":{"binding":"AI"}
+}
