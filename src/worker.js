@@ -38,8 +38,8 @@ export default {async fetch(request,env){
    if(path==='/api/content'&&request.method==='GET'){const s=await state(env);return json({...responseState(s),catalog,translationAvailable:!!env.AI,imagesAvailable:!!env.IMAGES});}
    if(path==='/api/image'&&request.method==='POST'){
     if(!env.IMAGES)fail('이미지 저장소 연결이 필요합니다.',503);
-    if(Number(request.headers.get('Content-Length'))>2*1024*1024)fail('사진은 2MB 이하로 선택해주세요.',413);
-    const bytes=new Uint8Array(await request.arrayBuffer());if(bytes.length>2*1024*1024)fail('사진은 2MB 이하로 선택해주세요.',413);
+    if(Number(request.headers.get('Content-Length'))>25*1024*1024)fail('사진은 25MB 이하로 선택해주세요.',413);
+    const bytes=new Uint8Array(await request.arrayBuffer());if(bytes.length>25*1024*1024)fail('사진은 25MB 이하로 선택해주세요.',413);
     let type,ext;if(bytes[0]===137&&bytes[1]===80&&bytes[2]===78&&bytes[3]===71){type='image/png';ext='png';}else if(bytes[0]===255&&bytes[1]===216&&bytes[2]===255){type='image/jpeg';ext='jpg';}else if(String.fromCharCode(...bytes.slice(0,4))==='RIFF'&&String.fromCharCode(...bytes.slice(8,12))==='WEBP'){type='image/webp';ext='webp';}else fail('JPG·PNG·WebP 사진만 지원합니다.');
     const key=crypto.randomUUID()+'.'+ext;await env.IMAGES.put(key,bytes,{httpMetadata:{contentType:type}});return json({url:'/media/'+key});
    }

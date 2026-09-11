@@ -30,8 +30,8 @@ function render(){
   const label=document.createElement('label');label.textContent=field.type==='image'?fieldName(field):'한국어 문구';card.append(label);
   if(field.type==='image'){
    const img=document.createElement('img');if(entry.values.ko)img.src=entry.values.ko;img.hidden=!entry.values.ko;img.alt=label.textContent;const file=document.createElement('input');file.type='file';file.accept='image/jpeg,image/png,image/webp';file.disabled=!images;file.setAttribute('aria-label',label.textContent+' 교체');
-   const hint=document.createElement('p');hint.className='hint';hint.textContent=images?'JPG · PNG · WebP / 최대 2MB. 초안을 공개하면 반영됩니다.':'이미지 저장소 연결 후 사진을 교체할 수 있습니다.';
-   file.onchange=()=>run(async()=>{const selected=file.files[0];if(!selected)return;if(selected.size>2*1024*1024)throw Error('사진은 2MB 이하로 선택해주세요.');const response=await fetch('/api/image',{method:'POST',body:selected,headers:{'Content-Type':selected.type}}),data=await response.json();if(!response.ok)throw Error(data.error);entry.values.ko=data.url;img.src=data.url;img.hidden=false;changed();});card.append(img,file,hint);
+   const hint=document.createElement('p');hint.className='hint';hint.textContent=images?'JPG · PNG · WebP / 최대 25MB. 초안을 공개하면 반영됩니다.':'이미지 저장소 연결 후 사진을 교체할 수 있습니다.';
+   file.onchange=()=>run(async()=>{const selected=file.files[0];if(!selected)return;if(selected.size>25*1024*1024)throw Error('사진은 25MB 이하로 선택해주세요.');const response=await fetch('/api/image',{method:'POST',body:selected,headers:{'Content-Type':selected.type}}),data=await response.json();if(!response.ok)throw Error(data.error);entry.values.ko=data.url;img.src=data.url;img.hidden=false;changed();});card.append(img,file,hint);
   }else{
    const input=document.createElement('textarea');input.value=entry.values.ko;input.maxLength=12000;label.htmlFor=input.id='field-'+catalog.indexOf(field);input.oninput=()=>{entry.values.ko=input.value;changed();};card.append(input);
    if(entry.values.ko!==entry.translatedFrom){const badge=document.createElement('span');badge.className='badge';badge.textContent='번역 필요';card.append(badge);}
