@@ -1396,6 +1396,7 @@ const food = [{"search":"대련집 서울 종로구 종로16길 37","cat":"food"
     const travelLabel=(key)=>{const entry=ARANYA_CURATED_UI[key];return entry?(entry[lang]||entry.en||entry.ko):t(key);};
     const renderTravelCard=(p,i)=>`
       <div class="place-card ${p.group==='pick'?'featured':''}">
+        <span class="place-badge ${p.group==='walk'?'walk':''}" ${p._cmsKey?'data-cms-field="'+p._cmsKey+'.group"':''}>${travelLabel(p.group==='pick'?'around_pick_badge':'around_walk_badge')}</span>
         <span class="dist">${pick(p.dist)}</span>
         <h3>${pick(p.name)}</h3>
         <p>${pick(p.desc)}</p>
@@ -1437,7 +1438,7 @@ const food = [{"search":"대련집 서울 종로구 종로16길 37","cat":"food"
 
     document.getElementById('foodList').innerHTML = food.map((p,i) => `
       <div class="place-card" data-cat="${p.cat}">
-        <div class="food-card-badges">${p.spicy?'<span class="spicy-badge">'+pick(p.spicy)+'</span>':''}</div>
+        <div class="food-card-badges">${p.tip?'<span class="aranya-local-badge">ARANYA PICK</span>':''}${p.spicy?'<span class="spicy-badge">'+pick(p.spicy)+'</span>':''}</div>
         <h3>${pick(p.name)}</h3><span class="dist">${pick(p.dist)}</span>
         <p>${pick(p.desc)}</p>
         ${aranyaPhotos(p)}
