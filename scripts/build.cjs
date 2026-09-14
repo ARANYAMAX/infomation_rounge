@@ -79,3 +79,6 @@ fs.copyFileSync(path.join(lucideRoot,'LICENSE'),'dist/lucide-LICENSE.txt');
 console.log('Available amenity icons: '+Object.keys(amenityIcons).length);
 if(fs.existsSync('favicon.ico'))fs.copyFileSync('favicon.ico','dist/favicon.ico');
 console.log(`Built ${catalog.length} editable fields and ${imageMap.size} images. Public assets: dist only.`);
+
+fs.mkdirSync("dist/assets/airport-posters",{recursive:true});
+for(const lang of ["ko","en","zh","ja","de","fr","es","it","pt","ru"])fs.copyFileSync("ui/airport-posters/"+lang+".png","dist/assets/airport-posters/"+lang+".png");

@@ -6,7 +6,7 @@ export function renderTravelExtras(copy,model,text,photos,escape,icons){
  const link=(block,item)=>{if(!item.linkUrl)return '';const f=field(block,item,'linkUrl');return '<div class="links"><a href="'+escape(item.linkUrl)+'" data-cms-field="'+escape(f.id)+'" target="_blank" rel="noopener noreferrer"><span '+text(item.linkLabel,field(block,item,'linkLabel').id)+'>'+escape(item.linkLabel.ko)+'</span></a></div>';};
  const step=(block,item)=>'<div class="travel-extra-step" data-cms-item="'+escape(item._cmsKey)+'">'+icon(item)+tag('h4',block,item,'title')+tag('p',block,item,'body')+photos(item)+link(block,item)+'</div>';
  const a=copy.AIRPORT;
- const airport='<details id="airportGuide" class="aranya-card-details airport-guide"><summary><span aria-hidden="true">✈ </span>'+tag('span','AIRPORT',null,'button')+'</summary><div class="aranya-detail-body">'+tag('h3','AIRPORT',null,'title')+tag('p','AIRPORT',null,'description')+a.methods.map(item=>step('AIRPORT',item)).join('')+'</div></details>';
+ const airport='<div class="links" id="airportGuide"><button type="button" class="place-photo-button" data-airport-poster data-guide-photo="/assets/airport-posters/ko.png"><span aria-hidden="true">✈ </span>'+tag('span','AIRPORT',null,'button')+'</button></div>';
  const tips=copy.TRAVEL_TIPS.map(item=>'<article class="travel-extra-card" data-cms-item="'+escape(item._cmsKey)+'">'+icon(item)+tag('h3','TRAVEL_TIPS',item,'title')+tag('p','TRAVEL_TIPS',item,'description')+photos(item)+link('TRAVEL_TIPS',item)+item.steps.map(s=>step('TRAVEL_TIPS',s)).join('')+'</article>').join('');
  return {airport,tips};
 }
