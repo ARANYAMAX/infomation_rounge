@@ -9,13 +9,14 @@ function group(field){if(field.block==='AIRPORT')return 'home';if(field.block===
 function changed(){badgeOnlyDirty=false;dirty=true;$('saveState').textContent='수정 중 · 아직 저장하지 않았어요';message('수정 중 · 초안 저장 후 번역과 미리보기를 진행하세요.');updateGuideSelection();clearTimeout(livePreviewTimer);livePreviewTimer=setTimeout(refreshGuide,600);}
 function plain(value){const doc=new DOMParser().parseFromString(String(value),'text/html');return doc.body.textContent.replace(/\s+/g,' ').trim();}
 function fieldName(field){
+ if(field.block==='food'&&field.path.at(-1)==='badge')return plain(draft['food:'+field.path[0]+'.name']?.values.ko||'맛집')+' · 추천 배지';
  const aroundRoles={around_title:'전체 · 제목',around_sub:'전체 · 설명',around_walk_title:'도보 여행 · 제목',around_walk_sub:'도보 여행 · 설명',around_pick_title:'추천 여행 · 제목',around_pick_sub:'추천 여행 · 설명'};
  if(field.block==='ARANYA_CURATED_UI'&&aroundRoles[field.path[0]])return aroundRoles[field.path[0]]+' · '+plain(draft[field.id]?.values.ko||'');
  if(field.id==='I18N:greet_tag')return '숙소 주소 · 지도 검색 주소';
  if(field.path.slice(-2).join('.')==='tonginGuide.search')return '통인시장 안내 · 지도 검색 주소';
  if(field.type==='url')return field.label;
  if(field.type==='plain'&&['search','naverSearch','address'].includes(field.path.at(-1)))return field.label;
- if(field.type==='icon'||field.type==='choice')return field.label+' · '+(({pick:'ARANYA PICK',walk:'NEARBY WALK',food:'식사',cafe:'카페',store:'편의점',pharmacy:'약국'})[draft[field.id]?.values.ko]||window.amenityIcons?.[draft[field.id]?.values.ko]?.label||'선택');
+ if(field.type==='icon'||field.type==='choice')return field.label+' · '+(({none:'없음',pick:'ARANYA PICK',walk:'NEARBY WALK',food:'식사',cafe:'카페',store:'편의점',pharmacy:'약국'})[draft[field.id]?.values.ko]||window.amenityIcons?.[draft[field.id]?.values.ko]?.label||'선택');
  if(field.type==='image'&&field.itemKey){const item=lists.flatMap(l=>l.items).find(i=>i.key===field.itemKey),photo=photoGroups.find(p=>p.fieldIds.includes(field.id));return (item?itemTitle(item)+' · ':'')+(photo?'추가 사진 '+(photo.fieldIds.indexOf(field.id)+1):'대표 사진');}
  if(field.block==='hero')return '첫 화면 대표 사진';
  if(field.type==='image'&&field.block==='amenityPhotos')return '편의시설 · '+field.label+' · 사진';
@@ -62,7 +63,7 @@ function render(preserveEditor=false){
   }else if(field.type==='url'){
    label.textContent=field.label;const input=document.createElement('input');input.type='url';input.placeholder='https://…';input.value=entry.values.ko;input.setAttribute('aria-label',field.label);input.oninput=()=>{entry.values.ko=input.value.trim();changed();};const hint=document.createElement('p');hint.className='hint';hint.textContent=field.path.at(-1)==='linkUrl'?'https://로 시작하는 안내 링크를 입력하세요. 비워두면 링크를 표시하지 않습니다.':'지도 앱의 공유 링크를 붙여 넣으세요. 비워두면 지도 검색 주소를 사용합니다.';card.append(input,hint);
   }else if(field.type==='plain'||field.type==='choice'){
-   const input=document.createElement(field.type==='choice'?'select':'input');label.textContent=field.label;input.setAttribute('aria-label',field.label);if(field.options)for(const v of field.options){const o=document.createElement('option');o.value=v;o.textContent=({food:'식사',cafe:'카페',pick:'ARANYA PICK',walk:'NEARBY WALK',store:'편의점',pharmacy:'약국'})[v]||v;input.append(o);}input.value=entry.values.ko;input.oninput=()=>{entry.values.ko=input.value;changed();};card.append(input);
+   const input=document.createElement(field.type==='choice'?'select':'input');label.textContent=field.label;input.setAttribute('aria-label',field.label);if(field.options)for(const v of field.options){const o=document.createElement('option');o.value=v;o.textContent=({food:'식사',cafe:'카페',none:'없음',pick:'ARANYA PICK',walk:'NEARBY WALK',store:'편의점',pharmacy:'약국'})[v]||v;input.append(o);}input.value=entry.values.ko;input.oninput=()=>{entry.values.ko=input.value;changed();};card.append(input);
   }else{
    const input=document.createElement('textarea');input.value=entry.values.ko;input.placeholder=['title','name','nameI18n'].includes(field.path.at(-1))?'제목 수정':'내용 수정';input.maxLength=12000;label.htmlFor=input.id='field-'+catalog.indexOf(field);input.oninput=()=>{entry.values.ko=input.value;changed();};card.append(input);
    if(entry.values.ko!==entry.translatedFrom){const badge=document.createElement('span');badge.className='badge';badge.textContent='번역 필요';card.append(badge);}

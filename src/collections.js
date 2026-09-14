@@ -3,8 +3,8 @@ import {amenityIconSvg} from './generated.js';
 export const validAmenityIcon=value=>Object.hasOwn(amenityIconSvg,value);
 const langs=['ko','en','zh','ja','de','fr','es','it','pt','ru'];
 const titles={AIRPORT:'인천공항에서 오는 법',TRAVEL_TIPS:'여행 팁 카드',methods:'이동 방법',button:'버튼 제목',description:'섹션 설명',linkUrl:'안내 링크',linkLabel:'링크 문구',CHECKIN:'체크인 안내',AMENITIES:'편의시설',HOUSE_NOTES:'숙소 안내',MANUALS:'기기 안내',food:'맛집 · 카페',ARANYA_CURATED_PLACES:'주변 여행','aranya-essentials-data':'편의점 · 약국',items:'안내 문장',quick:'빠른 사용 순서',steps:'사용 순서',notes:'주의사항',stops:'추천 가게',places:'장소',hanok:'한옥 공간',ess:'생활 편의',kit:'주방 · 안전',photos:'사진',title:'제목',name:'이름',nameI18n:'장소 이름',addressI18n:'주소 안내',body:'설명',lead:'소개 문구',category:'기기 분류',dist:'거리 · 위치',desc:'소개',tip:'추천 안내',use:'이용 방법',menu:'추천 메뉴',eatHow:'먹는 방법',image:'사진',spicy:'매운맛 안내',statusNote:'영업 안내'};
-const rawFields={search:'지도 검색 주소',naverSearch:'네이버지도 검색어',icon:'아이콘',cat:'분류',group:'분류',kind:'분류',phone:'전화번호',address:'지도 검색 주소',name:'지도용 장소 이름'};
-const options={cat:['food','cafe'],group:['pick','walk'],kind:['store','pharmacy']};
+const rawFields={badge:'추천 배지',search:'지도 검색 주소',naverSearch:'네이버지도 검색어',icon:'아이콘',cat:'분류',group:'분류',kind:'분류',phone:'전화번호',address:'지도 검색 주소',name:'지도용 장소 이름'};
+const options={badge:['pick','none'],cat:['food','cafe'],group:['pick','walk'],kind:['store','pharmacy']};
 const mapFields={naverUrl:'네이버지도 링크',kakaoUrl:'카카오맵 링크',googleUrl:'구글맵 링크'};
 Object.assign(rawFields,mapFields);
 export function validMapUrl(value){if(value==='')return true;try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password&&!/[\s<>"']/.test(value);}catch{return false;}}
@@ -15,6 +15,7 @@ const keyFor=(block,path)=>block+':'+path.join('.');
 const safeKey=s=>typeof s==='string'&&/^(?:\d+|n_[a-f0-9-]{36})$/.test(s);
 export function collectionModel(original,baseCatalog,seed,content={}){
  const source=structuredClone(original),catalog=[],defaults={},lists=[],photos=[],fieldMap=new Map(),seenLists=new Set(),seenPhotos=new Set();
+ for(const place of source.food||[])place.badge=place.tip?'pick':'none';
  const prepareMaps=value=>{if(!value||typeof value!=='object')return;if(value.tonginGuide)value.tonginGuide.search||='통인시장 서울 종로구 자하문로15길 18';if(typeof value.search==='string')for(const key of Object.keys(mapFields))value[key]||='';for(const child of Object.values(value))if(child&&typeof child==='object')prepareMaps(child);};
  prepareMaps(source.food);prepareMaps(source.ARANYA_CURATED_PLACES);
  const structure=content.__lists||{},galleries=content.__photos||{};

@@ -1438,7 +1438,7 @@ const food = [{"search":"대련집 서울 종로구 종로16길 37","cat":"food"
 
     document.getElementById('foodList').innerHTML = food.map((p,i) => `
       <div class="place-card" data-cat="${p.cat}">
-        <div class="food-card-badges">${p.tip?'<span class="aranya-local-badge">ARANYA PICK</span>':''}${p.spicy?'<span class="spicy-badge">'+pick(p.spicy)+'</span>':''}</div>
+        <div class="food-card-badges">${p.badge==='pick'?'<span class="aranya-local-badge" data-cms-field="'+p._cmsKey+'.badge">ARANYA PICK</span>':''}${p.spicy?'<span class="spicy-badge">'+pick(p.spicy)+'</span>':''}</div>
         <h3>${pick(p.name)}</h3><span class="dist">${pick(p.dist)}</span>
         <p>${pick(p.desc)}</p>
         ${aranyaPhotos(p)}
