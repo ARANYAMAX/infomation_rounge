@@ -1,0 +1,461 @@
+{
+  "labels": {
+    "ko": "여행 팁",
+    "en": "Travel Tips",
+    "zh": "旅行贴士",
+    "ja": "旅のヒント",
+    "de": "Reisetipps",
+    "fr": "Conseils de voyage",
+    "es": "Consejos de viaje",
+    "it": "Consigli di viaggio",
+    "pt": "Dicas de viagem",
+    "ru": "Советы путешественникам"
+  },
+  "blocks": {
+    "AIRPORT": {
+      "button": {
+        "ko": "인천공항에서 오는 법",
+        "en": "From Incheon Airport",
+        "zh": "从仁川机场出发",
+        "ja": "仁川空港からのアクセス",
+        "de": "Vom Flughafen Incheon",
+        "fr": "Depuis l’aéroport d’Incheon",
+        "es": "Desde el aeropuerto de Incheon",
+        "it": "Dall’aeroporto di Incheon",
+        "pt": "Do aeroporto de Incheon",
+        "ru": "Из аэропорта Инчхон"
+      },
+      "title": {
+        "ko": "인천공항 → 아란야",
+        "en": "Incheon Airport → Aranya",
+        "zh": "仁川机场 → Aranya",
+        "ja": "仁川空港 → Aranya",
+        "de": "Flughafen Incheon → Aranya",
+        "fr": "Aéroport d’Incheon → Aranya",
+        "es": "Aeropuerto de Incheon → Aranya",
+        "it": "Aeroporto di Incheon → Aranya",
+        "pt": "Aeroporto de Incheon → Aranya",
+        "ru": "Аэропорт Инчхон → Aranya"
+      },
+      "description": {
+        "ko": "이동 방법별 안내를 확인해주세요. 상세 경로와 이용 조건은 호스트에게 확인해주세요.",
+        "en": "Review the transport options. Ask your host for route details and conditions.",
+        "zh": "请查看交通方式，并向房东确认详细路线和使用条件。",
+        "ja": "交通手段をご確認ください。詳細な経路や利用条件はホストにお問い合わせください。",
+        "de": "Informieren Sie sich über die Verkehrsmittel. Fragen Sie Ihren Gastgeber nach Route und Bedingungen.",
+        "fr": "Consultez les moyens de transport. Demandez à votre hôte les itinéraires et conditions.",
+        "es": "Consulte las opciones de transporte. Pregunte al anfitrión por rutas y condiciones.",
+        "it": "Consulta i mezzi di trasporto. Chiedi all’host percorsi e condizioni.",
+        "pt": "Confira as opções de transporte. Peça ao anfitrião as rotas e condições.",
+        "ru": "Ознакомьтесь с вариантами транспорта. Уточните маршрут и условия у хозяина."
+      },
+      "methods": [
+        {
+          "title": {
+            "ko": "공항철도/지하철",
+            "en": "Airport railroad / subway",
+            "zh": "机场铁路/地铁",
+            "ja": "空港鉄道・地下鉄",
+            "de": "Flughafenbahn / U-Bahn",
+            "fr": "Train de l’aéroport / métro",
+            "es": "Tren del aeropuerto / metro",
+            "it": "Treno aeroportuale / metro",
+            "pt": "Trem do aeroporto / metrô",
+            "ru": "Аэропортовый поезд / метро"
+          },
+          "body": {
+            "ko": "이동 경로와 이용 안내를 호스트에게 확인해주세요.",
+            "en": "Ask your host for route details and travel instructions.",
+            "zh": "请向房东确认路线和乘车说明。",
+            "ja": "経路や利用方法はホストにご確認ください。",
+            "de": "Fragen Sie Ihren Gastgeber nach Route und Reisehinweisen.",
+            "fr": "Demandez les itinéraires et conseils de trajet à votre hôte.",
+            "es": "Consulte al anfitrión la ruta y las instrucciones de viaje.",
+            "it": "Chiedi all’host il percorso e le indicazioni di viaggio.",
+            "pt": "Peça ao anfitrião a rota e as instruções de viagem.",
+            "ru": "Уточните маршрут и инструкции у хозяина."
+          },
+          "icon": "lucide:train-front",
+          "linkUrl": "",
+          "linkLabel": {
+            "ko": "관련 안내",
+            "en": "More information",
+            "zh": "相关信息",
+            "ja": "関連案内",
+            "de": "Weitere Informationen",
+            "fr": "Informations complémentaires",
+            "es": "Más información",
+            "it": "Altre informazioni",
+            "pt": "Mais informações",
+            "ru": "Подробнее"
+          }
+        },
+        {
+          "title": {
+            "ko": "공항버스",
+            "en": "Airport bus",
+            "zh": "机场巴士",
+            "ja": "空港バス",
+            "de": "Flughafenbus",
+            "fr": "Bus de l’aéroport",
+            "es": "Autobús del aeropuerto",
+            "it": "Autobus aeroportuale",
+            "pt": "Ônibus do aeroporto",
+            "ru": "Автобус из аэропорта"
+          },
+          "body": {
+            "ko": "이동 경로와 이용 안내를 호스트에게 확인해주세요.",
+            "en": "Ask your host for route details and travel instructions.",
+            "zh": "请向房东确认路线和乘车说明。",
+            "ja": "経路や利用方法はホストにご確認ください。",
+            "de": "Fragen Sie Ihren Gastgeber nach Route und Reisehinweisen.",
+            "fr": "Demandez les itinéraires et conseils de trajet à votre hôte.",
+            "es": "Consulte al anfitrión la ruta y las instrucciones de viaje.",
+            "it": "Chiedi all’host il percorso e le indicazioni di viaggio.",
+            "pt": "Peça ao anfitrião a rota e as instruções de viagem.",
+            "ru": "Уточните маршрут и инструкции у хозяина."
+          },
+          "icon": "lucide:bus",
+          "linkUrl": "",
+          "linkLabel": {
+            "ko": "관련 안내",
+            "en": "More information",
+            "zh": "相关信息",
+            "ja": "関連案内",
+            "de": "Weitere Informationen",
+            "fr": "Informations complémentaires",
+            "es": "Más información",
+            "it": "Altre informazioni",
+            "pt": "Mais informações",
+            "ru": "Подробнее"
+          }
+        },
+        {
+          "title": {
+            "ko": "택시",
+            "en": "Taxi",
+            "zh": "出租车",
+            "ja": "タクシー",
+            "de": "Taxi",
+            "fr": "Taxi",
+            "es": "Taxi",
+            "it": "Taxi",
+            "pt": "Táxi",
+            "ru": "Такси"
+          },
+          "body": {
+            "ko": "이동 경로와 이용 안내를 호스트에게 확인해주세요.",
+            "en": "Ask your host for route details and travel instructions.",
+            "zh": "请向房东确认路线和乘车说明。",
+            "ja": "経路や利用方法はホストにご確認ください。",
+            "de": "Fragen Sie Ihren Gastgeber nach Route und Reisehinweisen.",
+            "fr": "Demandez les itinéraires et conseils de trajet à votre hôte.",
+            "es": "Consulte al anfitrión la ruta y las instrucciones de viaje.",
+            "it": "Chiedi all’host il percorso e le indicazioni di viaggio.",
+            "pt": "Peça ao anfitrião a rota e as instruções de viagem.",
+            "ru": "Уточните маршрут и инструкции у хозяина."
+          },
+          "icon": "lucide:car",
+          "linkUrl": "",
+          "linkLabel": {
+            "ko": "관련 안내",
+            "en": "More information",
+            "zh": "相关信息",
+            "ja": "関連案内",
+            "de": "Weitere Informationen",
+            "fr": "Informations complémentaires",
+            "es": "Más información",
+            "it": "Altre informazioni",
+            "pt": "Mais informações",
+            "ru": "Подробнее"
+          }
+        },
+        {
+          "title": {
+            "ko": "기타 이동 방법",
+            "en": "Other transport",
+            "zh": "其他交通方式",
+            "ja": "その他の交通手段",
+            "de": "Weitere Verkehrsmittel",
+            "fr": "Autres transports",
+            "es": "Otros transportes",
+            "it": "Altri trasporti",
+            "pt": "Outros transportes",
+            "ru": "Другой транспорт"
+          },
+          "body": {
+            "ko": "이동 경로와 이용 안내를 호스트에게 확인해주세요.",
+            "en": "Ask your host for route details and travel instructions.",
+            "zh": "请向房东确认路线和乘车说明。",
+            "ja": "経路や利用方法はホストにご確認ください。",
+            "de": "Fragen Sie Ihren Gastgeber nach Route und Reisehinweisen.",
+            "fr": "Demandez les itinéraires et conseils de trajet à votre hôte.",
+            "es": "Consulte al anfitrión la ruta y las instrucciones de viaje.",
+            "it": "Chiedi all’host il percorso e le indicazioni di viaggio.",
+            "pt": "Peça ao anfitrião a rota e as instruções de viagem.",
+            "ru": "Уточните маршрут и инструкции у хозяина."
+          },
+          "icon": "lucide:map-pin",
+          "linkUrl": "",
+          "linkLabel": {
+            "ko": "관련 안내",
+            "en": "More information",
+            "zh": "相关信息",
+            "ja": "関連案内",
+            "de": "Weitere Informationen",
+            "fr": "Informations complémentaires",
+            "es": "Más información",
+            "it": "Altre informazioni",
+            "pt": "Mais informações",
+            "ru": "Подробнее"
+          }
+        }
+      ]
+    },
+    "TRAVEL_TIPS": [
+      {
+        "title": {
+          "ko": "한복 대여 안내",
+          "en": "Hanbok rental guide",
+          "zh": "韩服租赁指南",
+          "ja": "韓服レンタル案内",
+          "de": "Hanbok-Verleih",
+          "fr": "Location de hanbok",
+          "es": "Alquiler de hanbok",
+          "it": "Noleggio hanbok",
+          "pt": "Aluguel de hanbok",
+          "ru": "Прокат ханбока"
+        },
+        "description": {
+          "ko": "한복 대여 전 선택, 이용 및 반납 조건을 확인해주세요.",
+          "en": "Check the selection, rental and return conditions before renting a hanbok.",
+          "zh": "租赁韩服前，请确认选择、使用及归还条件。",
+          "ja": "韓服を借りる前に、選び方・利用・返却条件をご確認ください。",
+          "de": "Prüfen Sie Auswahl, Nutzung und Rückgabe vor der Ausleihe.",
+          "fr": "Vérifiez les conditions de choix, de location et de retour avant de louer.",
+          "es": "Compruebe las condiciones de elección, uso y devolución antes de alquilar.",
+          "it": "Verifica le condizioni di scelta, utilizzo e restituzione prima del noleggio.",
+          "pt": "Confira as condições de escolha, uso e devolução antes de alugar.",
+          "ru": "Перед арендой уточните условия выбора, использования и возврата."
+        },
+        "icon": "lucide:shirt",
+        "image": "",
+        "linkUrl": "",
+        "linkLabel": {
+          "ko": "관련 안내",
+          "en": "More information",
+          "zh": "相关信息",
+          "ja": "関連案内",
+          "de": "Weitere Informationen",
+          "fr": "Informations complémentaires",
+          "es": "Más información",
+          "it": "Altre informazioni",
+          "pt": "Mais informações",
+          "ru": "Подробнее"
+        },
+        "steps": [
+          {
+            "title": {
+              "ko": "한복 선택",
+              "en": "Choosing a hanbok",
+              "zh": "选择韩服",
+              "ja": "韓服を選ぶ",
+              "de": "Hanbok auswählen",
+              "fr": "Choisir un hanbok",
+              "es": "Elegir un hanbok",
+              "it": "Scegliere un hanbok",
+              "pt": "Escolha do hanbok",
+              "ru": "Выбор ханбока"
+            },
+            "body": {
+              "ko": "자세한 이용 조건은 대여처 또는 공식 안내에서 확인해주세요.",
+              "en": "Check detailed conditions with the rental shop or official information.",
+              "zh": "具体条件请咨询租赁店或查看官方说明。",
+              "ja": "詳しい条件はレンタル店または公式案内でご確認ください。",
+              "de": "Einzelheiten erfahren Sie beim Verleih oder in offiziellen Informationen.",
+              "fr": "Consultez le loueur ou les informations officielles pour les conditions détaillées.",
+              "es": "Consulte las condiciones detalladas con la tienda o en la información oficial.",
+              "it": "Verifica i dettagli presso il noleggiatore o nelle informazioni ufficiali.",
+              "pt": "Consulte as condições detalhadas na loja ou nas informações oficiais.",
+              "ru": "Подробные условия уточняйте в пункте проката или официальных источниках."
+            },
+            "icon": "lucide:shirt",
+            "linkUrl": "",
+            "linkLabel": {
+              "ko": "관련 안내",
+              "en": "More information",
+              "zh": "相关信息",
+              "ja": "関連案内",
+              "de": "Weitere Informationen",
+              "fr": "Informations complémentaires",
+              "es": "Más información",
+              "it": "Altre informazioni",
+              "pt": "Mais informações",
+              "ru": "Подробнее"
+            }
+          },
+          {
+            "title": {
+              "ko": "피팅 및 대여",
+              "en": "Fitting and rental",
+              "zh": "试穿与租赁",
+              "ja": "試着とレンタル",
+              "de": "Anprobe und Ausleihe",
+              "fr": "Essayage et location",
+              "es": "Prueba y alquiler",
+              "it": "Prova e noleggio",
+              "pt": "Prova e aluguel",
+              "ru": "Примерка и аренда"
+            },
+            "body": {
+              "ko": "자세한 이용 조건은 대여처 또는 공식 안내에서 확인해주세요.",
+              "en": "Check detailed conditions with the rental shop or official information.",
+              "zh": "具体条件请咨询租赁店或查看官方说明。",
+              "ja": "詳しい条件はレンタル店または公式案内でご確認ください。",
+              "de": "Einzelheiten erfahren Sie beim Verleih oder in offiziellen Informationen.",
+              "fr": "Consultez le loueur ou les informations officielles pour les conditions détaillées.",
+              "es": "Consulte las condiciones detalladas con la tienda o en la información oficial.",
+              "it": "Verifica i dettagli presso il noleggiatore o nelle informazioni ufficiali.",
+              "pt": "Consulte as condições detalhadas na loja ou nas informações oficiais.",
+              "ru": "Подробные условия уточняйте в пункте проката или официальных источниках."
+            },
+            "icon": "lucide:ruler",
+            "linkUrl": "",
+            "linkLabel": {
+              "ko": "관련 안내",
+              "en": "More information",
+              "zh": "相关信息",
+              "ja": "関連案内",
+              "de": "Weitere Informationen",
+              "fr": "Informations complémentaires",
+              "es": "Más información",
+              "it": "Altre informazioni",
+              "pt": "Mais informações",
+              "ru": "Подробнее"
+            }
+          },
+          {
+            "title": {
+              "ko": "헤어 액세서리 / 소품",
+              "en": "Hair accessories / props",
+              "zh": "发饰/配件",
+              "ja": "ヘアアクセサリー・小物",
+              "de": "Haarschmuck / Accessoires",
+              "fr": "Accessoires de coiffure / objets",
+              "es": "Accesorios para el cabello / complementos",
+              "it": "Accessori per capelli / oggetti",
+              "pt": "Acessórios de cabelo / adereços",
+              "ru": "Украшения для волос / аксессуары"
+            },
+            "body": {
+              "ko": "자세한 이용 조건은 대여처 또는 공식 안내에서 확인해주세요.",
+              "en": "Check detailed conditions with the rental shop or official information.",
+              "zh": "具体条件请咨询租赁店或查看官方说明。",
+              "ja": "詳しい条件はレンタル店または公式案内でご確認ください。",
+              "de": "Einzelheiten erfahren Sie beim Verleih oder in offiziellen Informationen.",
+              "fr": "Consultez le loueur ou les informations officielles pour les conditions détaillées.",
+              "es": "Consulte las condiciones detalladas con la tienda o en la información oficial.",
+              "it": "Verifica i dettagli presso il noleggiatore o nelle informazioni ufficiali.",
+              "pt": "Consulte as condições detalhadas na loja ou nas informações oficiais.",
+              "ru": "Подробные условия уточняйте в пункте проката или официальных источниках."
+            },
+            "icon": "lucide:sparkles",
+            "linkUrl": "",
+            "linkLabel": {
+              "ko": "관련 안내",
+              "en": "More information",
+              "zh": "相关信息",
+              "ja": "関連案内",
+              "de": "Weitere Informationen",
+              "fr": "Informations complémentaires",
+              "es": "Más información",
+              "it": "Altre informazioni",
+              "pt": "Mais informações",
+              "ru": "Подробнее"
+            }
+          },
+          {
+            "title": {
+              "ko": "경복궁 방문 시 참고사항",
+              "en": "Visiting Gyeongbokgung",
+              "zh": "参观景福宫须知",
+              "ja": "景福宮訪問の注意点",
+              "de": "Besuch im Gyeongbokgung",
+              "fr": "Visiter Gyeongbokgung",
+              "es": "Visitar Gyeongbokgung",
+              "it": "Visitare Gyeongbokgung",
+              "pt": "Visita ao Gyeongbokgung",
+              "ru": "Посещение Кёнбоккуна"
+            },
+            "body": {
+              "ko": "자세한 이용 조건은 대여처 또는 공식 안내에서 확인해주세요.",
+              "en": "Check detailed conditions with the rental shop or official information.",
+              "zh": "具体条件请咨询租赁店或查看官方说明。",
+              "ja": "詳しい条件はレンタル店または公式案内でご確認ください。",
+              "de": "Einzelheiten erfahren Sie beim Verleih oder in offiziellen Informationen.",
+              "fr": "Consultez le loueur ou les informations officielles pour les conditions détaillées.",
+              "es": "Consulte las condiciones detalladas con la tienda o en la información oficial.",
+              "it": "Verifica i dettagli presso il noleggiatore o nelle informazioni ufficiali.",
+              "pt": "Consulte as condições detalhadas na loja ou nas informações oficiais.",
+              "ru": "Подробные условия уточняйте в пункте проката или официальных источниках."
+            },
+            "icon": "lucide:landmark",
+            "linkUrl": "",
+            "linkLabel": {
+              "ko": "관련 안내",
+              "en": "More information",
+              "zh": "相关信息",
+              "ja": "関連案内",
+              "de": "Weitere Informationen",
+              "fr": "Informations complémentaires",
+              "es": "Más información",
+              "it": "Altre informazioni",
+              "pt": "Mais informações",
+              "ru": "Подробнее"
+            }
+          },
+          {
+            "title": {
+              "ko": "반납 안내",
+              "en": "Returning your rental",
+              "zh": "归还说明",
+              "ja": "返却案内",
+              "de": "Rückgabe",
+              "fr": "Retour de la tenue",
+              "es": "Devolución",
+              "it": "Restituzione",
+              "pt": "Devolução",
+              "ru": "Возврат"
+            },
+            "body": {
+              "ko": "자세한 이용 조건은 대여처 또는 공식 안내에서 확인해주세요.",
+              "en": "Check detailed conditions with the rental shop or official information.",
+              "zh": "具体条件请咨询租赁店或查看官方说明。",
+              "ja": "詳しい条件はレンタル店または公式案内でご確認ください。",
+              "de": "Einzelheiten erfahren Sie beim Verleih oder in offiziellen Informationen.",
+              "fr": "Consultez le loueur ou les informations officielles pour les conditions détaillées.",
+              "es": "Consulte las condiciones detalladas con la tienda o en la información oficial.",
+              "it": "Verifica i dettagli presso il noleggiatore o nelle informazioni ufficiali.",
+              "pt": "Consulte as condições detalhadas na loja ou nas informações oficiais.",
+              "ru": "Подробные условия уточняйте в пункте проката или официальных источниках."
+            },
+            "icon": "lucide:undo-2",
+            "linkUrl": "",
+            "linkLabel": {
+              "ko": "관련 안내",
+              "en": "More information",
+              "zh": "相关信息",
+              "ja": "関連案内",
+              "de": "Weitere Informationen",
+              "fr": "Informations complémentaires",
+              "es": "Más información",
+              "it": "Altre informazioni",
+              "pt": "Mais informações",
+              "ru": "Подробнее"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

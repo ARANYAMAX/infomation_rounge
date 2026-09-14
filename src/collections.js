@@ -2,7 +2,7 @@
 import {amenityIconSvg} from './generated.js';
 export const validAmenityIcon=value=>Object.hasOwn(amenityIconSvg,value);
 const langs=['ko','en','zh','ja','de','fr','es','it','pt','ru'];
-const titles={CHECKIN:'체크인 안내',AMENITIES:'편의시설',HOUSE_NOTES:'숙소 안내',MANUALS:'기기 안내',food:'맛집 · 카페',ARANYA_CURATED_PLACES:'주변 여행','aranya-essentials-data':'편의점 · 약국',items:'안내 문장',quick:'빠른 사용 순서',steps:'사용 순서',notes:'주의사항',stops:'추천 가게',places:'장소',hanok:'한옥 공간',ess:'생활 편의',kit:'주방 · 안전',photos:'사진',title:'제목',name:'이름',nameI18n:'장소 이름',addressI18n:'주소 안내',body:'설명',lead:'소개 문구',category:'기기 분류',dist:'거리 · 위치',desc:'소개',tip:'추천 안내',use:'이용 방법',menu:'추천 메뉴',eatHow:'먹는 방법',image:'사진',spicy:'매운맛 안내',statusNote:'영업 안내'};
+const titles={AIRPORT:'인천공항에서 오는 법',TRAVEL_TIPS:'여행 팁 카드',methods:'이동 방법',button:'버튼 제목',description:'섹션 설명',linkUrl:'안내 링크',linkLabel:'링크 문구',CHECKIN:'체크인 안내',AMENITIES:'편의시설',HOUSE_NOTES:'숙소 안내',MANUALS:'기기 안내',food:'맛집 · 카페',ARANYA_CURATED_PLACES:'주변 여행','aranya-essentials-data':'편의점 · 약국',items:'안내 문장',quick:'빠른 사용 순서',steps:'사용 순서',notes:'주의사항',stops:'추천 가게',places:'장소',hanok:'한옥 공간',ess:'생활 편의',kit:'주방 · 안전',photos:'사진',title:'제목',name:'이름',nameI18n:'장소 이름',addressI18n:'주소 안내',body:'설명',lead:'소개 문구',category:'기기 분류',dist:'거리 · 위치',desc:'소개',tip:'추천 안내',use:'이용 방법',menu:'추천 메뉴',eatHow:'먹는 방법',image:'사진',spicy:'매운맛 안내',statusNote:'영업 안내'};
 const rawFields={search:'지도 검색 주소',naverSearch:'네이버지도 검색어',icon:'아이콘',cat:'분류',group:'분류',kind:'분류',phone:'전화번호',address:'지도 검색 주소',name:'지도용 장소 이름'};
 const options={cat:['food','cafe'],group:['pick','walk'],kind:['store','pharmacy']};
 const mapFields={naverUrl:'네이버지도 링크',kakaoUrl:'카카오맵 링크',googleUrl:'구글맵 링크'};
@@ -64,8 +64,8 @@ export function collectionModel(original,baseCatalog,seed,content={}){
     if(!fresh&&block==='AMENITIES'&&k==='image')override='amenityPhotos:'+value._legacy;
     if(override)out[k]=field(block,[...path,k],v,k==='image'?'image':'text',false,item,override);
     else if(k==='image')out[k]=field(block,[...path,k],v,'image',fresh,item).ko;
-    else if(Object.hasOwn(mapFields,k))out[k]=field(block,[...path,k],v,'url',fresh,item).ko;
-    else if(block==='AMENITIES'&&k==='icon')out[k]=field(block,[...path,k],v,'icon',fresh,item).ko;
+    else if(Object.hasOwn(mapFields,k)||k==='linkUrl')out[k]=field(block,[...path,k],v,'url',fresh,item).ko;
+    else if(['AMENITIES','AIRPORT','TRAVEL_TIPS'].includes(block)&&k==='icon')out[k]=field(block,[...path,k],v,'icon',fresh,item).ko;
     else if(item&&Object.hasOwn(rawFields,k)&&(typeof v==='string'||v===null))out[k]=field(block,[...path,k],v,options[k]?'choice':'plain',fresh,item).ko;
     else out[k]=walk(v,block,[...path,k],fresh,item);
    }
@@ -94,7 +94,7 @@ export function changeStructure(blocks,catalog,seed,content,action){
  if(['add','remove','move'].includes(action.type)){
   const list=model.lists.find(l=>l.key===action.key);if(!list)throw Error('목록을 찾을 수 없습니다.');
   const rows=list.items.map(({id,source})=>({id,source}));
-  if(action.type==='add'){const source=action.source??0;if(!list.templates.some(t=>t.source===source))throw Error('항목을 추가할 수 없습니다. 새로고침해주세요.');const id='n_'+crypto.randomUUID();if(action.icon!==undefined){if(list.block!=='AMENITIES'||!validAmenityIcon(action.icon))throw Error('아이콘을 선택해주세요.');draft[keyFor(list.block,[...list.path,id,'icon'])]=entry(action.icon,'choice');}rows.push({id,source});}
+  if(action.type==='add'){const source=action.source??0;if(!list.templates.some(t=>t.source===source))throw Error('항목을 추가할 수 없습니다. 새로고침해주세요.');const id='n_'+crypto.randomUUID();if(action.icon!==undefined){if(!['AMENITIES','AIRPORT','TRAVEL_TIPS'].includes(list.block)||!validAmenityIcon(action.icon))throw Error('아이콘을 선택해주세요.');draft[keyFor(list.block,[...list.path,id,'icon'])]=entry(action.icon,'choice');}rows.push({id,source});}
   else{const index=rows.findIndex(r=>r.id===action.id);if(index<0)throw Error('항목을 찾을 수 없습니다.');if(action.type==='remove'){prune(list.key+(list.path.length?'.':'')+action.id);rows.splice(index,1);}else{const next=index+action.direction;if(![-1,1].includes(action.direction)||next<0||next>=rows.length)throw Error('이동할 위치가 없습니다.');[rows[index],rows[next]]=[rows[next],rows[index]];}}
   draft.__lists[action.key]=rows;
  }else if(['photoAdd','photoRemove'].includes(action.type)){

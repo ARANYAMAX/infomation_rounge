@@ -1,3 +1,4 @@
+import {renderTravelExtras} from './travel-content.js';
 import {collectionModel,validImage,validMapUrl,validAmenityIcon} from './collections.js';
 import {amenityIconSvg} from './generated.js';
 import {blocks as sourceBlocks,catalog as sourceCatalog,seed as sourceSeed} from './generated.js';
@@ -46,9 +47,11 @@ export function renderGuide(template,blocks,catalog,content,{editing=false,snaps
   const key='cms_'+id.replace(/[^a-zA-Z0-9_]/g,'_');for(const l of languages)copy.I18N[l][key]=value[l]||'';
   return 'data-cms-field="'+escape(id)+'" data-i18n="'+key+'"';
  };
+ const extras=renderTravelExtras(copy,model,text,photos,escape,amenityIconSvg);
+ template=template.replace('__TRAVEL_TIPS_CONTENT__',extras.tips);
  const arrival=copy.CHECKIN.map(item=>{
   const ids=model.catalog.filter(f=>f.itemKey===item._cmsKey),title=ids.find(f=>f.path.at(-1)==='title'),body=ids.find(f=>f.path.at(-1)==='body');
-  return '<div class="step" data-cms-item="'+item._cmsKey+'"><div><h3 '+text(item.title,title.id)+'>'+escape(item.title.ko)+'</h3><p '+text(item.body,body.id)+'>'+escape(item.body.ko)+'</p>'+photos(item)+(item._map?'<div class="links" id="stationMaps"></div>':'')+'</div></div>';
+  return '<div class="step" data-cms-item="'+item._cmsKey+'"><div><h3 '+text(item.title,title.id)+'>'+escape(item.title.ko)+'</h3><p '+text(item.body,body.id)+'>'+escape(item.body.ko)+'</p>'+photos(item)+(item._map?'<div class="links" id="stationMaps"></div>'+extras.airport:'')+'</div></div>';
  }).join('');
  const start=template.indexOf('<div class="steps">'),end=template.indexOf('</section>',start);
  if(start>=0&&end>=0)template=template.slice(0,start)+'<div class="steps">'+arrival+'</div></div>\n'+template.slice(end);

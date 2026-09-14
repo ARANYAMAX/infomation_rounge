@@ -14,6 +14,7 @@ for(const m of html.matchAll(/<script\b[^>]*id="(aranya-essentials-data)"[^>]*>(
 const languages=['ko','en','zh','ja','de','fr','es','it','pt','ru'];
 const tabLabels={ko:['숙소 안내','기기 안내'],en:['House Guide','Appliance Guide'],zh:['住宿指南','设备指南'],ja:['宿泊案内','設備の使い方'],de:['Unterkunft','Geräteanleitung'],fr:['Guide du logement','Guide des appareils'],es:['Guía del alojamiento','Guía de aparatos'],it:['Guida all’alloggio','Guida agli apparecchi'],pt:['Guia da acomodação','Guia dos aparelhos'],ru:['Информация о доме','Инструкции к приборам']};
 const i18n=blocks.find(b=>b.name==='I18N').value;for(const [l,labels] of Object.entries(tabLabels)){i18n[l]||={};for(const [i,key] of ['tab_house','tab_manuals'].entries())if(!i18n[l][key]||i18n[l][key]===key)i18n[l][key]=labels[i];}
+const travelSeed=JSON.parse(fs.readFileSync('ui/travel-seed.json','utf8'));for(const [l,label] of Object.entries(travelSeed.labels))i18n[l].travel_tips_tab=label;
 const catalog=[],seed={};
 function add(block,path,type,values,paths){const id=block+':'+path.join('.');catalog.push({id,block,path,type,label:values.ko||'사진',paths});seed[id]={values,translatedFrom:values.ko||'',reviewed:true};}
 function walk(value,block,path=[]){
@@ -27,6 +28,7 @@ function walk(value,block,path=[]){
 }
 for(const b of blocks){if(['food','ARANYA_CURATED_PLACES'].includes(b.name))for(const place of b.value)place.image=place.image||'';walk(b.value,b.name);}
 for(const b of [...blocks].sort((a,b)=>b.start-a.start))html=html.slice(0,b.start)+'__ARANYA_BLOCK_'+b.name+'__'+html.slice(b.end);
+for(const [name,value] of Object.entries(travelSeed.blocks))blocks.push({name,value});
 html=html.replace('<span>TV</span>','<span data-photo-key="a_tv">TV</span>');
 html=html.replace(/<div class="amen">((?:(?!<\/div>)[\s\S])*?<span (?:data-i18n|data-photo-key)="(a_[^"]+)">([^<]+)<\/span>)<\/div>/g,(_,body,key,label)=>{add('amenityPhotos',[key],'image',{ko:''},{});catalog.at(-1).label=label;return '<div class="amen" style="flex-wrap:wrap">'+body+'__AMEN_PHOTO_'+key+'__</div>';});
 // Main photograph is outside the data objects.

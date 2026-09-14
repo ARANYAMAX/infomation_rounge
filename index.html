@@ -38,6 +38,8 @@ html.v33-logging-out body{
   visibility:hidden !important;
 }
 .place-photo-button{display:inline-flex;align-items:center;justify-content:center;justify-self:start;align-self:center;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--white);color:var(--ink);font-size:11px;letter-spacing:.12em;cursor:pointer}.amen .place-photo-button{margin-left:auto;flex-shrink:0}
+
+.lang-switch{z-index:3}.travel-extra-card{margin:16px 0;padding:20px;border:1px solid var(--line);border-radius:20px;background:var(--white);min-width:0}.travel-extra-card p,.airport-guide p{white-space:pre-line;overflow-wrap:anywhere;line-height:1.9}.travel-extra-icon svg{width:22px;height:22px;color:var(--celadon-deep)}.airport-guide{margin-top:16px}.airport-guide summary{cursor:pointer;color:var(--rust);padding:12px 0}.travel-extra-step{padding:14px 0;border-top:1px solid var(--line)}
 </style>
 <script id="v33-critical-host-boot-script">
 (function(){
@@ -747,6 +749,7 @@ body,button,input,select,textarea{
 <button class="tab" data-i18n="tab_house" data-page="rules">숙소 안내</button><button class="tab" data-i18n="tab_manuals" data-page="manuals">기기 안내</button>
 <button class="tab" data-i18n="tab_amenities" data-page="amenities">편의시설</button>
 <button class="tab" data-i18n="tab_around" data-page="around">주변 여행</button>
+<button class="tab" data-i18n="travel_tips_tab" data-page="tips">여행 팁</button>
 <button class="tab" data-i18n="tab_food" data-page="food">맛집·카페</button>
 <button class="tab" data-i18n="tab_contact" data-page="contact">문의</button>
 <button class="tab host-link-tab" data-page="hostlinks" id="hostLinkTab" type="button" hidden>
@@ -918,6 +921,7 @@ body,button,input,select,textarea{
 </div>
 </section>
 </div>
+<div class="page" data-page="tips"><section><div class="wrap"><div class="section-index">TRAVEL TIPS</div><h2 data-i18n="travel_tips_tab">여행 팁</h2><div id="travelTipsContent">__TRAVEL_TIPS_CONTENT__</div></div></section></div>
 <div class="page" data-page="food">
 <section>
 <div class="wrap"><div class="section-index">06 · TASTE</div>

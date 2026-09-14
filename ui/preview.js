@@ -37,7 +37,7 @@
   const x=scrollX,y=scrollY,cat=document.querySelector('#foodChips .active')?.dataset.cat;
   const incoming=new DOMParser().parseFromString(payload.html,'text/html');
   incoming.querySelectorAll('[data-i18n]').forEach(el=>{const value=payload.blocks.I18N[document.documentElement.lang]?.[el.dataset.i18n];if(value!==undefined)el.textContent=value;});
-  for(const selector of ['.steps','.amen-grid']){
+  for(const selector of ['.steps','.amen-grid','#travelTipsContent']){
    const targets=document.querySelectorAll(selector);incoming.querySelectorAll(selector).forEach((fresh,i)=>{if(targets[i])window.aranyaPreviewMorph(targets[i],fresh.innerHTML);});
   }
   const visual=document.querySelector('.masthead-visual');
