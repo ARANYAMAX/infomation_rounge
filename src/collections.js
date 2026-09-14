@@ -15,7 +15,7 @@ const keyFor=(block,path)=>block+':'+path.join('.');
 const safeKey=s=>typeof s==='string'&&/^(?:\d+|n_[a-f0-9-]{36})$/.test(s);
 export function collectionModel(original,baseCatalog,seed,content={}){
  const source=structuredClone(original),catalog=[],defaults={},lists=[],photos=[],fieldMap=new Map(),seenLists=new Set(),seenPhotos=new Set();
- for(const place of source.food||[])place.badge=place.tip?'pick':'none';
+ for(const place of source.food||[])place.badge='none';
  const prepareMaps=value=>{if(!value||typeof value!=='object')return;if(value.tonginGuide)value.tonginGuide.search||='통인시장 서울 종로구 자하문로15길 18';if(typeof value.search==='string')for(const key of Object.keys(mapFields))value[key]||='';for(const child of Object.values(value))if(child&&typeof child==='object')prepareMaps(child);};
  prepareMaps(source.food);prepareMaps(source.ARANYA_CURATED_PLACES);
  const structure=content.__lists||{},galleries=content.__photos||{};
