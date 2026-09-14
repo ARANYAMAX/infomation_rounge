@@ -8,8 +8,8 @@ try{
  assert.equal((await request('/api/content')).status,401);
  assert.equal((await request('/api/login',{password:'wrong'})).status,401);
  const login=await request('/api/login',{password:'integration-only-password'});assert.equal(login.status,200);cookie=login.headers.get('set-cookie').split(';')[0];assert(login.headers.get('set-cookie').includes('HttpOnly'));
- let data=await (await request('/api/content')).json();assert.equal(data.catalog.length,500);
- const id=data.catalog.find(f=>f.block==='I18N'&&f.path[0]==='step_wifi_p').id;
+ let data=await (await request('/api/content')).json();assert(data.catalog.length>=540);
+ const id='I18N:step_wifi_p';
  data.draft[id].values.ko='테스트 와이파이 안내';
  let saved=await request('/api/draft',{revision:data.revision,draft:data.draft});assert.equal(saved.status,200);data=await saved.json();
  assert((await (await request('/preview')).text()).includes('테스트 와이파이 안내'));assert(!(await (await request('/')).text()).includes('테스트 와이파이 안내'));
@@ -21,6 +21,9 @@ try{
  const png=Uint8Array.from([137,80,78,71,13,10,26,10]);const upload=await mf.dispatchFetch('https://aranya.test/api/image',{method:'POST',headers:{Origin:'https://aranya.test',Cookie:cookie},body:png});assert.equal(upload.status,200);const photo=await upload.json();assert.equal((await request(photo.url)).status,200);
  assert.equal((await request('/api/draft',{}, {Origin:'https://other.test'})).status,403);
  assert.equal((await request('/.git/config')).status,404);
+ assert.equal((await request('/preview',{}, {Origin:'https://other.test'})).status,403);
+ data=await (await request('/api/content')).json();const added=await request('/api/structure',{revision:data.revision,action:{type:'add',key:'MANUALS:',source:0}});assert.equal(added.status,200);const next=await added.json();assert(next.lists.find(l=>l.key==='MANUALS:').items.at(-1).id.startsWith('n_'));assert.equal((await request('/api/structure',{revision:data.revision,action:{type:'add',key:'MANUALS:',source:0}})).status,409);
+ const malformed=structuredClone(next.draft);delete malformed.__lists;assert.equal((await request('/api/draft',{revision:next.revision,draft:malformed})).status,400);
  const out=await request('/api/logout',{});assert(out.headers.get('set-cookie').includes('Max-Age=0'));
  console.log('PASS: real local D1/R2, server auth, CSRF, draft isolation, conflict detection, translation failure blocking, mocked translation success, publish, upload, .git denial');
 }finally{await mf.dispose();}

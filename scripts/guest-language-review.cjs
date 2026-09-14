@@ -1,0 +1,40 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const assert=require('node:assert/strict');
+const base='http://127.0.0.1:8790';
+(async()=>{
+ const browser=await chromium.launch({channel:'chrome',headless:true});
+ try{
+  const host=await browser.newPage();
+  await host.goto(base+'/');
+  await host.locator('#hostBaseLang.aranya-language-native').waitFor({state:'attached'});
+  assert.equal(await host.locator('#hostBaseLang').locator('..').locator('.language-prompt').textContent(),'- 언어선택 -');
+  await host.locator('#hostBasePassword').fill('local-review-only');
+  await host.locator('#hostBaseUnlock').click();
+  await host.locator('#hostLinkTab').click();
+  await host.locator('#genName').fill('Language Review');
+  await host.locator('#genCi').evaluate(el=>el.value='2099-01-01');
+  await host.locator('#genCo').evaluate(el=>el.value='2099-01-03');
+  await host.locator('#genLang').selectOption('ja');
+  assert.equal(await host.locator('#genLang').locator('..').getAttribute('class'),'aranya-language-field for-generator');
+  await host.screenshot({path:'.wrangler/review/language-generator-design.png',fullPage:true});
+  await host.locator('#genBtn').click();
+  const url=await host.locator('#linkOut a').getAttribute('href');
+  assert(url.includes('g='));
+  const guest=await browser.newPage();
+  await guest.goto(url.replace('http://127.0.0.1:8790',''+base));
+  await guest.locator('#langBtnLabel').filter({hasText:'- 言語選択 -'}).waitFor();
+  assert.equal(await guest.locator('html').getAttribute('lang'),'ja');
+  await guest.locator('#langBtn').click();
+  for(const label of ['한국어','English','中文','日本語','Deutsch','Français','Español','Italiano','Português','Русский'])assert(await guest.getByRole('option',{name:label,exact:true}).count());
+  await guest.getByRole('option',{name:'English',exact:true}).click();
+  await guest.locator('#langBtnLabel').filter({hasText:'- Select language -'}).waitFor();
+  assert.equal(await guest.locator('html').getAttribute('lang'),'en');
+  const expired=Buffer.from(JSON.stringify(['Expired','2020-01-01','2020-01-03','15:00','11:00',2,0,'ja'])).toString('base64url');
+  const response=await guest.goto(base+'/?g='+expired);assert.equal(response.status(),410);
+  await guest.locator('#expiredLangSelect.aranya-language-native').waitFor({state:'attached'});
+  assert.equal(await guest.locator('#expiredLangSelect').locator('..').locator('.language-prompt').textContent(),'- 言語選択 -');
+  await guest.locator('#expiredLangSelect').selectOption('en');
+  await guest.locator('.language-prompt').filter({hasText:'- Select language -'}).waitFor();
+  console.log('PASS selected guest language starts the link; native labels and in-guide language switching work');
+ }finally{await browser.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

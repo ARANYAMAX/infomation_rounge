@@ -1,3 +1,4 @@
+import {collectionModel,hydrateContent,changeStructure} from './collections.js';
 import {template,blocks,catalog,seed,expiredTemplate} from './generated.js';
 import {guestLinkStatus} from './guest-expiry.js';
 import {validateDraft,pending,renderGuide,languages,translationFragments} from './content.js';
@@ -8,19 +9,20 @@ async function digest(value){return hex(await crypto.subtle.digest('SHA-256',enc
 async function signature(value,secret){const key=await crypto.subtle.importKey('raw',encoder.encode(secret),{name:'HMAC',hash:'SHA-256'},false,['sign']);return hex(await crypto.subtle.sign('HMAC',key,encoder.encode(value)));}
 function equal(a,b){if(a.length!==b.length)return false;let diff=0;for(let i=0;i<a.length;i++)diff|=a.charCodeAt(i)^b.charCodeAt(i);return diff===0;}
 async function authenticated(request,env){if(!env.SESSION_SECRET)return false;const raw=request.headers.get('Cookie')?.match(/(?:^|;\s*)aranya_session=([^;]+)/)?.[1]||'';const [expiry,sig]=raw.split('.');if(!/^\d+$/.test(expiry)||Number(expiry)<Date.now()||!sig)return false;return equal(sig,await signature(expiry,env.SESSION_SECRET));}
-function hydrate(value){return Object.fromEntries(catalog.map(f=>[f.id,value[f.id]||seed[f.id]]));}
+function hydrate(value){return hydrateContent(blocks,catalog,seed,value);}
+function model(value){return collectionModel(blocks,catalog,seed,value);}
 async function state(env){let row=await env.DB.prepare('SELECT * FROM content_state WHERE id=1').first();if(!row){await env.DB.prepare('INSERT OR IGNORE INTO content_state(id,revision,draft,published) VALUES(1,0,?,?)').bind(JSON.stringify(seed),JSON.stringify(seed)).run();row=await env.DB.prepare('SELECT * FROM content_state WHERE id=1').first();}return {revision:row.revision,draft:hydrate(JSON.parse(row.draft)),published:hydrate(JSON.parse(row.published))};}
 let renderedRevision=-1,renderedHTML='';
 async function publishedGuide(env){if(!env.DB)return renderGuide(template,blocks,catalog,seed);const current=await env.DB.prepare('SELECT revision FROM content_state WHERE id=1').first();if(current&&current.revision===renderedRevision)return renderedHTML;const s=await state(env);renderedHTML=renderGuide(template,blocks,catalog,s.published);renderedRevision=s.revision;return renderedHTML;}
 async function save(env,s,draft,published=s.published){const result=await env.DB.prepare('UPDATE content_state SET revision=revision+1,draft=?,published=? WHERE id=1 AND revision=?').bind(JSON.stringify(draft),JSON.stringify(published),s.revision).run();if(result.meta.changes!==1)return false;return true;}
 function fail(message,status=400){throw Object.assign(Error(message),{status});}
 async function body(request){const text=await request.text();if(text.length>1500000)fail('내용이 너무 큽니다.',413);try{return JSON.parse(text);}catch{fail('요청 형식 오류');}}
-function responseState(s){return {revision:s.revision,draft:s.draft,pending:pending(s.draft,catalog)};}
+function responseState(s){const m=model(s.draft);return {revision:s.revision,draft:s.draft,catalog:m.catalog,lists:m.lists,photos:m.photos,pending:pending(s.draft,m.catalog)};}
 export default {async fetch(request,env){
  const url=new URL(request.url),path=url.pathname;
  try{
   if(path.startsWith('/.'))return new Response('Not found',{status:404});
-  if(path.startsWith('/api/')&&request.method!=='GET'&&request.headers.get('Origin')!==url.origin)return json({error:'같은 사이트에서 요청해주세요.'},403);
+  if((path.startsWith('/api/')||path==='/preview')&&request.method!=='GET'&&request.headers.get('Origin')!==url.origin)return json({error:'같은 사이트에서 요청해주세요.'},403);
   if(path==='/api/login'&&request.method==='POST'){
    if(!env.DB||!env.HOST_PASSWORD||!env.SESSION_SECRET)return json({error:'호스트 로그인 설정이 필요합니다.'},503);
    const ip=await digest(request.headers.get('CF-Connecting-IP')||'local'),now=Date.now();
@@ -36,7 +38,7 @@ export default {async fetch(request,env){
   if(path.startsWith('/api/')||path==='/preview'){
    if(!await authenticated(request,env))return json({error:'호스트 로그인이 필요합니다.'},401);
    if(!env.DB)return json({error:'DB 연결이 필요합니다.'},503);
-   if(path==='/api/content'&&request.method==='GET'){const s=await state(env);return json({...responseState(s),catalog,translationAvailable:!!env.AI,imagesAvailable:!!env.IMAGES});}
+   if(path==='/api/content'&&request.method==='GET'){const s=await state(env);return json({...responseState(s),translationAvailable:!!env.AI,imagesAvailable:!!env.IMAGES});}
    if(path==='/api/image'&&request.method==='POST'){
     if(!env.IMAGES)fail('이미지 저장소 연결이 필요합니다.',503);
     if(Number(request.headers.get('Content-Length'))>25*1024*1024)fail('사진은 25MB 이하로 선택해주세요.',413);
@@ -44,15 +46,27 @@ export default {async fetch(request,env){
     let type,ext;if(bytes[0]===137&&bytes[1]===80&&bytes[2]===78&&bytes[3]===71){type='image/png';ext='png';}else if(bytes[0]===255&&bytes[1]===216&&bytes[2]===255){type='image/jpeg';ext='jpg';}else if(String.fromCharCode(...bytes.slice(0,4))==='RIFF'&&String.fromCharCode(...bytes.slice(8,12))==='WEBP'){type='image/webp';ext='webp';}else fail('JPG·PNG·WebP 사진만 지원합니다.');
     const key=crypto.randomUUID()+'.'+ext;await env.IMAGES.put(key,bytes,{httpMetadata:{contentType:type}});return json({url:'/media/'+key});
    }
-   const s=await state(env);
-   if(path==='/preview'&&request.method==='GET')return new Response(renderGuide(template,blocks,catalog,s.draft),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store','X-Robots-Tag':'noindex'}});
-   if(request.method==='POST'&&['/api/draft','/api/translate','/api/publish'].includes(path)){
+   const s=await state(env),currentCatalog=model(s.draft).catalog;
+   if(path==='/api/preview'&&request.method==='POST'){
+    const input=await body(request);if(input.revision!==s.revision)fail('다른 창에서 내용이 바뀌었습니다. 새로고침 후 다시 확인해주세요.',409);
+    let preview;try{preview=validateDraft(input.draft,currentCatalog,s.draft);}catch(error){fail(error.message);}
+    return json(renderGuide(template,blocks,catalog,preview,{editing:true,snapshot:true}));
+   }
+   if(path==='/preview'&&request.method==='POST'){
+    const form=await request.formData();
+    const raw=form.get('draft');if(typeof raw!=='string'||encoder.encode(raw).length>1500000)fail('미리보기 내용이 너무 큽니다.',413);
+    let preview;try{preview=validateDraft(JSON.parse(raw),currentCatalog,s.draft);}catch(error){fail(error.message);}
+    return new Response(renderGuide(template,blocks,catalog,preview,{editing:true}),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store','X-Robots-Tag':'noindex'}});
+   }
+   if(path==='/preview'&&request.method==='GET')return new Response(renderGuide(template,blocks,catalog,s.draft,{editing:true}),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store','X-Robots-Tag':'noindex'}});
+   if(request.method==='POST'&&['/api/draft','/api/translate','/api/publish','/api/structure'].includes(path)){
     const input=await body(request);if(input.revision!==s.revision)fail('다른 창에서 내용이 바뀌었습니다. 새로고침 후 다시 확인해주세요.',409);
     let draft=s.draft,published=s.published;
-    if(path==='/api/draft'){try{draft=validateDraft(input.draft,catalog,s.draft);}catch(error){fail(error.message);}if(encoder.encode(JSON.stringify(draft)).length>750000)fail('안내 전체 용량이 너무 큽니다. 문구를 줄여주세요.',413);}
+    if(path==='/api/structure'){try{draft=changeStructure(blocks,catalog,seed,s.draft,input.action);}catch(error){fail(error.message);}}
+    if(path==='/api/draft'){try{draft=validateDraft(input.draft,currentCatalog,s.draft);}catch(error){fail(error.message);}if(encoder.encode(JSON.stringify(draft)).length>750000)fail('안내 전체 용량이 너무 큽니다. 문구를 줄여주세요.',413);}
     if(path==='/api/translate'){
      if(!env.AI)fail('자동 번역 연결이 필요합니다. 초안은 보관되어 있습니다.',503);
-     const field=catalog.find(f=>f.id===input.id&&f.type==='text');if(!field)fail('번역 항목 오류');
+     const field=currentCatalog.find(f=>f.id===input.id&&f.type==='text');if(!field)fail('번역 항목 오류');
      const text=draft[field.id].values.ko;
      if(text.length>2000)fail('자동 번역은 항목당 2,000자까지 지원합니다. 문구를 나눠주세요.');
      const translated={ko:text};
@@ -68,10 +82,11 @@ export default {async fetch(request,env){
      draft[field.id]={values:translated,translatedFrom:text,reviewed:false};
     }
     if(path==='/api/publish'){
-     if(pending(draft,catalog).length)fail('한국어가 변경된 항목의 번역을 먼저 완료해주세요.');
+     if(pending(draft,currentCatalog).length)fail('한국어가 변경된 항목의 번역을 먼저 완료해주세요.');
      if(input.reviewed!==true)fail('미리보기와 번역 확인이 필요합니다.');
-     published=structuredClone(draft);for(const entry of Object.values(published))entry.reviewed=true;draft=structuredClone(published);
+     published=structuredClone(draft);for(const [key,entry] of Object.entries(published))if(!key.startsWith('__'))entry.reviewed=true;draft=structuredClone(published);
     }
+    if(encoder.encode(JSON.stringify(draft)).length>1500000)fail('안내 전체 용량이 너무 큽니다.',413);
     if(!await save(env,s,draft,published))fail('다른 수정 사항이 먼저 저장되었습니다. 새로고침해주세요.',409);
     return json(responseState({revision:s.revision+1,draft,published}));
    }
@@ -85,9 +100,10 @@ export default {async fetch(request,env){
   if(path==='/'||path==='/index.html'){
    const guest=guestLinkStatus(url.searchParams.get('g'));
    if(guest.expired){const language=languages.includes(guest.language)?guest.language:'ko';return new Response(expiredTemplate.replace('__EXPIRED_LANGUAGE__',language),{status:410,headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store','X-Robots-Tag':'noindex'}});}
-   return new Response(await publishedGuide(env),{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store'}});
+   let html=await publishedGuide(env);if(!url.searchParams.has('g')){const logged=await authenticated(request,env);html=html.replace('<head>','<head><script>try{'+(logged?"sessionStorage.setItem('aranya_admin','1');sessionStorage.setItem('aranya_host_entry','1');":"sessionStorage.removeItem('aranya_admin');sessionStorage.removeItem('aranya_host_entry');")+'}catch(e){}</script>');}
+   return new Response(html,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store'}});
   }
-  if(path==='/admin')return env.ASSETS.fetch(request);
+  if(path==='/admin'){const asset=await env.ASSETS.fetch(request);const response=new Response(asset.body,asset);response.headers.set('Cache-Control','no-store');return response;}
   return env.ASSETS.fetch(request);
  }catch(error){return json({error:error.status?error.message:'처리 중 오류가 발생했습니다. 기존 공개 내용은 유지됩니다.'},error.status||500);}
 }};

@@ -7,3 +7,10 @@ test('malicious HTML and external image URLs rejected',()=>{const draft=structur
 test('guide has valid scripts, extracted photos, server login and preserved guest expiry',()=>{const html=renderGuide(template,blocks,catalog,seed);assert(!html.includes('__ARANYA_'));assert(!/data:image\/(png|jpeg|webp);base64/.test(html));assert(!html.includes('ADMIN_HASH'));assert(html.includes('/api/login'));assert(html.includes('function isGuestExpired'));for(const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){if(m[1].includes('application/json'))JSON.parse(m[2]);else new vm.Script(m[2]);}});
 test('deploy directory excludes repository and source',()=>{assert(!fs.existsSync('dist/.git'));assert(!fs.existsSync('dist/wrangler.jsonc'));assert(!fs.existsSync('dist/src'));});
 
+test('personalized guest header uses the editable address and correct field keys',()=>{
+ const html=renderGuide(template,blocks,catalog,seed),start=html.indexOf('function applyGuestInfo(){'),end=html.indexOf('\n  try{',start);
+ const elements=new Map(),get=id=>{if(!elements.has(id))elements.set(id,{textContent:'',setAttribute(k,v){this[k]=v;}});return elements.get(id);};
+ const translations={greet_tag:'수정한 주소 16',greet_booked:'예약 확인 · 예전 주소',welcome:'{name}님, 환영합니다',stay_lede:'{range} 숙박 안내'};
+ vm.runInNewContext(html.slice(start,end)+';applyGuestInfo();',{guestInfo:{n:'손님',ci:'2099-01-01'},document:{getElementById:get},isGuestExpired:()=>false,t:key=>translations[key],fmtDate:d=>d});
+ assert.equal(get('greetTag').textContent,'수정한 주소 16');assert.equal(get('heroTitle')['data-i18n'],'welcome');assert.equal(get('heroLede')['data-i18n'],'stay_lede');
+});
