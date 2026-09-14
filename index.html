@@ -915,8 +915,8 @@ body,button,input,select,textarea{
 <div class="page" data-page="around">
 <section class="tint">
 <div class="wrap"><div class="section-index">05 · EXPLORE SEOUL</div>
-<h2 data-i18n="around_title">주변 여행 & 서울 추천</h2>
-<p class="sub" data-i18n="around_sub">숙소에서 걸어갈 수 있는 곳부터, 대중교통으로 다녀오기 좋은 서울 대표 명소까지 모았습니다. 상세보기를 열면 설명과 지도 링크를 바로 확인할 수 있어요.</p>
+<h2 data-cms-field="ARANYA_CURATED_UI:around_title" data-i18n="around_title">주변 여행 & 서울 추천</h2>
+<p class="sub" data-cms-field="ARANYA_CURATED_UI:around_sub" data-i18n="around_sub">숙소에서 걸어갈 수 있는 곳부터, 대중교통으로 다녀오기 좋은 서울 대표 명소까지 모았습니다. 상세보기를 열면 설명과 지도 링크를 바로 확인할 수 있어요.</p>
 <div id="aroundList"></div>
 </div>
 </section>
@@ -1426,8 +1426,8 @@ const food = [{"search":"대련집 서울 종로구 종로16길 37","cat":"food"
       <div class="around-group">
         <div class="around-group-head">
           <span class="place-badge ${group==='walk'?'walk':''}">${travelLabel(group==='pick'?'around_pick_badge':'around_walk_badge')}</span>
-          <h3>${travelLabel(title)}</h3>
-          <p>${travelLabel(sub)}</p>
+          <h3 data-cms-field="ARANYA_CURATED_UI:${title}">${travelLabel(title)}</h3>
+          <p data-cms-field="ARANYA_CURATED_UI:${sub}">${travelLabel(sub)}</p>
         </div>
         <div class="card-grid">${around.filter(p=>p.group===group).map((p,i)=>renderTravelCard(p,i)).join('')}</div>
       </div>`;

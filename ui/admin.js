@@ -9,6 +9,8 @@ function group(field){if(field.block==='AIRPORT')return 'home';if(field.block===
 function changed(){badgeOnlyDirty=false;dirty=true;$('saveState').textContent='수정 중 · 아직 저장하지 않았어요';message('수정 중 · 초안 저장 후 번역과 미리보기를 진행하세요.');updateGuideSelection();clearTimeout(livePreviewTimer);livePreviewTimer=setTimeout(refreshGuide,600);}
 function plain(value){const doc=new DOMParser().parseFromString(String(value),'text/html');return doc.body.textContent.replace(/\s+/g,' ').trim();}
 function fieldName(field){
+ const aroundRoles={around_title:'전체 · 제목',around_sub:'전체 · 설명',around_walk_title:'도보 여행 · 제목',around_walk_sub:'도보 여행 · 설명',around_pick_title:'추천 여행 · 제목',around_pick_sub:'추천 여행 · 설명'};
+ if(field.block==='ARANYA_CURATED_UI'&&aroundRoles[field.path[0]])return aroundRoles[field.path[0]]+' · '+plain(draft[field.id]?.values.ko||'');
  if(field.id==='I18N:greet_tag')return '숙소 주소 · 지도 검색 주소';
  if(field.path.slice(-2).join('.')==='tonginGuide.search')return '통인시장 안내 · 지도 검색 주소';
  if(field.type==='url')return field.label;
@@ -121,12 +123,9 @@ function navigateGuide(key){const doc=$('guideFrame').contentDocument;if(!doc)re
 function highlightGuide(){for(const [el,ids] of guideMatches)el.classList.toggle('aranya-edit-selected',ids.includes(selectedId));}
 function indexGuide(){
  const doc=$('guideFrame').contentDocument;if(!doc?.body)return;guideObserver?.disconnect();guideMatches.clear();
- const lookup=new Map();for(const field of catalog){const value=field.type==='image'?guideAliases[field.id]:plain(guideAliases[field.id]);if(!value)continue;const key=field.type+':'+value;if(!lookup.has(key))lookup.set(key,[]);lookup.get(key).push(field.id);}
  for(const el of doc.body.querySelectorAll('*')){
   el.classList.remove('aranya-editable','aranya-edit-selected');if(el.closest('script,style,svg,select,textarea,dialog:not([open])'))continue;
   let ids;const direct=el.getAttribute('data-cms-field'),key=el.getAttribute('data-i18n');if(direct&&draft[direct])ids=[direct];else if(key&&draft['I18N:'+key])ids=['I18N:'+key];
-  else if(el.tagName==='IMG')ids=lookup.get('image:'+el.getAttribute('src'));
-  else if(el.children.length===0||['P','H1','H2','H3','LABEL','LI'].includes(el.tagName))ids=lookup.get('text:'+plain(el.innerHTML));
   if(ids){guideMatches.set(el,ids);el.classList.add('aranya-editable');}
  }
  highlightGuide();guideObserver?.observe(doc.body,{childList:true,subtree:true,characterData:true});
