@@ -12,6 +12,8 @@ const blocks=[];
 for(const name of names){const m=new RegExp('const\\s+'+name+'\\s*=\\s*').exec(html);if(!m)continue;let start=m.index+m[0].length,end=start,depth=0,q=false,esc=false;for(;end<html.length;end++){const c=html[end];if(q){if(esc)esc=false;else if(c==='\\')esc=true;else if(c==='"')q=false;}else if(c==='"')q=true;else if(c==='{'||c==='[')depth++;else if(c==='}'||c===']'){if(--depth===0){end++;break;}}}blocks.push({name,start,end,value:JSON.parse(html.slice(start,end))});}
 for(const m of html.matchAll(/<script\b[^>]*id="(aranya-essentials-data)"[^>]*>([\s\S]*?)<\/script>/g)){const start=m.index+m[0].indexOf('>')+1;blocks.push({name:m[1],start,end:start+m[2].length,value:JSON.parse(m[2])});}
 const languages=['ko','en','zh','ja','de','fr','es','it','pt','ru'];
+const tabLabels={ko:['숙소 안내','기기 안내'],en:['House Guide','Appliance Guide'],zh:['住宿指南','设备指南'],ja:['宿泊案内','設備の使い方'],de:['Unterkunft','Geräteanleitung'],fr:['Guide du logement','Guide des appareils'],es:['Guía del alojamiento','Guía de aparatos'],it:['Guida all’alloggio','Guida agli apparecchi'],pt:['Guia da acomodação','Guia dos aparelhos'],ru:['Информация о доме','Инструкции к приборам']};
+const i18n=blocks.find(b=>b.name==='I18N').value;for(const [l,labels] of Object.entries(tabLabels)){i18n[l]||={};for(const [i,key] of ['tab_house','tab_manuals'].entries())if(!i18n[l][key]||i18n[l][key]===key)i18n[l][key]=labels[i];}
 const catalog=[],seed={};
 function add(block,path,type,values,paths){const id=block+':'+path.join('.');catalog.push({id,block,path,type,label:values.ko||'사진',paths});seed[id]={values,translatedFrom:values.ko||'',reviewed:true};}
 function walk(value,block,path=[]){
