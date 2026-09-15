@@ -41,7 +41,7 @@
    const targets=document.querySelectorAll(selector);incoming.querySelectorAll(selector).forEach((fresh,i)=>{if(targets[i])window.aranyaPreviewMorph(targets[i],fresh.innerHTML);});
   }
   const visual=document.querySelector('.masthead-visual');
-  if(visual){let img=visual.querySelector('img');if(payload.hero){if(!img){img=document.createElement('img');img.alt='Aranya hanok window';visual.prepend(img);}if(img.getAttribute('src')!==payload.hero)img.src=payload.hero;}else img?.remove();visual.style.setProperty('display',payload.hero?'block':'none','important');document.querySelector('.home-masthead')?.style.setProperty('grid-template-columns',payload.hero?'':'1fr','important');}
+  if(visual){let img=visual.querySelector('img');if(payload.hero){if(!img){img=document.createElement('img');img.alt='Aranya hanok window';img.dataset.cmsField='hero:image';visual.prepend(img);}if(img.getAttribute('src')!==payload.hero)img.src=payload.hero;}else img?.remove();visual.style.setProperty('display',payload.hero?'block':'none','important');document.querySelector('.home-masthead')?.style.setProperty('grid-template-columns',payload.hero?'':'1fr','important');}
   window.aranyaPreviewInstall();window.aranyaPreviewData(payload.blocks);
   if(cat){document.querySelectorAll('#foodChips .chip').forEach(c=>c.classList.toggle('active',c.dataset.cat===cat));document.querySelectorAll('#foodList .place-card').forEach(c=>c.style.display=cat==='all'||c.dataset.cat===cat?'grid':'none');}
   document.querySelectorAll('.manual-accordion details').forEach(d=>{const label=d.querySelector('.manual-detail-text');if(d.open&&label)d.dispatchEvent(new Event('toggle'));});

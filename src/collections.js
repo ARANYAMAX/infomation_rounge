@@ -64,7 +64,7 @@ export function collectionModel(original,baseCatalog,seed,content={}){
     if(!fresh&&block==='AMENITIES'&&k==='title'&&seed['I18N:'+value._legacy])override='I18N:'+value._legacy;
     if(!fresh&&block==='AMENITIES'&&k==='image')override='amenityPhotos:'+value._legacy;
     if(override)out[k]=field(block,[...path,k],v,k==='image'?'image':'text',false,item,override);
-    else if(k==='posters'&&block==='TRAVEL_TIPS'){out[k]=Object.fromEntries(langs.map(l=>[l,field(block,[...path,k,l],v[l]||'','image',fresh,item).ko]));}
+    else if(k==='posters'&&['AIRPORT','TRAVEL_TIPS'].includes(block)){out[k]=Object.fromEntries(langs.map(l=>[l,field(block,[...path,k,l],v[l]||'','image',fresh,item).ko]));}
     else if(k==='image')out[k]=field(block,[...path,k],v,'image',fresh,item).ko;
     else if(Object.hasOwn(mapFields,k)||k==='linkUrl')out[k]=field(block,[...path,k],v,'url',fresh,item).ko;
     else if(['AMENITIES','AIRPORT','TRAVEL_TIPS'].includes(block)&&k==='icon')out[k]=field(block,[...path,k],v,'icon',fresh,item).ko;

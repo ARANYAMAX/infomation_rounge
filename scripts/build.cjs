@@ -4,6 +4,7 @@ let html=fs.readFileSync('index.html','utf8');
 fs.mkdirSync('dist/assets',{recursive:true});fs.mkdirSync('src',{recursive:true});
 // Only explicitly copied files enter the public directory; .git is never an asset.
 const imageMap=new Map();
+for(const file of fs.readdirSync('ui/airport-posters')){const b=fs.readFileSync('ui/airport-posters/'+file);fs.writeFileSync('dist/assets/'+crypto.createHash('sha256').update(b).digest('hex').slice(0,24)+'.png',b);}
 for(const file of fs.readdirSync('ui/running-posters')){const bytes=fs.readFileSync('ui/running-posters/'+file);const name=crypto.createHash('sha256').update(bytes).digest('hex').slice(0,24)+'.jpeg';fs.writeFileSync('dist/assets/'+name,bytes);}
 html=html.replace(/data:image\/(png|jpeg|webp|gif);base64,[A-Za-z0-9+/=]+/g,(value,format)=>{
  if(!imageMap.has(value)){const bytes=Buffer.from(value.split(',')[1],'base64'),name=crypto.createHash('sha256').update(bytes).digest('hex').slice(0,24)+'.'+format;fs.writeFileSync('dist/assets/'+name,bytes);imageMap.set(value,'/assets/'+name);}return imageMap.get(value);

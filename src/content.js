@@ -26,7 +26,7 @@ export function validateDraft(input,catalog,previous){
  }
  return result;
 }
-export function pending(draft,catalog){return catalog.filter(f=>f.type==='text'&&draft[f.id].values.ko!==draft[f.id].translatedFrom).map(f=>f.id);}
+export function pending(draft,catalog){return catalog.filter(f=>f.type==='text'&&!(f.block==='AIRPORT'&&f.path[0]!=='button')&&draft[f.id].values.ko!==draft[f.id].translatedFrom).map(f=>f.id);}
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function renderGuide(template,blocks,catalog,content,{editing=false,snapshot=false}={}){
  const model=collectionModel(blocks,catalog,sourceSeed,content),copy=structuredClone(model.blocks);
@@ -61,7 +61,7 @@ export function renderGuide(template,blocks,catalog,content,{editing=false,snaps
   const title=model.catalog.find(f=>f.itemKey===item._cmsKey&&f.path.at(-1)==='title');return '<div class="amen" style="flex-wrap:wrap" data-cms-item="'+item._cmsKey+'">'+(amenityIconSvg[item.icon]||icons.get(item.icon)||icons.get(item._legacy)||'<span aria-hidden="true">◇</span>')+'<span '+text(item.title,title.id)+'>'+escape(item.title.ko)+'</span>'+photos(item)+'</div>';
  }).join('')+'</div>');
  const hero=content['hero:image']?.values.ko??sourceSeed['hero:image'].values.ko;
- template=template.replace('__ARANYA_HERO__',hero);
+ template=template.replace('<div class="masthead-visual">','<div class="masthead-visual" data-cms-field="hero:image">').replace('__ARANYA_HERO__',hero).replace('alt="Aranya hanok window"','data-cms-field="hero:image" alt="Aranya hanok window"');
  if(!hero){template=template.replace(/<img\b[^>]*src=""[^>]*alt="Aranya hanok window"[^>]*>/,'');template=template.replace('</head>','<style>.masthead-visual{display:none!important}.home-masthead{grid-template-columns:1fr!important}</style></head>');}
  // Remove obsolete fixed photo placeholders if a legacy template is passed.
  template=template.replace(/__AMEN_PHOTO_[^_]+__/g,'');

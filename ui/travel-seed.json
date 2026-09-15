@@ -210,7 +210,19 @@
             "ru": "Подробнее"
           }
         }
-      ]
+      ],
+      "posters": {
+        "ko": "/assets/f30e2df7aa8d89dba7c0fc26.png",
+        "en": "/assets/1a10c824de09c50f8b27da9a.png",
+        "zh": "/assets/289c7ffa815396bf62552955.png",
+        "ja": "/assets/609cd6eebbca5395b664c120.png",
+        "de": "/assets/90bced56df8ee202c0f232ff.png",
+        "fr": "/assets/b5b79bfece60e8a11f339779.png",
+        "es": "/assets/5ff6f77126eb6b3b56712b56.png",
+        "it": "/assets/ed0da5763ed27622b980e716.png",
+        "pt": "/assets/140acc5abc0b33ae13ee1a54.png",
+        "ru": "/assets/23cd2ca3c0e7dd77b19f3947.png"
+      }
     },
     "TRAVEL_TIPS": [
       {
