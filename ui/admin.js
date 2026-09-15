@@ -1,10 +1,11 @@
 'use strict';
 const $=id=>document.getElementById(id),languages={en:'영어',zh:'중국어',ja:'일본어',de:'독일어',fr:'프랑스어',es:'스페인어',it:'이탈리아어',pt:'포르투갈어',ru:'러시아어'};
 const sections={home:'체크인 · 첫 화면',rules:'숙소 안내',manuals:'기기 안내',amenities:'편의시설',around:'주변 여행',food:'맛집 · 카페',tips:'여행 팁',contact:'문의 · 기타',images:'사진'};
+let translationPending=[];
 let photoTargetKey='',photoTargetSection='',lists=[],photoGroups=[],catalog=[],draft={},revision=0,active='home',dirty=false,busy=false,ai=false,images=false,selectedId=null,browseMode=false,guideObserver=null,guideTimer=null,guideAliases={},guideMatches=new Map(),livePreviewTimer=null,guidePosition=null,guideNavigation=null;
 function message(text){$('status').textContent=text;}
 async function api(path,body){const response=await fetch('/api/'+path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok){if(response.status===401){$('login').hidden=false;$('manager').hidden=true;}throw Error(data.error||'연결에 실패했습니다.');}return data;}
-function accept(data){if(data.catalog)catalog=data.catalog;if(data.lists)lists=data.lists;if(data.photos)photoGroups=data.photos;for(const id of Object.keys(draft))if(!(id in data.draft))delete draft[id];for(const [id,entry] of Object.entries(data.draft)){if(draft[id]?.values&&entry.values)Object.assign(draft[id],entry);else draft[id]=entry;}revision=data.revision;dirty=false;}
+function accept(data){if(data.catalog)catalog=data.catalog;if(data.lists)lists=data.lists;if(data.photos)photoGroups=data.photos;translationPending=data.pending||[];for(const id of Object.keys(draft))if(!(id in data.draft))delete draft[id];for(const [id,entry] of Object.entries(data.draft)){if(draft[id]?.values&&entry.values)Object.assign(draft[id],entry);else draft[id]=entry;}revision=data.revision;dirty=false;}
 function group(field){if(field.block==='AIRPORT')return 'home';if(field.block==='TRAVEL_TIPS'||field.id==='I18N:travel_tips_tab')return 'tips';if(field.block==='CHECKIN')return 'home';if(field.block==='AMENITIES')return 'amenities';if(field.itemKey&&listSection(field.block))return listSection(field.block);if(field.type==='image')return 'images';if(field.block==='HOUSE_NOTES')return 'rules';if(field.block==='MANUALS')return 'manuals';if(field.block==='food'||field.block==='ARANYA_DINING_LABELS')return 'food';if(field.block.includes('CURATED')||field.block.includes('AROUND'))return 'around';if(field.block==='aranya-essentials-data')return 'amenities';const key=field.path.join('.');if(/house|rule|notice/.test(key))return 'rules';if(/manual/.test(key))return 'manuals';if(/amen|^a_/.test(key))return 'amenities';if(/around|travel/.test(key))return 'around';if(/food|chip|dining/.test(key))return 'food';if(/host|contact|response|gen_|footer|copied/.test(key))return 'contact';return 'home';}
 function changed(){badgeOnlyDirty=false;dirty=true;$('saveState').textContent='수정 중 · 아직 저장하지 않았어요';message('수정 중 · 초안 저장 후 번역과 미리보기를 진행하세요.');updateGuideSelection();clearTimeout(livePreviewTimer);livePreviewTimer=setTimeout(refreshGuide,600);}
 function plain(value){const doc=new DOMParser().parseFromString(String(value),'text/html');return doc.body.textContent.replace(/\s+/g,' ').trim();}
@@ -103,14 +104,15 @@ for(const [key,name] of Object.entries(sections)){const b=document.createElement
 $('search').oninput=render;
 $('save').onclick=()=>run(async()=>{await save();});
 $('translate').onclick=()=>run(async()=>{
- if(!ai)throw Error('Cloudflare AI 연결이 필요합니다. 초안을 먼저 저장해주세요.');if(dirty)await save();
- const ids=catalog.filter(f=>f.type==='text'&&draft[f.id].values.ko!==draft[f.id].translatedFrom).map(f=>f.id);
+ if(dirty)await save();
+ const ids=[...translationPending];
+ if(ids.length&&!ai)throw Error('Cloudflare AI 연결이 필요합니다. 초안을 먼저 저장해주세요.');
  try{for(let i=0;i<ids.length;i++){message(`자동 번역 중 ${i+1}/${ids.length} · 창을 닫지 마세요.`);accept(await api('translate',{revision,id:ids[i]}));}}finally{render();}
  refreshGuide();message(ids.length?'번역 완료 · 각 항목의 다국어 번역과 미리보기를 확인해주세요.':'번역할 변경 사항이 없습니다.');
 });
 $('preview').onclick=()=>run(async()=>{if(dirty)await save();const guest=btoa(JSON.stringify(['Preview','2099-01-01','2099-01-03','15:00','11:00',2,0,'ko']));$('previewFrame').src='/preview?g='+encodeURIComponent(guest);$('previewDialog').showModal();});
 $('closePreview').onclick=()=>$('previewDialog').close();
-$('publish').onclick=()=>run(async()=>{if(dirty)await save();if(catalog.some(f=>f.type==='text'&&draft[f.id].values.ko!==draft[f.id].translatedFrom))throw Error('한국어 변경 항목을 먼저 자동 번역해주세요.');$('reviewed').checked=false;$('publishDialog').showModal();});
+$('publish').onclick=()=>run(async()=>{if(dirty)await save();if(translationPending.length)throw Error('한국어 변경 항목을 먼저 자동 번역해주세요.');$('reviewed').checked=false;$('publishDialog').showModal();});
 $('cancelPublish').onclick=()=>$('publishDialog').close();
 $('confirmPublish').onclick=()=>run(async()=>{if(!$('reviewed').checked)throw Error('미리보기와 번역 확인에 체크해주세요.');accept(await api('publish',{revision,reviewed:true}));$('publishDialog').close();render();$('saveState').textContent='공개 완료 · 손님 화면에 반영됐어요';message('공개 완료 · 손님이 안내를 새로 열면 수정 내용이 표시됩니다.');});
 let previewRequest=0;
