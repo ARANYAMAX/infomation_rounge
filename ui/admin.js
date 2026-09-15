@@ -41,13 +41,28 @@ function openIconPicker(selected,onSelect){
  function draw(){const query=search.value.trim().toLowerCase(),terms=(aliases[query]||query).split(/\s+/),entries=Object.entries(window.amenityIcons||{}).filter(([key,icon])=>!query||[key,icon.label,...(icon.tags||[])].join(' ').toLowerCase().includes(query)||terms.some(t=>[key,icon.label,...(icon.tags||[])].join(' ').toLowerCase().includes(t)));picker.replaceChildren();for(const [key,icon] of entries.slice(0,limit)){const b=document.createElement('button');b.type='button';b.innerHTML=icon.svg;b.title=icon.label;b.setAttribute('aria-label',icon.label);b.setAttribute('aria-pressed',String(key===selected));b.onclick=()=>{$('iconDialog').close();onSelect(key);};picker.append(b);}count.textContent=entries.length+'개 아이콘 · '+Math.min(limit,entries.length)+'개 표시';more.hidden=entries.length<=limit;}
  search.value='';search.oninput=()=>{limit=120;draw();};more.onclick=()=>{limit+=120;draw();};draw();$('iconDialog').showModal();search.focus();
 }
+function fieldGroup(field){
+ if(field.block==='AIRPORT')return '인천공항 안내';
+ if(field.block==='hero')return '첫 화면';
+ if(field.itemKey){const candidates=lists.flatMap(l=>l.items).filter(i=>field.itemKey===i.key||field.itemKey.startsWith(i.key+'.')).sort((a,b)=>a.key.length-b.key.length);if(candidates.length)return itemTitle(candidates[0]);}
+ const key=field.path.join('.');
+ if(field.block==='I18N'){
+  if(/^(step_addr|greet_tag)/.test(key))return '위치 확인';
+  if(/^(step_lock)/.test(key))return '도어록';
+  if(/^(step_wifi)/.test(key))return '와이파이';
+  if(/^(step_co|tab_checkout)/.test(key))return '체크아웃';
+  if(/^(welcome|stay_|greet_|hero|checkin|checkout|guest|adult|child)/.test(key))return '첫 화면';
+  if(/^(tab_|nav_|lang)/.test(key))return '메뉴 · 언어 선택';
+ }
+ return ({ARANYA_CURATED_UI:'주변 여행 · 제목과 안내',ARANYA_DINING_LABELS:'맛집 · 공통 안내',ARANYA_UI:'공통 안내',ARANYA_AROUND_UI:'주변 여행 · 공통 안내',I18N:'공통 문구'})[field.block]||sections[group(field)]||'공통 문구';
+}
 function render(preserveEditor=false){
  const retained=preserveEditor&&draft[selectedId]?[...$('fields').childNodes]:null;
  $('sectionTitle').textContent=sections[active];$('fields').replaceChildren();
  document.querySelectorAll('#sections button').forEach(b=>b.classList.toggle('active',b.dataset.section===active));
- const query=$('search').value.toLowerCase();$('fieldChoices').replaceChildren();
- const available=catalog.filter(f=>visibleField(f)&&(active==='images'?f.type==='image':group(f)===active)&&(!query||(draft[f.id].values.ko+' '+fieldName(f)).toLowerCase().includes(query)));
- for(const field of available){if(field.path.at(-2)==='posters'&&field.path.at(-1)!=='ko')continue;const choice=document.createElement('button');choice.type='button';choice.textContent=field.path.at(-2)==='posters'?'언어별 포스터 관리':fieldName(field);choice.className='field-choice';choice.dataset.fieldId=field.id;choice.onclick=()=>selectField(field.id);$('fieldChoices').append(choice);}
+ const query=$('search').value.toLowerCase();const groupOpen=new Map([...$('fieldChoices').querySelectorAll('[data-field-group]')].map(el=>[el.dataset.fieldGroup,el.open]));$('fieldChoices').replaceChildren();
+ const available=catalog.filter(f=>visibleField(f)&&(active==='images'?f.type==='image':group(f)===active)&&(!query||(draft[f.id].values.ko+' '+fieldName(f)+' '+fieldGroup(f)).toLowerCase().includes(query)));
+ const fieldGroups=new Map();for(const field of available){if(field.path.at(-2)==='posters'&&field.path.at(-1)!=='ko')continue;const choice=document.createElement('button');choice.type='button';choice.textContent=field.path.at(-2)==='posters'?'언어별 포스터 관리':fieldName(field);choice.className='field-choice';choice.dataset.fieldId=field.id;choice.onclick=()=>selectField(field.id);const label=fieldGroup(field);let bucket=fieldGroups.get(label);if(!bucket){bucket=document.createElement('details');bucket.dataset.fieldGroup=label;bucket.className='field-group';bucket.open=!!query||groupOpen.get(label)||available.some(f=>f.id===selectedId&&fieldGroup(f)===label);const heading=document.createElement('summary');heading.textContent=label;bucket.append(heading);fieldGroups.set(label,bucket);$('fieldChoices').append(bucket);}bucket.append(choice);}
  const chosen=catalog.find(f=>f.id===selectedId);$('selectionPath').textContent=chosen?sections[group(chosen)]+' → '+fieldName(chosen):'왼쪽에서 수정할 위치를 선택해주세요.';
  for(const field of catalog.filter(f=>f.id===selectedId)){
   const entry=draft[field.id],card=document.createElement('article');card.className='card';
