@@ -9,6 +9,7 @@ function group(field){if(field.block==='AIRPORT')return 'home';if(field.block===
 function changed(){badgeOnlyDirty=false;dirty=true;$('saveState').textContent='수정 중 · 아직 저장하지 않았어요';message('수정 중 · 초안 저장 후 번역과 미리보기를 진행하세요.');updateGuideSelection();clearTimeout(livePreviewTimer);livePreviewTimer=setTimeout(refreshGuide,600);}
 function plain(value){const doc=new DOMParser().parseFromString(String(value),'text/html');return doc.body.textContent.replace(/\s+/g,' ').trim();}
 function fieldName(field){
+ if(field.type==='image'&&field.path.at(-2)==='posters')return '러닝 포스터 · '+({ko:'한국어',...languages}[field.path.at(-1)]);
  if(field.block==='food'&&field.path.at(-1)==='badge')return plain(draft['food:'+field.path[0]+'.name']?.values.ko||'맛집')+' · 추천 배지';
  const aroundRoles={around_title:'전체 · 제목',around_sub:'전체 · 설명',around_walk_title:'도보 여행 · 제목',around_walk_sub:'도보 여행 · 설명',around_pick_title:'추천 여행 · 제목',around_pick_sub:'추천 여행 · 설명'};
  if(field.block==='ARANYA_CURATED_UI'&&aroundRoles[field.path[0]])return aroundRoles[field.path[0]]+' · '+plain(draft[field.id]?.values.ko||'');
@@ -53,6 +54,7 @@ function render(preserveEditor=false){
   const label=document.createElement('label');label.textContent=field.type==='image'?fieldName(field):'한국어 문구';card.append(label);
   if(field.type==='image'){
    const img=document.createElement('img');if(entry.values.ko)img.src=entry.values.ko;img.hidden=!entry.values.ko;img.alt=label.textContent;const file=document.createElement('input');file.type='file';file.accept='image/jpeg,image/png,image/webp';file.disabled=!images;file.setAttribute('aria-label',label.textContent+' 교체');
+   if(field.path.at(-2)==='posters'){const language=document.createElement('select');language.setAttribute('aria-label','포스터 언어');for(const [l,n]of Object.entries({ko:'한국어',...languages})){const o=document.createElement('option');o.value=l;o.textContent=n;language.append(o);}language.value=field.path.at(-1);language.onchange=()=>selectField(field.block+':'+[...field.path.slice(0,-1),language.value].join('.'));card.append(language);}
    const hint=document.createElement('p');hint.className='hint';hint.textContent=images?'JPG · PNG · WebP / 최대 25MB. 초안을 공개하면 반영됩니다.':'이미지 저장소 연결 후 사진을 교체할 수 있습니다.';
    file.onchange=()=>run(async()=>{const selected=file.files[0];if(!selected)return;if(selected.size>25*1024*1024)throw Error('사진은 25MB 이하로 선택해주세요.');const response=await fetch('/api/image',{method:'POST',body:selected,headers:{'Content-Type':selected.type}}),data=await response.json();if(!response.ok)throw Error(data.error);entry.values.ko=data.url;img.src=data.url;img.hidden=false;changed();});const remove=document.createElement('button');remove.type='button';remove.textContent='사진 제거';remove.onclick=()=>{entry.values.ko='';img.removeAttribute('src');img.hidden=true;changed();};card.append(img,file,remove,hint);
   }else if(['AMENITIES','AIRPORT','TRAVEL_TIPS'].includes(field.block)&&field.path.at(-1)==='icon'){

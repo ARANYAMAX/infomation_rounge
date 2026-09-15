@@ -861,7 +861,7 @@ body,button,input,select,textarea{
     const button=e.target.closest('[data-guide-photo]');
     const img=e.target.closest('.manual-media img');
     if(!img&&!button)return;
-    const posterLang=(document.documentElement.lang||'ko').slice(0,2);lbImg.src=button?.hasAttribute('data-airport-poster')?'/assets/airport-posters/'+(['ko','en','zh','ja','de','fr','es','it','pt','ru'].includes(posterLang)?posterLang:'en')+'.png':button?button.dataset.guidePhoto:img.src;lbImg.alt=button?(button.closest('.amen,.place-card')?.querySelector('h3,span[data-i18n],span[data-photo-key]')?.textContent||'Photo'):(img.alt||'Guide image');lightbox.classList.add('open');
+    const posterLang=(document.documentElement.lang||'ko').slice(0,2);lbImg.src=button?.hasAttribute('data-airport-poster')?'/assets/airport-posters/'+(['ko','en','zh','ja','de','fr','es','it','pt','ru'].includes(posterLang)?posterLang:'en')+'.png':button?button.dataset.guidePhoto:img.src;lbImg.alt=button?(button.closest('.amen,.place-card')?.querySelector('h3,span[data-i18n],span[data-photo-key]')?.textContent||'Photo'):(img.alt||'Guide image');if(button?.dataset.localizedPosters){const p=JSON.parse(button.dataset.localizedPosters);lbImg.src=p[posterLang]||p.en||p.ko||Object.values(p).find(Boolean);}lightbox.classList.add('open');
   });
 })();
 </script>

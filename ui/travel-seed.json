@@ -455,6 +455,60 @@
             }
           }
         ]
+      },
+      {
+        "title": {
+          "ko": "아침 산책 & 러닝",
+          "en": "Morning Walk & Run",
+          "zh": "晨间散步与慢跑",
+          "ja": "朝の散歩＆ランニング",
+          "de": "Morgenspaziergang & Lauf",
+          "fr": "Promenade et course matinale",
+          "es": "Paseo y carrera matutina",
+          "it": "Passeggiata e corsa mattutina",
+          "pt": "Caminhada e corrida matinal",
+          "ru": "Утренняя прогулка и пробежка"
+        },
+        "description": {
+          "ko": "호스트가 추천하는 경복궁 주변 산책과 러닝 코스입니다. PHOTO에서 안내를 확인하세요.",
+          "en": "Explore the host’s recommended walk and run around Gyeongbokgung. Open PHOTO for the guide.",
+          "zh": "探索房东推荐的景福宫周边散步与慢跑路线。点击 PHOTO 查看指南。",
+          "ja": "ホストおすすめの景福宮周辺の散歩・ランニングコース。PHOTOで案内をご覧ください。",
+          "de": "Entdecken Sie die vom Gastgeber empfohlene Route rund um Gyeongbokgung. Die Anleitung finden Sie unter PHOTO.",
+          "fr": "Découvrez le parcours autour de Gyeongbokgung recommandé par votre hôte. Ouvrez PHOTO pour le guide.",
+          "es": "Descubre la ruta alrededor de Gyeongbokgung recomendada por tu anfitrión. Abre PHOTO para ver la guía.",
+          "it": "Scopri il percorso intorno a Gyeongbokgung consigliato dall’host. Apri PHOTO per la guida.",
+          "pt": "Explore o percurso ao redor de Gyeongbokgung recomendado pelo anfitrião. Abra PHOTO para ver o guia.",
+          "ru": "Маршрут для прогулки и пробежки вокруг Кёнбоккуна от хозяина. Откройте PHOTO, чтобы посмотреть путеводитель."
+        },
+        "icon": "lucide:footprints",
+        "image": "",
+        "linkUrl": "",
+        "linkLabel": {
+          "ko": "관련 안내",
+          "en": "More information",
+          "zh": "相关信息",
+          "ja": "関連案内",
+          "de": "Weitere Informationen",
+          "fr": "Informations complémentaires",
+          "es": "Más información",
+          "it": "Altre informazioni",
+          "pt": "Mais informações",
+          "ru": "Подробнее"
+        },
+        "steps": [],
+        "posters": {
+          "ko": "/assets/66eb011ef40fad338cc5c133.jpeg",
+          "en": "/assets/a4dc98e120921efdfdb2184b.jpeg",
+          "zh": "/assets/6c69eca3e28ab5a48fee3190.jpeg",
+          "ja": "/assets/1e9222707c8d426b8b933c3e.jpeg",
+          "de": "/assets/9ed9d088817c6976542e7cbe.jpeg",
+          "fr": "/assets/84f28add43586c531442e71b.jpeg",
+          "es": "/assets/9c616b4f0cfa315f8e5c4a37.jpeg",
+          "it": "/assets/7bb4e99cf65bc02a0f5d0756.jpeg",
+          "pt": "/assets/f30f9a869749624a716e7ab8.jpeg",
+          "ru": "/assets/0db17c48f7e392f985f934a4.jpeg"
+        }
       }
     ]
   }
