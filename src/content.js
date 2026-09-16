@@ -34,6 +34,7 @@ export function renderGuide(template,blocks,catalog,content,{editing=false,snaps
  const model=collectionModel(blocks,catalog,sourceSeed,content),copy=structuredClone(model.blocks);
  if(editing){
   const placeholders=(value,path=[])=>{
+   if(path.at(-1)==='posters')return;
    if(!value||typeof value!=='object')return;
    if(typeof value.ko==='string'){
     const label=['title','name','nameI18n'].includes(path.at(-1))?'제목 수정':'내용 수정';

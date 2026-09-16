@@ -18,6 +18,7 @@ export function collectionModel(original,baseCatalog,seed,content={}){
  for(const place of source.food||[])place.badge='none';
  const prepareMaps=value=>{if(!value||typeof value!=='object')return;if(value.tonginGuide)value.tonginGuide.search||='통인시장 서울 종로구 자하문로15길 18';if(typeof value.search==='string')for(const key of Object.keys(mapFields))value[key]||='';for(const child of Object.values(value))if(child&&typeof child==='object')prepareMaps(child);};
  prepareMaps(source.food);prepareMaps(source.ARANYA_CURATED_PLACES);
+ for(const card of source.TRAVEL_TIPS||[])card.posters||=Object.fromEntries(langs.map(l=>[l,'']));
  const structure=content.__lists||{},galleries=content.__photos||{};
  if(!structure||Array.isArray(structure)||typeof structure!=='object'||!galleries||Array.isArray(galleries)||typeof galleries!=='object')throw Error('목록 형식이 올바르지 않습니다.');
  const base=new Map(baseCatalog.map(f=>[f.id,f]));
@@ -35,8 +36,10 @@ export function collectionModel(original,baseCatalog,seed,content={}){
  }
  function walk(value,block,path=[],fresh=false,item=null){
   if(Array.isArray(value)){
+   const empty=value.length===0;
+   if(empty&&block==='TRAVEL_TIPS'&&path.at(-1)==='steps')value=source.TRAVEL_TIPS.find(card=>card.steps?.length)?.steps||[];
    const key=keyFor(block,path),configured=structure[key];seenLists.add(key);
-   const order=configured===undefined?value.map((_,i)=>({id:String(i),source:i})):configured;
+   const order=configured===undefined?(empty?[]:value.map((_,i)=>({id:String(i),source:i}))):configured;
    if(!Array.isArray(order)||order.length>80||!value.length&&order.length)throw Error('목록 항목은 최대 80개까지 추가할 수 있습니다.');
    const list={key,block,path,label:titles[path.at(-1)]||titles[block]||'세부 목록',parentKey:item?.key,items:[],templates:value.map((v,i)=>({source:i,label:v?.title?.ko||v?.name?.ko||v?.nameI18n?.ko||v?.ko||'기본 항목'}))};lists.push(list);
    const ids=new Set();return order.map(row=>{
@@ -99,6 +102,13 @@ export function changeStructure(blocks,catalog,seed,content,action){
   if(action.type==='add'){const source=action.source??0;if(!list.templates.some(t=>t.source===source))throw Error('항목을 추가할 수 없습니다. 새로고침해주세요.');const id='n_'+crypto.randomUUID();if(action.icon!==undefined){if(!['AMENITIES','AIRPORT','TRAVEL_TIPS'].includes(list.block)||!validAmenityIcon(action.icon))throw Error('아이콘을 선택해주세요.');draft[keyFor(list.block,[...list.path,id,'icon'])]=entry(action.icon,'choice');}rows.push({id,source});}
   else{const index=rows.findIndex(r=>r.id===action.id);if(index<0)throw Error('항목을 찾을 수 없습니다.');if(action.type==='remove'){prune(list.key+(list.path.length?'.':'')+action.id);rows.splice(index,1);}else{const next=index+action.direction;if(![-1,1].includes(action.direction)||next<0||next>=rows.length)throw Error('이동할 위치가 없습니다.');[rows[index],rows[next]]=[rows[next],rows[index]];}}
   draft.__lists[action.key]=rows;
+  if(action.type==='add'){
+   const newKey=keyFor(list.block,[...list.path,rows.at(-1).id]);
+   const expanded=collectionModel(blocks,catalog,seed,draft);
+   for(const child of expanded.lists)if(child.parentKey===newKey||child.parentKey?.startsWith(newKey+'.'))draft.__lists[child.key]=[];
+   // Descendants of the now-empty child lists no longer exist.
+   for(const key of Object.keys(draft.__lists))if(key.startsWith(newKey+'.')&&expanded.lists.some(child=>child.key!==key&&child.key.startsWith(newKey+'.')&&key.startsWith(child.key+'.')))delete draft.__lists[key];
+  }
  }else if(['photoAdd','photoRemove'].includes(action.type)){
   const photo=model.photos.find(p=>p.key===action.key);if(!photo)throw Error('사진 항목을 찾을 수 없습니다.');
   const slots=[...photo.slots];if(action.type==='photoAdd')slots.push('n_'+crypto.randomUUID());else{const i=slots.indexOf(action.id);if(i<0)throw Error('사진을 찾을 수 없습니다.');slots.splice(i,1);}draft.__photos[action.key]=slots;
