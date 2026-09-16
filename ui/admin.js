@@ -5,7 +5,7 @@ let translationPending=[];
 let photoTargetKey='',photoTargetSection='',lists=[],photoGroups=[],catalog=[],draft={},revision=0,active='home',dirty=false,busy=false,ai=false,images=false,selectedId=null,browseMode=false,guideObserver=null,guideTimer=null,guideAliases={},guideMatches=new Map(),livePreviewTimer=null,guidePosition=null,guideNavigation=null;
 function message(text){$('status').textContent=text;}
 async function api(path,body){const response=await fetch('/api/'+path,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok){if(response.status===401){$('login').hidden=false;$('manager').hidden=true;}throw Error(data.error||'연결에 실패했습니다.');}return data;}
-function accept(data){if(data.catalog)catalog=data.catalog;if(data.lists)lists=data.lists;if(data.photos)photoGroups=data.photos;translationPending=data.pending||[];for(const id of Object.keys(draft))if(!(id in data.draft))delete draft[id];for(const [id,entry] of Object.entries(data.draft)){if(draft[id]?.values&&entry.values)Object.assign(draft[id],entry);else draft[id]=entry;}revision=data.revision;dirty=false;}
+function accept(data){if(data.catalog)catalog=data.catalog;if(data.lists)lists=data.lists;if(data.photos)photoGroups=data.photos;translationPending=data.pending||[];for(const id of Object.keys(draft))if(!(id in data.draft))delete draft[id];for(const [id,entry] of Object.entries(data.draft)){if(!entry.translationProgress&&draft[id])delete draft[id].translationProgress;if(draft[id]?.values&&entry.values)Object.assign(draft[id],entry);else draft[id]=entry;}revision=data.revision;dirty=false;}
 function group(field){if(field.block==='AIRPORT')return 'home';if(field.block==='TRAVEL_TIPS'||field.id==='I18N:travel_tips_tab')return 'tips';if(field.block==='CHECKIN')return 'home';if(field.block==='AMENITIES')return 'amenities';if(field.itemKey&&listSection(field.block))return listSection(field.block);if(field.type==='image')return 'images';if(field.block==='HOUSE_NOTES')return 'rules';if(field.block==='MANUALS')return 'manuals';if(field.block==='food'||field.block==='ARANYA_DINING_LABELS')return 'food';if(field.block.includes('CURATED')||field.block.includes('AROUND'))return 'around';if(field.block==='aranya-essentials-data')return 'amenities';const key=field.path.join('.');if(/house|rule|notice/.test(key))return 'rules';if(/manual/.test(key))return 'manuals';if(/amen|^a_/.test(key))return 'amenities';if(/around|travel/.test(key))return 'around';if(/food|chip|dining/.test(key))return 'food';if(/host|contact|response|gen_|footer|copied/.test(key))return 'contact';return 'home';}
 function changed(){badgeOnlyDirty=false;dirty=true;$('saveState').textContent='수정 중 · 아직 저장하지 않았어요';message('수정 중 · 초안 저장 후 번역과 미리보기를 진행하세요.');updateGuideSelection();clearTimeout(livePreviewTimer);livePreviewTimer=setTimeout(refreshGuide,600);}
 function plain(value){const doc=new DOMParser().parseFromString(String(value),'text/html');return doc.body.textContent.replace(/\s+/g,' ').trim();}
@@ -85,7 +85,7 @@ function render(preserveEditor=false){
   }else{
    const input=document.createElement('textarea');input.value=entry.values.ko;input.placeholder=['title','name','nameI18n'].includes(field.path.at(-1))?'제목 수정':'내용 수정';input.maxLength=12000;label.htmlFor=input.id='field-'+catalog.indexOf(field);input.oninput=()=>{entry.values.ko=input.value;changed();};card.append(input);
    if(entry.values.ko!==entry.translatedFrom){const badge=document.createElement('span');badge.className='badge';badge.textContent='번역 필요';card.append(badge);}
-   const retry=document.createElement('button');retry.type='button';retry.textContent='이 문구 다시 번역';retry.onclick=()=>run(async()=>{const id=field.id;if(!ai)throw Error('Cloudflare AI 연결이 필요합니다.');if(dirty)await save();message('선택한 문구를 9개 언어로 다시 번역 중입니다. 잠시 기다려주세요.');accept(await api('translate',{revision,id}));render();refreshGuide();$('saveState').textContent='번역 저장됨 · 공개 전';message('선택한 문구의 번역을 다시 저장했습니다. 번역 확인 후 공개해주세요.');});const retryHint=document.createElement('p');retryHint.className='hint';retryHint.textContent='번역이 빠졌다면 다시 번역하세요. 이 문구의 다른 언어 번역을 새 결과로 교체합니다.';card.append(retry,retryHint);
+   const retry=document.createElement('button');retry.type='button';retry.textContent='이 문구 다시 번역';retry.onclick=()=>run(async()=>{const id=field.id;if(!ai)throw Error('Cloudflare AI 연결이 필요합니다.');if(dirty)await save();message('선택한 문구를 9개 언어로 다시 번역 중입니다. 잠시 기다려주세요.');await translateField(id,true);render();refreshGuide();$('saveState').textContent='번역 저장됨 · 공개 전';message('선택한 문구의 번역을 다시 저장했습니다. 번역 확인 후 공개해주세요.');});const retryHint=document.createElement('p');retryHint.className='hint';retryHint.textContent='번역이 빠졌다면 다시 번역하세요. 이 문구의 다른 언어 번역을 새 결과로 교체합니다.';card.append(retry,retryHint);
    const details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='다국어 번역 확인 · 직접 수정';details.append(summary);
    for(const [lang,name] of Object.entries(languages)){const l=document.createElement('label');l.textContent=name;const translated=document.createElement('textarea');translated.value=entry.values[lang];translated.setAttribute('aria-label',name+' 번역');translated.oninput=()=>{entry.values[lang]=translated.value;changed();};l.append(translated);details.append(l);}card.append(details);
   }$('fields').append(card);
@@ -103,12 +103,18 @@ $('logout').onclick=()=>run(async()=>{if(dirty&&!confirm('저장하지 않은 �
 for(const [key,name] of Object.entries(sections)){const b=document.createElement('button');b.textContent=name;b.dataset.section=key;b.onclick=()=>{active=key;guideNavigation=key==='images'?'home':key;selectedId=null;render();navigateGuide(guideNavigation);$('fieldBrowser').open=true;};$('sections').append(b);}
 $('search').oninput=render;
 $('save').onclick=()=>run(async()=>{await save();});
+async function translateField(id,force=false){
+ const entry=draft[id],progress=entry.translationProgress;
+ const completed=!force&&progress?.source===entry.values.ko?progress.done:[];
+ for(const [lang,name]of Object.entries(languages)){if(completed.includes(lang))continue;message('번역 중 · '+fieldName(catalog.find(f=>f.id===id))+' · '+name);accept(await api('translate',{revision,id,lang}));}
+}
 $('translate').onclick=()=>run(async()=>{
- if(dirty)await save();
- const ids=[...translationPending];
- if(ids.length&&!ai)throw Error('Cloudflare AI 연결이 필요합니다. 초안을 먼저 저장해주세요.');
- try{for(let i=0;i<ids.length;i++){message(`자동 번역 중 ${i+1}/${ids.length} · 창을 닫지 마세요.`);accept(await api('translate',{revision,id:ids[i]}));}}finally{render();}
- refreshGuide();message(ids.length?'번역 완료 · 각 항목의 다국어 번역과 미리보기를 확인해주세요.':'번역할 변경 사항이 없습니다.');
+ if(dirty)await save();const ids=[...translationPending],failed=[];
+ if(ids.length&&!ai)throw Error('Cloudflare AI 연결이 필요합니다. 초안은 저장되었습니다.');
+ for(const id of ids){try{await translateField(id);}catch(error){failed.push({id,message:error.message});if(/다른 창|로그인|연결에 실패/.test(error.message))break;}}
+ render();refreshGuide();
+ if(failed.length){const first=failed[0];selectField(first.id);message('번역 미완료 '+failed.length+'개 · '+fieldName(catalog.find(f=>f.id===first.id))+' · '+first.message+' 다시 누르면 저장된 언어 다음부터 이어갑니다.');}
+ else message(ids.length?'번역 완료 · 다국어 문구 확인 후 공개해주세요.':'번역할 변경 사항이 없습니다.');
 });
 $('preview').onclick=()=>run(async()=>{if(dirty)await save();const guest=btoa(JSON.stringify(['Preview','2099-01-01','2099-01-03','15:00','11:00',2,0,'ko']));$('previewFrame').src='/preview?g='+encodeURIComponent(guest);$('previewDialog').showModal();});
 $('closePreview').onclick=()=>$('previewDialog').close();

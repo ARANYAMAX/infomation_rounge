@@ -70,16 +70,22 @@ export default {async fetch(request,env){
      const text=draft[field.id].values.ko;
      if(text.length>2000)fail('자동 번역은 항목당 2,000자까지 지원합니다. 문구를 나눠주세요.');
      const translated={ko:text};
+     const targets=input.lang?[input.lang]:languages.filter(l=>l!=='ko');
+     if(targets.some(l=>l==='ko'||!languages.includes(l)))fail('지원하지 않는 번역 언어입니다.');
+     const old=draft[field.id],progress=old.translationProgress?.source===text?old.translationProgress:{source:text,done:[]};
      // Preserve markup and substitutions by translating only text fragments.
      const fragments=translationFragments(text);
-     for(const l of languages.filter(l=>l!=='ko')){
+     for(const l of targets){
       let output='';for(const fragment of fragments){if(!fragment.trim()||/^(?:<|\{|https?:\/\/|\d)/.test(fragment)){output+=fragment;continue;}
-       const answer=await env.AI.run('@cf/meta/m2m100-1.2b',{text:fragment,source_lang:'ko',target_lang:l});
+       let answer;
+       try{answer=await env.AI.run('@cf/meta/m2m100-1.2b',{text:fragment,source_lang:'ko',target_lang:l});}
+       catch(error){console.error('Translation failed',field.id,l,String(error.message).slice(0,300));fail('번역 서비스 요청 실패 ('+l+'). 완료된 언어는 저장되어 있습니다. 잠시 후 다시 번역해주세요.',502);}
        if(typeof answer.translated_text!=='string'||!answer.translated_text.trim())fail('번역 응답을 확인할 수 없습니다. 다시 시도해주세요.',502);
        output+=(fragment.match(/^\s*/)?.[0]||'')+answer.translated_text.trim().replace(/</g,'&lt;').replace(/>/g,'&gt;')+(fragment.match(/\s*$/)?.[0]||'');
       }translated[l]=output;
      }
-     draft[field.id]={values:translated,translatedFrom:text,reviewed:false};
+     const done=[...new Set([...progress.done,...targets])],complete=languages.filter(l=>l!=='ko').every(l=>done.includes(l));
+     draft[field.id]={values:{...old.values,...translated},translatedFrom:complete?text:old.translatedFrom,reviewed:false,...(complete?{}:{translationProgress:{source:text,done}})};
     }
     if(path==='/api/publish'){
      if(pending(draft,currentCatalog).length)fail('한국어가 변경된 항목의 번역을 먼저 완료해주세요.');

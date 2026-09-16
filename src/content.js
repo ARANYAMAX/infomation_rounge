@@ -22,13 +22,13 @@ export function validateDraft(input,catalog,previous){
   if(field.type==='choice'&&!field.options.includes(values.ko))throw Error('올바른 분류를 선택해주세요.');
   if(field.type==='plain'&&/[<>]/.test(values.ko))throw Error('주소·전화번호·아이콘에는 일반 문자만 입력해주세요.');
   // Translation status comes only from the server, never from the browser.
-  result[field.id]={values,translatedFrom:old.translatedFrom,reviewed:old.reviewed&&JSON.stringify(values)===JSON.stringify(old.values)};
+  result[field.id]={values,translatedFrom:old.translatedFrom,reviewed:old.reviewed&&JSON.stringify(values)===JSON.stringify(old.values),...(old.translationProgress?{translationProgress:old.translationProgress}:{})};
  }
  return result;
 }
 // A comma at a line break is formatting; preserve number punctuation and wording.
 const translationText=value=>String(value??'').replace(/\r\n/g,'\n').replace(/,[ \t]*\n/g,'\n').trim();
-export function pending(draft,catalog){return catalog.filter(f=>f.type==='text'&&!(f.block==='AIRPORT'&&f.path[0]!=='button')&&translationText(draft[f.id].values.ko)!==translationText(draft[f.id].translatedFrom)).map(f=>f.id);}
+export function pending(draft,catalog){return catalog.filter(f=>{if(f.type!=='text'||f.block==='AIRPORT'&&f.path[0]!=='button')return false;const e=draft[f.id];return translationText(e.values.ko)!==translationText(e.translatedFrom)||!!e.values.ko.trim()&&languages.some(l=>l!=='ko'&&!e.values[l]?.trim());}).map(f=>f.id);}
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function renderGuide(template,blocks,catalog,content,{editing=false,snapshot=false}={}){
  const model=collectionModel(blocks,catalog,sourceSeed,content),copy=structuredClone(model.blocks);
