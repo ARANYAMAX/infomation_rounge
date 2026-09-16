@@ -26,7 +26,9 @@ export function validateDraft(input,catalog,previous){
  }
  return result;
 }
-export function pending(draft,catalog){return catalog.filter(f=>f.type==='text'&&!(f.block==='AIRPORT'&&f.path[0]!=='button')&&draft[f.id].values.ko!==draft[f.id].translatedFrom).map(f=>f.id);}
+// A comma at a line break is formatting; preserve number punctuation and wording.
+const translationText=value=>String(value??'').replace(/\r\n/g,'\n').replace(/,[ \t]*\n/g,'\n').trim();
+export function pending(draft,catalog){return catalog.filter(f=>f.type==='text'&&!(f.block==='AIRPORT'&&f.path[0]!=='button')&&translationText(draft[f.id].values.ko)!==translationText(draft[f.id].translatedFrom)).map(f=>f.id);}
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function renderGuide(template,blocks,catalog,content,{editing=false,snapshot=false}={}){
  const model=collectionModel(blocks,catalog,sourceSeed,content),copy=structuredClone(model.blocks);

@@ -112,7 +112,7 @@ $('translate').onclick=()=>run(async()=>{
 });
 $('preview').onclick=()=>run(async()=>{if(dirty)await save();const guest=btoa(JSON.stringify(['Preview','2099-01-01','2099-01-03','15:00','11:00',2,0,'ko']));$('previewFrame').src='/preview?g='+encodeURIComponent(guest);$('previewDialog').showModal();});
 $('closePreview').onclick=()=>$('previewDialog').close();
-$('publish').onclick=()=>run(async()=>{if(dirty)await save();if(translationPending.length)throw Error('한국어 변경 항목을 먼저 자동 번역해주세요.');$('reviewed').checked=false;$('publishDialog').showModal();});
+$('publish').onclick=()=>run(async()=>{if(dirty)await save();if(translationPending.length){const id=translationPending[0];selectField(id);throw Error('번역이 필요한 문구: '+fieldName(catalog.find(f=>f.id===id))+' · 오른쪽에서 확인해주세요.');}$('reviewed').checked=false;$('publishDialog').showModal();});
 $('cancelPublish').onclick=()=>$('publishDialog').close();
 $('confirmPublish').onclick=()=>run(async()=>{if(!$('reviewed').checked)throw Error('미리보기와 번역 확인에 체크해주세요.');accept(await api('publish',{revision,reviewed:true}));$('publishDialog').close();render();$('saveState').textContent='공개 완료 · 손님 화면에 반영됐어요';message('공개 완료 · 손님이 안내를 새로 열면 수정 내용이 표시됩니다.');});
 let previewRequest=0;
