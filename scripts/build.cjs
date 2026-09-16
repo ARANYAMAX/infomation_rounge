@@ -1,6 +1,20 @@
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
 const root=path.join(__dirname,'..');process.chdir(root);
 let html=fs.readFileSync('index.html','utf8');
+html=html.replace('display=block','display=swap');
+html=html.replace('</head>','<meta name="robots" content="noindex,nofollow"><meta property="og:title" content="Aranya Guest Guide"><meta property="og:description" content="Check-in and stay information"><script src="/guest-ux.js" defer></script></head>');
+// Keep the existing source document and guest URL shape; only the Worker issues new links.
+function replaceRequired(from,to){if(!html.includes(from))throw Error('Guest security integration target missing');html=html.replace(from,to);}
+replaceRequired('function decodeGuestCompact(value){','function decodeGuestCompact(value){ if(window.ARANYA_GUEST)return window.ARANYA_GUEST;');
+replaceRequired("document.getElementById('genBtn').addEventListener('click', () => {","document.getElementById('genBtn').addEventListener('click', async () => {");
+replaceRequired("const url = base + '?g=' + encodeGuestCompact(g);",`const button=document.getElementById('genBtn');button.disabled=true;let url;
+    try{const response=await fetch('/api/guest-link',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(g)});
+      const result=await response.json();if(!response.ok)throw Error(result.error||t('gen_alert'));url=result.url;
+    }catch(error){alert(error.message||t('gen_alert'));return;}finally{button.disabled=false;}`);
+for(const [id,property,label] of [['stCi','cit','from'],['stCo','cot','until']]){
+ replaceRequired(`if(g.${property}) document.getElementById('${id}').innerHTML = g.${property} + '<small>' + t('${label}') + '</small>';`,
+ `if(g.${property}){const small=document.createElement('small');small.textContent=t('${label}');document.getElementById('${id}').replaceChildren(document.createTextNode(g.${property}),small);}`);
+}
 fs.mkdirSync('dist/assets',{recursive:true});fs.mkdirSync('src',{recursive:true});
 // Only explicitly copied files enter the public directory; .git is never an asset.
 const imageMap=new Map();
@@ -68,7 +82,7 @@ const expiredStart=html.indexOf('function renderExpiredGuest(g)'),expiredEnd=htm
 if(expiredStart<0||expiredEnd<0)throw Error('Missing expiration screen');
 const expiredTemplate='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARANYA · Expired link</title><style>*{box-sizing:border-box}body{margin:0;font-family:sans-serif}</style></head><body><noscript>안내 링크가 만료되었습니다. This guest link has expired.</noscript><script>const lang="__EXPIRED_LANGUAGE__";'+html.slice(expiredStart,expiredEnd)+'renderExpiredGuest({l:lang});</script></body></html>';
 fs.appendFileSync('src/generated.js','\nexport const expiredTemplate='+JSON.stringify(expiredTemplate.replace('</head>','<script src="/language-controls.js" defer></script></head>'))+';');
-for(const f of ['admin.html','admin.js','admin.css','language-controls.js','preview.js'])fs.copyFileSync('ui/'+f,'dist/'+f);
+for(const f of ['admin.html','admin.js','admin.css','language-controls.js','preview.js','guest-ux.js'])fs.copyFileSync('ui/'+f,'dist/'+f);
 const amenityIcons=Object.fromEntries([...html.matchAll(/<div class="amen"[^>]*>(<svg[\s\S]*?<\/svg>)<span (?:data-i18n|data-photo-key)="([^"]+)"/g)].map(m=>[m[2],{svg:m[1],label:seed['I18N:'+m[2]]?.values.ko||'TV'}]));
 const lucideRoot=path.join(root,'node_modules/lucide-static'),iconTags=JSON.parse(fs.readFileSync(path.join(lucideRoot,'tags.json'),'utf8'));
 for(const file of fs.readdirSync(path.join(lucideRoot,'icons')).filter(f=>f.endsWith('.svg')).sort()){

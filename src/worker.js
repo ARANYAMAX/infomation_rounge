@@ -1,6 +1,6 @@
 import {collectionModel,hydrateContent,changeStructure} from './collections.js';
 import {template,blocks,catalog,seed,expiredTemplate} from './generated.js';
-import {guestLinkStatus} from './guest-expiry.js';
+import {issueGuest,readGuest} from './guest-token.js';
 import {validateDraft,pending,renderGuide,languages,translationFragments} from './content.js';
 const encoder=new TextEncoder();
 const json=(body,status=200,extra={})=>Response.json(body,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});
@@ -18,7 +18,7 @@ async function save(env,s,draft,published=s.published){const result=await env.DB
 function fail(message,status=400){throw Object.assign(Error(message),{status});}
 async function body(request){const text=await request.text();if(text.length>1500000)fail('내용이 너무 큽니다.',413);try{return JSON.parse(text);}catch{fail('요청 형식 오류');}}
 function responseState(s){const m=model(s.draft);return {revision:s.revision,draft:s.draft,catalog:m.catalog,lists:m.lists,photos:m.photos,pending:pending(s.draft,m.catalog)};}
-export default {async fetch(request,env){
+const handler={async fetch(request,env){
  const url=new URL(request.url),path=url.pathname;
  try{
   if(path.startsWith('/.'))return new Response('Not found',{status:404});
@@ -38,6 +38,11 @@ export default {async fetch(request,env){
   if(path.startsWith('/api/')||path==='/preview'){
    if(!await authenticated(request,env))return json({error:'호스트 로그인이 필요합니다.'},401);
    if(!env.DB)return json({error:'DB 연결이 필요합니다.'},503);
+   if(path==='/api/guest-link'&&request.method==='POST'){
+    const input=await body(request);let token;
+    try{token=await issueGuest(input,env.SESSION_SECRET);}catch{fail('이름·날짜·시간·인원을 확인해주세요. 체크아웃은 체크인 이후여야 합니다.');}
+    return json({url:url.origin+'/?g='+token});
+   }
    if(path==='/api/content'&&request.method==='GET'){const s=await state(env);return json({...responseState(s),translationAvailable:!!env.AI,imagesAvailable:!!env.IMAGES});}
    if(path==='/api/image'&&request.method==='POST'){
     if(!env.IMAGES)fail('이미지 저장소 연결이 필요합니다.',503);
@@ -79,7 +84,7 @@ export default {async fetch(request,env){
       let output='';for(const fragment of fragments){if(!fragment.trim()||/^(?:<|\{|https?:\/\/|\d)/.test(fragment)){output+=fragment;continue;}
        let answer;
        try{answer=await env.AI.run('@cf/meta/m2m100-1.2b',{text:fragment,source_lang:'ko',target_lang:l});}
-       catch(error){console.error('Translation failed',field.id,l,String(error.message).slice(0,300));fail('번역 서비스 요청 실패 ('+l+'). 완료된 언어는 저장되어 있습니다. 잠시 후 다시 번역해주세요.',502);}
+       catch(error){console.error('Translation failed',field.id,l);fail('번역 서비스 요청 실패 ('+l+'). 완료된 언어는 저장되어 있습니다. 잠시 후 다시 번역해주세요.',502);}
        if(typeof answer.translated_text!=='string'||!answer.translated_text.trim())fail('번역 응답을 확인할 수 없습니다. 다시 시도해주세요.',502);
        output+=(fragment.match(/^\s*/)?.[0]||'')+answer.translated_text.trim().replace(/</g,'&lt;').replace(/>/g,'&gt;')+(fragment.match(/\s*$/)?.[0]||'');
       }translated[l]=output;
@@ -104,12 +109,25 @@ export default {async fetch(request,env){
    return new Response(object.body,{headers:{'Content-Type':object.httpMetadata.contentType,'Cache-Control':'public,max-age=31536000,immutable','X-Content-Type-Options':'nosniff'}});
   }
   if(path==='/'||path==='/index.html'){
-   const guest=guestLinkStatus(url.searchParams.get('g'));
+   const guest=url.searchParams.has('g')?await readGuest(url.searchParams.get('g'),env.SESSION_SECRET,{allowLegacy:env.DISABLE_LEGACY_GUEST_LINKS!=='true'}):{expired:false};
    if(guest.expired){const language=languages.includes(guest.language)?guest.language:'ko';return new Response(expiredTemplate.replace('__EXPIRED_LANGUAGE__',language),{status:410,headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store','X-Robots-Tag':'noindex'}});}
    let html=await publishedGuide(env);if(!url.searchParams.has('g')){const logged=await authenticated(request,env);html=html.replace('<head>','<head><script>try{'+(logged?"sessionStorage.setItem('aranya_admin','1');sessionStorage.setItem('aranya_host_entry','1');":"sessionStorage.removeItem('aranya_admin');sessionStorage.removeItem('aranya_host_entry');")+'}catch(e){}</script>');}
+   if(guest.guest)html=html.replace('<head>','<head><script>window.ARANYA_GUEST='+JSON.stringify(guest.guest).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029')+';</script>');
    return new Response(html,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store'}});
   }
   if(path==='/admin'){const asset=await env.ASSETS.fetch(request);const response=new Response(asset.body,asset);response.headers.set('Cache-Control','no-store');return response;}
   return env.ASSETS.fetch(request);
  }catch(error){return json({error:error.status?error.message:'처리 중 오류가 발생했습니다. 기존 공개 내용은 유지됩니다.'},error.status||500);}
+}};
+// The host editor embeds same-origin previews, so DENY would break editing.
+export default {async fetch(request,env){
+ const original=await handler.fetch(request,env),response=new Response(original.body,original);
+ for(const [name,value] of Object.entries({
+  'Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff',
+  'X-Frame-Options':'SAMEORIGIN','Permissions-Policy':'camera=(), microphone=(), geolocation=()',
+  'Strict-Transport-Security':'max-age=31536000','X-Robots-Tag':'noindex, nofollow',
+  'Content-Security-Policy':"object-src 'none'; base-uri 'self'; frame-ancestors 'self'",
+  'Content-Security-Policy-Report-Only':"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self'; frame-src 'self'; form-action 'self'"
+ }))response.headers.set(name,value);
+ return response;
 }};

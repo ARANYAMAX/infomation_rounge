@@ -32,6 +32,9 @@ export function pending(draft,catalog){return catalog.filter(f=>{if(f.type!=='te
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function renderGuide(template,blocks,catalog,content,{editing=false,snapshot=false}={}){
  const model=collectionModel(blocks,catalog,sourceSeed,content),copy=structuredClone(model.blocks);
+ // Hide only the original developer note, never a host's replacement text.
+ if(!editing)for(const l of languages)if(copy.I18N[l]?.amen_note===sourceSeed['I18N:amen_note']?.values[l])copy.I18N[l].amen_note='';
+ if(!editing)template=template.replace(/(<p\b[^>]*data-i18n="amen_note"[^>]*>)[\s\S]*?<\/p>/,(_,start)=>start+escape(copy.I18N.ko.amen_note)+'</p>');
  if(editing){
   const placeholders=(value,path=[])=>{
    if(path.at(-1)==='posters')return;
