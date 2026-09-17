@@ -3,6 +3,7 @@ const root=path.join(__dirname,'..');process.chdir(root);
 let html=fs.readFileSync('index.html','utf8');
 html=html.replace('display=block','display=swap');
 html=html.replace('</head>','<meta name="robots" content="noindex,nofollow"><meta property="og:title" content="Aranya Guest Guide"><meta property="og:description" content="Check-in and stay information"><script src="/guest-ux.js" defer></script></head>');
+html=html.replace('p[posterLang]||p.en||p.ko||Object.values(p).find(Boolean)','p[posterLang]||p.ko||p.en||Object.values(p).find(Boolean)');
 // Keep the existing source document and guest URL shape; only the Worker issues new links.
 function replaceRequired(from,to){if(!html.includes(from))throw Error('Guest security integration target missing');html=html.replace(from,to);}
 replaceRequired('<div class="gen-actions">','<div class="gen-row full"><label><span data-i18n="step_lock">도어록 비밀번호</span><input id="genPin" type="text" inputmode="tel" autocomplete="off" maxlength="12" pattern="[0-9*#]{4,12}" placeholder="0–9 · * · # (4–12)" /></label></div><div class="gen-actions">');
