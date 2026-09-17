@@ -69,7 +69,7 @@ html=html.replace('</head>',`<script>function aranyaDiningHero(item){
  const posters=item.posters||{},code=typeof lang==='string'?lang:'ko';
  const posterLanguage=posters[code]?code:!item.image?(posters.en?'en':posters.ko?'ko':Object.keys(posters).find(l=>posters[l])):null;
  const src=posterLanguage?posters[posterLanguage]:item.image;if(!src)return '';
- const field=item._cmsKey+(posterLanguage?'.posters.'+posterLanguage:'.image');
+ const field=item._cmsKey+'.posters.'+(posterLanguage||code);
  return '<button type="button" class="place-photo-button" data-cms-field="'+aranyaEscape(field)+'" data-guide-photo="'+aranyaEscape(src)+'">PHOTO 1</button>';
 }</script></head>`);
 // Preview rendering shares the guest templates; only the editor installs DOM reconciliation.
