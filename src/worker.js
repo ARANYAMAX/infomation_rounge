@@ -1,6 +1,6 @@
 import {collectionModel,hydrateContent,changeStructure} from './collections.js';
 import {template,blocks,catalog,seed,expiredTemplate} from './generated.js';
-import {issueGuest,readGuest} from './guest-token.js';
+import {issueGuest,readGuest,validateGuest} from './guest-token.js';
 import {validateDraft,pending,renderGuide,languages,translationFragments} from './content.js';
 const encoder=new TextEncoder();
 const json=(body,status=200,extra={})=>Response.json(body,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});
@@ -40,7 +40,23 @@ const handler={async fetch(request,env){
    if(!env.DB)return json({error:'DB 연결이 필요합니다.'},503);
    if(path==='/api/guest-link'&&request.method==='POST'){
     const input=await body(request);let token;
-    try{token=await issueGuest(input,env.SESSION_SECRET);}catch{fail('이름·날짜·시간·인원을 확인해주세요. 체크아웃은 체크인 이후여야 합니다.');}
+    let guest;try{guest=validateGuest({...input,doorNote:undefined});}catch(error){fail(error.message);}
+    const note=input.doorNoteKo??'';if(typeof note!=='string'||note.length>300)fail('한국어 설명은 300자 이하로 입력해주세요.');
+    if(note.trim()){
+     guest.doorNote={ko:note.trim()};
+     if(guest.l!=='ko'){
+      if(!env.AI)fail('안내 설명 번역을 사용할 수 없습니다. 입력 내용은 유지됩니다.',503);
+      try{
+       let output='';for(const part of translationFragments(note.trim())){
+        if(!part.trim()||/^(?:<|\{|https?:\/\/|\d)/.test(part)){output+=part;continue;}
+        const answer=await env.AI.run('@cf/meta/m2m100-1.2b',{text:part,source_lang:'ko',target_lang:guest.l});
+        if(typeof answer?.translated_text!=='string'||!answer.translated_text.trim())throw Error();
+        output+=(part.match(/^\s*/)?.[0]||'')+answer.translated_text.trim()+(part.match(/\s*$/)?.[0]||'');
+       }guest.doorNote[guest.l]=output;
+      }catch{fail('안내 설명 번역에 실패했습니다. 입력 내용은 유지됩니다. 다시 링크를 만들어주세요.',502);}
+     }
+    }
+    try{token=await issueGuest(guest,env.SESSION_SECRET);}catch(error){fail(error.message);}
     return json({url:url.origin+'/?g='+token});
    }
    if(path==='/api/content'&&request.method==='GET'){const s=await state(env);return json({...responseState(s),translationAvailable:!!env.AI,imagesAvailable:!!env.IMAGES});}

@@ -1,6 +1,6 @@
 // Isolated D1 only. Never calls production or uses production credentials.
 import {build} from 'esbuild';import {Miniflare,convertV4MiniflareOptions} from 'miniflare';import fs from 'node:fs';import assert from 'node:assert/strict';
-const output=await build({entryPoints:['src/worker.js'],bundle:true,format:'esm',write:false,platform:'browser'});
+const output=await build({stdin:{contents:`import worker from './src/worker.js';export default {fetch(r,e){return worker.fetch(r,{...e,AI:{run:async(m,p)=>{if(p.text.includes('FAIL'))throw Error('test failure');if(p.text.includes('001234'))throw Error('PIN must not be translated');return {translated_text:'TRANSLATED '+p.target_lang+' '+p.text};}}});}}`,resolveDir:process.cwd()},bundle:true,format:'esm',write:false,platform:'browser'});
 const mf=new Miniflare(convertV4MiniflareOptions({workers:[{modules:true,script:output.outputFiles[0].text,compatibilityDate:'2026-09-10',d1Databases:['DB'],bindings:{HOST_PASSWORD:'local-test-password',SESSION_SECRET:'local-test-secret',DISABLE_LEGACY_GUEST_LINKS:'true'}}]}));
 try{
  const db=await mf.getD1Database('DB');for(const sql of fs.readFileSync('migrations/0001_content.sql','utf8').split(';').filter(x=>x.trim()))await db.prepare(sql).run();
@@ -10,6 +10,10 @@ try{
  const login=await request('/api/login',{password:'local-test-password'});cookie=login.headers.get('set-cookie').split(';')[0];assert(/HttpOnly.*Secure.*SameSite=Strict/.test(login.headers.get('set-cookie')));
  const response=await request('/api/guest-link',guest);assert.equal(response.status,200);const link=(await response.json()).url;assert(link.includes('?g=v1.'));
  assert.equal((await request('/api/guest-link',{...guest,co:'2000-01-01'})).status,400);assert.equal((await request('/api/guest-link',guest,{Origin:'https://other.test'})).status,403);
+ const noteLink=await request('/api/guest-link',{...guest,pin:'001234',doorNoteKo:'게스트님 안녕하세요.'});assert.equal(noteLink.status,200);
+ const noteUrl=new URL((await noteLink.json()).url),noteResponse=await request(noteUrl.pathname+noteUrl.search),noteHtml=await noteResponse.text();assert(noteHtml.includes('001234'));assert(noteHtml.includes('TRANSLATED en'));assert(noteHtml.includes('게스트님 안녕하세요.'));
+ assert.equal((await request('/api/guest-link',{...guest,doorNoteKo:'FAIL'})).status,502);
+ assert.equal((await request('/api/guest-link',{...guest,doorNoteKo:'a'.repeat(301)})).status,400);
  cookie='';const page=await request(new URL(link).pathname+new URL(link).search);assert.equal(page.status,200);const html=await page.text();assert(html.includes('window.ARANYA_GUEST'));assert(!html.includes('<b>Local test</b>'));assert(html.includes('\\u003cb>Local test'));
  assert.equal((await request('/?g='+Buffer.from(JSON.stringify(guest)).toString('base64url'))).status,410);
  assert.equal(page.headers.get('cache-control'),'no-store');assert.equal(page.headers.get('referrer-policy'),'no-referrer');assert.equal(page.headers.get('x-frame-options'),'SAMEORIGIN');assert(page.headers.get('content-security-policy').includes("frame-ancestors 'self'"));assert(page.headers.get('x-robots-tag').includes('noindex'));

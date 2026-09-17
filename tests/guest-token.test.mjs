@@ -3,6 +3,14 @@ import {issueGuest,readGuest,validateGuest,checkout} from '../src/guest-token.js
 import {blocks,catalog,seed,template} from '../src/generated.js';
 import {renderGuide} from '../src/content.js';
 const g={n:'Test <guest>',ci:'2099-01-01',co:'2099-01-03',cit:'15:00',cot:'11:00',a:2,c:0,l:'en'},secret='local-test-secret';
+test('optional reservation PIN preserves leading zeros and stays encrypted',async()=>{
+ const token=await issueGuest({...g,pin:'001234'},secret);
+ assert.equal((await readGuest(token,secret)).guest.pin,'001234');
+ assert.equal((await readGuest(token,secret,{now:checkout(g)})).expired,true);
+ assert.equal(validateGuest({...g,pin:''}).pin,undefined);
+ const note={ko:'게스트님 안녕하세요.',en:'Hello, guest.'};assert.deepEqual((await readGuest(await issueGuest({...g,pin:'001234',doorNote:note},secret),secret)).guest.doorNote,note);
+ for(const pin of ['123','1'.repeat(13),'<b>1234</b>',1234])assert.throws(()=>validateGuest({...g,pin}));
+});
 test('encrypted links resist alteration and expire at Korean checkout',async()=>{
  const token=await issueGuest(g,secret);assert(token.startsWith('v1.'));assert(!token.includes(g.n));
  assert.deepEqual((await readGuest(token,secret)).guest,g);

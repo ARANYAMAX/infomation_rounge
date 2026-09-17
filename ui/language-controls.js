@@ -20,7 +20,7 @@
         wrap.innerHTML='<svg class="language-globe" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18M12 3c-5 5-5 13 0 18"/></svg><span class="language-prompt" aria-hidden="true" contenteditable="false"></span><svg class="language-chevron" aria-hidden="true" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m1 1 5 5 5-5"/></svg>';
         select.before(wrap);wrap.append(select);select.classList.add('aranya-language-native');
       }
-      const label=select.parentElement.querySelector('.language-prompt');if(label.textContent!==prompt)label.textContent=prompt;
+      const label=select.parentElement.querySelector('.language-prompt'),display=select.id==='genLang'?(names[select.value]||prompt):prompt;if(label.textContent!==display)label.textContent=display;
       select.setAttribute('aria-label',prompt+' · '+(names[select.value]||''));
       for(const option of select.options)if(names[option.value]){if(option.textContent!==names[option.value])option.textContent=names[option.value];if(option.lang!==option.value)option.lang=option.value;option.translate=false;}
     }

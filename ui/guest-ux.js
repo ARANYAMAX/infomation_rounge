@@ -1,4 +1,13 @@
 (() => {
+ // Only verified guest responses contain this value; never write it to shared CMS data.
+ const guest=window.ARANYA_GUEST,pin=guest?.pin,note=guest?.doorNote;
+ if(pin||note){const entry=document.querySelector('[data-cms-field="I18N:step_lock_p"]');if(entry){
+  entry.removeAttribute('data-i18n');entry.replaceChildren();
+  if(pin){const code=document.createElement('strong');code.textContent=pin;code.style.cssText='display:block;font-size:1.5rem;letter-spacing:.12em';entry.append(code);}
+  if(note){const description=document.createElement('span');description.style.cssText='display:block;white-space:pre-wrap;overflow-wrap:anywhere';entry.append(description);
+   const update=()=>{description.textContent=note[document.documentElement.lang]||note[guest.l]||note.ko||'';};update();new MutationObserver(update).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  }
+ }}
  const labels={ko:['닫기','사진 안내','사진을 불러오지 못했습니다. 닫고 다시 시도해주세요.','주소 복사','복사됨'],en:['Close','Photo guide','Unable to load the photo. Close and try again.','Copy address','Copied'],zh:['关闭','图片指南','无法加载图片。请关闭后重试。','复制地址','已复制'],ja:['閉じる','写真ガイド','写真を読み込めません。閉じて再試行してください。','住所をコピー','コピーしました'],de:['Schließen','Fotoguide','Foto konnte nicht geladen werden. Bitte erneut versuchen.','Adresse kopieren','Kopiert'],fr:['Fermer','Guide photo','Impossible de charger la photo. Veuillez réessayer.','Copier l’adresse','Copié'],es:['Cerrar','Guía fotográfica','No se pudo cargar la foto. Inténtalo de nuevo.','Copiar dirección','Copiado'],it:['Chiudi','Guida fotografica','Impossibile caricare la foto. Riprova.','Copia indirizzo','Copiato'],pt:['Fechar','Guia de fotos','Não foi possível carregar a foto. Tente novamente.','Copiar endereço','Copiado'],ru:['Закрыть','Фотогид','Не удалось загрузить фото. Попробуйте снова.','Копировать адрес','Скопировано']};
  const text=()=>labels[document.documentElement.lang]||labels.en;
  const style=document.createElement('style');style.textContent=':focus-visible{outline:2px solid #a65b45;outline-offset:3px}.guide-lightbox [role=status]{color:white;max-width:80vw}.place-photo-button{min-height:44px}.links{flex-wrap:wrap}';document.head.append(style);
