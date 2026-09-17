@@ -19,7 +19,7 @@ export function collectionModel(original,baseCatalog,seed,content={}){
  const prepareMaps=value=>{if(!value||typeof value!=='object')return;if(value.tonginGuide)value.tonginGuide.search||='통인시장 서울 종로구 자하문로15길 18';if(typeof value.search==='string')for(const key of Object.keys(mapFields))value[key]||='';for(const child of Object.values(value))if(child&&typeof child==='object')prepareMaps(child);};
  prepareMaps(source.food);prepareMaps(source.ARANYA_CURATED_PLACES);
  for(const card of source.TRAVEL_TIPS||[])card.posters||=Object.fromEntries(langs.map(l=>[l,'']));
- const foodPosters=items=>{for(const item of items||[]){item.posters||=Object.fromEntries(langs.map(l=>[l,'']));foodPosters(item.stops);}};foodPosters(source.food);
+ const foodPosters=items=>{for(const item of items||[]){item.posters||=Object.fromEntries(langs.map(l=>[l,'']));foodPosters(item.stops);}};foodPosters(source.food);foodPosters(source.ARANYA_CURATED_PLACES);
  const structure=content.__lists||{},galleries=content.__photos||{};
  if(!structure||Array.isArray(structure)||typeof structure!=='object'||!galleries||Array.isArray(galleries)||typeof galleries!=='object')throw Error('목록 형식이 올바르지 않습니다.');
  const base=new Map(baseCatalog.map(f=>[f.id,f]));
@@ -68,7 +68,7 @@ export function collectionModel(original,baseCatalog,seed,content={}){
     if(!fresh&&block==='AMENITIES'&&k==='title'&&seed['I18N:'+value._legacy])override='I18N:'+value._legacy;
     if(!fresh&&block==='AMENITIES'&&k==='image')override='amenityPhotos:'+value._legacy;
     if(override)out[k]=field(block,[...path,k],v,k==='image'?'image':'text',false,item,override);
-    else if(k==='posters'&&['AIRPORT','TRAVEL_TIPS','food'].includes(block)){out[k]=Object.fromEntries(langs.map(l=>[l,field(block,[...path,k,l],v[l]||'','image',fresh,item).ko]));}
+    else if(k==='posters'&&['AIRPORT','TRAVEL_TIPS','food','ARANYA_CURATED_PLACES'].includes(block)){out[k]=Object.fromEntries(langs.map(l=>[l,field(block,[...path,k,l],v[l]||'','image',fresh,item).ko]));}
     else if(k==='image')out[k]=field(block,[...path,k],v,'image',fresh,item).ko;
     else if(Object.hasOwn(mapFields,k)||k==='linkUrl')out[k]=field(block,[...path,k],v,'url',fresh,item).ko;
     else if(['AMENITIES','AIRPORT','TRAVEL_TIPS'].includes(block)&&k==='icon')out[k]=field(block,[...path,k],v,'icon',fresh,item).ko;
