@@ -5,14 +5,14 @@ html=html.replace('display=block','display=swap');
 html=html.replace('</head>','<meta name="robots" content="noindex,nofollow"><meta property="og:title" content="Aranya Guest Guide"><meta property="og:description" content="Check-in and stay information"><script src="/guest-ux.js" defer></script></head>');
 // Keep the existing source document and guest URL shape; only the Worker issues new links.
 function replaceRequired(from,to){if(!html.includes(from))throw Error('Guest security integration target missing');html=html.replace(from,to);}
-replaceRequired('<div class="gen-actions">','<div class="gen-row full"><label><span data-i18n="step_lock">도어록 비밀번호</span><input id="genPin" type="text" inputmode="numeric" autocomplete="off" maxlength="12" pattern="[0-9]{4,12}" placeholder="4–12" /></label></div><div class="gen-actions">');
+replaceRequired('<div class="gen-actions">','<div class="gen-row full"><label><span data-i18n="step_lock">도어록 비밀번호</span><input id="genPin" type="text" inputmode="tel" autocomplete="off" maxlength="12" pattern="[0-9*#]{4,12}" placeholder="0–9 · * · # (4–12)" /></label></div><div class="gen-actions">');
 replaceRequired('<div class="gen-actions">','<div class="gen-row full"><label>도어록 안내 설명 (한국어 · 선택)<textarea id="genDoorNote" maxlength="300" rows="3" placeholder="예: 게스트님 안녕하세요. 번호를 누른 뒤 확인 버튼을 눌러주세요." style="width:100%;box-sizing:border-box;font:inherit;padding:12px;border:1px solid var(--line);border-radius:10px"></textarea><small>입력한 설명은 선택한 게스트 언어로 자동 번역됩니다. 비밀번호가 바뀌면 링크를 새로 만들어주세요.</small></label></div><div class="gen-actions">');
 replaceRequired('function decodeGuestCompact(value){','function decodeGuestCompact(value){ if(window.ARANYA_GUEST)return window.ARANYA_GUEST;');
 replaceRequired("document.getElementById('genBtn').addEventListener('click', () => {","document.getElementById('genBtn').addEventListener('click', async () => {");
 replaceRequired("const url = base + '?g=' + encodeGuestCompact(g);",`const button=document.getElementById('genBtn');button.disabled=true;let url;
     g.pin=document.getElementById('genPin').value.trim();
     g.doorNoteKo=document.getElementById('genDoorNote').value.trim();
-    if(g.pin&&!/^\\d{4,12}$/.test(g.pin)){button.disabled=false;document.getElementById('genPin').reportValidity();return;}
+    if(g.pin&&!/^[0-9*#]{4,12}$/.test(g.pin)){button.disabled=false;document.getElementById('genPin').reportValidity();return;}
     try{const response=await fetch('/api/guest-link',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(g)});
       const result=await response.json();if(!response.ok)throw Error(result.error||t('gen_alert'));url=result.url;
     }catch(error){alert(error.message||t('gen_alert'));return;}finally{button.disabled=false;}`);

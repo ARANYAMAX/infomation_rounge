@@ -8,6 +8,8 @@ test('optional reservation PIN preserves leading zeros and stays encrypted',asyn
  assert.equal((await readGuest(token,secret)).guest.pin,'001234');
  assert.equal((await readGuest(token,secret,{now:checkout(g)})).expired,true);
  assert.equal(validateGuest({...g,pin:''}).pin,undefined);
+ assert.equal((await readGuest(await issueGuest({...g,pin:'*001234#'},secret),secret)).guest.pin,'*001234#');
+ for(const pin of ['123a','12 34','123!','가123'])assert.throws(()=>validateGuest({...g,pin}));
  const note={ko:'게스트님 안녕하세요.',en:'Hello, guest.'};assert.deepEqual((await readGuest(await issueGuest({...g,pin:'001234',doorNote:note},secret),secret)).guest.doorNote,note);
  for(const pin of ['123','1'.repeat(13),'<b>1234</b>',1234])assert.throws(()=>validateGuest({...g,pin}));
 });

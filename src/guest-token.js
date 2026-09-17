@@ -8,7 +8,7 @@ export function validateGuest(input){
  if(typeof g.n!=='string'||!g.n.trim()||g.n.length>100||!validDate(g.ci)||!validDate(g.co)||g.co<g.ci||!validTime(g.cit)||!validTime(g.cot)||!Number.isInteger(g.a)||g.a<1||g.a>30||!Number.isInteger(g.c)||g.c<0||g.c>30)throw Error('이름·날짜·시간·인원을 확인해주세요.');
  const result={n:g.n.trim(),ci:g.ci,co:g.co,cit:g.cit,cot:g.cot,a:g.a,c:g.c,l:langs.includes(g.l)?g.l:'ko'};
  if(g.pin!==undefined&&g.pin!==''){
-  if(typeof g.pin!=='string'||!/^\d{4,12}$/.test(g.pin))throw Error('도어록 비밀번호는 숫자 4~12자리로 입력해주세요.');
+  if(typeof g.pin!=='string'||! /^[0-9*#]{4,12}$/.test(g.pin))throw Error('도어록 비밀번호는 숫자와 *, #만 사용해 4~12자리로 입력해주세요.');
   result.pin=g.pin;
  }
  if(g.doorNote!==undefined){
