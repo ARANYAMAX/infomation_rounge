@@ -61,7 +61,7 @@ html=html.replace('const hash=await sha256(input.value);','const allowed=await f
 html=html.replace('</head>',`<script src="/language-controls.js" defer></script><script>function aranyaEscape(v){return String(v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}function aranyaPhotos(item){const poster=item.posters&&Object.values(item.posters).some(Boolean)?'<button type="button" class="place-photo-button" data-cms-field="'+aranyaEscape(item._cmsKey+'.posters.ko')+'" data-localized-posters="'+aranyaEscape(JSON.stringify(item.posters))+'" data-guide-photo="'+aranyaEscape(item.posters.ko||item.posters.en||Object.values(item.posters).find(Boolean))+'">PHOTO</button>':'';return poster+[item.image,...(item.photos||[])].filter(Boolean).map((url,i)=>'<button type="button" class="place-photo-button" data-guide-photo="'+url+'">PHOTO '+(i+1)+'</button>').join('');}</script></head>`);
 html=html.replace('</body>',`<script>if(!new URLSearchParams(location.search).has('g')&&sessionStorage.getItem('aranya_admin')==='1'){const nav=document.querySelector('.nav-tabs');if(nav){const a=document.createElement('a');a.className='tab';a.href='/admin';a.textContent='내용 관리';nav.append(a);}}document.addEventListener('click',async e=>{const button=e.target.closest('#hostLogoutBtn,#adminLockBtn');if(!button)return;e.preventDefault();e.stopImmediatePropagation();button.disabled=true;try{const response=await fetch('/api/logout',{method:'POST'});if(!response.ok)throw Error();sessionStorage.removeItem('aranya_admin');sessionStorage.removeItem('aranya_host_entry');document.documentElement.classList.add('v33-logging-out','v33-host-locked','host-base-locked');location.replace(location.origin+location.pathname);}catch{button.disabled=false;alert('로그아웃하지 못했습니다. 연결을 확인한 후 다시 시도해주세요.');}},true);</script></body>`);
 
-// Dining cards show one localized representative image, never detail galleries.
+// Dining cards open the localized representative poster through the existing PHOTO button.
 const diningStart=html.indexOf("document.getElementById('foodList').innerHTML ="),diningEnd=html.indexOf("const chipRow",diningStart);
 if(diningStart<0||diningEnd<0)throw Error('Dining renderer missing');
 html=html.slice(0,diningStart)+html.slice(diningStart,diningEnd).replace('${aranyaPhotos(p)}','${aranyaDiningHero(p)}').replace('${aranyaPhotos(stop)}','')+html.slice(diningEnd);
@@ -70,8 +70,8 @@ html=html.replace('</head>',`<script>function aranyaDiningHero(item){
  const posterLanguage=posters[code]?code:!item.image?(posters.en?'en':posters.ko?'ko':Object.keys(posters).find(l=>posters[l])):null;
  const src=posterLanguage?posters[posterLanguage]:item.image;if(!src)return '';
  const field=item._cmsKey+(posterLanguage?'.posters.'+posterLanguage:'.image');
- return '<button type="button" class="dining-hero-photo" data-cms-field="'+aranyaEscape(field)+'" data-guide-photo="'+aranyaEscape(src)+'"><img src="'+aranyaEscape(src)+'" alt="'+aranyaEscape(item.name?.[code]||item.name?.en||item.name?.ko||'Photo')+'" loading="lazy" decoding="async"></button>';
-}</script><style>.dining-hero-photo{display:block;width:100%;padding:0;margin:12px 0;border:0;background:transparent;cursor:zoom-in}.dining-hero-photo img{display:block;max-width:100%;max-height:520px;width:auto;height:auto;margin:auto;object-fit:contain;border-radius:12px}</style></head>`);
+ return '<button type="button" class="place-photo-button" data-cms-field="'+aranyaEscape(field)+'" data-guide-photo="'+aranyaEscape(src)+'">PHOTO 1</button>';
+}</script></head>`);
 // Preview rendering shares the guest templates; only the editor installs DOM reconciliation.
 html=html.replace('const _applyLang=applyLang;',`window.aranyaPreviewInstall?.();
 window.aranyaPreviewData=(next)=>{
