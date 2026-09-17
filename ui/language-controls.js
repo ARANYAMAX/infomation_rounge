@@ -1,6 +1,7 @@
 (() => {
   const prompts={ko:'언어선택',en:'Select language',zh:'选择语言',ja:'言語選択',de:'Sprache wählen',fr:'Choisir la langue',es:'Seleccionar idioma',it:'Seleziona lingua',pt:'Selecionar idioma',ru:'Выбрать язык'};
   const names={ko:'한국어',en:'English',zh:'中文',ja:'日本語',de:'Deutsch',fr:'Français',es:'Español',it:'Italiano',pt:'Português',ru:'Русский'};
+  const hostNames={ko:'한국어',en:'영어',zh:'중국어',ja:'일본어',de:'독일어',fr:'프랑스어',es:'스페인어',it:'이탈리아어',pt:'포르투갈어',ru:'러시아어'};
   const style=document.createElement('style');
   style.textContent=`
     .aranya-language-field{position:relative;display:inline-flex;align-items:center;gap:10px;box-sizing:border-box;min-height:46px;width:230px;max-width:100%;padding:11px 14px;border:1px solid #ded4c3;border-radius:12px;background:#fffdfa;color:#2f3e56;font:500 14px/1.5 system-ui,sans-serif;vertical-align:middle}
@@ -20,15 +21,16 @@
         wrap.innerHTML='<svg class="language-globe" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18M12 3c-5 5-5 13 0 18"/></svg><span class="language-prompt" aria-hidden="true" contenteditable="false"></span><svg class="language-chevron" aria-hidden="true" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m1 1 5 5 5-5"/></svg>';
         select.before(wrap);wrap.append(select);select.classList.add('aranya-language-native');
       }
-      const label=select.parentElement.querySelector('.language-prompt'),display=select.id==='genLang'?(names[select.value]||prompt):prompt;if(label.textContent!==display)label.textContent=display;
-      select.setAttribute('aria-label',prompt+' · '+(names[select.value]||''));
-      for(const option of select.options)if(names[option.value]){if(option.textContent!==names[option.value])option.textContent=names[option.value];if(option.lang!==option.value)option.lang=option.value;option.translate=false;}
+      const optionNames=select.id==='genLang'?hostNames:names;
+      const label=select.parentElement.querySelector('.language-prompt'),display=select.id==='genLang'?(hostNames[select.value]||prompt):prompt;if(label.textContent!==display)label.textContent=display;
+      select.setAttribute('aria-label',prompt+' · '+(optionNames[select.value]||''));
+      for(const option of select.options)if(optionNames[option.value]){if(option.textContent!==optionNames[option.value])option.textContent=optionNames[option.value];const optionLang=select.id==='genLang'?'ko':option.value;if(option.lang!==optionLang)option.lang=optionLang;option.translate=false;}
     }
     const label=document.getElementById('langBtnLabel');if(label&&label.textContent!==prompt)label.textContent=prompt;
     document.getElementById('langBtn')?.setAttribute('aria-label',prompt+' · '+(names[code]||''));
     for(const option of document.querySelectorAll('#langMenu [data-lang]')){option.setAttribute('aria-selected',String(option.dataset.lang===code));if(option.lang!==option.dataset.lang)option.lang=option.dataset.lang;option.translate=false;}
     const generator=document.getElementById('genLang'),heading=document.getElementById('genLangLabel');
-    if(generator&&heading){const original=heading.textContent.split(' · ')[0],value=original+' · '+(names[generator.value]||'');if(heading.textContent!==value)heading.textContent=value;}
+    if(generator&&heading){const original=heading.textContent.split(' · ')[0],value=original+' · '+(hostNames[generator.value]||'');if(heading.textContent!==value)heading.textContent=value;}
   }
   document.addEventListener('change',refresh);
   new MutationObserver(refresh).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['lang']});
