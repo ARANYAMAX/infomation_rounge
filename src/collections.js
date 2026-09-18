@@ -69,7 +69,7 @@ export function collectionModel(original,baseCatalog,seed,content={}){
     if(!fresh&&block==='AMENITIES'&&k==='image')override='amenityPhotos:'+value._legacy;
     if(override)out[k]=field(block,[...path,k],v,k==='image'?'image':'text',false,item,override);
     else if(k==='posters'&&['AIRPORT','TRAVEL_TIPS','food','ARANYA_CURATED_PLACES'].includes(block)){out[k]=Object.fromEntries(langs.map(l=>[l,field(block,[...path,k,l],v[l]||'','image',fresh,item).ko]));}
-    else if(k==='image')out[k]=field(block,[...path,k],v,'image',fresh,item).ko;
+    else if(k==='image'){out[k]=field(block,[...path,k],v,'image',fresh,item).ko;if(block==='MANUALS')out.imageLocales=Object.fromEntries(langs.filter(l=>l!=='ko').map(l=>[l,field(block,[...path,'imageLocales',l],'','image',fresh,item).ko]));}
     else if(Object.hasOwn(mapFields,k)||k==='linkUrl')out[k]=field(block,[...path,k],v,'url',fresh,item).ko;
     else if(['AMENITIES','AIRPORT','TRAVEL_TIPS'].includes(block)&&k==='icon')out[k]=field(block,[...path,k],v,'icon',fresh,item).ko;
     else if(item&&Object.hasOwn(rawFields,k)&&(typeof v==='string'||v===null))out[k]=field(block,[...path,k],v,options[k]?'choice':'plain',fresh,item).ko;
