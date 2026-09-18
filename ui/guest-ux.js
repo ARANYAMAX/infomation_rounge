@@ -17,7 +17,7 @@
   status.setAttribute('role','status');status.hidden=true;box.append(status);box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');
   const refresh=()=>{close.setAttribute('aria-label',text()[0]);box.setAttribute('aria-label',text()[1]);if(!status.hidden)status.textContent=text()[2];};refresh();
   img.addEventListener('error',()=>{if(!img.getAttribute('src'))return;status.textContent=text()[2];status.hidden=false;});img.addEventListener('load',()=>{status.hidden=true;});
-  document.addEventListener('click',e=>{if(e.target.closest('[data-guide-photo],.manual-media img'))opener=e.target.closest('button')||e.target;},true);
+  document.addEventListener('click',e=>{if(e.target.closest('[data-guide-photo]'))opener=e.target.closest('button')||e.target;},true);
   new MutationObserver(()=>{const open=box.classList.contains('open');if(open===wasOpen)return;wasOpen=open;
    if(open){refresh();status.hidden=false;status.textContent='';previousInert=[...document.body.children].filter(el=>el!==box).map(el=>[el,el.inert]);for(const [el]of previousInert)el.inert=true;close.focus();}
    else{for(const [el,value]of previousInert)el.inert=value;status.hidden=true;opener?.focus();}
@@ -26,7 +26,6 @@
   new MutationObserver(refresh).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  }
  function enhance(){
-  for(const image of document.querySelectorAll('.manual-media img')){image.tabIndex=0;image.setAttribute('role','button');if(!image.dataset.keyboardPhoto){image.dataset.keyboardPhoto='1';image.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();image.click();}});}image.loading='lazy';image.decoding='async';}
   const maps=document.getElementById('stationMaps');if(!maps)return;
   let copy=maps.querySelector('[data-copy-address]');if(!copy){copy=document.createElement('button');copy.type='button';copy.className='maplink';copy.dataset.copyAddress='1';maps.append(copy);
    copy.addEventListener('click',async()=>{const address=typeof I18N!=='undefined'?I18N.ko.greet_tag:'';if(!address)return;try{await navigator.clipboard.writeText(address);copy.textContent=text()[4];setTimeout(()=>{copy.textContent=text()[3];},1500);}catch{window.prompt(text()[3],address);}});
