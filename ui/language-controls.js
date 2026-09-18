@@ -13,6 +13,7 @@
     .aranya-language-field select.aranya-language-native{position:absolute!important;inset:0!important;opacity:0!important;width:100%!important;height:100%!important;min-width:0!important;margin:0!important;padding:0!important;cursor:pointer;z-index:1;font-size:16px!important}
   `;
   document.head.append(style);
+  const photoLabels=new WeakMap();
   function refresh(){
     const code=document.documentElement.lang?.slice(0,2)||'ko',prompt='- '+(prompts[code]||prompts.en)+' -';
     for(const select of document.querySelectorAll('#genLang,#hostBaseLang,#hostEarlyLangSelect,#expiredLangSelect')){
@@ -25,6 +26,11 @@
       const label=select.parentElement.querySelector('.language-prompt'),display=select.id==='genLang'?(hostNames[select.value]||prompt):prompt;if(label.textContent!==display)label.textContent=display;
       select.setAttribute('aria-label',prompt+' · '+(optionNames[select.value]||''));
       for(const option of select.options)if(optionNames[option.value]){if(option.textContent!==optionNames[option.value])option.textContent=optionNames[option.value];const optionLang=select.id==='genLang'?'ko':option.value;if(option.lang!==optionLang)option.lang=optionLang;option.translate=false;}
+    }
+    for(const button of document.querySelectorAll('[data-guide-photo]')){
+      if(/^PHOTO(?:\s+\d+)?$/.test(button.textContent.trim()))photoLabels.set(button,button.textContent);
+      const original=photoLabels.get(button);if(!original)continue;
+      const value=code==='ko'?'이미지 보기':original;if(button.textContent!==value)button.textContent=value;
     }
     const label=document.getElementById('langBtnLabel');if(label&&label.textContent!==prompt)label.textContent=prompt;
     document.getElementById('langBtn')?.setAttribute('aria-label',prompt+' · '+(names[code]||''));
