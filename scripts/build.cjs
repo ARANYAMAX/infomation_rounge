@@ -74,6 +74,7 @@ html=html.replace('</head>',`<script>function aranyaDiningHero(item){
  return '<button type="button" class="place-photo-button" data-cms-field="'+aranyaEscape(field)+'" data-guide-photo="'+aranyaEscape(src)+'">PHOTO 1</button>';
 }</script></head>`);
 html=html.replace('${m.image?','${aranyaGuideImage(m)?').replace('${m.image}', '${aranyaGuideImage(m)}');
+html=html.replace('</head>','<style>.manual-body > .place-photo-button{margin:0 8px 14px 0}.manual-body > .quick-flow{gap:8px;margin:0 0 16px;align-items:center}.manual-body > .quick-flow .quick-step{padding:7px 11px;line-height:1.5}</style></head>');
 // Preview rendering shares the guest templates; only the editor installs DOM reconciliation.
 html=html.replace('const _applyLang=applyLang;',`window.aranyaPreviewInstall?.();
 window.aranyaPreviewData=(next)=>{
