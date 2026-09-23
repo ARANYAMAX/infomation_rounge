@@ -2,7 +2,8 @@ const fs=require('fs'),path=require('path'),crypto=require('crypto');
 const root=path.join(__dirname,'..');process.chdir(root);
 let html=fs.readFileSync('index.html','utf8');
 html=html.replace('display=block','display=swap');
-html=html.replace('</head>','<meta name="robots" content="noindex,nofollow"><meta property="og:title" content="Aranya Guest Guide"><meta property="og:description" content="Check-in and stay information"><script src="/guest-ux.js" defer></script></head>');
+const guestUxVersion=crypto.createHash('sha256').update(fs.readFileSync('ui/guest-ux.js')).digest('hex').slice(0,12);
+html=html.replace('</head>','<meta name="robots" content="noindex,nofollow"><meta property="og:title" content="Aranya Guest Guide"><meta property="og:description" content="Check-in and stay information"><script src="/guest-ux.js?v='+guestUxVersion+'" defer></script></head>');
 html=html.replace('p[posterLang]||p.en||p.ko||Object.values(p).find(Boolean)','p[posterLang]||p.ko||p.en||Object.values(p).find(Boolean)');
 // Keep the existing source document and guest URL shape; only the Worker issues new links.
 function replaceRequired(from,to){if(!html.includes(from))throw Error('Guest security integration target missing');html=html.replace(from,to);}
