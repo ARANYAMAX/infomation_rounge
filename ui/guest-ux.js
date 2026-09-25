@@ -20,6 +20,8 @@
    dialog.guide-lightbox::backdrop{background:rgba(17,24,34,.78);backdrop-filter:blur(8px)}
    .guide-lightbox img{display:block;flex:0 1 auto;min-width:0;min-height:0;max-width:min(100%,980px);max-height:var(--photo-image-height,100%);width:auto;height:auto;object-fit:contain}
    .guide-lightbox button{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px));width:44px;height:44px;z-index:1}
+   .guide-lightbox button:focus{outline:none}
+   .guide-lightbox button:focus-visible{background:rgba(255,255,255,.25)}
    .guide-lightbox [role=status]{position:absolute;bottom:4px;margin:0;text-align:center}
    .photo-stage{width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
    .photo-stage img{flex:none;transform-origin:center;pointer-events:none;-webkit-touch-callout:none;will-change:transform}
