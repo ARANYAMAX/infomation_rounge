@@ -1,0 +1,9689 @@
+{
+  "sourceMap": {
+    "ui/running-posters/de.jpg": "9ed9d088817c6976542e7cbe.jpeg",
+    "ui/running-posters/en.jpg": "a4dc98e120921efdfdb2184b.jpeg",
+    "ui/running-posters/es.jpg": "9c616b4f0cfa315f8e5c4a37.jpeg",
+    "ui/running-posters/fr.jpg": "84f28add43586c531442e71b.jpeg",
+    "ui/running-posters/it.jpg": "7bb4e99cf65bc02a0f5d0756.jpeg",
+    "ui/running-posters/ja.jpg": "1e9222707c8d426b8b933c3e.jpeg",
+    "ui/running-posters/ko.jpg": "66eb011ef40fad338cc5c133.jpeg",
+    "ui/running-posters/pt.jpg": "f30f9a869749624a716e7ab8.jpeg",
+    "ui/running-posters/ru.jpg": "0db17c48f7e392f985f934a4.jpeg",
+    "ui/running-posters/zh.jpg": "6c69eca3e28ab5a48fee3190.jpeg"
+  },
+  "images": [
+    {
+      "i": 0,
+      "file": "01d08da9-85c3-4189-871f-f4394f150586.png",
+      "status": "verified",
+      "groups": [
+        [
+          26,
+          77
+        ],
+        [
+          93,
+          115
+        ],
+        [
+          131,
+          139
+        ]
+      ],
+      "box": [
+        437,
+        22,
+        617,
+        144
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        437,
+        22,
+        617,
+        144
+      ],
+      "sha256_before": "4f231f13d743c37830890376bd5ce42407c660da84fea60eb05da5f1138613e7",
+      "sha256_after": "ff3b16e918a0053d02536bb29241538c9f265f7c61ba0331dd727a4fb4cb9022",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/01d08da9-85c3-4189-871f-f4394f150586.png"
+    },
+    {
+      "i": 1,
+      "file": "02357324-a40a-48f0-a26d-cb9845150557.png",
+      "status": "verified",
+      "groups": [
+        [
+          13,
+          77
+        ],
+        [
+          86,
+          114
+        ],
+        [
+          128,
+          142
+        ]
+      ],
+      "box": [
+        422,
+        9,
+        630,
+        147
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        422,
+        9,
+        630,
+        147
+      ],
+      "sha256_before": "497683da188b54c9069ca6db30981a43ab166e7e48cb02bf1b49c0c8a715ab03",
+      "sha256_after": "daf908dd795a7bc9ed60fc49f94c6168722e51417ced791b3858fa8eba4650e4",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/02357324-a40a-48f0-a26d-cb9845150557.png"
+    },
+    {
+      "i": 2,
+      "file": "04cc9d77-f42b-4245-8965-ca5f475ae40d.png",
+      "status": "excluded-non-poster",
+      "url": "/media/04cc9d77-f42b-4245-8965-ca5f475ae40d.png"
+    },
+    {
+      "i": 3,
+      "file": "05e0c501-e811-4086-b91f-0756b0bd1949.png",
+      "status": "verified",
+      "box": [
+        476,
+        21,
+        645,
+        116
+      ],
+      "groups": [
+        [
+          25,
+          59
+        ],
+        [
+          70,
+          89
+        ],
+        [
+          102,
+          111
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        21,
+        645,
+        116
+      ],
+      "sha256_before": "965898ca2a38bb1465f29ad6f2b3ac2e67006bdb4d98fa1d5cba9f0d8a834431",
+      "sha256_after": "273be312f2474d1cb347964fcc34bad7cad886118b0bffdc475319b60e194174",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/05e0c501-e811-4086-b91f-0756b0bd1949.png"
+    },
+    {
+      "i": 4,
+      "file": "06379916-ec6e-45dd-99d7-45f9515730ed.png",
+      "status": "verified",
+      "box": [
+        485,
+        10,
+        637,
+        115
+      ],
+      "groups": [
+        [
+          14,
+          58
+        ],
+        [
+          69,
+          89
+        ],
+        [
+          101,
+          110
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        485,
+        10,
+        637,
+        115
+      ],
+      "sha256_before": "42f2c2da0d8d9b73ff6f8e964f59a138bd7b74a114bf754bf7a9269df20a8ea5",
+      "sha256_after": "459f5ee65b1223b7adae86316ec619fdecd0da47959bf18a37d86fe8b72b1574",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/06379916-ec6e-45dd-99d7-45f9515730ed.png"
+    },
+    {
+      "i": 5,
+      "file": "0699e397-3554-4e68-895a-632710d4261f.png",
+      "status": "verified",
+      "box": [
+        431,
+        11,
+        627,
+        118
+      ],
+      "groups": [
+        [
+          15,
+          54
+        ],
+        [
+          68,
+          89
+        ],
+        [
+          103,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        431,
+        11,
+        627,
+        118
+      ],
+      "sha256_before": "db6650eaaf5e0924184560160e7c0a6e404c9f4b572ca42a1572bfd0b9180d27",
+      "sha256_after": "a6891f145571e59f3de43de711127080a9dd7c0935380e9651387ffa78d62770",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/0699e397-3554-4e68-895a-632710d4261f.png"
+    },
+    {
+      "i": 6,
+      "file": "069d48d4-2e67-44d3-90d1-67313fa53ea6.png",
+      "status": "verified",
+      "box": [
+        482,
+        4,
+        641,
+        113
+      ],
+      "groups": [
+        [
+          8,
+          52
+        ],
+        [
+          66,
+          86
+        ],
+        [
+          100,
+          108
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        482,
+        4,
+        641,
+        113
+      ],
+      "sha256_before": "bb0c8c534d9131bc2056926a8b37183a7275264ee6c98590a784795b5a03285a",
+      "sha256_after": "d3cf2de4dc17ea4fc4d5a8ad25431211988bd2ec94c1ca5b992b14de94108055",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/069d48d4-2e67-44d3-90d1-67313fa53ea6.png"
+    },
+    {
+      "i": 7,
+      "file": "0702fe32-7101-4f2c-acdc-036395efd882.png",
+      "status": "verified",
+      "box": [
+        474,
+        16,
+        645,
+        112
+      ],
+      "groups": [
+        [
+          20,
+          54
+        ],
+        [
+          65,
+          84
+        ],
+        [
+          96,
+          107
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        474,
+        16,
+        645,
+        112
+      ],
+      "sha256_before": "77b85be8dbf5d5da0e9927a25f398e792f5c1f53eb3a2ade6f138a6657b920ba",
+      "sha256_after": "aa36f74d1e251821f355ab23b0c8e93c52bfee8e326564ab05c0974b3d43ddee",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/0702fe32-7101-4f2c-acdc-036395efd882.png"
+    },
+    {
+      "i": 8,
+      "file": "073ed400-c409-433a-a75f-bd5fdc94202d.png",
+      "status": "verified",
+      "box": [
+        471,
+        10,
+        644,
+        123
+      ],
+      "groups": [
+        [
+          14,
+          64
+        ],
+        [
+          74,
+          96
+        ],
+        [
+          108,
+          118
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        471,
+        10,
+        644,
+        123
+      ],
+      "sha256_before": "ab1561c5c320a510557ed8f8f94734833220d48651a26ba2c908454db1b77542",
+      "sha256_after": "d148ec6360dc44859e3e0071917dbb1eeca0d4a31687c81bd2b4352b4c51d376",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/073ed400-c409-433a-a75f-bd5fdc94202d.png"
+    },
+    {
+      "i": 9,
+      "file": "0a73fe17-e847-46da-aedf-b19a694acd2c.png",
+      "status": "verified",
+      "box": [
+        700,
+        7,
+        749,
+        57
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        700,
+        7,
+        749,
+        57
+      ],
+      "sha256_before": "22cd226bf841b07871047d8823a6f891362ef7b1d61835090722e7125c6ff857",
+      "sha256_after": "e6d1595e64a4da46766d272b24315376944f05cb6000273caa449ea0ddc2017f",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/0a73fe17-e847-46da-aedf-b19a694acd2c.png"
+    },
+    {
+      "i": 10,
+      "file": "0a9453cc-5979-4e3f-8cdc-e0fdcdd444a3.png",
+      "status": "verified",
+      "box": [
+        476,
+        11,
+        645,
+        122
+      ],
+      "groups": [
+        [
+          15,
+          65
+        ],
+        [
+          75,
+          95
+        ],
+        [
+          108,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        11,
+        645,
+        122
+      ],
+      "sha256_before": "07a24bbd82ea45174324173c090974363c4433922c337b847fb4b2c661677e82",
+      "sha256_after": "c02d90db98ad162092879f3502d3304d7519c1b5d16c065c074738424abb779d",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/0a9453cc-5979-4e3f-8cdc-e0fdcdd444a3.png"
+    },
+    {
+      "i": 11,
+      "file": "0cbd9ec1-8620-40d2-9d55-75e5f8f2b6dc.png",
+      "status": "verified",
+      "box": [
+        454,
+        11,
+        632,
+        128
+      ],
+      "groups": [
+        [
+          15,
+          67
+        ],
+        [
+          78,
+          100
+        ],
+        [
+          114,
+          123
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        11,
+        632,
+        128
+      ],
+      "sha256_before": "3c81eb09fd5a06f3162db60571528b00382b6a60d478fb52dd367b0f492cd47a",
+      "sha256_after": "c02f49fc166062a28afacdb4b475880f6641cd779a043237bc48db006d5ba4bb",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/0cbd9ec1-8620-40d2-9d55-75e5f8f2b6dc.png"
+    },
+    {
+      "i": 12,
+      "file": "0da70da7-d5b6-412e-9d39-46f132799e68.png",
+      "status": "verified",
+      "groups": [
+        [
+          13,
+          72
+        ],
+        [
+          80,
+          105
+        ],
+        [
+          118,
+          128
+        ]
+      ],
+      "box": [
+        461,
+        9,
+        662,
+        133
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        461,
+        9,
+        662,
+        133
+      ],
+      "sha256_before": "c4e7b98228fa7c588e583920b333cf2a9d41473ebbc2384ce9713270ed21948b",
+      "sha256_after": "6fbe557a15cd33a06f516f3a9a4597fd57f2a9489c00bb3128d6e566d9aeee08",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/0da70da7-d5b6-412e-9d39-46f132799e68.png"
+    },
+    {
+      "i": 13,
+      "file": "0db17c48f7e392f985f934a4.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          80,
+          103
+        ],
+        [
+          119,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "sha256_before": "0db17c48f7e392f985f934a47ecce4aaddd5f16b963ffb0d5bb2349568c65a72",
+      "sha256_after": "8f0dda53964956068901cbd32e5a63c2c0fe205264405a6550fd997dd33b1014",
+      "languages": [
+        "ru"
+      ],
+      "url": "/assets/0db17c48f7e392f985f934a4.jpeg"
+    },
+    {
+      "i": 14,
+      "file": "10f01389-dc1f-4ced-8f8d-8c1a811562ac.png",
+      "status": "verified",
+      "box": [
+        989,
+        6,
+        1146,
+        97
+      ],
+      "groups": [
+        [
+          10,
+          46
+        ],
+        [
+          55,
+          74
+        ],
+        [
+          84,
+          92
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        989,
+        6,
+        1146,
+        97
+      ],
+      "sha256_before": "f7987f2201789d6e6a4aa914f57e1f5c7d68f2fd12865b95de24f03d26f23d61",
+      "sha256_after": "a3239e18d9718358d66b39fe381e777e55d70b08a158d28a0d856d44c3ca9ad4",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/10f01389-dc1f-4ced-8f8d-8c1a811562ac.png"
+    },
+    {
+      "i": 15,
+      "file": "12d969e0-7ffb-43d1-a7c2-525b3be593e9.png",
+      "status": "verified",
+      "box": [
+        454,
+        11,
+        633,
+        128
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          100
+        ],
+        [
+          114,
+          123
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        11,
+        633,
+        128
+      ],
+      "sha256_before": "0dc7bb0ac957f5fd5f29912781ee00551f9df44b7ecaf8506fbfd3da82bfc260",
+      "sha256_after": "516346d4c23710ce7ae70aee766e0f21cb097904ea1fdb52bffdf983ef89673e",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/12d969e0-7ffb-43d1-a7c2-525b3be593e9.png"
+    },
+    {
+      "i": 16,
+      "file": "13976fec-5bdb-4117-864d-3c34016d3810.png",
+      "status": "verified",
+      "box": [
+        463,
+        8,
+        590,
+        99
+      ],
+      "groups": [
+        [
+          12,
+          50
+        ],
+        [
+          60,
+          77
+        ],
+        [
+          87,
+          94
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        463,
+        8,
+        590,
+        99
+      ],
+      "sha256_before": "fe7365e9dd87db82633ca77e522e13d47633c15ec4b89ef0718e028bc3826ed1",
+      "sha256_after": "fc04c004315022234b7fe9a0f8afdc00ad49ba6dff21f388c74df0d1d3e5464b",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/13976fec-5bdb-4117-864d-3c34016d3810.png"
+    },
+    {
+      "i": 17,
+      "file": "15003aba-068a-496c-980b-678d3e88fba1.png",
+      "status": "verified",
+      "box": [
+        442,
+        11,
+        612,
+        125
+      ],
+      "groups": [
+        [
+          15,
+          66
+        ],
+        [
+          76,
+          97
+        ],
+        [
+          111,
+          120
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        442,
+        11,
+        612,
+        125
+      ],
+      "sha256_before": "104acf11a0ef0f1d4850039ecf2905035617e1e31168976581f6cd1523b26d99",
+      "sha256_after": "04d87cf5ac4e7e9a6890a4934d25236e105e261f5733ed5fd79ac93dbce1174c",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/15003aba-068a-496c-980b-678d3e88fba1.png"
+    },
+    {
+      "i": 18,
+      "file": "15dd920d-873c-4df9-a929-145f023b5195.png",
+      "status": "verified",
+      "box": [
+        988,
+        6,
+        1145,
+        97
+      ],
+      "groups": [
+        [
+          10,
+          46
+        ],
+        [
+          56,
+          75
+        ],
+        [
+          84,
+          92
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        988,
+        6,
+        1145,
+        97
+      ],
+      "sha256_before": "d7fff072630ef3e16e73249e38fa66cafb5e4f2b08afbefce44ac7795478bfe3",
+      "sha256_after": "00f431a2e750c1d9e161012c4c071fe883166e974faeaeb937d806622a55ff76",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/15dd920d-873c-4df9-a929-145f023b5195.png"
+    },
+    {
+      "i": 19,
+      "file": "16edd753-a336-4957-a134-e3046c0e88d7.png",
+      "status": "verified",
+      "box": [
+        483,
+        10,
+        639,
+        111
+      ],
+      "groups": [
+        [
+          14,
+          56
+        ],
+        [
+          68,
+          86
+        ],
+        [
+          98,
+          106
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        483,
+        10,
+        639,
+        111
+      ],
+      "sha256_before": "cfb5f66583f102c16af3561d339e84d65a9fb65d9d6b06eac759f4b7f0c96f25",
+      "sha256_after": "c4feb7e89c3784179e4384ad3651119ae77b3ab786d468d69e975f5c3ab21c2b",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/16edd753-a336-4957-a134-e3046c0e88d7.png"
+    },
+    {
+      "i": 20,
+      "file": "19b91240-4e6b-496e-81c3-2f8c743fd165.png",
+      "status": "verified",
+      "box": [
+        457,
+        8,
+        663,
+        122
+      ],
+      "groups": [
+        [
+          12,
+          54
+        ],
+        [
+          68,
+          92
+        ],
+        [
+          109,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        457,
+        8,
+        663,
+        122
+      ],
+      "sha256_before": "b243fb973933a5bd8e80da1d9491b6608072343ca330b8a6df2271f6228a3a1d",
+      "sha256_after": "2f8b98732fab62341ba861e1c1c445eb6c21a31a2b829cc9ba201cac2dc5410c",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/19b91240-4e6b-496e-81c3-2f8c743fd165.png"
+    },
+    {
+      "i": 21,
+      "file": "1afc30d1-253e-4d4b-bf10-855f426eaa4d.png",
+      "status": "verified",
+      "box": [
+        424,
+        20,
+        600,
+        120
+      ],
+      "groups": [
+        [
+          24,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        20,
+        600,
+        120
+      ],
+      "sha256_before": "2c8c57773e0d41808978df51f4d9b2635d0fcadbc9d9adbf084fc4f9c5b2ab2f",
+      "sha256_after": "3e4ca12b51412070be70e5d7ba2570e1461f8c9860effc2476e3cd8ccd37e570",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/1afc30d1-253e-4d4b-bf10-855f426eaa4d.png"
+    },
+    {
+      "i": 22,
+      "file": "1b4dc1d5-19e2-4c9f-91dd-28d436614bec.png",
+      "status": "verified",
+      "box": [
+        476,
+        13,
+        648,
+        117
+      ],
+      "groups": [
+        [
+          17,
+          55
+        ],
+        [
+          68,
+          88
+        ],
+        [
+          102,
+          112
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        13,
+        648,
+        117
+      ],
+      "sha256_before": "8f73611d1915d16db3a61a0dd875462daf7a4962fc951e328030f9588d36d4c1",
+      "sha256_after": "18e0ea867daed94b4858605e03fc0a8b69afd2372a5fc1ccb014ebcf8b85bdba",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/1b4dc1d5-19e2-4c9f-91dd-28d436614bec.png"
+    },
+    {
+      "i": 23,
+      "file": "1beedb28-bdf4-46d3-be81-94f697495188.png",
+      "status": "verified",
+      "box": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "groups": [
+        [
+          25,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "sha256_before": "cfd2e7a407609001e744088a2d779d5dbe7c51b7f0fa4a34f85b98474bfcedfe",
+      "sha256_after": "3404a14270a6aeabbf72f66894454468ac32bb698838f9afcb4fe8d450e229b0",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/1beedb28-bdf4-46d3-be81-94f697495188.png"
+    },
+    {
+      "i": 24,
+      "file": "1bf175d9-2676-4643-b328-f8ba3bf30523.png",
+      "status": "verified",
+      "groups": [
+        [
+          14,
+          71
+        ],
+        [
+          82,
+          107
+        ],
+        [
+          121,
+          132
+        ]
+      ],
+      "box": [
+        461,
+        10,
+        658,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        461,
+        10,
+        658,
+        137
+      ],
+      "sha256_before": "fb21066de82eb16c56cc4a4d6c5236248512b5463a67785ed40ec082ae799e7c",
+      "sha256_after": "abaef5acbf6fb325db498714ca943b56055765351400db3da597e60be8c22db4",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/1bf175d9-2676-4643-b328-f8ba3bf30523.png"
+    },
+    {
+      "i": 25,
+      "file": "1c557202-6662-4d8d-a7fe-0efbd74db031.png",
+      "status": "verified",
+      "box": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "groups": [
+        [
+          25,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "sha256_before": "96da92bf2f5febf17aa067ddd5aedf99282f909f5a416333c4f42d3aec796b13",
+      "sha256_after": "a931bec9681a123723a89de4d49501f2ca3a6f559e563bd1e2c42915616078b9",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/1c557202-6662-4d8d-a7fe-0efbd74db031.png"
+    },
+    {
+      "i": 26,
+      "file": "1ce4ae40-b8c0-43f7-ab1d-fc1fcbb64226.png",
+      "status": "verified",
+      "box": [
+        430,
+        13,
+        628,
+        118
+      ],
+      "groups": [
+        [
+          17,
+          55
+        ],
+        [
+          68,
+          89
+        ],
+        [
+          103,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        430,
+        13,
+        628,
+        118
+      ],
+      "sha256_before": "f6349d0c3fa1d6f371af969dc937048e9ec068773ad780485b5589e1e58964dc",
+      "sha256_after": "fa49b97e409ac7b32c56bc80a182057f95cde53102582746c4e1832d67054b45",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/1ce4ae40-b8c0-43f7-ab1d-fc1fcbb64226.png"
+    },
+    {
+      "i": 27,
+      "file": "1e9222707c8d426b8b933c3e.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        624,
+        136
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          79,
+          103
+        ],
+        [
+          118,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        624,
+        136
+      ],
+      "sha256_before": "1e9222707c8d426b8b933c3e5476dd5fa2f332711666ed7f4a796abf6ca096db",
+      "sha256_after": "1c7a60e38cfeeac9696b023a564db237c3e517f6c27a539d547327f1c69ef3f7",
+      "languages": [
+        "ja"
+      ],
+      "url": "/assets/1e9222707c8d426b8b933c3e.jpeg"
+    },
+    {
+      "i": 28,
+      "file": "1f452f2b-552a-4cd3-9187-41d9f0e90dba.png",
+      "status": "verified",
+      "box": [
+        482,
+        20,
+        637,
+        128
+      ],
+      "groups": [
+        [
+          24,
+          68
+        ],
+        [
+          83,
+          102
+        ],
+        [
+          116,
+          123
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        482,
+        20,
+        637,
+        128
+      ],
+      "sha256_before": "2738dd8aeb5ccbd22bb670b9de3c3a082dc15bc111a530ca8fc50f952857e602",
+      "sha256_after": "dfcea06d25f1473c5afbced8a3f61cd2fa042952a4b35c957305f0ac1c490f51",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/1f452f2b-552a-4cd3-9187-41d9f0e90dba.png"
+    },
+    {
+      "i": 29,
+      "file": "21d83557-34ec-4c07-b965-658d3e0e3a29.png",
+      "status": "verified",
+      "box": [
+        461,
+        14,
+        663,
+        123
+      ],
+      "groups": [
+        [
+          18,
+          58
+        ],
+        [
+          71,
+          94
+        ],
+        [
+          110,
+          118
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        461,
+        14,
+        663,
+        123
+      ],
+      "sha256_before": "6c013b79b89dc983acf4e971609a8efc2248ae896eedc5b6b122b768fd425611",
+      "sha256_after": "efd41ec7b5fae84adbc4e06e7fd9cfbf8860d4cf4ce81d8b3854ba9cac9acf7c",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/21d83557-34ec-4c07-b965-658d3e0e3a29.png"
+    },
+    {
+      "i": 30,
+      "file": "22283ee0-3820-4048-8962-7e26c7f884ce.png",
+      "status": "verified",
+      "box": [
+        978,
+        6,
+        1135,
+        97
+      ],
+      "groups": [
+        [
+          10,
+          45
+        ],
+        [
+          56,
+          75
+        ],
+        [
+          84,
+          92
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        978,
+        6,
+        1135,
+        97
+      ],
+      "sha256_before": "b6a463a4c1b7730c90d6265f3450013743844125973ed45ac7e08e4b728cf9b9",
+      "sha256_after": "07936b1d259c0d69ac005c96f225b3cf6ec3b8f1b829d8d564755a9af2478d8c",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/22283ee0-3820-4048-8962-7e26c7f884ce.png"
+    },
+    {
+      "i": 31,
+      "file": "22871e87-c8e2-4af0-96f6-db50b25b78f7.png",
+      "status": "verified",
+      "box": [
+        430,
+        12,
+        628,
+        119
+      ],
+      "groups": [
+        [
+          16,
+          55
+        ],
+        [
+          69,
+          90
+        ],
+        [
+          104,
+          114
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        430,
+        12,
+        628,
+        119
+      ],
+      "sha256_before": "eca8b3adbba487751eae5378123cc6b29d0d108e1fec6c22d48dc9e65d48080f",
+      "sha256_after": "cb4fd1aa17e697c5c57cee6f1adc221675642bca7785f5cc0928408b20e6bc2f",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/22871e87-c8e2-4af0-96f6-db50b25b78f7.png"
+    },
+    {
+      "i": 32,
+      "file": "23343fcd-f4cc-4cc5-a11a-4bc0a2b1215c.png",
+      "status": "verified",
+      "box": [
+        451,
+        12,
+        604,
+        114
+      ],
+      "groups": [
+        [
+          16,
+          58
+        ],
+        [
+          69,
+          88
+        ],
+        [
+          100,
+          109
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        451,
+        12,
+        604,
+        114
+      ],
+      "sha256_before": "c2ebe9550bef6ee2e306aaa74e284692c514da78c4f9e0680a797c27c2e319b5",
+      "sha256_after": "9d0377c286f3b83e406f8dd4586e957331226248af2ff6292b059a78271caff9",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/23343fcd-f4cc-4cc5-a11a-4bc0a2b1215c.png"
+    },
+    {
+      "i": 33,
+      "file": "25a77f68-ca49-4997-8708-1c563b95d087.png",
+      "status": "verified",
+      "box": [
+        432,
+        11,
+        627,
+        118
+      ],
+      "groups": [
+        [
+          15,
+          54
+        ],
+        [
+          68,
+          89
+        ],
+        [
+          103,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        432,
+        11,
+        627,
+        118
+      ],
+      "sha256_before": "9afae583ca2bde1eb9d85f107ff5d1d509fcfc1bbb5f0dd905764a81d6613b2c",
+      "sha256_after": "894ee80119f233aec9078ad61cb1444647f20f000a7fd432082148739c2e97fd",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/25a77f68-ca49-4997-8708-1c563b95d087.png"
+    },
+    {
+      "i": 34,
+      "file": "26ee30fc-6a6b-4a3d-a530-0ac3ed755379.png",
+      "status": "verified",
+      "box": [
+        470,
+        14,
+        651,
+        118
+      ],
+      "groups": [
+        [
+          18,
+          55
+        ],
+        [
+          69,
+          89
+        ],
+        [
+          101,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        470,
+        14,
+        651,
+        118
+      ],
+      "sha256_before": "9af87aa9969f23d8129451822cd38ef35bcbd91054c30efdf2027cc868c08484",
+      "sha256_after": "6c44f8e188f9d51c2a14b9b0f3119ed8a1a62916de497dcd97969bff81abcfd7",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/26ee30fc-6a6b-4a3d-a530-0ac3ed755379.png"
+    },
+    {
+      "i": 35,
+      "file": "27275965-239f-4c9f-bf02-296e0c843238.png",
+      "status": "verified",
+      "box": [
+        463,
+        10,
+        649,
+        113
+      ],
+      "groups": [
+        [
+          14,
+          51
+        ],
+        [
+          63,
+          84
+        ],
+        [
+          95,
+          108
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        463,
+        10,
+        649,
+        113
+      ],
+      "sha256_before": "646145b7ec9d94f5873701ef2b7bd593d0874a9ec4961eb3f3b3d1c5c259fd5a",
+      "sha256_after": "82690382a474d95c548d0391f695a4f25e7d6596a69c18feb26076495409750d",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/27275965-239f-4c9f-bf02-296e0c843238.png"
+    },
+    {
+      "i": 36,
+      "file": "293c4a00-d170-4eb6-9f2f-7f67b11b498a.png",
+      "status": "verified",
+      "box": [
+        424,
+        20,
+        600,
+        120
+      ],
+      "groups": [
+        [
+          24,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        20,
+        600,
+        120
+      ],
+      "sha256_before": "791743da7e88f007b3324146b7ef6f5c72d1294048ac0f30dc099d740668d561",
+      "sha256_after": "30196d4a2f204b0d61f99af070cbbbbc5f9f838fdfd7f6651bca479b98357867",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/293c4a00-d170-4eb6-9f2f-7f67b11b498a.png"
+    },
+    {
+      "i": 37,
+      "file": "29a00c84-3f58-4cf7-a1ad-6512b00fb7b5.png",
+      "status": "verified",
+      "box": [
+        453,
+        11,
+        633,
+        129
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          100
+        ],
+        [
+          114,
+          124
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        453,
+        11,
+        633,
+        129
+      ],
+      "sha256_before": "e74e42d211b8b4c73ef0f8f4d0dcadde3ad77af0468ff853de31e0e4617df189",
+      "sha256_after": "c8e3979f9f75915fc8b4fbc759f46c276ffb8ddfca9d5ec62dbe143d59ed676d",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/29a00c84-3f58-4cf7-a1ad-6512b00fb7b5.png"
+    },
+    {
+      "i": 38,
+      "file": "2c591a5f-d9ca-429f-b178-504abdb76ccd.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          74
+        ],
+        [
+          91,
+          115
+        ],
+        [
+          132,
+          141
+        ]
+      ],
+      "box": [
+        438,
+        21,
+        617,
+        146
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        438,
+        21,
+        617,
+        146
+      ],
+      "sha256_before": "279d60abf2b9c1d08e8984b84122b71da2ecd5dd4bc084c826e98d1d7cf13786",
+      "sha256_after": "99557ec988b05cd24e6d75d44b0f59e9d4fff1a7e2868fc26ca2402f266a40a1",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/2c591a5f-d9ca-429f-b178-504abdb76ccd.png"
+    },
+    {
+      "i": 39,
+      "file": "2cae387a-5ba2-4f71-8af6-2c5d40d2c530.png",
+      "status": "verified",
+      "box": [
+        454,
+        11,
+        632,
+        129
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          100
+        ],
+        [
+          114,
+          124
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        11,
+        632,
+        129
+      ],
+      "sha256_before": "eed8d1aae12606e23d75171fa49ef62bf6534711531df6b767a91036e7c88377",
+      "sha256_after": "21ff7cd138379aaec1113400f627fca18fa0bc36e2b224ed309fdf311ea19a21",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/2cae387a-5ba2-4f71-8af6-2c5d40d2c530.png"
+    },
+    {
+      "i": 40,
+      "file": "2ce29648-15db-4321-89c4-e297c05be7af.png",
+      "status": "excluded-non-poster",
+      "url": "/media/2ce29648-15db-4321-89c4-e297c05be7af.png"
+    },
+    {
+      "i": 41,
+      "file": "2d858031-d9ab-4149-ac4d-fd07ca59a842.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          75
+        ],
+        [
+          91,
+          113
+        ],
+        [
+          129,
+          137
+        ]
+      ],
+      "box": [
+        437,
+        21,
+        617,
+        142
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        437,
+        21,
+        617,
+        142
+      ],
+      "sha256_before": "eb9f3a27bf9f1406b6c33427050c8cbc5dd1d46594e13393534ebe759a31095d",
+      "sha256_after": "018fae4c501614d8e7feef3d29680985b8dc6be2e0a6df6d9dda0bdb888032fb",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/2d858031-d9ab-4149-ac4d-fd07ca59a842.png"
+    },
+    {
+      "i": 42,
+      "file": "2df7641a-fb0d-4ec9-a98c-1b8b08865e6d.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          18
+        ],
+        [
+          39,
+          66
+        ],
+        [
+          83,
+          100
+        ],
+        [
+          115,
+          122
+        ]
+      ],
+      "box": [
+        445,
+        35,
+        609,
+        127
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        445,
+        35,
+        609,
+        127
+      ],
+      "sha256_before": "b2129626e404837d33e4a254969264f4aed1b1688544d243ecd0cb70ef6311ac",
+      "sha256_after": "4e777c86b0e50300d7cc44f6cc51c494c4b1c10772fe3755d8d39c8a797f2798",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/2df7641a-fb0d-4ec9-a98c-1b8b08865e6d.png"
+    },
+    {
+      "i": 43,
+      "file": "2eaa4fd0-5e03-41bc-aedc-83516e467a46.jpg",
+      "status": "excluded-non-poster",
+      "url": "/media/2eaa4fd0-5e03-41bc-aedc-83516e467a46.jpg"
+    },
+    {
+      "i": 44,
+      "file": "2f3451ff-d31a-4a03-aacb-899980a91dbb.png",
+      "status": "verified",
+      "box": [
+        431,
+        11,
+        627,
+        119
+      ],
+      "groups": [
+        [
+          15,
+          55
+        ],
+        [
+          69,
+          90
+        ],
+        [
+          104,
+          114
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        431,
+        11,
+        627,
+        119
+      ],
+      "sha256_before": "7c5f07431a4b25d3652a1d27caefec074d9c66f9ba976743185bfd6be0f82be3",
+      "sha256_after": "55b835a514ffe7d4bf7100c056af4359d53b3130b3f95119baba9fc10724cc6d",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/2f3451ff-d31a-4a03-aacb-899980a91dbb.png"
+    },
+    {
+      "i": 45,
+      "file": "32887d65-28e5-43df-a77a-eb87264d6fa8.png",
+      "status": "excluded-non-poster",
+      "groups": [
+        [
+          0,
+          7
+        ],
+        [
+          17,
+          28
+        ],
+        [
+          32,
+          65
+        ]
+      ],
+      "url": "/media/32887d65-28e5-43df-a77a-eb87264d6fa8.png"
+    },
+    {
+      "i": 46,
+      "file": "370ae198-5559-44a6-8f9e-1b9396a4ce66.png",
+      "status": "verified",
+      "box": [
+        480,
+        8,
+        641,
+        107
+      ],
+      "groups": [
+        [
+          12,
+          48
+        ],
+        [
+          60,
+          80
+        ],
+        [
+          92,
+          102
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        480,
+        8,
+        641,
+        107
+      ],
+      "sha256_before": "6b60d17d36113be1379a463b0bf9680e3062230172b470ca34a00758c9cac16d",
+      "sha256_after": "7fc53aa9c837311a97baeee9804e247bf431b1ecc8943d7ad316b2d94b302a95",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/370ae198-5559-44a6-8f9e-1b9396a4ce66.png"
+    },
+    {
+      "i": 47,
+      "file": "378c9bf4-4b7e-461c-9d26-0561096cbb58.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          120,
+          133
+        ]
+      ],
+      "box": [
+        454,
+        21,
+        667,
+        138
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        21,
+        667,
+        138
+      ],
+      "sha256_before": "f30919f4a6b69cdf64e8c1289db7eb1b8cd95a7506f230e9ecafc0734db71632",
+      "sha256_after": "97e570d64a010026acb1b4495378fbea9503eaff17e1ca2d03ba6b54156bdbbd",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/378c9bf4-4b7e-461c-9d26-0561096cbb58.png"
+    },
+    {
+      "i": 48,
+      "file": "388236da-e4ce-403f-a3fe-f3ffaaed86fa.png",
+      "status": "verified",
+      "box": [
+        986,
+        6,
+        1146,
+        98
+      ],
+      "groups": [
+        [
+          10,
+          46
+        ],
+        [
+          55,
+          74
+        ],
+        [
+          84,
+          93
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        986,
+        6,
+        1146,
+        98
+      ],
+      "sha256_before": "3e9a81e5a1fe80c5a78a85693fc26efffa40c1bb7985582a68cfcc1eea084374",
+      "sha256_after": "48c856c8f7f900af3748084a8a77c57b85a1a7eee79a9e4547e7b25f16db7294",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/388236da-e4ce-403f-a3fe-f3ffaaed86fa.png"
+    },
+    {
+      "i": 49,
+      "file": "39060459-7dce-4263-9d6d-ee8016b3d7f7.png",
+      "status": "verified",
+      "box": [
+        444,
+        11,
+        612,
+        124
+      ],
+      "groups": [
+        [
+          15,
+          66
+        ],
+        [
+          76,
+          97
+        ],
+        [
+          110,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        444,
+        11,
+        612,
+        124
+      ],
+      "sha256_before": "16bdc333b8e7da14f36c72984d8e53328f165e0c3caa8300577300ccf5af89f7",
+      "sha256_after": "f67b8a1a1d27631eb4192a90f1914253c87e2e76d4fc59992afab138f624a77e",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/39060459-7dce-4263-9d6d-ee8016b3d7f7.png"
+    },
+    {
+      "i": 50,
+      "file": "3a76c234-9359-4213-8a41-619e89c10694.png",
+      "status": "verified",
+      "box": [
+        476,
+        6,
+        643,
+        115
+      ],
+      "groups": [
+        [
+          10,
+          55
+        ],
+        [
+          68,
+          90
+        ],
+        [
+          101,
+          110
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        6,
+        643,
+        115
+      ],
+      "sha256_before": "6b44255aeec5c81e235efc5bb687cebab3acbbb27c6a3a2612a67f80f8e9b03e",
+      "sha256_after": "d0ed3daac3c9a635326ccd75abe13fb0b0ae8e4cf1316c2b92aeacbea7175e77",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/3a76c234-9359-4213-8a41-619e89c10694.png"
+    },
+    {
+      "i": 51,
+      "file": "3babb653-2a95-4bcb-a50f-4e3537007fdc.png",
+      "status": "verified",
+      "box": [
+        698,
+        11,
+        750,
+        63
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        698,
+        11,
+        750,
+        63
+      ],
+      "sha256_before": "f5e1c7f517cfdd1a640664e242f89a7378ab1c6798df191c7cc56bfe8b869904",
+      "sha256_after": "9cffa694b3f62396c3ae69cdca773fe014d540f3fdfbb75a0fd234e7a6dacb07",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/3babb653-2a95-4bcb-a50f-4e3537007fdc.png"
+    },
+    {
+      "i": 52,
+      "file": "3bd723c3-232b-4c63-9604-e34638a821b5.png",
+      "status": "verified",
+      "box": [
+        466,
+        22,
+        617,
+        132
+      ],
+      "groups": [
+        [
+          26,
+          69
+        ],
+        [
+          85,
+          105
+        ],
+        [
+          120,
+          127
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        466,
+        22,
+        617,
+        132
+      ],
+      "sha256_before": "f5f7f3b4ef4813f723e35481c565735a4986861049854874d42b0f8c23c40b22",
+      "sha256_after": "2d7eceb3ead8b7f8a799bc67ccf95b67a1ef6ad93aaf5dedeb921fc921f1c30c",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/3bd723c3-232b-4c63-9604-e34638a821b5.png"
+    },
+    {
+      "i": 53,
+      "file": "3c595c1a-6f7a-4dce-b473-4d281cf137ce.png",
+      "status": "verified",
+      "box": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "groups": [
+        [
+          25,
+          62
+        ],
+        [
+          73,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "sha256_before": "7b10bf66d3c5a978db32f66a25a1a713f4d7cb990ada0014738870ac46a7be84",
+      "sha256_after": "3ea5316dca1686418d8f34f6433b1a08d1d3b7aa2b08d6199bcae10122a86426",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/3c595c1a-6f7a-4dce-b473-4d281cf137ce.png"
+    },
+    {
+      "i": 54,
+      "file": "3d8fedc8-9f54-4552-b1bb-224c533984a1.png",
+      "status": "verified",
+      "box": [
+        454,
+        11,
+        632,
+        129
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          100
+        ],
+        [
+          114,
+          124
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        11,
+        632,
+        129
+      ],
+      "sha256_before": "0ac9366a4b853d63789905b887f10fc8336ec9926d7c440399893da49ed59abb",
+      "sha256_after": "56a8b4e7f381222c606370553d797fd415532e5a90efa32206c0bc0d8aadae62",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/3d8fedc8-9f54-4552-b1bb-224c533984a1.png"
+    },
+    {
+      "i": 55,
+      "file": "3ed91470-69df-47f1-a1c3-93213d6479f4.png",
+      "status": "verified",
+      "box": [
+        448,
+        10,
+        646,
+        122
+      ],
+      "groups": [
+        [
+          14,
+          55
+        ],
+        [
+          70,
+          93
+        ],
+        [
+          108,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        448,
+        10,
+        646,
+        122
+      ],
+      "sha256_before": "9696b959bb97e8f0b85d299e888d15a584050451faf43274fa2ecb89feb84218",
+      "sha256_after": "2ce66c209d5d127dfc948263586bee925211ee40593fb8dda7e4bffc6b8d178d",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/3ed91470-69df-47f1-a1c3-93213d6479f4.png"
+    },
+    {
+      "i": 56,
+      "file": "3f626beb-553b-4f87-9084-e0ddfab65bfc.png",
+      "status": "verified",
+      "box": [
+        465,
+        20,
+        618,
+        130
+      ],
+      "groups": [
+        [
+          24,
+          68
+        ],
+        [
+          83,
+          103
+        ],
+        [
+          118,
+          125
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        465,
+        20,
+        618,
+        130
+      ],
+      "sha256_before": "bd196173a1cba542e5800a99abe1d14c4a0d0a63580e08f35934f8bf74fe9e4b",
+      "sha256_after": "527e5ee6c478ca4623734719d3170037d85722430ba8cc702f651acd75791956",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/3f626beb-553b-4f87-9084-e0ddfab65bfc.png"
+    },
+    {
+      "i": 57,
+      "file": "40be0a0e-4a9a-40df-87d3-1e17e0ecdc0f.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          18
+        ],
+        [
+          39,
+          40
+        ],
+        [
+          44,
+          66
+        ],
+        [
+          83,
+          100
+        ],
+        [
+          116,
+          120
+        ]
+      ],
+      "box": [
+        446,
+        35,
+        608,
+        125
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        446,
+        35,
+        608,
+        125
+      ],
+      "sha256_before": "3fe833c635c6aba12cb8e6d819eb6dbbc39c52ce896a33ca71c1c46e219e739e",
+      "sha256_after": "1997e5fe10dcbcfa9f238af274a21af1e71c11b44e1bf8db5e7c9adbd0ed990e",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/40be0a0e-4a9a-40df-87d3-1e17e0ecdc0f.png"
+    },
+    {
+      "i": 58,
+      "file": "41c1c3a1-a6b1-4234-b900-b60d1b4d3f06.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        626,
+        123
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          71,
+          93
+        ],
+        [
+          106,
+          118
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        626,
+        123
+      ],
+      "sha256_before": "5fadf1ab96f1d1298cac6cee12df609e5c0e4dc9f2d8a13809ad0f6ab07e94ea",
+      "sha256_after": "14dbeff1e48dcdd0626da0893004c6e9fc3d8959d0d3f9dac9571a253d8b7d71",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/41c1c3a1-a6b1-4234-b900-b60d1b4d3f06.png"
+    },
+    {
+      "i": 59,
+      "file": "456fa1b2-8e8a-4656-ac5b-ea4ce8613b20.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        627,
+        124
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          70,
+          93
+        ],
+        [
+          106,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        627,
+        124
+      ],
+      "sha256_before": "f9ff2a714219d5d3bdb7e4b2feba65092daae70df7a9834b12675b30c373ddeb",
+      "sha256_after": "6adda14674dc3019f5c5ef0730f4f7bc9e0587338df809f171b54dc6ca0c0d9e",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/456fa1b2-8e8a-4656-ac5b-ea4ce8613b20.png"
+    },
+    {
+      "i": 60,
+      "file": "45efbf94-b27b-4ffe-99cb-7ce42e32ca71.png",
+      "status": "verified",
+      "groups": [
+        [
+          12,
+          71
+        ],
+        [
+          79,
+          104
+        ],
+        [
+          119,
+          130
+        ]
+      ],
+      "box": [
+        460,
+        8,
+        659,
+        135
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        460,
+        8,
+        659,
+        135
+      ],
+      "sha256_before": "8471f3198351d56ee1a554f6ba7769b32e9e133d375225528df977861a4c1a72",
+      "sha256_after": "2190901fa32ee48fd25c59d1c7e09ffdc6eaca94d14f54bda5acbf3dc3fdd611",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/45efbf94-b27b-4ffe-99cb-7ce42e32ca71.png"
+    },
+    {
+      "i": 61,
+      "file": "460d443d-3220-4619-b864-dd3b9df95ce2.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        626,
+        124
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          71,
+          93
+        ],
+        [
+          106,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        626,
+        124
+      ],
+      "sha256_before": "5e5104dfc6c920c23b6ce7af9842cbfd17988b2f360699c54c1f698c4a043c0e",
+      "sha256_after": "e1ea1f7f97830b1473a35d3b68e1aea5905c9e0de20d861f896528b81d53e08b",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/460d443d-3220-4619-b864-dd3b9df95ce2.png"
+    },
+    {
+      "i": 62,
+      "file": "47662643-d7c9-4900-b923-7484c7ab55bd.png",
+      "status": "verified",
+      "box": [
+        466,
+        13,
+        625,
+        114
+      ],
+      "groups": [
+        [
+          17,
+          58
+        ],
+        [
+          69,
+          89
+        ],
+        [
+          100,
+          109
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        466,
+        13,
+        625,
+        114
+      ],
+      "sha256_before": "185dec3c4a22c9292c4e649dd02b4fff6a473e627baaf51f30f4ffaeaafda3ee",
+      "sha256_after": "493f383f021ee46eed0e420b88336f92803e8514d0064f5adeba177531d33cae",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/47662643-d7c9-4900-b923-7484c7ab55bd.png"
+    },
+    {
+      "i": 63,
+      "file": "48da55a2-442b-4a42-a4b9-a7ceac8385f0.png",
+      "status": "verified",
+      "box": [
+        474,
+        12,
+        651,
+        114
+      ],
+      "groups": [
+        [
+          16,
+          53
+        ],
+        [
+          66,
+          86
+        ],
+        [
+          98,
+          109
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        474,
+        12,
+        651,
+        114
+      ],
+      "sha256_before": "3eaddd3f88615d9006d4e50d735ff4f7d22a7ce9a1b60f44d1730ba6f4615b58",
+      "sha256_after": "c8d62aa48ce222e490919c33711850b423bb50e6e3cad3e6033632e9625a8e2b",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/48da55a2-442b-4a42-a4b9-a7ceac8385f0.png"
+    },
+    {
+      "i": 64,
+      "file": "48ed5472-69f2-47c5-84e9-2581d5d6c7df.png",
+      "status": "verified",
+      "groups": [
+        [
+          20,
+          69
+        ],
+        [
+          79,
+          105
+        ],
+        [
+          118,
+          129
+        ]
+      ],
+      "box": [
+        460,
+        16,
+        658,
+        134
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        460,
+        16,
+        658,
+        134
+      ],
+      "sha256_before": "396199232a2c3d9476a44bf4f7475f58da0b3bec186858d58cbdc66847d968a0",
+      "sha256_after": "c08222d734329c0465f53ccc6c0d19e787ee33c944e8015f3cf9ec837b1d91ac",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/48ed5472-69f2-47c5-84e9-2581d5d6c7df.png"
+    },
+    {
+      "i": 65,
+      "file": "4bb89a3f-d972-429b-9cf7-003932f745dc.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          18
+        ],
+        [
+          39,
+          40
+        ],
+        [
+          44,
+          62
+        ],
+        [
+          66,
+          66
+        ],
+        [
+          83,
+          101
+        ],
+        [
+          116,
+          121
+        ]
+      ],
+      "box": [
+        446,
+        35,
+        608,
+        126
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        446,
+        35,
+        608,
+        126
+      ],
+      "sha256_before": "916e876af49587f55ed6d3375855d82c683d349b75bf12ee5cfe7d23e1f7cf90",
+      "sha256_after": "bb8857ed52e21e6085665126e264c13184a6ab9239dd5ba0d114929b70aec2f2",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/4bb89a3f-d972-429b-9cf7-003932f745dc.png"
+    },
+    {
+      "i": 66,
+      "file": "4d144b3b-2fd6-4704-b20a-c4134e075128.png",
+      "status": "verified",
+      "box": [
+        443,
+        11,
+        613,
+        125
+      ],
+      "groups": [
+        [
+          15,
+          66
+        ],
+        [
+          77,
+          97
+        ],
+        [
+          111,
+          120
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        443,
+        11,
+        613,
+        125
+      ],
+      "sha256_before": "6a94fba5be18c81fab0a91ef345bc68d49f7b1a5931eff7e5ed3cfd6934d3ffc",
+      "sha256_after": "6f4a54dafe0b0e848518998693caf659887e30df41e17e279cd4807b92547ea6",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/4d144b3b-2fd6-4704-b20a-c4134e075128.png"
+    },
+    {
+      "i": 67,
+      "file": "4d75cc89-e3b3-40ac-93ac-1293c498abd8.png",
+      "status": "verified",
+      "box": [
+        476,
+        21,
+        645,
+        118
+      ],
+      "groups": [
+        [
+          25,
+          60
+        ],
+        [
+          71,
+          91
+        ],
+        [
+          103,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        21,
+        645,
+        118
+      ],
+      "sha256_before": "1ee01395b4778d7dc47b8025d2c28980be109b79759bb02bfac5261c833fd95c",
+      "sha256_after": "0c59d2629c7fc94f068dff876ad55214ebd730019cfee07e32756d74d0c2dc34",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/4d75cc89-e3b3-40ac-93ac-1293c498abd8.png"
+    },
+    {
+      "i": 68,
+      "file": "4f4e6fef-dbb0-40a5-84e6-9bed499f206e.png",
+      "status": "verified",
+      "box": [
+        450,
+        11,
+        604,
+        113
+      ],
+      "groups": [
+        [
+          15,
+          57
+        ],
+        [
+          67,
+          88
+        ],
+        [
+          99,
+          108
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        450,
+        11,
+        604,
+        113
+      ],
+      "sha256_before": "66a6e4bad70fb93457fb7712b0bf67eec7a5bc47cb017808405d3ecf4f4450c9",
+      "sha256_after": "eafd90b2f57f10d5cdfc195e9737af4b0ba5e4494dfea763d2d4435b254c3825",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/4f4e6fef-dbb0-40a5-84e6-9bed499f206e.png"
+    },
+    {
+      "i": 69,
+      "file": "4f8a03ce-4e56-4b05-a465-ff77dc2c8cbe.png",
+      "status": "verified",
+      "box": [
+        463,
+        8,
+        589,
+        100
+      ],
+      "groups": [
+        [
+          12,
+          50
+        ],
+        [
+          60,
+          78
+        ],
+        [
+          87,
+          95
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        463,
+        8,
+        589,
+        100
+      ],
+      "sha256_before": "2bbfe66d568344922c22798bad73186ec26e73bdcb7ea70b97210f8fd01cca7e",
+      "sha256_after": "4e9ca71fd2e80045eaeb273e3a5c1b03e3844f40579c9ec84dced2f9918e7276",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/4f8a03ce-4e56-4b05-a465-ff77dc2c8cbe.png"
+    },
+    {
+      "i": 70,
+      "file": "4fcc9170-6dfc-4888-a16c-0abdbce321d7.png",
+      "status": "verified",
+      "box": [
+        455,
+        10,
+        668,
+        122
+      ],
+      "groups": [
+        [
+          14,
+          54
+        ],
+        [
+          68,
+          92
+        ],
+        [
+          108,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        455,
+        10,
+        668,
+        122
+      ],
+      "sha256_before": "a74eb712121864858c4f757c185c67abe359aed80871777799a99d52de2b070d",
+      "sha256_after": "1bef4e5c972b0d18b69c420aeff12b9a6b9e6b44b138a4940875b1d3dbf9f7f4",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/4fcc9170-6dfc-4888-a16c-0abdbce321d7.png"
+    },
+    {
+      "i": 71,
+      "file": "5052d97f-fa81-4fde-8516-be97b5445633.png",
+      "status": "verified",
+      "box": [
+        698,
+        13,
+        751,
+        66
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        698,
+        13,
+        751,
+        66
+      ],
+      "sha256_before": "dec2182081f5bf7d61c9f96e0f29a811ab5c7d24da01ccde3afa49ffc85c2286",
+      "sha256_after": "d71ff6d8cf691c1d4079a77005a1240882c2b0984cbe4b0adba0e2952d4b70eb",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/5052d97f-fa81-4fde-8516-be97b5445633.png"
+    },
+    {
+      "i": 72,
+      "file": "5197b979-e3db-4a4f-9f54-44041021c575.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          18
+        ],
+        [
+          39,
+          66
+        ],
+        [
+          83,
+          100
+        ],
+        [
+          116,
+          121
+        ]
+      ],
+      "box": [
+        446,
+        35,
+        608,
+        126
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        446,
+        35,
+        608,
+        126
+      ],
+      "sha256_before": "187507e063d53f5055a3f68e82bea2155789ac60a0869c3b0e22cf926e4812ce",
+      "sha256_after": "4a53dd57627986a0679d983be4ce6dee65d754c74b8ade38ea155d1c5951839b",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/5197b979-e3db-4a4f-9f54-44041021c575.png"
+    },
+    {
+      "i": 73,
+      "file": "52e5317b-e762-400f-b852-fafbd68f5a00.png",
+      "status": "verified",
+      "box": [
+        475,
+        21,
+        647,
+        117
+      ],
+      "groups": [
+        [
+          25,
+          60
+        ],
+        [
+          70,
+          91
+        ],
+        [
+          102,
+          112
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        475,
+        21,
+        647,
+        117
+      ],
+      "sha256_before": "45733449a33b61f525c0f62c02d87b28296affc77c764cacf54bfc47bbc8dc64",
+      "sha256_after": "041164745b0aa4c8b1eb947f1556e3dfda905effc36214b43cb3f46c91ab31b2",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/52e5317b-e762-400f-b852-fafbd68f5a00.png"
+    },
+    {
+      "i": 74,
+      "file": "560b67d9-5aab-4528-94e7-794ab97c2bd8.png",
+      "status": "verified",
+      "box": [
+        470,
+        13,
+        650,
+        119
+      ],
+      "groups": [
+        [
+          17,
+          58
+        ],
+        [
+          70,
+          91
+        ],
+        [
+          102,
+          114
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        470,
+        13,
+        650,
+        119
+      ],
+      "sha256_before": "a6ebe69a2f73815df81323f2c86cf8c39a44a0d186d38de5a4c98748f643bef3",
+      "sha256_after": "5af052f46784c0ce1da2f481c4095eb7563eb316bc0093f4502b50f64f998a67",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/560b67d9-5aab-4528-94e7-794ab97c2bd8.png"
+    },
+    {
+      "i": 75,
+      "file": "56ef5bf6-f316-4028-889c-da0bb6c96084.png",
+      "status": "verified",
+      "box": [
+        476,
+        20,
+        646,
+        118
+      ],
+      "groups": [
+        [
+          24,
+          59
+        ],
+        [
+          70,
+          89
+        ],
+        [
+          103,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        20,
+        646,
+        118
+      ],
+      "sha256_before": "1ccb7202208461726af54561643521d75833cfe4a149e59795bf9014ef26a8f2",
+      "sha256_after": "c582a3eee6b34220ae0bc74602a4ce31e64edacf149f8650aa547b424b3f18dd",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/56ef5bf6-f316-4028-889c-da0bb6c96084.png"
+    },
+    {
+      "i": 76,
+      "file": "5bc58a0c-0e48-439b-942c-7a0480b98e2e.png",
+      "status": "verified",
+      "groups": [
+        [
+          14,
+          70
+        ],
+        [
+          82,
+          106
+        ],
+        [
+          120,
+          130
+        ]
+      ],
+      "box": [
+        465,
+        10,
+        656,
+        135
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        465,
+        10,
+        656,
+        135
+      ],
+      "sha256_before": "d1716a2f2f1385080381ce5a631320bccd26e5414dc8756e5b7a05734612f936",
+      "sha256_after": "ce8bb2cc882b3096cbb0ce95a6f97c4767de8e650931e869d0fc4cbdc9d00520",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/5bc58a0c-0e48-439b-942c-7a0480b98e2e.png"
+    },
+    {
+      "i": 77,
+      "file": "5bcdaac3-dd2c-49ae-9402-c7703b42b27b.png",
+      "status": "verified",
+      "box": [
+        463,
+        9,
+        591,
+        100
+      ],
+      "groups": [
+        [
+          13,
+          51
+        ],
+        [
+          61,
+          78
+        ],
+        [
+          88,
+          95
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        463,
+        9,
+        591,
+        100
+      ],
+      "sha256_before": "19535edeb95b3902404ce489eac752de9b040a653b5cff3cbdd6c4a0e86bc059",
+      "sha256_after": "7938106d3dab64d8220ea54ef59e95b85d4aa248d92cd9dff62100298b3a5366",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/5bcdaac3-dd2c-49ae-9402-c7703b42b27b.png"
+    },
+    {
+      "i": 78,
+      "file": "5cbe5706-ebe2-4c4c-9ae5-a8e8986326d9.png",
+      "status": "verified",
+      "box": [
+        459,
+        11,
+        662,
+        123
+      ],
+      "groups": [
+        [
+          15,
+          57
+        ],
+        [
+          70,
+          93
+        ],
+        [
+          110,
+          118
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        459,
+        11,
+        662,
+        123
+      ],
+      "sha256_before": "066e0f88da725b57d76353944f79faee8c9ade806d3bcd46ccef14bd5d94cf3d",
+      "sha256_after": "a2342f8d3516d00e0b12f61a2f7c11c13e35022148accfcd26d9148be3518c3d",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/5cbe5706-ebe2-4c4c-9ae5-a8e8986326d9.png"
+    },
+    {
+      "i": 79,
+      "file": "5d46917f-0fba-4873-b113-773ab7ce879b.png",
+      "status": "verified",
+      "groups": [
+        [
+          14,
+          82
+        ],
+        [
+          92,
+          122
+        ],
+        [
+          137,
+          148
+        ]
+      ],
+      "box": [
+        408,
+        10,
+        647,
+        153
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        408,
+        10,
+        647,
+        153
+      ],
+      "sha256_before": "843df719f7b851fedb2296d61ad1d4bcedc3467e6214a7195b03da0b24fb2c27",
+      "sha256_after": "bc5995f4ea7e76bd9958cc5cda2fb81ffcce5458135c136e8de254263613b293",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/5d46917f-0fba-4873-b113-773ab7ce879b.png"
+    },
+    {
+      "i": 80,
+      "file": "5d987a68-a2a1-42f5-baef-1e0488a3380c.png",
+      "status": "verified",
+      "box": [
+        476,
+        19,
+        646,
+        117
+      ],
+      "groups": [
+        [
+          23,
+          59
+        ],
+        [
+          70,
+          90
+        ],
+        [
+          102,
+          112
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        19,
+        646,
+        117
+      ],
+      "sha256_before": "a6b743d8c2bb8d3f5abae7484cf7a8bbd5c47ac0c3b6602b46b732813436b8ea",
+      "sha256_after": "19f918f97477e7738a8c15a9113681e7b88d7e9d154b9c2311c5473686994c9f",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/5d987a68-a2a1-42f5-baef-1e0488a3380c.png"
+    },
+    {
+      "i": 81,
+      "file": "5f338877-3d8a-4c63-86f0-e3b550a8a5ce.png",
+      "status": "verified",
+      "box": [
+        465,
+        16,
+        655,
+        119
+      ],
+      "groups": [
+        [
+          20,
+          56
+        ],
+        [
+          70,
+          91
+        ],
+        [
+          102,
+          114
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        465,
+        16,
+        655,
+        119
+      ],
+      "sha256_before": "37e2dbad7566792a0349a5703d2d4fa967dc6916b9eb2f6538b8069718ced933",
+      "sha256_after": "3aac1d8c9bdf4673e24cd0fb50842bd09f03f879ade970b35856099cad069e66",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/5f338877-3d8a-4c63-86f0-e3b550a8a5ce.png"
+    },
+    {
+      "i": 82,
+      "file": "5f9bdbcc-7fdc-4ed3-b343-093a0bf87957.png",
+      "status": "verified",
+      "box": [
+        453,
+        12,
+        634,
+        135
+      ],
+      "groups": [
+        [
+          16,
+          71
+        ],
+        [
+          82,
+          106
+        ],
+        [
+          120,
+          130
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        453,
+        12,
+        634,
+        135
+      ],
+      "sha256_before": "283a933e0c17e0bfc9357edabd7313d9a589c007fffc03ad509a5526f54188f1",
+      "sha256_after": "5cdb4d331555862bf342e952cbb4838740e04270ba2b9cde2269edcf9767ae3c",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/5f9bdbcc-7fdc-4ed3-b343-093a0bf87957.png"
+    },
+    {
+      "i": 83,
+      "file": "60b20d53-59b0-45ee-86c8-7db482324a74.png",
+      "status": "verified",
+      "box": [
+        985,
+        6,
+        1144,
+        97
+      ],
+      "groups": [
+        [
+          10,
+          46
+        ],
+        [
+          55,
+          74
+        ],
+        [
+          83,
+          92
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        985,
+        6,
+        1144,
+        97
+      ],
+      "sha256_before": "1f3dfdd8deae2d3e5d2b2d189cba9403c9165704ee2ecf53acff1a7ec08ff5b6",
+      "sha256_after": "0ef0cee91d24d4c3653ca3575c684976b0eca8d440222427efccc27a426b15f0",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/60b20d53-59b0-45ee-86c8-7db482324a74.png"
+    },
+    {
+      "i": 84,
+      "file": "60cfa98d-52f7-47f6-bdaa-ac8483c3ac02.png",
+      "status": "verified",
+      "box": [
+        457,
+        11,
+        629,
+        125
+      ],
+      "groups": [
+        [
+          15,
+          66
+        ],
+        [
+          77,
+          98
+        ],
+        [
+          110,
+          120
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        457,
+        11,
+        629,
+        125
+      ],
+      "sha256_before": "80dc316293c61fbd991b4357cfccefb2b0943f55751677aa7c590b5859d35d71",
+      "sha256_after": "c92fa81866072546d96332fd7d216b05026de9cd6a913e7997914425adf4abee",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/60cfa98d-52f7-47f6-bdaa-ac8483c3ac02.png"
+    },
+    {
+      "i": 85,
+      "file": "60fd83be-f01c-40b9-b50b-58f10f37eb20.png",
+      "status": "verified",
+      "box": [
+        468,
+        12,
+        618,
+        111
+      ],
+      "groups": [
+        [
+          16,
+          57
+        ],
+        [
+          67,
+          86
+        ],
+        [
+          97,
+          106
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        468,
+        12,
+        618,
+        111
+      ],
+      "sha256_before": "9a84a7efff3a1a2d35c05d585b1cea12079880fe90a321a5029f3d7f9fea10af",
+      "sha256_after": "b9497030ebe7999a25d0a611ee7af9a049fdc9854b471c22758edbde77423be4",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/60fd83be-f01c-40b9-b50b-58f10f37eb20.png"
+    },
+    {
+      "i": 86,
+      "file": "63a4b330-38c1-454c-ae36-1cf08b38d817.png",
+      "status": "verified",
+      "box": [
+        441,
+        20,
+        613,
+        139
+      ],
+      "groups": [
+        [
+          24,
+          72
+        ],
+        [
+          88,
+          110
+        ],
+        [
+          126,
+          134
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        441,
+        20,
+        613,
+        139
+      ],
+      "sha256_before": "44bbf4cbe6b6bfb056c9e92a00f80b193a9704e3abb964e7859bb8136e2a4e37",
+      "sha256_after": "fb03c9684f7b5d38756cc99726c95f7de311cf94342e187814d8aeeb6db0310c",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/63a4b330-38c1-454c-ae36-1cf08b38d817.png"
+    },
+    {
+      "i": 87,
+      "file": "664802f0-9494-4c05-a92f-00e9031719c9.png",
+      "status": "verified",
+      "box": [
+        462,
+        20,
+        621,
+        131
+      ],
+      "groups": [
+        [
+          24,
+          69
+        ],
+        [
+          84,
+          104
+        ],
+        [
+          119,
+          126
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        462,
+        20,
+        621,
+        131
+      ],
+      "sha256_before": "82dbca73a3a87df527165afb003b00e4340db73542bd981b57e61b382a1b2b07",
+      "sha256_after": "c96e15cfa77a9cb5cd8c7e0d4c47915e8710ccbd2752558dc5d5e1d16f66f8d1",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/664802f0-9494-4c05-a92f-00e9031719c9.png"
+    },
+    {
+      "i": 88,
+      "file": "66bcd298-b622-43ad-b518-4ff9ce6d9822.png",
+      "status": "verified",
+      "box": [
+        452,
+        12,
+        602,
+        113
+      ],
+      "groups": [
+        [
+          16,
+          58
+        ],
+        [
+          68,
+          88
+        ],
+        [
+          100,
+          108
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        452,
+        12,
+        602,
+        113
+      ],
+      "sha256_before": "29b350411d3bd2aa1debeff79a75432101379abc954339f9f17aa27de21dc2c6",
+      "sha256_after": "6ba5d6cf728818edc142ec09d677072bccdf8b7c0d4f80759968e37db6b21d1b",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/66bcd298-b622-43ad-b518-4ff9ce6d9822.png"
+    },
+    {
+      "i": 89,
+      "file": "66eb011ef40fad338cc5c133.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        16,
+        623,
+        136
+      ],
+      "groups": [
+        [
+          20,
+          64
+        ],
+        [
+          80,
+          103
+        ],
+        [
+          119,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        16,
+        623,
+        136
+      ],
+      "sha256_before": "66eb011ef40fad338cc5c133b8df3924c886828b76df711205ac80554ece20fb",
+      "sha256_after": "8633728d042cd5172ef569ab85a244439c5a2ba2b117d3d1d656032c97622d8a",
+      "languages": [
+        "ko"
+      ],
+      "url": "/assets/66eb011ef40fad338cc5c133.jpeg"
+    },
+    {
+      "i": 90,
+      "file": "67ac0549-adf0-40ea-aef2-0b6e7d1c9f26.png",
+      "status": "verified",
+      "box": [
+        459,
+        10,
+        635,
+        121
+      ],
+      "groups": [
+        [
+          14,
+          64
+        ],
+        [
+          74,
+          95
+        ],
+        [
+          107,
+          116
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        459,
+        10,
+        635,
+        121
+      ],
+      "sha256_before": "d56d36b0a56558b7de891cf6840714df3a5569a7b9586ce46815256fdc3d67d9",
+      "sha256_after": "0288467017c4851632fa0a15a2330534028ada936f95f1a3a7dda9817cdf1751",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/67ac0549-adf0-40ea-aef2-0b6e7d1c9f26.png"
+    },
+    {
+      "i": 91,
+      "file": "690de74a-8ab3-4e14-ba96-54c501144425.png",
+      "status": "verified",
+      "box": [
+        681,
+        7,
+        751,
+        79
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        681,
+        7,
+        751,
+        79
+      ],
+      "sha256_before": "58f2658dcc32479f94be49d372eb66a32ddddfa5fc16c749413c9a3c9da424ab",
+      "sha256_after": "db697b9b98a0ba0eb514868eab27ab4bd556921ee5d03308831faeb0e5e37fdd",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/690de74a-8ab3-4e14-ba96-54c501144425.png"
+    },
+    {
+      "i": 92,
+      "file": "6a7d1095-b255-4cba-a515-5ea7794719a0.png",
+      "status": "verified",
+      "box": [
+        696,
+        8,
+        749,
+        63
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        696,
+        8,
+        749,
+        63
+      ],
+      "sha256_before": "c54ac4213827cb9106f294edefd055f632c9a01b7c268f945ddddf7fe1fe6d0f",
+      "sha256_after": "83a5217b043527b067cff3611fcd4357287c79161bcbd94c8331175649389555",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/6a7d1095-b255-4cba-a515-5ea7794719a0.png"
+    },
+    {
+      "i": 93,
+      "file": "6b8714fe-df7a-4a75-9521-543ff08bf77e.png",
+      "status": "verified",
+      "box": [
+        479,
+        10,
+        607,
+        100
+      ],
+      "groups": [
+        [
+          14,
+          52
+        ],
+        [
+          62,
+          78
+        ],
+        [
+          88,
+          95
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        479,
+        10,
+        607,
+        100
+      ],
+      "sha256_before": "08f81f44fda180a114ae51826c6e2f0308ce7be4418b1c46d655fdb20b991c9b",
+      "sha256_after": "0bbe609f8c5f6737b12f350387f4fca7bb9f77fa7683d011f4a939d89b33109d",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/6b8714fe-df7a-4a75-9521-543ff08bf77e.png"
+    },
+    {
+      "i": 94,
+      "file": "6c69eca3e28ab5a48fee3190.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        624,
+        136
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          80,
+          103
+        ],
+        [
+          119,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        624,
+        136
+      ],
+      "sha256_before": "6c69eca3e28ab5a48fee3190cd0986265e17b5b575f070cdef7dda54e9c5501d",
+      "sha256_after": "832985c81c6051fdf2a2137c9b6eab0c07c76a185b7c6165ca03da80174ad6c5",
+      "languages": [
+        "zh"
+      ],
+      "url": "/assets/6c69eca3e28ab5a48fee3190.jpeg"
+    },
+    {
+      "i": 95,
+      "file": "6c911fdc-0966-4f03-bff0-f8fc4c09b249.png",
+      "status": "verified",
+      "box": [
+        474,
+        12,
+        650,
+        124
+      ],
+      "groups": [
+        [
+          16,
+          67
+        ],
+        [
+          76,
+          97
+        ],
+        [
+          109,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        474,
+        12,
+        650,
+        124
+      ],
+      "sha256_before": "fe0a2d9956f1401b5b766e043d45eb8286dff038e7468bc12d0b0687579b1f30",
+      "sha256_after": "4f1854020f59e9b22acc85a5f3672e5c16f60452f7bf69c6ed9db9426f539e69",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/6c911fdc-0966-4f03-bff0-f8fc4c09b249.png"
+    },
+    {
+      "i": 96,
+      "file": "6c9be02c-5cf5-4fb8-8626-b48541e0f49c.png",
+      "status": "verified",
+      "box": [
+        470,
+        14,
+        651,
+        118
+      ],
+      "groups": [
+        [
+          18,
+          55
+        ],
+        [
+          69,
+          89
+        ],
+        [
+          101,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        470,
+        14,
+        651,
+        118
+      ],
+      "sha256_before": "9af87aa9969f23d8129451822cd38ef35bcbd91054c30efdf2027cc868c08484",
+      "sha256_after": "6c44f8e188f9d51c2a14b9b0f3119ed8a1a62916de497dcd97969bff81abcfd7",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/6c9be02c-5cf5-4fb8-8626-b48541e0f49c.png"
+    },
+    {
+      "i": 97,
+      "file": "6dbe3d6d-43e4-407f-ad0a-927107aee599.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          120,
+          132
+        ]
+      ],
+      "box": [
+        453,
+        21,
+        666,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        453,
+        21,
+        666,
+        137
+      ],
+      "sha256_before": "ea88fd9f936758a7d74e497077fa09662bdf3e3f78e1d3c149211c1bcbe3edae",
+      "sha256_after": "ab453bedf1d7181edad1bb5ab573dc48f96a44c00e079c7c8f7474a7618334a8",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/6dbe3d6d-43e4-407f-ad0a-927107aee599.png"
+    },
+    {
+      "i": 98,
+      "file": "70a50b40-bb07-42c8-ae81-f1743b75c762.png",
+      "status": "verified",
+      "box": [
+        476,
+        21,
+        646,
+        116
+      ],
+      "groups": [
+        [
+          25,
+          60
+        ],
+        [
+          71,
+          91
+        ],
+        [
+          102,
+          111
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        21,
+        646,
+        116
+      ],
+      "sha256_before": "f15fe7dc3b9ee7630b7a96b581285904217766edaf6e498087e653adde4e9925",
+      "sha256_after": "a30ee479a3323bc804c3fd1fd92e8f6bc3a63c0aab7e100496a7d50f0a15d46e",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/70a50b40-bb07-42c8-ae81-f1743b75c762.png"
+    },
+    {
+      "i": 99,
+      "file": "7241efb5-7612-4d4e-8de8-ec78cc09db15.png",
+      "status": "verified",
+      "groups": [
+        [
+          26,
+          71
+        ],
+        [
+          82,
+          105
+        ],
+        [
+          117,
+          130
+        ]
+      ],
+      "box": [
+        454,
+        22,
+        666,
+        135
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        22,
+        666,
+        135
+      ],
+      "sha256_before": "889d426b97bbbca7897db8dbd6e27a02c61257d050e393152f8c40411b8bb59e",
+      "sha256_after": "da1630d80fc0285c9620de33d6819f68edf7aec31ae80d6fab32f1592b810d14",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/7241efb5-7612-4d4e-8de8-ec78cc09db15.png"
+    },
+    {
+      "i": 100,
+      "file": "7300dbd0-2f03-4800-8922-54635498375a.png",
+      "status": "verified",
+      "box": [
+        958,
+        10,
+        1105,
+        98
+      ],
+      "groups": [
+        [
+          14,
+          47
+        ],
+        [
+          58,
+          76
+        ],
+        [
+          85,
+          93
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        958,
+        10,
+        1105,
+        98
+      ],
+      "sha256_before": "ccff3fa4722826ad7dd3dbfd219d3f79982b43fa72b93ee0eec9717dd23e645f",
+      "sha256_after": "3376c75e68962f5176e79c58064d3d33decc9ece1d54b795d908d46999c0ac2c",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/7300dbd0-2f03-4800-8922-54635498375a.png"
+    },
+    {
+      "i": 101,
+      "file": "7326ff4b-29f7-4669-bef2-edde2126bd02.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          120,
+          132
+        ]
+      ],
+      "box": [
+        455,
+        21,
+        666,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        455,
+        21,
+        666,
+        137
+      ],
+      "sha256_before": "0ebd0099cbdb3438b3090a5f5388652f3700ea0e38dbf3bfdb75cc1b0f95babe",
+      "sha256_after": "8cdcb69638b74b40e2aad5cad17588c394359337b5ace0779393b986f88c888c",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/7326ff4b-29f7-4669-bef2-edde2126bd02.png"
+    },
+    {
+      "i": 102,
+      "file": "7640b67a-7471-436f-85ac-bee88c15d641.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          18
+        ],
+        [
+          39,
+          66
+        ],
+        [
+          83,
+          100
+        ],
+        [
+          116,
+          120
+        ]
+      ],
+      "box": [
+        446,
+        35,
+        608,
+        125
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        446,
+        35,
+        608,
+        125
+      ],
+      "sha256_before": "2fc779024164ff4bba465783216fdc1f8d7401736a735e0b814454c8d54efdda",
+      "sha256_after": "220db83f7a9cf484b47356f4263af8ce32e4975241c1cb1359c3f206295a6df8",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/7640b67a-7471-436f-85ac-bee88c15d641.png"
+    },
+    {
+      "i": 103,
+      "file": "773a31f5-e926-48a2-9d39-7aa4e5163e29.png",
+      "status": "verified",
+      "box": [
+        477,
+        7,
+        649,
+        106
+      ],
+      "groups": [
+        [
+          11,
+          49
+        ],
+        [
+          59,
+          79
+        ],
+        [
+          91,
+          101
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        477,
+        7,
+        649,
+        106
+      ],
+      "sha256_before": "eb58c822844d2e4591f13b99ca57eda32d11e44a4b1ee34c9e19fc96c6eed3a9",
+      "sha256_after": "6ee6887b187a887bfb5d09f144ae3737254fb55309ed73d8627d00cf53e94742",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/773a31f5-e926-48a2-9d39-7aa4e5163e29.png"
+    },
+    {
+      "i": 104,
+      "file": "7bb4e99cf65bc02a0f5d0756.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          79,
+          103
+        ],
+        [
+          118,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "sha256_before": "7bb4e99cf65bc02a0f5d07565eddc11d76a63b36a011f7b29f3dcc676bf79e09",
+      "sha256_after": "cd163567c2a79751970f60eb8fca9e59548d1560e6eb78906dfa732a0c4dc16c",
+      "languages": [
+        "it"
+      ],
+      "url": "/assets/7bb4e99cf65bc02a0f5d0756.jpeg"
+    },
+    {
+      "i": 105,
+      "file": "7bf58969-50a2-4a19-b032-4d4d059b3663.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          120,
+          132
+        ]
+      ],
+      "box": [
+        454,
+        21,
+        666,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        21,
+        666,
+        137
+      ],
+      "sha256_before": "3caddcfa52a051331fdccc68eb4872a99827328a7fe8babd250acea07b9e1a1b",
+      "sha256_after": "c0e3a61f9c674f3237f3a71b123104a4f7fff2cd1cef269d86d09fad732310e5",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/7bf58969-50a2-4a19-b032-4d4d059b3663.png"
+    },
+    {
+      "i": 106,
+      "file": "7c3ee187-0aa7-4811-af94-2debb957b2d5.png",
+      "status": "verified",
+      "box": [
+        452,
+        12,
+        604,
+        113
+      ],
+      "groups": [
+        [
+          16,
+          57
+        ],
+        [
+          68,
+          88
+        ],
+        [
+          100,
+          108
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        452,
+        12,
+        604,
+        113
+      ],
+      "sha256_before": "0927ef5ab108611fda3b5a3a7cf0aa3440be9d03190619638dff5c7e789b8b37",
+      "sha256_after": "42ad5df702f89b4b85e2c182e60fb0e8d46becc8ec1a35aa0c1f700deede8e43",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/7c3ee187-0aa7-4811-af94-2debb957b2d5.png"
+    },
+    {
+      "i": 107,
+      "file": "7e0c8e76-bfd3-4344-b0ef-3ef975c8b5ec.png",
+      "status": "verified",
+      "box": [
+        988,
+        6,
+        1147,
+        98
+      ],
+      "groups": [
+        [
+          10,
+          46
+        ],
+        [
+          56,
+          75
+        ],
+        [
+          84,
+          93
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        988,
+        6,
+        1147,
+        98
+      ],
+      "sha256_before": "c271db2fa0638173bfe0e9cb6695627ce94dfff1e1b3ac58723e5e564996b167",
+      "sha256_after": "61b0124169913fe297048723b65e6a4518baa9b05ab4ddd31ed161ca481c24fa",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/7e0c8e76-bfd3-4344-b0ef-3ef975c8b5ec.png"
+    },
+    {
+      "i": 108,
+      "file": "7faeaceb-e348-4da3-a25c-2569c63bf5de.png",
+      "status": "verified",
+      "box": [
+        994,
+        6,
+        1144,
+        95
+      ],
+      "groups": [
+        [
+          10,
+          45
+        ],
+        [
+          55,
+          73
+        ],
+        [
+          83,
+          90
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        994,
+        6,
+        1144,
+        95
+      ],
+      "sha256_before": "c55e2488bb966e0aacbb51b4046e742c1a309688f4901c86a3cd9a81ad36bb7e",
+      "sha256_after": "d6eb19d40bd8c092fbe7ec11416b291fddd9b3e8fb6e589669f387b838c69e9b",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/7faeaceb-e348-4da3-a25c-2569c63bf5de.png"
+    },
+    {
+      "i": 109,
+      "file": "7fd2df42-c407-447a-9e86-7ae71f335b22.png",
+      "status": "verified",
+      "groups": [
+        [
+          14,
+          77
+        ],
+        [
+          87,
+          114
+        ],
+        [
+          128,
+          142
+        ]
+      ],
+      "box": [
+        423,
+        10,
+        629,
+        147
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        423,
+        10,
+        629,
+        147
+      ],
+      "sha256_before": "ded9adb1ac8af545c42bdd66a3437df7cf2e388c02567ff40de0b67f738f4f72",
+      "sha256_after": "e81af115f777f487e685cf1f972ee8b4c9624b1375af64646aafb92669e31d99",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/7fd2df42-c407-447a-9e86-7ae71f335b22.png"
+    },
+    {
+      "i": 110,
+      "file": "80836bfc-56e0-4380-902f-c952892db7a8.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          120,
+          132
+        ]
+      ],
+      "box": [
+        454,
+        21,
+        666,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        21,
+        666,
+        137
+      ],
+      "sha256_before": "aab92b5372daa322f321c7073cbea997cc7c6093202a169bf0c00fc5a842192e",
+      "sha256_after": "527f1f89e3e1132e2f694d603ef43611e6c13513067e2b0e9869e0b9be94c044",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/80836bfc-56e0-4380-902f-c952892db7a8.png"
+    },
+    {
+      "i": 111,
+      "file": "815d9c4a-9893-47bd-9f66-2df5575b7fc6.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        626,
+        124
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          71,
+          93
+        ],
+        [
+          106,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        626,
+        124
+      ],
+      "sha256_before": "129ba0bcd39d723029ff72337f9cef486542586c9d76ce61b17e42f8acf0582d",
+      "sha256_after": "3809b56b508b2cd9dbf5e3f8cc4012c7d7e6d5984726060ceeeb19f5dbf9b929",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/815d9c4a-9893-47bd-9f66-2df5575b7fc6.png"
+    },
+    {
+      "i": 112,
+      "file": "818b6568-4510-4cba-a3b9-cc6d8d5c89da.png",
+      "status": "verified",
+      "box": [
+        431,
+        12,
+        632,
+        122
+      ],
+      "groups": [
+        [
+          16,
+          56
+        ],
+        [
+          70,
+          93
+        ],
+        [
+          109,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        431,
+        12,
+        632,
+        122
+      ],
+      "sha256_before": "71f2d0e6ef729ec104c539a32daf49b53c52d0b6d52bf036ac2a25bda4855f03",
+      "sha256_after": "996c04e6014b530577e98c1ee936889d878e49e6ed7ae6a98acd7ada796137bf",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/818b6568-4510-4cba-a3b9-cc6d8d5c89da.png"
+    },
+    {
+      "i": 113,
+      "file": "83016693-7f60-434f-9959-63e56b71472e.png",
+      "status": "verified",
+      "box": [
+        467,
+        9,
+        588,
+        99
+      ],
+      "groups": [
+        [
+          13,
+          51
+        ],
+        [
+          60,
+          77
+        ],
+        [
+          87,
+          94
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        467,
+        9,
+        588,
+        99
+      ],
+      "sha256_before": "45563b06bda9d4949aafb45a6f06702f17a5c6d39186298bedf6875fb57197c8",
+      "sha256_after": "ddca94b0e7c33376bcb1ffee973b95632021a20b92baa5291e7027d9386da889",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/83016693-7f60-434f-9959-63e56b71472e.png"
+    },
+    {
+      "i": 114,
+      "file": "8367c7c6-8e5e-46aa-9135-60f73c4f5674.png",
+      "status": "verified",
+      "box": [
+        457,
+        10,
+        629,
+        123
+      ],
+      "groups": [
+        [
+          14,
+          66
+        ],
+        [
+          76,
+          97
+        ],
+        [
+          110,
+          118
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        457,
+        10,
+        629,
+        123
+      ],
+      "sha256_before": "f48c7dba34c2e579f25181b4c7fa04c3c68b5f562791ed7f9a78a2367f7db012",
+      "sha256_after": "34be61a823443031f2659f6c578227dfdd6cd538e8b2c00aea20b2a1a6bc5bd0",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/8367c7c6-8e5e-46aa-9135-60f73c4f5674.png"
+    },
+    {
+      "i": 115,
+      "file": "84f28add43586c531442e71b.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          80,
+          103
+        ],
+        [
+          119,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "sha256_before": "84f28add43586c531442e71bdee68e55c11fe5705efd336beb99d1dbab0ca7bf",
+      "sha256_after": "3a4cfa1b85b93d1f2e54ea1bde68f1f5b1ebe5d48a83a20fdde1bf1a261d0731",
+      "languages": [
+        "fr"
+      ],
+      "url": "/assets/84f28add43586c531442e71b.jpeg"
+    },
+    {
+      "i": 116,
+      "file": "8528bf89-f2b9-4251-bbd2-48e99cb78910.png",
+      "status": "verified",
+      "box": [
+        462,
+        8,
+        591,
+        100
+      ],
+      "groups": [
+        [
+          12,
+          51
+        ],
+        [
+          61,
+          78
+        ],
+        [
+          88,
+          95
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        462,
+        8,
+        591,
+        100
+      ],
+      "sha256_before": "a83570cc67449ee6a3f4622648918a9cb2c87890f484cc47a13dc024dc1ee6a9",
+      "sha256_after": "3a67c4d682376a4b7639e451292ce3a85100543e01a5768335267ee53dde600c",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/8528bf89-f2b9-4251-bbd2-48e99cb78910.png"
+    },
+    {
+      "i": 117,
+      "file": "859cda9d-85b7-4460-ac33-767417084d94.png",
+      "status": "verified",
+      "groups": [
+        [
+          16,
+          78
+        ],
+        [
+          87,
+          113
+        ],
+        [
+          127,
+          140
+        ]
+      ],
+      "box": [
+        426,
+        12,
+        630,
+        145
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        426,
+        12,
+        630,
+        145
+      ],
+      "sha256_before": "f69e6db2e85a8830ee0205ffbaf5e1fc4db81715b6f0ae50071646820685ac7a",
+      "sha256_after": "171ff66a0aa7d47f0541fbfaf2974d24d316330f363ed0ad98ccb86361388923",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/859cda9d-85b7-4460-ac33-767417084d94.png"
+    },
+    {
+      "i": 118,
+      "file": "8966ac8f-d208-4398-8bb2-38772005bb9f.png",
+      "status": "verified",
+      "box": [
+        431,
+        11,
+        628,
+        119
+      ],
+      "groups": [
+        [
+          15,
+          55
+        ],
+        [
+          70,
+          90
+        ],
+        [
+          104,
+          114
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        431,
+        11,
+        628,
+        119
+      ],
+      "sha256_before": "44aa227d1de2b1dc3cbcb287efa207ec5019e4b612dfcffc0049b2809aca1df2",
+      "sha256_after": "e65a0270087e86e97c0665a173110d89c9eeac6e477980f5b8172ddb80bb536a",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/8966ac8f-d208-4398-8bb2-38772005bb9f.png"
+    },
+    {
+      "i": 119,
+      "file": "8aa71144-9230-4535-9a73-7366b92fca09.png",
+      "status": "verified",
+      "box": [
+        491,
+        9,
+        617,
+        96
+      ],
+      "groups": [
+        [
+          13,
+          50
+        ],
+        [
+          59,
+          75
+        ],
+        [
+          84,
+          91
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1107,
+        1421
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        491,
+        9,
+        617,
+        96
+      ],
+      "sha256_before": "b38d6efeb0f221715f17a42b96f24bf861cfe6a01989703385bba01d7bd2745e",
+      "sha256_after": "ce557a8b2f42fa992ac10ee119cd5f839381bd7b1cb7ce16fbe8b992028e5b99",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/8aa71144-9230-4535-9a73-7366b92fca09.png"
+    },
+    {
+      "i": 120,
+      "file": "8c655168-eb28-431d-98f5-fc9f627e232f.png",
+      "status": "verified",
+      "groups": [
+        [
+          13,
+          71
+        ],
+        [
+          82,
+          107
+        ],
+        [
+          121,
+          132
+        ]
+      ],
+      "box": [
+        462,
+        9,
+        658,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        462,
+        9,
+        658,
+        137
+      ],
+      "sha256_before": "8a3a0249fd2096d9ba90b4c9de0da95c2fe6f2a3b9155f52bfcb35eb8dd65de1",
+      "sha256_after": "1dedfd10b044c4161b21a723b36386c4cf8b023082dd0cc2a21cb77322a0ba32",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/8c655168-eb28-431d-98f5-fc9f627e232f.png"
+    },
+    {
+      "i": 121,
+      "file": "8eb3acb8-d416-4fab-bdbe-f15ab69e2a78.png",
+      "status": "verified",
+      "box": [
+        464,
+        20,
+        616,
+        132
+      ],
+      "groups": [
+        [
+          24,
+          68
+        ],
+        [
+          84,
+          104
+        ],
+        [
+          119,
+          127
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        464,
+        20,
+        616,
+        132
+      ],
+      "sha256_before": "58b6cfde98221eb10e77e66f32ec37fdd11d48e86e5a122fc86babf73237f5ef",
+      "sha256_after": "e5cba464b4abf68d70205b8f7cf9c07cb308f097fbda0359d7690cd908aac020",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/8eb3acb8-d416-4fab-bdbe-f15ab69e2a78.png"
+    },
+    {
+      "i": 122,
+      "file": "8f0e63a9-32cd-41ab-b907-d00344bac163.png",
+      "status": "verified",
+      "box": [
+        462,
+        21,
+        621,
+        131
+      ],
+      "groups": [
+        [
+          25,
+          69
+        ],
+        [
+          84,
+          104
+        ],
+        [
+          119,
+          126
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        462,
+        21,
+        621,
+        131
+      ],
+      "sha256_before": "77bb2b9215f30e77ee24135200c46e1e1114a3b9267dee8414374934f544b3db",
+      "sha256_after": "3c00b4675dee95f6f01108289631707d1370bbcb5567a4920e3d578314c516cf",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/8f0e63a9-32cd-41ab-b907-d00344bac163.png"
+    },
+    {
+      "i": 123,
+      "file": "8f18919e-7827-45cd-a8f2-54ea0a40cdf1.png",
+      "status": "verified",
+      "box": [
+        475,
+        7,
+        647,
+        109
+      ],
+      "groups": [
+        [
+          11,
+          47
+        ],
+        [
+          59,
+          80
+        ],
+        [
+          94,
+          104
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        475,
+        7,
+        647,
+        109
+      ],
+      "sha256_before": "773ab1a46f96f91ac24a1d729dd9eab916a235bf08b3721c028a24ba4a3ef777",
+      "sha256_after": "74e0232958c4c1cf6b5349ed4c45184ca730e297fc30f4c97122e2221d3a88ad",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/8f18919e-7827-45cd-a8f2-54ea0a40cdf1.png"
+    },
+    {
+      "i": 124,
+      "file": "93746a6e-124a-45ef-8c51-916c5bb29a10.png",
+      "status": "verified",
+      "box": [
+        466,
+        21,
+        621,
+        133
+      ],
+      "groups": [
+        [
+          25,
+          69
+        ],
+        [
+          85,
+          105
+        ],
+        [
+          120,
+          128
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        466,
+        21,
+        621,
+        133
+      ],
+      "sha256_before": "ab509baf70cd06b03ec688bc0ffaa3934d5dbd9bf384370f884e75f9c5e3df7c",
+      "sha256_after": "a1febb1cfee467410c0e7ce098c17985ee6385c12bf87493391dd66dc02ff5f6",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/93746a6e-124a-45ef-8c51-916c5bb29a10.png"
+    },
+    {
+      "i": 125,
+      "file": "9624ad29-4c27-4903-82f4-d50bceb84351.png",
+      "status": "verified",
+      "box": [
+        679,
+        9,
+        770,
+        79
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        679,
+        9,
+        770,
+        79
+      ],
+      "sha256_before": "5c0172ac8362adc0d074654bbeac4be9267cc324cfe587f14fbec4881cc7275b",
+      "sha256_after": "d0cdb59dacabe186aa83ff52eb48a51f89108ba0024072a7f791aa216180a2f8",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/9624ad29-4c27-4903-82f4-d50bceb84351.png"
+    },
+    {
+      "i": 126,
+      "file": "98a44998-3461-474a-a0aa-1638d8496a74.png",
+      "status": "verified",
+      "box": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "groups": [
+        [
+          25,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "sha256_before": "4798a951f278f39c897d3fbcbf69880e0cc571a482c1a5d552512b8a5024048d",
+      "sha256_after": "c904cad3df562702e82dcb52210c036900468f6dcbb3ee62cef4bdb981856f49",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/98a44998-3461-474a-a0aa-1638d8496a74.png"
+    },
+    {
+      "i": 127,
+      "file": "9a365e8f-e60a-4db6-9a06-39c056911535.png",
+      "status": "verified",
+      "box": [
+        453,
+        11,
+        633,
+        129
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          101
+        ],
+        [
+          114,
+          124
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        453,
+        11,
+        633,
+        129
+      ],
+      "sha256_before": "30981089ba195164b1d4546249b6a33f05cf0364a0f2d6812bdda745c9c37280",
+      "sha256_after": "2a538be814c9185382fe8ecff50c033417ef17636948a4ac2a6c20db6d4285af",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/9a365e8f-e60a-4db6-9a06-39c056911535.png"
+    },
+    {
+      "i": 128,
+      "file": "9a5b0217-5824-437a-a719-2ca90149a921.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          120,
+          132
+        ]
+      ],
+      "box": [
+        454,
+        21,
+        666,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        21,
+        666,
+        137
+      ],
+      "sha256_before": "7809d12d182599b03a5b3cf77e6e16813ac008d85be967f63f9b744aea429e03",
+      "sha256_after": "ce0a05a05a7e13454e5c6a2a7d26a578e4c122ecd39d42fdae374a74b30c9283",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/9a5b0217-5824-437a-a719-2ca90149a921.png"
+    },
+    {
+      "i": 129,
+      "file": "9ab0c911-1a65-4854-89e9-5ea6d0c4dead.png",
+      "status": "verified",
+      "box": [
+        476,
+        9,
+        643,
+        119
+      ],
+      "groups": [
+        [
+          13,
+          63
+        ],
+        [
+          73,
+          93
+        ],
+        [
+          105,
+          114
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        9,
+        643,
+        119
+      ],
+      "sha256_before": "79071d34f5c20da11eff5114b3cf05666bfd2f080945ac8f7e571b87fde13a2d",
+      "sha256_after": "28c00d81948f8f29f929dc3eef399bfa1cf5c6a11e3e6dc0c25b05fdd6025379",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/9ab0c911-1a65-4854-89e9-5ea6d0c4dead.png"
+    },
+    {
+      "i": 130,
+      "file": "9be493fa-4e03-407c-8bbf-fb4652fb65bc.png",
+      "status": "verified",
+      "box": [
+        432,
+        13,
+        629,
+        122
+      ],
+      "groups": [
+        [
+          17,
+          57
+        ],
+        [
+          70,
+          93
+        ],
+        [
+          109,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        432,
+        13,
+        629,
+        122
+      ],
+      "sha256_before": "3f6b72dac800748d37136caf7392e3bf689e2af2896bba31b4da7ab30c4ac230",
+      "sha256_after": "d1df244bb8bd3d559f735705b7addfd1a465ea9681a1be3a7f59283fd517b715",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/9be493fa-4e03-407c-8bbf-fb4652fb65bc.png"
+    },
+    {
+      "i": 131,
+      "file": "9c616b4f0cfa315f8e5c4a37.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          80,
+          103
+        ],
+        [
+          119,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "sha256_before": "9c616b4f0cfa315f8e5c4a37e384932ccfff943bfbb570b9bd189b71a8d3b4da",
+      "sha256_after": "b87f1a2331c32ffd92c5d718ef39b1c7057224a56e6fc24613a6b0e0492d53d4",
+      "languages": [
+        "es"
+      ],
+      "url": "/assets/9c616b4f0cfa315f8e5c4a37.jpeg"
+    },
+    {
+      "i": 132,
+      "file": "9c9c4f11-390f-4f2b-94e4-65d3dfbb18cc.png",
+      "status": "verified",
+      "box": [
+        475,
+        19,
+        646,
+        116
+      ],
+      "groups": [
+        [
+          23,
+          59
+        ],
+        [
+          70,
+          90
+        ],
+        [
+          101,
+          111
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        475,
+        19,
+        646,
+        116
+      ],
+      "sha256_before": "5fb56eb330cb27e283ba265ad58f7c88811eeb0ccc26e952cd2e2a74c78337e2",
+      "sha256_after": "d084b9c0f94816c3d71eb5f2450106b5e8726a0e873262bf312e71e629b7bd1d",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/9c9c4f11-390f-4f2b-94e4-65d3dfbb18cc.png"
+    },
+    {
+      "i": 133,
+      "file": "9d121a43-7bb5-4fe6-96a5-2ebb3f76a264.png",
+      "status": "verified",
+      "groups": [
+        [
+          13,
+          81
+        ],
+        [
+          92,
+          123
+        ],
+        [
+          141,
+          148
+        ]
+      ],
+      "box": [
+        408,
+        9,
+        648,
+        153
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        408,
+        9,
+        648,
+        153
+      ],
+      "sha256_before": "2827c73eb67d24695912ea2407c913efa569994553954fde4bfc8dca4306bc7d",
+      "sha256_after": "ffdcf8dd5f28f5cb27b736b1b23024e7cf3b0eaf5d5c8b17b692cba080dbb6c1",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/9d121a43-7bb5-4fe6-96a5-2ebb3f76a264.png"
+    },
+    {
+      "i": 134,
+      "file": "9d9da536-4d26-431e-a011-001aa0057475.png",
+      "status": "verified",
+      "box": [
+        481,
+        10,
+        643,
+        118
+      ],
+      "groups": [
+        [
+          14,
+          56
+        ],
+        [
+          71,
+          91
+        ],
+        [
+          105,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        481,
+        10,
+        643,
+        118
+      ],
+      "sha256_before": "f5579f4613c4178c3273c07c80c3dabbbc5e5009d86873dc096ed3e0b9a01645",
+      "sha256_after": "e689ad001c57f48760ff6b164eba652aa4da0d8b5f8b466a27cead7ac18c473a",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/9d9da536-4d26-431e-a011-001aa0057475.png"
+    },
+    {
+      "i": 135,
+      "file": "9e570632-33ad-4e0f-99d9-d727af389d0e.png",
+      "status": "verified",
+      "box": [
+        461,
+        8,
+        590,
+        100
+      ],
+      "groups": [
+        [
+          12,
+          51
+        ],
+        [
+          61,
+          78
+        ],
+        [
+          88,
+          95
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        461,
+        8,
+        590,
+        100
+      ],
+      "sha256_before": "99570652e15e3a57e109ef73591733ec00683f352f34de394b868bd79cfe3ee6",
+      "sha256_after": "4a8341ded23b95730ff86d6b40b691005d302e461a674ad4d08bb141dda0cffc",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/9e570632-33ad-4e0f-99d9-d727af389d0e.png"
+    },
+    {
+      "i": 136,
+      "file": "9ed9d088817c6976542e7cbe.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        624,
+        135
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          79,
+          103
+        ],
+        [
+          118,
+          130
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        624,
+        135
+      ],
+      "sha256_before": "9ed9d088817c6976542e7cbe9ba89076b9a2eefa5f7643215ef48f570fdd00c3",
+      "sha256_after": "841cf8f52d1fd7d398242958ba7150afc9c9cfa4485d1192962874347140d8ee",
+      "languages": [
+        "de"
+      ],
+      "url": "/assets/9ed9d088817c6976542e7cbe.jpeg"
+    },
+    {
+      "i": 137,
+      "file": "9f5eefd7-ac34-4467-b90f-c794999dc7c1.png",
+      "status": "verified",
+      "box": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "groups": [
+        [
+          25,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "sha256_before": "c5037d59709b0d76b46a762a993abdcd33ada27bd93a47e1b87997964fe35eb1",
+      "sha256_after": "555ffacebd9584123751973503c4a50d79db2bf7d044d25c7d0fb4eb204c8072",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/9f5eefd7-ac34-4467-b90f-c794999dc7c1.png"
+    },
+    {
+      "i": 138,
+      "file": "a2caabf9-7883-423d-a816-004cfa7592db.png",
+      "status": "verified",
+      "box": [
+        443,
+        11,
+        612,
+        123
+      ],
+      "groups": [
+        [
+          15,
+          66
+        ],
+        [
+          76,
+          96
+        ],
+        [
+          109,
+          118
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        443,
+        11,
+        612,
+        123
+      ],
+      "sha256_before": "7f53fd1da8014b3709fd88a3170528bf83fa668b0dcc533912a167825be3fafb",
+      "sha256_after": "8772d0b5e2259ed67c0b4492d2d583eca0eb776d0d623c1ce2c02db670bd2a6e",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/a2caabf9-7883-423d-a816-004cfa7592db.png"
+    },
+    {
+      "i": 139,
+      "file": "a2faa0c7-d05b-44e6-ac44-18fe22df074e.png",
+      "status": "verified",
+      "box": [
+        987,
+        6,
+        1144,
+        97
+      ],
+      "groups": [
+        [
+          10,
+          46
+        ],
+        [
+          56,
+          75
+        ],
+        [
+          84,
+          92
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        987,
+        6,
+        1144,
+        97
+      ],
+      "sha256_before": "41779afc514741db62fd851837ff86eec13a4a2b9487377ed39884c37550a5f9",
+      "sha256_after": "837d9fb43b08d6cebe79144199b700fac49383a646b59330869aa46c12666175",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/a2faa0c7-d05b-44e6-ac44-18fe22df074e.png"
+    },
+    {
+      "i": 140,
+      "file": "a3338a24-8de2-4882-993a-0a5d3f701b93.png",
+      "status": "verified",
+      "box": [
+        427,
+        7,
+        624,
+        139
+      ],
+      "groups": [
+        [
+          11,
+          73
+        ],
+        [
+          82,
+          107
+        ],
+        [
+          121,
+          134
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        427,
+        7,
+        624,
+        139
+      ],
+      "sha256_before": "31ea8dab2a27e25d5d045fd4d6c7e59d8426d6c04e200924c253d7b8fe80064b",
+      "sha256_after": "600f8ee8fc6e352d1b1823df1624760d5619e786f7fc4ea8ca3f5c3a1dbf3af4",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/a3338a24-8de2-4882-993a-0a5d3f701b93.png"
+    },
+    {
+      "i": 141,
+      "file": "a342e0a1-f80a-4085-bec2-e5bf37a43296.png",
+      "status": "verified",
+      "box": [
+        453,
+        12,
+        602,
+        113
+      ],
+      "groups": [
+        [
+          16,
+          57
+        ],
+        [
+          69,
+          88
+        ],
+        [
+          99,
+          108
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        453,
+        12,
+        602,
+        113
+      ],
+      "sha256_before": "aceeafe9d0cac9c6a16982c4100db246ac29eb87c2f805351e507d2f3e6db6f7",
+      "sha256_after": "aa03df842ef5138f2ef04df3f1558378cc296f349248c71867b526361b42cac4",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/a342e0a1-f80a-4085-bec2-e5bf37a43296.png"
+    },
+    {
+      "i": 142,
+      "file": "a3a816a3-1187-40d2-b653-660a6b6fd7f6.png",
+      "status": "verified",
+      "box": [
+        482,
+        7,
+        638,
+        115
+      ],
+      "groups": [
+        [
+          11,
+          55
+        ],
+        [
+          70,
+          90
+        ],
+        [
+          102,
+          110
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        482,
+        7,
+        638,
+        115
+      ],
+      "sha256_before": "cdeae60253236bffb7e637adb0f1afcbd7bd83a2f640228ca8f8e95007e24255",
+      "sha256_after": "1a7ff44c8b914eda3b0f8f4be732c0a71af99ca0b6218ba9e878145fa05d9458",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/a3a816a3-1187-40d2-b653-660a6b6fd7f6.png"
+    },
+    {
+      "i": 143,
+      "file": "a3fce2b3-5f60-4841-b3d2-6b707ea4b684.png",
+      "status": "verified",
+      "box": [
+        985,
+        6,
+        1145,
+        98
+      ],
+      "groups": [
+        [
+          10,
+          46
+        ],
+        [
+          55,
+          75
+        ],
+        [
+          84,
+          93
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1182,
+        1330
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        985,
+        6,
+        1145,
+        98
+      ],
+      "sha256_before": "76ab7571c17178f795f08c817c1c99cdd5aacc3e3bbb4949aa5d0392d41f817f",
+      "sha256_after": "659377267da793e9fe7e79ed43a582efadee45726e5ebdf42be47266ffef490c",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/a3fce2b3-5f60-4841-b3d2-6b707ea4b684.png"
+    },
+    {
+      "i": 144,
+      "file": "a43c9999-5adc-4c24-b398-a184ac564cc9.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          120,
+          132
+        ]
+      ],
+      "box": [
+        454,
+        21,
+        666,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        21,
+        666,
+        137
+      ],
+      "sha256_before": "72bb2fdc7d1200d3ac2c9bf7612834d982cfd8f96fc63394fa4518274710c012",
+      "sha256_after": "321bbff861966a76ff274861e17200bca93589a96c54a322a73857019b3c6eee",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/a43c9999-5adc-4c24-b398-a184ac564cc9.png"
+    },
+    {
+      "i": 145,
+      "file": "a480702b-b349-42ad-a92f-442efff8bc2e.png",
+      "status": "verified",
+      "box": [
+        475,
+        12,
+        646,
+        112
+      ],
+      "groups": [
+        [
+          16,
+          52
+        ],
+        [
+          64,
+          84
+        ],
+        [
+          97,
+          107
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        475,
+        12,
+        646,
+        112
+      ],
+      "sha256_before": "5aca57e80bec06276e24cd459ca8437f42de89c753410042f6a9212961318aac",
+      "sha256_after": "afc5afd1d5d3aea77e58e6cf734a7a54d5f75797fa7c153cc21875ee905ac145",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/a480702b-b349-42ad-a92f-442efff8bc2e.png"
+    },
+    {
+      "i": 146,
+      "file": "a4dc98e120921efdfdb2184b.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          79,
+          103
+        ],
+        [
+          118,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        623,
+        136
+      ],
+      "sha256_before": "a4dc98e120921efdfdb2184ba62828fa804bc8522d52c70d437ddd6abd19c0c1",
+      "sha256_after": "9bdac634ba39b1a06a3ba861850003bd1b376dcbe9f1347184b17800c98b231b",
+      "languages": [
+        "en"
+      ],
+      "url": "/assets/a4dc98e120921efdfdb2184b.jpeg"
+    },
+    {
+      "i": 147,
+      "file": "a66f81a3-82f3-46ac-a3c3-b5f039596da1.png",
+      "status": "verified",
+      "box": [
+        462,
+        7,
+        653,
+        123
+      ],
+      "groups": [
+        [
+          11,
+          63
+        ],
+        [
+          74,
+          97
+        ],
+        [
+          109,
+          118
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        462,
+        7,
+        653,
+        123
+      ],
+      "sha256_before": "5f2705f0be288af1b9d9b5c8039c4d39aa74fd37e84bf91aca0ea95255464657",
+      "sha256_after": "7cf28cc730a67742e58f9661335edfd5ea99922c144a6de43fe0191a2208315e",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/a66f81a3-82f3-46ac-a3c3-b5f039596da1.png"
+    },
+    {
+      "i": 148,
+      "file": "a9f10524-2658-4d43-a6ee-b7a636ab6e71.png",
+      "status": "verified",
+      "box": [
+        448,
+        7,
+        604,
+        109
+      ],
+      "groups": [
+        [
+          11,
+          54
+        ],
+        [
+          63,
+          83
+        ],
+        [
+          94,
+          104
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        448,
+        7,
+        604,
+        109
+      ],
+      "sha256_before": "3280169d221c02ebc3b42c977230c7a3c38f4124c5ac1702d6835ced3aafc2bf",
+      "sha256_after": "650a920ee29b4e658fd5566347f62dafcb0dc68b2bfa2225fb312b601b47b766",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/a9f10524-2658-4d43-a6ee-b7a636ab6e71.png"
+    },
+    {
+      "i": 149,
+      "file": "aa8baa62-84d6-447c-a0de-e333c3211eee.png",
+      "status": "verified",
+      "box": [
+        478,
+        12,
+        644,
+        114
+      ],
+      "groups": [
+        [
+          16,
+          53
+        ],
+        [
+          65,
+          85
+        ],
+        [
+          99,
+          109
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        478,
+        12,
+        644,
+        114
+      ],
+      "sha256_before": "f07d3b72d1177b571f7ae033f7cda2da761413d03025c832d19230081b9be58c",
+      "sha256_after": "fa513656f564a577d7240ac5528b4f1cd54943389c6b680f347e3cd2e67c92fa",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/aa8baa62-84d6-447c-a0de-e333c3211eee.png"
+    },
+    {
+      "i": 150,
+      "file": "ab253330-7524-4a8a-9c20-3c2455b844cc.png",
+      "status": "verified",
+      "box": [
+        463,
+        21,
+        622,
+        131
+      ],
+      "groups": [
+        [
+          25,
+          68
+        ],
+        [
+          83,
+          103
+        ],
+        [
+          118,
+          126
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        463,
+        21,
+        622,
+        131
+      ],
+      "sha256_before": "bf44d7d14ec803f71aeb67e74ee87d503dfef938f9e388ec4492d11d1f25e778",
+      "sha256_after": "58f5d856c149894ae2f5d6c15fc3663f5a5837b40d3145e5cc5be9a38c41acc7",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/ab253330-7524-4a8a-9c20-3c2455b844cc.png"
+    },
+    {
+      "i": 151,
+      "file": "ac5e5766-9fdf-4fa9-b3ef-3334cd09cb49.png",
+      "status": "verified",
+      "box": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "groups": [
+        [
+          25,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "sha256_before": "3668c07b98c8eb58ac80ea8d3471f5963f2527f264f73177eb5d04ed117d479f",
+      "sha256_after": "1155cf2a5ae16b9fe671cdde031a59935e3539872a989f9157f1e1e67942fd74",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/ac5e5766-9fdf-4fa9-b3ef-3334cd09cb49.png"
+    },
+    {
+      "i": 152,
+      "file": "ad6178e2-04f1-4a17-a6b6-575bb6b3d91d.png",
+      "status": "verified",
+      "box": [
+        453,
+        11,
+        633,
+        129
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          101
+        ],
+        [
+          114,
+          124
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        453,
+        11,
+        633,
+        129
+      ],
+      "sha256_before": "9ca495b3a25490e2e4a9b77fe8ddd75fa08f0e2820443b0bfb09fc3640a08cd1",
+      "sha256_after": "c6971c86721b48048bf7ba3e8e6508cbb2cb97242d54494074991c7a4f987862",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/ad6178e2-04f1-4a17-a6b6-575bb6b3d91d.png"
+    },
+    {
+      "i": 153,
+      "file": "aeb24e67-da88-46db-9ed0-7355253232e0.png",
+      "status": "verified",
+      "box": [
+        476,
+        14,
+        646,
+        117
+      ],
+      "groups": [
+        [
+          18,
+          54
+        ],
+        [
+          67,
+          87
+        ],
+        [
+          100,
+          112
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        14,
+        646,
+        117
+      ],
+      "sha256_before": "ec33ad0d34571eb0410d179fd495e803d30beb069a0a33f2636a10954d1fa0e1",
+      "sha256_after": "b51b5f619249f1b1a5c1aa0d928f817d82b107c939417af5b56b0e3ffd77fd65",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/aeb24e67-da88-46db-9ed0-7355253232e0.png"
+    },
+    {
+      "i": 154,
+      "file": "aed141f0-29e4-4ec3-a74f-39a098a5b8ec.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          120,
+          132
+        ]
+      ],
+      "box": [
+        453,
+        21,
+        666,
+        137
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        453,
+        21,
+        666,
+        137
+      ],
+      "sha256_before": "7d06b903ac0409b4fc483ff20498e6e1769395d2aa1b482e1fc076235265e523",
+      "sha256_after": "833175aa82e9703c6d87abe98c4a8c619c72f4d1e4d7832ce482b6f749debd67",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/aed141f0-29e4-4ec3-a74f-39a098a5b8ec.png"
+    },
+    {
+      "i": 155,
+      "file": "b0b0301e-b130-4bf4-914d-b5eccbe13bf0.png",
+      "status": "verified",
+      "box": [
+        744,
+        9,
+        795,
+        61
+      ],
+      "format": "PNG",
+      "size": [
+        1536,
+        1024
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        744,
+        9,
+        795,
+        61
+      ],
+      "sha256_before": "fb523f46475032915bb57bf20bc6bf040580a07c981fad5b98711e661f006c54",
+      "sha256_after": "6fbadd5f355bdfe98679856652b0bf8ca484cd5663599081f5af7cd7b1fb7e07",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/b0b0301e-b130-4bf4-914d-b5eccbe13bf0.png"
+    },
+    {
+      "i": 156,
+      "file": "b25f3ffd-ad6e-44b6-8c0b-909baff7b380.png",
+      "status": "verified",
+      "box": [
+        476,
+        21,
+        644,
+        117
+      ],
+      "groups": [
+        [
+          25,
+          60
+        ],
+        [
+          71,
+          91
+        ],
+        [
+          103,
+          112
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        21,
+        644,
+        117
+      ],
+      "sha256_before": "951e90b0cb8fd9a499aebb6f43deb07e4ea7d0c03cca09551a5f595a106e3263",
+      "sha256_after": "88aad44bb912426ffc850aaf1d260991c47389db177a467c65a2e8d391201bc5",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/b25f3ffd-ad6e-44b6-8c0b-909baff7b380.png"
+    },
+    {
+      "i": 157,
+      "file": "b32785bc-9fe7-4777-9ad3-e9d6367c3505.png",
+      "status": "verified",
+      "box": [
+        677,
+        8,
+        769,
+        79
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        677,
+        8,
+        769,
+        79
+      ],
+      "sha256_before": "1429f140da23fd7f51f6e87ef0a4c914be41a624a16457fea68ca908d6f799cb",
+      "sha256_after": "1ba18ac39c940f441ddc8ea63cdf81879e64cbba9c1e27012ffc3baa463b04d7",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/b32785bc-9fe7-4777-9ad3-e9d6367c3505.png"
+    },
+    {
+      "i": 158,
+      "file": "b4e4c03c-fcdd-4a93-a45a-8989e174dd5c.png",
+      "status": "verified",
+      "box": [
+        427,
+        14,
+        627,
+        125
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          70,
+          93
+        ],
+        [
+          106,
+          120
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        427,
+        14,
+        627,
+        125
+      ],
+      "sha256_before": "cd7653e7679c3f337eaeac2e9c60fc662ba667de9f159cc77f7aad3f9cbcf8c6",
+      "sha256_after": "4a443c93daa6b5ae10dbc40744d49e5234a25e0dea20556b6a298e5db0ee571d",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/b4e4c03c-fcdd-4a93-a45a-8989e174dd5c.png"
+    },
+    {
+      "i": 159,
+      "file": "b5791b33-1e0b-4e6d-a8a1-e6520467fbc3.png",
+      "status": "verified",
+      "box": [
+        467,
+        8,
+        655,
+        115
+      ],
+      "groups": [
+        [
+          12,
+          51
+        ],
+        [
+          63,
+          86
+        ],
+        [
+          97,
+          110
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        467,
+        8,
+        655,
+        115
+      ],
+      "sha256_before": "5944ed0a95702895411af46bec326337cb604c49719e0f8c81463a874f18d2f8",
+      "sha256_after": "ea0d245e02cd6b5da575bce533131ae5d0d379259265ae0549b9634cb9ff2b52",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/b5791b33-1e0b-4e6d-a8a1-e6520467fbc3.png"
+    },
+    {
+      "i": 160,
+      "file": "b62ce969-913d-42c9-b9d5-18cc813ee959.png",
+      "status": "verified",
+      "box": [
+        476,
+        18,
+        646,
+        116
+      ],
+      "groups": [
+        [
+          22,
+          58
+        ],
+        [
+          70,
+          89
+        ],
+        [
+          101,
+          111
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        18,
+        646,
+        116
+      ],
+      "sha256_before": "ff846e635cf162f8a1e8f5798af85f2bf1fc3fbebb6499fe47a1cc345b118544",
+      "sha256_after": "2baf3484270f5a4c595ed05cabd3d17854e1fcd8ac067c9ff9584e23511d2f21",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/b62ce969-913d-42c9-b9d5-18cc813ee959.png"
+    },
+    {
+      "i": 161,
+      "file": "b7852970-d4cf-412d-9e5a-76b4233d27dc.png",
+      "status": "verified",
+      "groups": [
+        [
+          14,
+          74
+        ],
+        [
+          83,
+          108
+        ],
+        [
+          122,
+          134
+        ]
+      ],
+      "box": [
+        458,
+        10,
+        659,
+        139
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        458,
+        10,
+        659,
+        139
+      ],
+      "sha256_before": "d4f23d6cd4d0cd5d4875ec85a39ed8a39673a8b429dc152e8ec933f0e9be979f",
+      "sha256_after": "2415bcf3dbdcf15dc52b7c04451f23edb8c989b7e29cad10dcd88fdfa7d18061",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/b7852970-d4cf-412d-9e5a-76b4233d27dc.png"
+    },
+    {
+      "i": 162,
+      "file": "b8184d51-62aa-4314-a8f7-718e7f26b8b6.png",
+      "status": "verified",
+      "box": [
+        430,
+        12,
+        626,
+        119
+      ],
+      "groups": [
+        [
+          16,
+          55
+        ],
+        [
+          69,
+          90
+        ],
+        [
+          104,
+          114
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        430,
+        12,
+        626,
+        119
+      ],
+      "sha256_before": "68b4399f8de2e1dbf45795b66d34a144f51a05fe5a9761b0aa101438d71d2d8f",
+      "sha256_after": "564c74532b4eeae4e519214f8a0e63bc75df363be188f26707bbc31c9960e940",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/b8184d51-62aa-4314-a8f7-718e7f26b8b6.png"
+    },
+    {
+      "i": 163,
+      "file": "b81e65be-6856-451e-832a-9effe15b0556.png",
+      "status": "verified",
+      "box": [
+        442,
+        11,
+        611,
+        124
+      ],
+      "groups": [
+        [
+          15,
+          66
+        ],
+        [
+          76,
+          97
+        ],
+        [
+          110,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        442,
+        11,
+        611,
+        124
+      ],
+      "sha256_before": "d90d361b64835e7634814bc7d5c712390368e3145263c602e1e5255e50f51054",
+      "sha256_after": "83b3379e8dd97a3b03b70fe9192f73de3dbabd61273b868afd5f1e5a8ed37420",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/b81e65be-6856-451e-832a-9effe15b0556.png"
+    },
+    {
+      "i": 164,
+      "file": "b885fbac-bf4d-4807-b243-ed0e36cc14f1.png",
+      "status": "verified",
+      "groups": [
+        [
+          26,
+          74
+        ],
+        [
+          91,
+          112
+        ],
+        [
+          128,
+          136
+        ]
+      ],
+      "box": [
+        474,
+        22,
+        648,
+        141
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        474,
+        22,
+        648,
+        141
+      ],
+      "sha256_before": "b6bdfdc477d31f5e75cb6d1404d80d87f3d409e468f9157a192933c15114f9ab",
+      "sha256_after": "554bca94e1e88a5f9f3d9a8d0a210339964cb591e25256becfa14d3f1c84c639",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/b885fbac-bf4d-4807-b243-ed0e36cc14f1.png"
+    },
+    {
+      "i": 165,
+      "file": "ba625057-b869-49be-a413-36647b372063.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          18
+        ],
+        [
+          39,
+          66
+        ],
+        [
+          83,
+          100
+        ],
+        [
+          116,
+          121
+        ]
+      ],
+      "box": [
+        446,
+        35,
+        608,
+        126
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        446,
+        35,
+        608,
+        126
+      ],
+      "sha256_before": "e3abab0c483454061f967beffb48b6b141797dd9fdd9952063e3ce2bc5be4142",
+      "sha256_after": "0c41082d11cac6f8f0ffc4a367a13318c061e7e9b0ea53c3ed882862b8469576",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/ba625057-b869-49be-a413-36647b372063.png"
+    },
+    {
+      "i": 166,
+      "file": "bb465724-fae4-49a2-b30d-5a15a27f0b48.png",
+      "status": "verified",
+      "box": [
+        454,
+        11,
+        632,
+        128
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          100
+        ],
+        [
+          114,
+          123
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        11,
+        632,
+        128
+      ],
+      "sha256_before": "b19ae94af4f805afe8b09768aa18a9f4ee0c9658b5bf874109d89f34a4d94d61",
+      "sha256_after": "ed3412b8a8930674fb918a9879b154fb99ecb5ea30d8226b32cd94d051355eeb",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/bb465724-fae4-49a2-b30d-5a15a27f0b48.png"
+    },
+    {
+      "i": 167,
+      "file": "bc089116-f3a7-4df3-903e-054c0032283d.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        626,
+        124
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          71,
+          93
+        ],
+        [
+          106,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        626,
+        124
+      ],
+      "sha256_before": "fa19957a5abd5d40f54fbda5f86531ee8f1e5bc74d5a1c4956f20be538c9baad",
+      "sha256_after": "d0a9a7b6e9a3761e01a89a3b04e067be359faa0c06eb20e19dff3e20e057fcd2",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/bc089116-f3a7-4df3-903e-054c0032283d.png"
+    },
+    {
+      "i": 168,
+      "file": "bcc41aca-5912-4c3e-8ea4-75246439cf81.png",
+      "status": "verified",
+      "groups": [
+        [
+          28,
+          79
+        ],
+        [
+          97,
+          119
+        ],
+        [
+          136,
+          144
+        ]
+      ],
+      "box": [
+        437,
+        24,
+        617,
+        149
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        437,
+        24,
+        617,
+        149
+      ],
+      "sha256_before": "29fec9a8a1d1feec766ea7400f753c46903b67b3bd14d3edca961b1254bb6a47",
+      "sha256_after": "0a92546b43e970538255e246f76b98cb3e462bf1f066ac51ae4623b3a9a73684",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/bcc41aca-5912-4c3e-8ea4-75246439cf81.png"
+    },
+    {
+      "i": 169,
+      "file": "bd301d3d-06fc-4894-8df9-84a5b5ded5b5.jpg",
+      "status": "excluded-non-poster",
+      "url": "/media/bd301d3d-06fc-4894-8df9-84a5b5ded5b5.jpg"
+    },
+    {
+      "i": 170,
+      "file": "bebfcc43-e088-4353-abcf-4aa13877811b.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        627,
+        124
+      ],
+      "groups": [
+        [
+          18,
+          61
+        ],
+        [
+          71,
+          93
+        ],
+        [
+          106,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        627,
+        124
+      ],
+      "sha256_before": "5dfa9157a9f1bdcfb58a41637232d891970c91285fa8a41351f0125dad17f3d8",
+      "sha256_after": "93f2b3174b397af7cdef43d7320f2a1624dbbd42b68edf0cbd312830ebb595e4",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/bebfcc43-e088-4353-abcf-4aa13877811b.png"
+    },
+    {
+      "i": 171,
+      "file": "bedd3045-9b5b-43bb-8f9e-e48e7fe6afcc.png",
+      "status": "verified",
+      "box": [
+        479,
+        13,
+        635,
+        114
+      ],
+      "groups": [
+        [
+          17,
+          58
+        ],
+        [
+          69,
+          88
+        ],
+        [
+          100,
+          109
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        479,
+        13,
+        635,
+        114
+      ],
+      "sha256_before": "b41231367f660e4cba126252a79d0051414c8b8b86c9cb4b4969e5bce946c269",
+      "sha256_after": "3ef0ea6e593315779917c371850ed7bf46693ff5c53e090d4c5293edd990900f",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/bedd3045-9b5b-43bb-8f9e-e48e7fe6afcc.png"
+    },
+    {
+      "i": 172,
+      "file": "bfa77b55-49a7-45cc-92af-ac3a5e0c58ac.png",
+      "status": "verified",
+      "box": [
+        424,
+        20,
+        600,
+        120
+      ],
+      "groups": [
+        [
+          24,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        20,
+        600,
+        120
+      ],
+      "sha256_before": "506be04237a9637439f7af5c464541315cd6d6009a2e20c4b81bcb6abeecaa70",
+      "sha256_after": "7642ec7f145ef83fa553195c6e2176ed009c9be5a4dd10f68852ea57eae99047",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/bfa77b55-49a7-45cc-92af-ac3a5e0c58ac.png"
+    },
+    {
+      "i": 173,
+      "file": "c1d3ebf3-7c09-4152-9af8-9f751187e455.png",
+      "status": "verified",
+      "box": [
+        441,
+        11,
+        612,
+        125
+      ],
+      "groups": [
+        [
+          15,
+          66
+        ],
+        [
+          76,
+          98
+        ],
+        [
+          111,
+          120
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        441,
+        11,
+        612,
+        125
+      ],
+      "sha256_before": "afb5fe57f60d0605786fcb42c23d04102b7261f18126ed223043281ab136a074",
+      "sha256_after": "484fdc6743b0a173037cdd500d9af3ca7f5120f68ff474d376efe77f7b115b2f",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/c1d3ebf3-7c09-4152-9af8-9f751187e455.png"
+    },
+    {
+      "i": 174,
+      "file": "c50173dd-6ebd-4b77-8fed-39aa284b492f.png",
+      "status": "verified",
+      "box": [
+        459,
+        8,
+        594,
+        101
+      ],
+      "groups": [
+        [
+          12,
+          52
+        ],
+        [
+          61,
+          79
+        ],
+        [
+          89,
+          96
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        459,
+        8,
+        594,
+        101
+      ],
+      "sha256_before": "a299408b91fb0bc4f0702379ca79923873c266f59b1ca470671b482e9462cc74",
+      "sha256_after": "591e80a46ef8720df3df523e4fef0278a899faf1f78c3b034e9c03a302b182a1",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/c50173dd-6ebd-4b77-8fed-39aa284b492f.png"
+    },
+    {
+      "i": 175,
+      "file": "c6d98524-f1b3-4b1d-bd23-f5cd5dc9dc3e.png",
+      "status": "verified",
+      "box": [
+        440,
+        10,
+        613,
+        125
+      ],
+      "groups": [
+        [
+          14,
+          66
+        ],
+        [
+          77,
+          98
+        ],
+        [
+          111,
+          120
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        440,
+        10,
+        613,
+        125
+      ],
+      "sha256_before": "362964ca9ab5f880d7db43c6dbef1313ffe79a85714b0f18cfc786a87deec35d",
+      "sha256_after": "b5231187543f78257dd261bccb23b196e986453c9f1e0e4e56c614b3037f570c",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/c6d98524-f1b3-4b1d-bd23-f5cd5dc9dc3e.png"
+    },
+    {
+      "i": 176,
+      "file": "c77d059b-863a-4e53-a895-58444f34a8c3.png",
+      "status": "verified",
+      "box": [
+        454,
+        12,
+        601,
+        113
+      ],
+      "groups": [
+        [
+          16,
+          58
+        ],
+        [
+          68,
+          87
+        ],
+        [
+          99,
+          108
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        12,
+        601,
+        113
+      ],
+      "sha256_before": "85545fa7df8dd485884e9da5171c4fdeeb18134aa0a64eccccab2f3a66be6b47",
+      "sha256_after": "c0b7eaa4006276cc784bf6342c80060ea418ee9ec85ed43694962b5a61b313ab",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/c77d059b-863a-4e53-a895-58444f34a8c3.png"
+    },
+    {
+      "i": 177,
+      "file": "c79e2271-4b4d-4171-83e4-18272d1a7232.png",
+      "status": "verified",
+      "box": [
+        467,
+        8,
+        654,
+        130
+      ],
+      "groups": [
+        [
+          12,
+          66
+        ],
+        [
+          76,
+          100
+        ],
+        [
+          115,
+          125
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        467,
+        8,
+        654,
+        130
+      ],
+      "sha256_before": "e2a46e91d1ff82e59598f7ce029b77dac50a1542cb6184fa0756af2445ec49b2",
+      "sha256_after": "d44572a9aaf622d05d8ec256f9d63c596f98e8061d0f5913a822139ccc06549a",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/c79e2271-4b4d-4171-83e4-18272d1a7232.png"
+    },
+    {
+      "i": 178,
+      "file": "c8d5842d-aa01-4654-b1ca-eb9420f10150.png",
+      "status": "verified",
+      "box": [
+        700,
+        9,
+        749,
+        60
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        700,
+        9,
+        749,
+        60
+      ],
+      "sha256_before": "817df52536e81b37dcc44c02eb53888823118d436799770242804ec49893d043",
+      "sha256_after": "b8ae1d97b3a564b8301f5831e422f0a8476cdb82f5b0466b796360f9ba827e5f",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/c8d5842d-aa01-4654-b1ca-eb9420f10150.png"
+    },
+    {
+      "i": 179,
+      "file": "cb7a369a-886f-4c00-962d-f1acaf4183b1.png",
+      "status": "verified",
+      "box": [
+        485,
+        4,
+        636,
+        105
+      ],
+      "groups": [
+        [
+          8,
+          49
+        ],
+        [
+          62,
+          81
+        ],
+        [
+          93,
+          100
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        485,
+        4,
+        636,
+        105
+      ],
+      "sha256_before": "438b1e4c70ade056fc7b54798c534b1b8d03b678e1df20339a809072387805b1",
+      "sha256_after": "bf1fe0b0a994276d1699892e38890fe4cee970e321994ef1cf8be3a0ee5dbba4",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/cb7a369a-886f-4c00-962d-f1acaf4183b1.png"
+    },
+    {
+      "i": 180,
+      "file": "cb9ccc28-7753-4e42-b5d8-be6df33e0577.png",
+      "status": "excluded-non-poster",
+      "url": "/media/cb9ccc28-7753-4e42-b5d8-be6df33e0577.png"
+    },
+    {
+      "i": 181,
+      "file": "cd9a0c34-23c9-45ad-9340-36848342b59a.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        626,
+        124
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          71,
+          93
+        ],
+        [
+          106,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        626,
+        124
+      ],
+      "sha256_before": "fd888afa02b11666dd712ba74e422731bafb62364b2001cf9af81171e0bcee4f",
+      "sha256_after": "b702f4149e340d05969f449d1f0bab73d1f512cd82176b689fc375cfd911ec8f",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/cd9a0c34-23c9-45ad-9340-36848342b59a.png"
+    },
+    {
+      "i": 182,
+      "file": "d0245ccb-4d21-4163-abab-f53c5368a9f0.png",
+      "status": "excluded-non-poster",
+      "url": "/media/d0245ccb-4d21-4163-abab-f53c5368a9f0.png"
+    },
+    {
+      "i": 183,
+      "file": "d17a3bc6-4b69-4790-8838-266f2a96c3ab.png",
+      "status": "verified",
+      "box": [
+        431,
+        11,
+        628,
+        119
+      ],
+      "groups": [
+        [
+          15,
+          55
+        ],
+        [
+          69,
+          90
+        ],
+        [
+          104,
+          114
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        431,
+        11,
+        628,
+        119
+      ],
+      "sha256_before": "e2d9c435db2d272545e83298b406559cb2a17f909600f52faeeece26dd079a52",
+      "sha256_after": "a584232b7d471926fe9ffe5d4ee339cb167cb808c70a086bba3ffe76dffa667a",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/d17a3bc6-4b69-4790-8838-266f2a96c3ab.png"
+    },
+    {
+      "i": 184,
+      "file": "d309f887-c9c6-4b5a-b5e9-953dc4c0d9a6.png",
+      "status": "verified",
+      "box": [
+        463,
+        8,
+        634,
+        122
+      ],
+      "groups": [
+        [
+          12,
+          63
+        ],
+        [
+          74,
+          95
+        ],
+        [
+          107,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        463,
+        8,
+        634,
+        122
+      ],
+      "sha256_before": "2443a8dade6b4ee1bc7975d13f951ce724eabb4d45804b44e4336214397092dd",
+      "sha256_after": "4cb8f1a198fa7306e5b18bc77cb6868475eca3bd851e97cd28e82a768b4b4d66",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/d309f887-c9c6-4b5a-b5e9-953dc4c0d9a6.png"
+    },
+    {
+      "i": 185,
+      "file": "d30a7e9f-88cf-4323-92ca-f39f545a2a82.png",
+      "status": "verified",
+      "box": [
+        442,
+        13,
+        645,
+        126
+      ],
+      "groups": [
+        [
+          17,
+          59
+        ],
+        [
+          72,
+          95
+        ],
+        [
+          113,
+          121
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        442,
+        13,
+        645,
+        126
+      ],
+      "sha256_before": "816170d6f17a5f34a801bf9c93240d6afcdc1fcd04cc8aa02b38018606e9e24a",
+      "sha256_after": "beed5fa5fbf3d405e9575cf510b13ecb91ccad5575812551958a1e969dda1c4a",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/d30a7e9f-88cf-4323-92ca-f39f545a2a82.png"
+    },
+    {
+      "i": 186,
+      "file": "d3cff818-5523-415b-9f7c-95534a6b61ec.png",
+      "status": "verified",
+      "box": [
+        426,
+        13,
+        598,
+        117
+      ],
+      "groups": [
+        [
+          17,
+          55
+        ],
+        [
+          67,
+          88
+        ],
+        [
+          102,
+          112
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        426,
+        13,
+        598,
+        117
+      ],
+      "sha256_before": "fdf1a4a89ae8e66a1d4b9b1935110388778279dcde34960569aa23806975fcba",
+      "sha256_after": "cf5f8cec6380fdbd1735c821198571d7b72628d775c9ae02477117fa85bd9a61",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/d3cff818-5523-415b-9f7c-95534a6b61ec.png"
+    },
+    {
+      "i": 187,
+      "file": "d6725bac-f52a-4eb7-8348-bcb3b289aaa4.png",
+      "status": "verified",
+      "box": [
+        454,
+        17,
+        633,
+        120
+      ],
+      "groups": [
+        [
+          21,
+          56
+        ],
+        [
+          71,
+          91
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        17,
+        633,
+        120
+      ],
+      "sha256_before": "eb02771a43b8700970a6c570e6440a320dea44c8104e8ebf3246f56a160d2e31",
+      "sha256_after": "ad0c971c4fa868d4ef237668cabbb3572edefc3b11361fe0ee362f4ba5ee0a6d",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/d6725bac-f52a-4eb7-8348-bcb3b289aaa4.png"
+    },
+    {
+      "i": 188,
+      "file": "d76345e1-f285-4a45-9882-0331d1088f90.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          18
+        ],
+        [
+          39,
+          66
+        ],
+        [
+          83,
+          101
+        ],
+        [
+          115,
+          121
+        ]
+      ],
+      "box": [
+        445,
+        35,
+        608,
+        126
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        445,
+        35,
+        608,
+        126
+      ],
+      "sha256_before": "e241ae20e54f78f70d2417e47ccfcdcfdf10e639162be60c3ed3930dde2b3187",
+      "sha256_after": "0654c56201751d310fdd9b21de548f425e92f39d000f9420f3c19acc871b660f",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/d76345e1-f285-4a45-9882-0331d1088f90.png"
+    },
+    {
+      "i": 189,
+      "file": "d8e5c001-90af-4f57-ba56-7d5490230f70.png",
+      "status": "verified",
+      "box": [
+        453,
+        11,
+        633,
+        129
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          101
+        ],
+        [
+          114,
+          124
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        453,
+        11,
+        633,
+        129
+      ],
+      "sha256_before": "bdd811ded9edc4d48f022ab88826630d17528a31030ebd9a063af1a1303de639",
+      "sha256_after": "de760511213f3e8d66b617d639a009506e5bc002f9e32f13784323a82e1574dd",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/d8e5c001-90af-4f57-ba56-7d5490230f70.png"
+    },
+    {
+      "i": 190,
+      "file": "db672967-27d4-4d36-a4cf-ef9947873556.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        627,
+        124
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          71,
+          93
+        ],
+        [
+          107,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        627,
+        124
+      ],
+      "sha256_before": "37ca329378c66cc4779086218c2deddf68b50a4d6c7d3228c7d3ce79033f688c",
+      "sha256_after": "d51596bb0d0b80262e92cb0c776ffca387c52a0db5ab835ac33a85b9842ebdfc",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/db672967-27d4-4d36-a4cf-ef9947873556.png"
+    },
+    {
+      "i": 191,
+      "file": "db99a613098b5d7b4e8404ba.png",
+      "status": "excluded-non-poster",
+      "groups": [],
+      "url": "/assets/db99a613098b5d7b4e8404ba.png"
+    },
+    {
+      "i": 192,
+      "file": "dbfa29bc-1757-446e-9779-3bb407f5720f.png",
+      "status": "verified",
+      "box": [
+        430,
+        9,
+        623,
+        137
+      ],
+      "groups": [
+        [
+          13,
+          71
+        ],
+        [
+          79,
+          104
+        ],
+        [
+          119,
+          132
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        430,
+        9,
+        623,
+        137
+      ],
+      "sha256_before": "f8d6434391ddfd4da13a48763f787b3c5029640ed4a37ac5c43f13754356c61a",
+      "sha256_after": "b2f7f056cf136342498d60d466124f7836ec217792d2e0cccd18a324f7dcae80",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/dbfa29bc-1757-446e-9779-3bb407f5720f.png"
+    },
+    {
+      "i": 193,
+      "file": "dc1fccd0-4666-4001-bc93-7c80d09ffbeb.png",
+      "status": "verified",
+      "box": [
+        454,
+        11,
+        632,
+        128
+      ],
+      "groups": [
+        [
+          15,
+          68
+        ],
+        [
+          78,
+          100
+        ],
+        [
+          114,
+          123
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        11,
+        632,
+        128
+      ],
+      "sha256_before": "28b9eff02638c315b3cf2e68fd2dce70fc9cf516509777a8ec2fd8f44cf66c1c",
+      "sha256_after": "0f7e904e14c469f364a5c9c88e3aee1e6e6f7aab26c12e3af90fe040ead03624",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/dc1fccd0-4666-4001-bc93-7c80d09ffbeb.png"
+    },
+    {
+      "i": 194,
+      "file": "deeb18f4-fede-44fe-9320-2de154afd7f1.png",
+      "status": "verified",
+      "box": [
+        460,
+        13,
+        662,
+        122
+      ],
+      "groups": [
+        [
+          17,
+          57
+        ],
+        [
+          70,
+          93
+        ],
+        [
+          108,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        460,
+        13,
+        662,
+        122
+      ],
+      "sha256_before": "1118c29a8f50978ef470ad1c3b08856dc8b3a8612f48c6d21499fbb27e4c9a8b",
+      "sha256_after": "b7a5860795ed616f55ff001f5b65cdad54464724002c81b634ec3b52a503b4dd",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/deeb18f4-fede-44fe-9320-2de154afd7f1.png"
+    },
+    {
+      "i": 195,
+      "file": "df4f631e-6ffe-47c3-94d8-106fe74a7cb2.png",
+      "status": "verified",
+      "groups": [
+        [
+          15,
+          78
+        ],
+        [
+          89,
+          116
+        ],
+        [
+          132,
+          139
+        ]
+      ],
+      "box": [
+        455,
+        11,
+        668,
+        144
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        455,
+        11,
+        668,
+        144
+      ],
+      "sha256_before": "87ccd1b28c9705ed0df47673ff43e56f0f606bb6eda7566f432a3093c432291a",
+      "sha256_after": "c502e89b71be53eaaeb0b16ff737fabe4b9109e0f8cb1283268a6b771cf9ef87",
+      "languages": [
+        "en"
+      ],
+      "url": "/media/df4f631e-6ffe-47c3-94d8-106fe74a7cb2.png"
+    },
+    {
+      "i": 196,
+      "file": "e2a9d2cc-13dc-474e-9045-b6200c8dc189.png",
+      "status": "verified",
+      "groups": [
+        [
+          13,
+          76
+        ],
+        [
+          84,
+          112
+        ],
+        [
+          123,
+          138
+        ]
+      ],
+      "box": [
+        430,
+        9,
+        626,
+        143
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        430,
+        9,
+        626,
+        143
+      ],
+      "sha256_before": "b4b59189c37650be4c496ab5f1b3e9b1be9a4df19f800eb6d98667195b551089",
+      "sha256_after": "131d305ee23b8292784b43f5ac56f86d46526cbb4a51556ecf098a0b2977347b",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/e2a9d2cc-13dc-474e-9045-b6200c8dc189.png"
+    },
+    {
+      "i": 197,
+      "file": "e30d65f1-233f-4368-90e8-8f2345cd3011.png",
+      "status": "verified",
+      "box": [
+        476,
+        21,
+        646,
+        116
+      ],
+      "groups": [
+        [
+          25,
+          60
+        ],
+        [
+          70,
+          90
+        ],
+        [
+          102,
+          111
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        476,
+        21,
+        646,
+        116
+      ],
+      "sha256_before": "c140b0dd756fee0ab6f22700c17d36a51b3e0c87227f9a9c92c7c8f061b0ae2d",
+      "sha256_after": "15abc2ef4e6ef21aa32ce5285dc7c15cdbd1af4066791e6a5939afcc17f10790",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/e30d65f1-233f-4368-90e8-8f2345cd3011.png"
+    },
+    {
+      "i": 198,
+      "file": "e3a73d65-77e8-445c-960e-cf8fecfc50f9.png",
+      "status": "verified",
+      "groups": [
+        [
+          15,
+          81
+        ],
+        [
+          90,
+          118
+        ],
+        [
+          133,
+          147
+        ]
+      ],
+      "box": [
+        418,
+        11,
+        637,
+        152
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        418,
+        11,
+        637,
+        152
+      ],
+      "sha256_before": "271d255e054e6edb85b75e0ebac8a1e5ca78ed43feb9f4d60e861a6ed10a6837",
+      "sha256_after": "14b107af4d11836f103d590573e1196188f412f8b1fc29c37c846d829769cabe",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/e3a73d65-77e8-445c-960e-cf8fecfc50f9.png"
+    },
+    {
+      "i": 199,
+      "file": "e6403ac5-6099-49bb-abae-6c6effa53ee6.jpg",
+      "status": "excluded-non-poster",
+      "url": "/media/e6403ac5-6099-49bb-abae-6c6effa53ee6.jpg"
+    },
+    {
+      "i": 200,
+      "file": "e6fcd8b5-fb8a-4229-8673-7ae87baf95be.png",
+      "status": "verified",
+      "box": [
+        442,
+        11,
+        612,
+        124
+      ],
+      "groups": [
+        [
+          15,
+          66
+        ],
+        [
+          76,
+          97
+        ],
+        [
+          111,
+          119
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        442,
+        11,
+        612,
+        124
+      ],
+      "sha256_before": "0202141d48e9be1bdfd3c8e8cae9f71fc31bbf401a2e86c34adaf80e957a1e99",
+      "sha256_after": "b07cd8fd4fd46dbee9f66625b27c0b3dcf86b27ec5520a12c3658a79a8a99c20",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/e6fcd8b5-fb8a-4229-8673-7ae87baf95be.png"
+    },
+    {
+      "i": 201,
+      "file": "e75285f3-fae5-497d-ac3a-c4cb83550944.png",
+      "status": "verified",
+      "groups": [
+        [
+          30,
+          80
+        ],
+        [
+          96,
+          118
+        ],
+        [
+          133,
+          141
+        ]
+      ],
+      "box": [
+        440,
+        26,
+        614,
+        146
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        440,
+        26,
+        614,
+        146
+      ],
+      "sha256_before": "60466845c765e547e5e447e22d0913c58cdeef337effa6e6bf210e6ea030cfeb",
+      "sha256_after": "741db06b98e7ebe9270cb2e21e079e5804b505f2dc449c14fb23e5cb51d40a1c",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/e75285f3-fae5-497d-ac3a-c4cb83550944.png"
+    },
+    {
+      "i": 202,
+      "file": "e8b148f0-02fa-4494-bdc4-15e60ce8846f.png",
+      "status": "verified",
+      "box": [
+        429,
+        11,
+        626,
+        118
+      ],
+      "groups": [
+        [
+          15,
+          54
+        ],
+        [
+          68,
+          89
+        ],
+        [
+          103,
+          113
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        429,
+        11,
+        626,
+        118
+      ],
+      "sha256_before": "36453e1de0161f491ae85fc494c35bd5c4146d0a6ec5b8bd1e1356143af62a74",
+      "sha256_after": "24ca5d2c5da51c6f44cb941d10414a9214d5ad46ed901ebf32b5d391730dd83c",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/e8b148f0-02fa-4494-bdc4-15e60ce8846f.png"
+    },
+    {
+      "i": 203,
+      "file": "e91da908-c4b5-4624-b08a-70b02a8f35ce.png",
+      "status": "verified",
+      "box": [
+        480,
+        10,
+        640,
+        120
+      ],
+      "groups": [
+        [
+          14,
+          58
+        ],
+        [
+          73,
+          93
+        ],
+        [
+          107,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        480,
+        10,
+        640,
+        120
+      ],
+      "sha256_before": "8abd1cc7ade76bff4970299679aff91ef522f0039fa8aeb672b42580bae6c7ce",
+      "sha256_after": "ed853021263ba7b365bf096265d203739b13c897e73f097fdf098e70bcef8cd3",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/e91da908-c4b5-4624-b08a-70b02a8f35ce.png"
+    },
+    {
+      "i": 204,
+      "file": "e978388f-ec4c-404d-9dc5-f46756f571ed.png",
+      "status": "verified",
+      "box": [
+        446,
+        11,
+        614,
+        122
+      ],
+      "groups": [
+        [
+          15,
+          65
+        ],
+        [
+          75,
+          95
+        ],
+        [
+          108,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        446,
+        11,
+        614,
+        122
+      ],
+      "sha256_before": "75e9e9e954fecceb47ea7db3a19733a682a615afed3752242c0d85b842359683",
+      "sha256_after": "088c8c9b702f697a433cf3b4db2415c79f9125a27ac4e863edb6b93efe21f682",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/e978388f-ec4c-404d-9dc5-f46756f571ed.png"
+    },
+    {
+      "i": 205,
+      "file": "e9d5a7d6-6b77-4772-bdea-a46646909f05.png",
+      "status": "verified",
+      "box": [
+        475,
+        11,
+        645,
+        108
+      ],
+      "groups": [
+        [
+          15,
+          51
+        ],
+        [
+          60,
+          80
+        ],
+        [
+          93,
+          103
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        475,
+        11,
+        645,
+        108
+      ],
+      "sha256_before": "1431b1f94daa8ae7f87f6115d9924226004599283a8281d0c9eace343735260f",
+      "sha256_after": "298a16dfa7b0f5d4777d62877854e84ccc28f40b1b3863f6dd61427e7596ff93",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/e9d5a7d6-6b77-4772-bdea-a46646909f05.png"
+    },
+    {
+      "i": 206,
+      "file": "ea07316d-a156-4531-80af-c9e433eca5b0.png",
+      "status": "verified",
+      "groups": [
+        [
+          27,
+          76
+        ],
+        [
+          93,
+          114
+        ],
+        [
+          130,
+          138
+        ]
+      ],
+      "box": [
+        440,
+        23,
+        613,
+        143
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        440,
+        23,
+        613,
+        143
+      ],
+      "sha256_before": "75fe0897b7d26bae2c446708998337e5643fcb9d190395221ebefba887c2a438",
+      "sha256_after": "aee1f77413f8bba7a43275c8e82b61e79ccfb23a6cea061f7e1ac63e9d6552ab",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/ea07316d-a156-4531-80af-c9e433eca5b0.png"
+    },
+    {
+      "i": 207,
+      "file": "ec2ac2ab-4332-46c3-b9a0-8cb828d8c5b3.png",
+      "status": "verified",
+      "box": [
+        451,
+        11,
+        620,
+        122
+      ],
+      "groups": [
+        [
+          15,
+          64
+        ],
+        [
+          75,
+          95
+        ],
+        [
+          108,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        451,
+        11,
+        620,
+        122
+      ],
+      "sha256_before": "36fbb4b99defff8557c547ff03717bfbe08322aa902843588ed53920f99866f3",
+      "sha256_after": "3da11820191e2b214c053708e19f4f20ffb3715f392c8053665dab55e20272ac",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/ec2ac2ab-4332-46c3-b9a0-8cb828d8c5b3.png"
+    },
+    {
+      "i": 208,
+      "file": "ef6ad997-7b93-4ed8-b10a-3d92b60e6ac6.png",
+      "status": "verified",
+      "box": [
+        428,
+        14,
+        627,
+        125
+      ],
+      "groups": [
+        [
+          18,
+          60
+        ],
+        [
+          70,
+          93
+        ],
+        [
+          106,
+          120
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        428,
+        14,
+        627,
+        125
+      ],
+      "sha256_before": "8dfa2ce53b34dc6819222a5cee1675a5b6c88cd86113a9931bd67c21e51fa304",
+      "sha256_after": "5676d0fe768d2916ea85a8a7d794197092039930a3e89d4d3cdc368d4b41678a",
+      "languages": [
+        "es"
+      ],
+      "url": "/media/ef6ad997-7b93-4ed8-b10a-3d92b60e6ac6.png"
+    },
+    {
+      "i": 209,
+      "file": "efba2264-0176-42f9-a692-bdd5d24c0f8e.png",
+      "status": "verified",
+      "box": [
+        442,
+        10,
+        612,
+        125
+      ],
+      "groups": [
+        [
+          14,
+          67
+        ],
+        [
+          77,
+          98
+        ],
+        [
+          111,
+          120
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        442,
+        10,
+        612,
+        125
+      ],
+      "sha256_before": "41c1985c06f6a182b2541102f9dc5c7f9999af22e129d2e97faa38733061b757",
+      "sha256_after": "5daedfbb0dc29dd24d85530e617dcb708991d3c94091d4e34ea233a80a2eca9d",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/efba2264-0176-42f9-a692-bdd5d24c0f8e.png"
+    },
+    {
+      "i": 210,
+      "file": "f30f9a869749624a716e7ab8.jpeg",
+      "status": "verified",
+      "box": [
+        401,
+        15,
+        624,
+        136
+      ],
+      "groups": [
+        [
+          19,
+          64
+        ],
+        [
+          79,
+          103
+        ],
+        [
+          118,
+          131
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        401,
+        15,
+        624,
+        136
+      ],
+      "sha256_before": "f30f9a869749624a716e7ab8b801b2b6cc52094934165059205361cd9915ea44",
+      "sha256_after": "fd02b3c6f3477885a1f7b8d3af3b374421fa2208762e79e51283d7b95e4a1052",
+      "languages": [
+        "pt"
+      ],
+      "url": "/assets/f30f9a869749624a716e7ab8.jpeg"
+    },
+    {
+      "i": 211,
+      "file": "f5a70c96-06f6-41bc-9887-0a164120cbb7.png",
+      "status": "verified",
+      "groups": [
+        [
+          18,
+          18
+        ],
+        [
+          39,
+          66
+        ],
+        [
+          83,
+          100
+        ],
+        [
+          115,
+          121
+        ]
+      ],
+      "box": [
+        444,
+        35,
+        609,
+        126
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        444,
+        35,
+        609,
+        126
+      ],
+      "sha256_before": "703b47a3cf9b7e553ba06d3c032ce6dad3407a19fc2a61b0e7376a5413af4f8b",
+      "sha256_after": "3663719ede3cd002f88a8a82c14902ef2b339254ee72af1c61b1499660cc01a1",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/f5a70c96-06f6-41bc-9887-0a164120cbb7.png"
+    },
+    {
+      "i": 212,
+      "file": "f62b88e9-c9bb-453e-b63f-a636fa90e802.png",
+      "status": "verified",
+      "groups": [
+        [
+          27,
+          79
+        ],
+        [
+          95,
+          117
+        ],
+        [
+          133,
+          141
+        ]
+      ],
+      "box": [
+        443,
+        23,
+        612,
+        146
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        443,
+        23,
+        612,
+        146
+      ],
+      "sha256_before": "696b19e459f75e3d99b84f0699b9c8928d8b9efd148ad6a8680218f4a7423e01",
+      "sha256_after": "bb4da5cca416ee4871210d782f1d5719d671b0db7d315e27c8982299b92873a2",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/f62b88e9-c9bb-453e-b63f-a636fa90e802.png"
+    },
+    {
+      "i": 213,
+      "file": "f6de2fc8-33ea-4959-8b07-7c425dfa6730.png",
+      "status": "verified",
+      "box": [
+        436,
+        13,
+        636,
+        122
+      ],
+      "groups": [
+        [
+          17,
+          56
+        ],
+        [
+          70,
+          92
+        ],
+        [
+          109,
+          117
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        436,
+        13,
+        636,
+        122
+      ],
+      "sha256_before": "52be7ce7eb58e93a0f6eba395be1381698c6097f7e8f73d091ce1e9a0dce1f40",
+      "sha256_after": "1b4e2c5e2e2d6773a7e18cf7c5c783bf027c4acea2a67023ab5195b1fe175b63",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/f6de2fc8-33ea-4959-8b07-7c425dfa6730.png"
+    },
+    {
+      "i": 214,
+      "file": "f75d23fb-7520-4cb3-b332-6a65e2716c27.png",
+      "status": "verified",
+      "groups": [
+        [
+          27,
+          77
+        ],
+        [
+          93,
+          116
+        ],
+        [
+          131,
+          140
+        ]
+      ],
+      "box": [
+        441,
+        23,
+        612,
+        145
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        441,
+        23,
+        612,
+        145
+      ],
+      "sha256_before": "e184f114176edf3c9d8f8707fc6455e16e2f09d53b105b92075680f8906b205d",
+      "sha256_after": "3690d2607b3cf9a998dcf255d416e1381fee66bf584bca819aec0b423562d4d0",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/f75d23fb-7520-4cb3-b332-6a65e2716c27.png"
+    },
+    {
+      "i": 215,
+      "file": "f77a9120-097b-4ea1-9255-2896df40cb84.png",
+      "status": "verified",
+      "box": [
+        456,
+        8,
+        591,
+        102
+      ],
+      "groups": [
+        [
+          12,
+          52
+        ],
+        [
+          62,
+          79
+        ],
+        [
+          89,
+          97
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        456,
+        8,
+        591,
+        102
+      ],
+      "sha256_before": "4de5f1f2b72575323a7866e11b036d176240e1ad42291fa54d63b972be604355",
+      "sha256_after": "a6b0a479ba88d5bdc01ee30cbcc1c80337a5435a70bcc5921617c7f2210ad418",
+      "languages": [
+        "de"
+      ],
+      "url": "/media/f77a9120-097b-4ea1-9255-2896df40cb84.png"
+    },
+    {
+      "i": 216,
+      "file": "f8c3eaba-14ca-454a-b4da-90641dde8dc5.png",
+      "status": "verified",
+      "box": [
+        465,
+        21,
+        616,
+        128
+      ],
+      "groups": [
+        [
+          25,
+          67
+        ],
+        [
+          82,
+          101
+        ],
+        [
+          115,
+          123
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        465,
+        21,
+        616,
+        128
+      ],
+      "sha256_before": "d1f89bef548ef193ef9747a6f5058f82bca807b443cdb44d532a2202076dfd4d",
+      "sha256_after": "9de4207a96e33e99f9f33fc21578332d6133d58084727b38e167861ddded3ed3",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/f8c3eaba-14ca-454a-b4da-90641dde8dc5.png"
+    },
+    {
+      "i": 217,
+      "file": "f9d9ab41-0a09-453b-ae81-ab7818f67eb9.png",
+      "status": "verified",
+      "box": [
+        475,
+        12,
+        647,
+        111
+      ],
+      "groups": [
+        [
+          16,
+          53
+        ],
+        [
+          64,
+          84
+        ],
+        [
+          96,
+          106
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        475,
+        12,
+        647,
+        111
+      ],
+      "sha256_before": "8f971e77b06dc8af5e366f82122311ec799e03d332dacd3e4901f0279e3f9cfc",
+      "sha256_after": "fd2c705a91a946cac06fb5059ee9f0a431592707808a71ebcaf01422a9ca8223",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/f9d9ab41-0a09-453b-ae81-ab7818f67eb9.png"
+    },
+    {
+      "i": 218,
+      "file": "fb852f50-8754-4d6e-86e3-9c8d9986005e.png",
+      "status": "verified",
+      "box": [
+        430,
+        11,
+        626,
+        117
+      ],
+      "groups": [
+        [
+          15,
+          54
+        ],
+        [
+          67,
+          87
+        ],
+        [
+          102,
+          112
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        430,
+        11,
+        626,
+        117
+      ],
+      "sha256_before": "6c7b20957a1b193ed76e13657da9d4f2de3925cb601bdeba4480bcab495b3ae6",
+      "sha256_after": "572a86cc98c7cc78a4cb3c9c54c3f47931db564385960ee7d5ff6dcfc1616c8e",
+      "languages": [
+        "ru"
+      ],
+      "url": "/media/fb852f50-8754-4d6e-86e3-9c8d9986005e.png"
+    },
+    {
+      "i": 219,
+      "file": "fc1e9654-3571-4378-8e8e-07ec4a9eec3b.png",
+      "status": "verified",
+      "box": [
+        464,
+        11,
+        623,
+        121
+      ],
+      "groups": [
+        [
+          15,
+          60
+        ],
+        [
+          75,
+          95
+        ],
+        [
+          109,
+          116
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        464,
+        11,
+        623,
+        121
+      ],
+      "sha256_before": "0fa93cf6694472a3c2100a3af390b92be7a00da3185fd7a1793c8cf64bb60aec",
+      "sha256_after": "b792dee22ba2b0fbdde1509f47ef8ad658f4921dc66135fed036a1be037b1638",
+      "languages": [
+        "ko"
+      ],
+      "url": "/media/fc1e9654-3571-4378-8e8e-07ec4a9eec3b.png"
+    },
+    {
+      "i": 220,
+      "file": "fcf36261-54ad-49c1-8827-76994fb07055.jpg",
+      "status": "excluded-non-poster",
+      "groups": [
+        [
+          48,
+          190
+        ]
+      ],
+      "url": "/media/fcf36261-54ad-49c1-8827-76994fb07055.jpg"
+    },
+    {
+      "i": 221,
+      "file": "fde09b2f-637c-40f9-93c7-9ef41213ef3d.png",
+      "status": "verified",
+      "groups": [
+        [
+          14,
+          71
+        ],
+        [
+          82,
+          106
+        ],
+        [
+          120,
+          131
+        ]
+      ],
+      "box": [
+        463,
+        10,
+        656,
+        136
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        463,
+        10,
+        656,
+        136
+      ],
+      "sha256_before": "1d4b8ecbfceef666e7e9b275fdba49525703b02a3c3c0776b2bb7e31e8409cda",
+      "sha256_after": "bb6e1c6351d4ae91d50f5a72749d868de5deb7c48d0c39625bf10ca03e4bf67a",
+      "languages": [
+        "fr"
+      ],
+      "url": "/media/fde09b2f-637c-40f9-93c7-9ef41213ef3d.png"
+    },
+    {
+      "i": 222,
+      "file": "fde6179a-d982-47bd-af3a-cdb287446c3f.png",
+      "status": "verified",
+      "box": [
+        477,
+        10,
+        645,
+        107
+      ],
+      "groups": [
+        [
+          14,
+          49
+        ],
+        [
+          60,
+          80
+        ],
+        [
+          92,
+          102
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        477,
+        10,
+        645,
+        107
+      ],
+      "sha256_before": "d13335c58cc3bc3d133467a2a99f79644eea43e106db3c817f610a9d31115717",
+      "sha256_after": "7bcb618e58a19243394a7d447309c00d81dd26761b1dce321a48cfd5eb0eb765",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/fde6179a-d982-47bd-af3a-cdb287446c3f.png"
+    },
+    {
+      "i": 223,
+      "file": "fe00b841-f796-42ac-b23f-0d977b1026f3.png",
+      "status": "verified",
+      "box": [
+        479,
+        4,
+        644,
+        113
+      ],
+      "groups": [
+        [
+          8,
+          53
+        ],
+        [
+          67,
+          88
+        ],
+        [
+          100,
+          108
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        479,
+        4,
+        644,
+        113
+      ],
+      "sha256_before": "d4bbfd618f03b87f1982ce607248e8dcfa879347bf1ecb40b01c74311ce1fd3c",
+      "sha256_after": "700000e65e4c0caa986436a9d034d1df289072b17074fb04ac1bc9ad22d4ce13",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/fe00b841-f796-42ac-b23f-0d977b1026f3.png"
+    },
+    {
+      "i": 224,
+      "file": "fe48c161-e948-481b-be07-08af4fc83c59.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          18
+        ],
+        [
+          39,
+          66
+        ],
+        [
+          83,
+          100
+        ],
+        [
+          115,
+          120
+        ]
+      ],
+      "box": [
+        446,
+        35,
+        608,
+        125
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        446,
+        35,
+        608,
+        125
+      ],
+      "sha256_before": "898aa8d29177e4170a7c1a0a564e3ebd28cb332783f155283c17509b10fa8640",
+      "sha256_after": "6f5741c64f8a9f43a61ed3e3b38c38403ef5a653cdd6439682bdd1bc8df734c6",
+      "languages": [
+        "it"
+      ],
+      "url": "/media/fe48c161-e948-481b-be07-08af4fc83c59.png"
+    },
+    {
+      "i": 225,
+      "file": "fe6dcb1e-a794-4479-8881-c33b46e5b7f8.png",
+      "status": "verified",
+      "box": [
+        689,
+        8,
+        753,
+        79
+      ],
+      "format": "PNG",
+      "size": [
+        1448,
+        1086
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        689,
+        8,
+        753,
+        79
+      ],
+      "sha256_before": "b5cbb00fe0a8cf5fc044475d8ae91a282d4d175983a72687fc973b8f865b73d3",
+      "sha256_after": "854ecf9b09cff9c52c8e933d5d986520e50cfde9bddebc4b7a3a7a61f9f70683",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/fe6dcb1e-a794-4479-8881-c33b46e5b7f8.png"
+    },
+    {
+      "i": 226,
+      "file": "fec332b6-43ef-4fcc-a80b-376286bb33dc.png",
+      "status": "verified",
+      "box": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "groups": [
+        [
+          25,
+          62
+        ],
+        [
+          72,
+          92
+        ],
+        [
+          104,
+          115
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1024,
+        1536
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        424,
+        21,
+        599,
+        120
+      ],
+      "sha256_before": "7111c9461eca35a2822274b48f09df473378132b14d09e42aba6bdeee48ea927",
+      "sha256_after": "c0e7fc1c9e291ab95e6ef8c83a540e0dfc855207d5608dbb3d003923949994d4",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/fec332b6-43ef-4fcc-a80b-376286bb33dc.png"
+    },
+    {
+      "i": 227,
+      "file": "fec60228-f70e-4115-a35d-2053288a1440.png",
+      "status": "verified",
+      "groups": [
+        [
+          25,
+          72
+        ],
+        [
+          85,
+          108
+        ],
+        [
+          121,
+          133
+        ]
+      ],
+      "box": [
+        454,
+        21,
+        667,
+        138
+      ],
+      "format": "PNG",
+      "size": [
+        1122,
+        1402
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        454,
+        21,
+        667,
+        138
+      ],
+      "sha256_before": "b8160a2dce4152218c81eff27e6a9683c3c8a69f2b75f11cb9cd9e1c03e55add",
+      "sha256_after": "ea5c749da9293d904b334c3b5661b30297f8a41ebbf7efedddc16660c3c78a47",
+      "languages": [
+        "zh"
+      ],
+      "url": "/media/fec60228-f70e-4115-a35d-2053288a1440.png"
+    },
+    {
+      "i": 228,
+      "file": "ff64fb24-2cd5-47e2-a366-a523b40b1ae8.png",
+      "status": "verified",
+      "box": [
+        465,
+        21,
+        621,
+        130
+      ],
+      "groups": [
+        [
+          25,
+          69
+        ],
+        [
+          84,
+          104
+        ],
+        [
+          117,
+          125
+        ]
+      ],
+      "format": "PNG",
+      "size": [
+        1086,
+        1448
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        465,
+        21,
+        621,
+        130
+      ],
+      "sha256_before": "c7652dc4e00df08b56cf7239c81d16eff20c9c3d3a8f67030461e26973d55d82",
+      "sha256_after": "ca4e08493bed1675e7c419d29deea5d1731a1939e87fc506929de9a6c55a9a46",
+      "languages": [
+        "ja"
+      ],
+      "url": "/media/ff64fb24-2cd5-47e2-a366-a523b40b1ae8.png"
+    },
+    {
+      "i": 229,
+      "file": "ffad5713-7b23-479a-b11c-2d0b4e9f006e.png",
+      "status": "verified",
+      "groups": [
+        [
+          17,
+          17
+        ],
+        [
+          39,
+          66
+        ],
+        [
+          83,
+          100
+        ],
+        [
+          115,
+          121
+        ]
+      ],
+      "box": [
+        446,
+        35,
+        608,
+        126
+      ],
+      "format": "PNG",
+      "size": [
+        1055,
+        1491
+      ],
+      "outside_mean": 0,
+      "outside_over20": 0,
+      "changed_bbox": [
+        446,
+        35,
+        608,
+        126
+      ],
+      "sha256_before": "4bd080b4ab28957a8ba50cf87cc13fc7f10ad84025d0bd369a86128e250b9003",
+      "sha256_after": "c77b29f7367fe4732dba829296dae74a8c5e98be8b7e6a6b842a26327be4cf08",
+      "languages": [
+        "pt"
+      ],
+      "url": "/media/ffad5713-7b23-479a-b11c-2d0b4e9f006e.png"
+    }
+  ]
+}
