@@ -1,3 +1,5 @@
+import posterManifest from '../ui/poster-logo-assets/manifest.json';
+const posterVersions=new Map(posterManifest.images.filter(r=>r.status==='verified').map(r=>[r.url,r.sha256_after.slice(0,12)]));
 import {collectionModel,hydrateContent,changeStructure} from './collections.js';
 import {template,blocks,catalog,seed,expiredTemplate} from './generated.js';
 import {issueGuest,readGuest,validateGuest} from './guest-token.js';
@@ -137,7 +139,10 @@ const handler={async fetch(request,env){
 }};
 // The host editor embeds same-origin previews, so DENY would break editing.
 export default {async fetch(request,env){
- const original=await handler.fetch(request,env),response=new Response(original.body,original);
+ const original=await handler.fetch(request,env);
+ const isHtml=original.headers.get('Content-Type')?.includes('text/html');
+ const body=isHtml?(await original.text()).replace(/\/(?:media|assets)\/[a-f0-9-]+\.(?:png|jpg|jpeg|webp)(?![a-z0-9?])/g,url=>posterVersions.has(url)?url+'?v='+posterVersions.get(url):url):original.body;
+ const response=new Response(body,original);if(isHtml)response.headers.delete('Content-Length');
  for(const [name,value] of Object.entries({
   'Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff',
   'X-Frame-Options':'SAMEORIGIN','Permissions-Policy':'camera=(), microphone=(), geolocation=()',
