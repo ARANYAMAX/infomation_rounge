@@ -848,7 +848,7 @@ body,button,input,select,textarea{
     if(stay)staySlot.appendChild(stay);
   }
 
-  const lightbox=document.createElement('div');
+  const lightbox=document.createElement('dialog');
   lightbox.className='guide-lightbox';
   lightbox.innerHTML='<button type="button" aria-label="Close">×</button><img alt="Guide image">';
   document.body.appendChild(lightbox);
