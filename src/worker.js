@@ -1,3 +1,4 @@
+import {recordGuestActivity,isGuestOpen} from './guest-activity.js';
 import posterManifest from '../ui/poster-logo-assets/manifest.json';
 const posterVersions=new Map(posterManifest.images.filter(r=>r.status==='verified').map(r=>[r.url,r.sha256_after.slice(0,12)]));
 import {collectionModel,hydrateContent,changeStructure} from './collections.js';
@@ -59,6 +60,7 @@ const handler={async fetch(request,env){
      }
     }
     try{token=await issueGuest(guest,env.SESSION_SECRET);}catch(error){fail(error.message);}
+    await recordGuestActivity(env.DB,token,guest);
     return json({url:url.origin+'/?g='+token});
    }
    if(path==='/api/content'&&request.method==='GET'){const s=await state(env);return json({...responseState(s),translationAvailable:!!env.AI,imagesAvailable:!!env.IMAGES});}
@@ -129,6 +131,7 @@ const handler={async fetch(request,env){
   if(path==='/'||path==='/index.html'){
    const guest=url.searchParams.has('g')?await readGuest(url.searchParams.get('g'),env.SESSION_SECRET,{allowLegacy:env.DISABLE_LEGACY_GUEST_LINKS!=='true'}):{expired:false};
    if(guest.expired){const language=languages.includes(guest.language)?guest.language:'ko';return new Response(expiredTemplate.replace('__EXPIRED_LANGUAGE__',language),{status:410,headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store','X-Robots-Tag':'noindex'}});}
+   if(guest.guest&&isGuestOpen(request)&&!await authenticated(request,env))await recordGuestActivity(env.DB,url.searchParams.get('g'),guest.guest,true);
    let html=await publishedGuide(env);if(!url.searchParams.has('g')){const logged=await authenticated(request,env);html=html.replace('<head>','<head><script>try{'+(logged?"sessionStorage.setItem('aranya_admin','1');sessionStorage.setItem('aranya_host_entry','1');":"sessionStorage.removeItem('aranya_admin');sessionStorage.removeItem('aranya_host_entry');")+'}catch(e){}</script>');}
    if(guest.guest)html=html.replace('<head>','<head><script>window.ARANYA_GUEST='+JSON.stringify(guest.guest).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029')+';</script>');
    return new Response(html,{headers:{'Content-Type':'text/html;charset=utf-8','Cache-Control':'no-store'}});
