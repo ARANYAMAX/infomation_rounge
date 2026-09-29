@@ -106,6 +106,7 @@ const expiredTemplate='<!doctype html><html><head><meta charset="utf-8"><meta na
 fs.appendFileSync('src/generated.js','\nexport const expiredTemplate='+JSON.stringify(expiredTemplate.replace('</head>','<script src="/language-controls.js" defer></script></head>'))+';');
 for(const f of ['admin.html','admin.js','admin.css','language-controls.js','preview.js','guest-ux.js'])fs.copyFileSync('ui/'+f,'dist/'+f);
 const amenityIcons=Object.fromEntries([...html.matchAll(/<div class="amen"[^>]*>(<svg[\s\S]*?<\/svg>)<span (?:data-i18n|data-photo-key)="([^"]+)"/g)].map(m=>[m[2],{svg:m[1],label:seed['I18N:'+m[2]]?.values.ko||'TV'}]));
+amenityIcons['aranya:hanbok']={label:'한복 · 전통 의상',tags:['hanbok','korean','traditional','clothing','dress','한복대여'],svg:'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3 5 5 2 10l4 2 2-3v4L4 21h16l-4-8V9l2 3 4-2-3-5-4-2"/><path d="m9 3 3 4 3-4M8 13h8M12 7l-3 6m3-6 3 6m-3-3 3 1-1 2m-2-3-1 3M10 15l-1 6m5-6 1 6"/></svg>'};
 const lucideRoot=path.join(root,'node_modules/lucide-static'),iconTags=JSON.parse(fs.readFileSync(path.join(lucideRoot,'tags.json'),'utf8'));
 for(const file of fs.readdirSync(path.join(lucideRoot,'icons')).filter(f=>f.endsWith('.svg')).sort()){
  const name=file.slice(0,-4),svg=fs.readFileSync(path.join(lucideRoot,'icons',file),'utf8').replace(/<!--[\s\S]*?-->/g,'').trim().replace('stroke-width="2"','stroke-width="1.6"');
