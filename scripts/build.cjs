@@ -112,6 +112,12 @@ for(const file of fs.readdirSync(path.join(lucideRoot,'icons')).filter(f=>f.ends
  const name=file.slice(0,-4),svg=fs.readFileSync(path.join(lucideRoot,'icons',file),'utf8').replace(/<!--[\s\S]*?-->/g,'').trim().replace('stroke-width="2"','stroke-width="1.6"');
  amenityIcons['lucide:'+name]={svg,label:name.replaceAll('-',' '),tags:iconTags[name]||[]};
 }
+// Refresh the existing facility icon keys without changing stored selections.
+for(const [key,name] of Object.entries({a_wifi:'wifi',a_tv:'tv-minimal',a_wash:'washing-machine',a_bag:'luggage'}))amenityIcons[key].svg=amenityIcons['lucide:'+name].svg;
+const facilitySvg=body=>'<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+body+'</svg>';
+amenityIcons.a_ac.svg=facilitySvg('<rect x="3" y="4" width="18" height="9" rx="2"/><path d="M3 10h18M7 7h1m1 9v4m3-4v5m3-5v4"/>');
+amenityIcons.a_dry.svg=facilitySvg('<path d="M15 5H7a4 4 0 0 0 0 8h8l5 2V3l-5 2ZM15 5v8M8 13l1 7h4l-1-7M5 8v2"/>');
+amenityIcons['lucide:tv'].svg=amenityIcons.a_tv.svg;
 fs.appendFileSync('src/generated.js','\nexport const amenityIconSvg='+JSON.stringify(Object.fromEntries(Object.entries(amenityIcons).map(([key,v])=>[key,v.svg])))+';');
 fs.writeFileSync('dist/admin.js','window.amenityIcons='+JSON.stringify(amenityIcons)+';\n'+fs.readFileSync('ui/admin.js','utf8'));
 fs.copyFileSync(path.join(lucideRoot,'LICENSE'),'dist/lucide-LICENSE.txt');
