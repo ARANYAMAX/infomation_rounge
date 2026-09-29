@@ -118,6 +118,16 @@ const facilitySvg=body=>'<svg xmlns="http://www.w3.org/2000/svg" width="24" heig
 amenityIcons.a_ac.svg=facilitySvg('<rect x="3" y="4" width="18" height="9" rx="2"/><path d="M3 10h18M7 7h1m1 9v4m3-4v5m3-5v4"/>');
 amenityIcons.a_dry.svg=facilitySvg('<path d="M15 5H7a4 4 0 0 0 0 8h8l5 2V3l-5 2ZM15 5v8M8 13l1 7h4l-1-7M5 8v2"/>');
 amenityIcons['lucide:tv'].svg=amenityIcons.a_tv.svg;
+const hanokIcons={
+ a_med:{label:'명상실 · 명상',tags:['meditation','명상','휴식','요가'],svg:facilitySvg('<circle cx="12" cy="5" r="2"/><path d="M9 10c0 3-2 4-5 4m11-4c0 3 2 4 5 4M9 10h6m-5 4-5 4c-2 2 1 3 3 2l4-2 4 2c2 1 5 0 3-2l-5-4M8 21h8"/>')},
+ a_jac:{label:'프라이빗 자쿠지 · 욕조',tags:['jacuzzi','bath','자쿠지','욕조','스파'],svg:facilitySvg('<path d="M3 12h18v3a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5v-3ZM6 20v1m12-1v1M5 12V5a2 2 0 0 1 4 0v1"/><circle cx="13" cy="8" r="1"/><circle cx="18" cy="5" r="1.5"/>')},
+ a_yard:{label:'마당 · 정원',tags:['yard','garden','마당','정원','나무'],svg:facilitySvg('<path d="M2 21h20M7 17v4m-4-7 4-6 4 6H9l3 3H2l3-3H3Zm11 7V11h7v10m-7-5h7m-4-5v10"/>')},
+ a_bed:{label:'침실 · 퀸사이즈 침대',tags:['bed','침실','침대','퀸사이즈'],svg:amenityIcons['lucide:bed-double'].svg},
+ a_bath:{label:'욕실 · 샤워',tags:['bathroom','shower','욕실','샤워','화장실'],svg:amenityIcons['lucide:shower-head'].svg},
+ a_house:{label:'한옥 · 독채 전체 이용',tags:['hanok','house','한옥','독채','전체','숙소'],svg:facilitySvg('<path d="M2 9c4 0 7-3 10-6 3 3 6 6 10 6l-2 3H4L2 9Zm2 0h16M6 12v9m12-9v9M4 21h16M10 21v-6h4v6M8 7v2m4-5v5m4-2v2"/>')}
+};
+for(const [key,icon] of Object.entries(hanokIcons))amenityIcons[key]=icon;
+
 fs.appendFileSync('src/generated.js','\nexport const amenityIconSvg='+JSON.stringify(Object.fromEntries(Object.entries(amenityIcons).map(([key,v])=>[key,v.svg])))+';');
 fs.writeFileSync('dist/admin.js','window.amenityIcons='+JSON.stringify(amenityIcons)+';\n'+fs.readFileSync('ui/admin.js','utf8'));
 fs.copyFileSync(path.join(lucideRoot,'LICENSE'),'dist/lucide-LICENSE.txt');
