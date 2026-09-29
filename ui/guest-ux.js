@@ -24,6 +24,9 @@
    .guide-lightbox button:focus-visible{background:rgba(255,255,255,.25)}
    .guide-lightbox [role=status]{position:absolute;bottom:4px;margin:0;text-align:center}
    .photo-stage{width:100%;height:100%;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+   .photo-zoom-controls{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));left:calc(16px + env(safe-area-inset-left,0px));display:flex;gap:8px;z-index:2}
+   .guide-lightbox .photo-zoom-controls button{position:static;display:grid;place-items:center;border:1px solid rgba(255,255,255,.5);border-radius:12px;background:rgba(17,24,34,.85);color:white;cursor:pointer;touch-action:manipulation}
+   .photo-zoom-controls svg{width:23px;height:23px;pointer-events:none}
    .photo-stage img{flex:none;transform-origin:center;pointer-events:none;-webkit-touch-callout:none;will-change:transform}
   `;document.head.append(viewportStyle);
   let savedScroll=null,bodyStyles=[];
@@ -36,16 +39,21 @@
   const stage=document.createElement('div');stage.className='photo-stage';img.before(stage);stage.append(img);img.draggable=false;
   const points=new Map();let scale=1,panX=0,panY=0,gesture=null,lastTap=0;
   const draw=()=>{const limitX=Math.max(0,(img.offsetWidth*scale-stage.clientWidth)/2),limitY=Math.max(0,(img.offsetHeight*scale-stage.clientHeight)/2);panX=Math.max(-limitX,Math.min(limitX,panX));panY=Math.max(-limitY,Math.min(limitY,panY));img.style.transform=`translate(${panX}px,${panY}px) scale(${scale})`;};
+  const zoomLabels={ko:['확대','축소','원래 크기'],en:['Zoom in','Zoom out','Reset zoom'],zh:['放大','缩小','恢复原始大小'],ja:['拡大','縮小','元のサイズ'],de:['Vergrößern','Verkleinern','Zoom zurücksetzen'],fr:['Agrandir','Réduire','Réinitialiser le zoom'],es:['Ampliar','Reducir','Restablecer zoom'],it:['Ingrandisci','Riduci','Ripristina zoom'],pt:['Ampliar','Reduzir','Repor zoom'],ru:['Увеличить','Уменьшить','Сбросить масштаб']};
+  const controls=document.createElement('div');controls.className='photo-zoom-controls';box.append(controls);
+  const zoomTo=(next,p={x:0,y:0})=>{const before=scale;scale=Math.max(1,Math.min(5,next));const ratio=scale/before;panX=p.x-(p.x-panX)*ratio;panY=p.y-(p.y-panY)*ratio;draw();};
+  const zoomButtons=[['<circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M7 10h6m-3-3v6"/>',()=>zoomTo(scale*1.25)],['<circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M7 10h6"/>',()=>zoomTo(scale/1.25)],['<path d="M3 10a9 9 0 1 1 2 8M3 4v6h6"/>',()=>resetZoom()]].map(([svg,action])=>{const button=document.createElement('button');button.type='button';button.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+svg+'</svg>';button.onclick=e=>{e.preventDefault();e.stopPropagation();action();};controls.append(button);return button;});
   const resetZoom=()=>{points.clear();gesture=null;lastTap=0;scale=1;panX=panY=0;draw();};
   const point=e=>{const r=stage.getBoundingClientRect();return {x:e.clientX-r.left-r.width/2,y:e.clientY-r.top-r.height/2};};
   const begin=()=>{const p=[...points.values()];if(p.length>=2){const a=p[0],b=p[1];gesture={pinch:true,distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y)),cx:(a.x+b.x)/2,cy:(a.y+b.y)/2,scale,x:panX,y:panY};lastTap=0;}else if(p.length)gesture={pinch:false,cx:p[0].x,cy:p[0].y,x:panX,y:panY,time:Date.now(),tap:scale===1};else gesture=null;};
+  stage.addEventListener('wheel',e=>{e.preventDefault();const delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?stage.clientHeight:1);zoomTo(scale*Math.exp(-Math.max(-100,Math.min(100,delta))*.003),point(e));},{passive:false});
   stage.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();points.set(e.pointerId,point(e));if(e.isTrusted)stage.setPointerCapture(e.pointerId);begin();});
   stage.addEventListener('pointermove',e=>{if(!points.has(e.pointerId)||!gesture)return;e.preventDefault();points.set(e.pointerId,point(e));const p=[...points.values()],g=gesture;if(g.pinch&&p.length>=2){scale=Math.max(1,Math.min(5,g.scale*Math.hypot(p[0].x-p[1].x,p[0].y-p[1].y)/g.distance));const ratio=scale/g.scale;panX=(p[0].x+p[1].x)/2-(g.cx-g.x)*ratio;panY=(p[0].y+p[1].y)/2-(g.cy-g.y)*ratio;}else{panX=g.x+p[0].x-g.cx;panY=g.y+p[0].y-g.cy;if(Math.hypot(p[0].x-g.cx,p[0].y-g.cy)>8)g.tap=false;}draw();});
   const finish=e=>{if(!points.has(e.pointerId))return;const g=gesture,p=point(e);if(e.type==='pointerup'&&points.size===1&&g&&!g.pinch&&g.tap&&Date.now()-g.time<300){if(lastTap&&Date.now()-lastTap<350){scale=2.5;panX=-p.x*(scale-1);panY=-p.y*(scale-1);draw();lastTap=0;}else lastTap=Date.now();}else lastTap=0;const pinching=g?.pinch;points.delete(e.pointerId);begin();if(pinching&&gesture)gesture.tap=false;};
   stage.addEventListener('pointerup',finish);stage.addEventListener('pointercancel',finish);stage.addEventListener('lostpointercapture',finish);
   img.addEventListener('load',resetZoom);new ResizeObserver(()=>{if(box.classList.contains('open'))draw();}).observe(stage);
   status.setAttribute('role','status');status.hidden=true;box.append(status);box.setAttribute('role','dialog');box.setAttribute('aria-modal','true');
-  const refresh=()=>{close.setAttribute('aria-label',text()[0]);box.setAttribute('aria-label',text()[1]);if(!status.hidden)status.textContent=text()[2];};refresh();
+  const refresh=()=>{const zoomText=zoomLabels[document.documentElement.lang]||zoomLabels.en;zoomButtons.forEach((b,i)=>{b.title=zoomText[i];b.setAttribute('aria-label',zoomText[i]);});close.setAttribute('aria-label',text()[0]);box.setAttribute('aria-label',text()[1]);if(!status.hidden)status.textContent=text()[2];};refresh();
   img.addEventListener('error',()=>{if(!img.getAttribute('src'))return;status.textContent=text()[2];status.hidden=false;});img.addEventListener('load',()=>{status.hidden=true;});
   document.addEventListener('click',e=>{if(e.target.closest('[data-guide-photo],.manual-media img'))opener=e.target.closest('button')||e.target;},true);
   new MutationObserver(()=>{const open=box.classList.contains('open');if(open===wasOpen)return;wasOpen=open;
@@ -53,7 +61,7 @@
    else{resetZoom();if(typeof box.close==='function'&&box.open)box.close();for(const [el,value]of previousInert)el.inert=value;status.hidden=true;unlockScroll();opener?.focus({preventScroll:true});}
   }).observe(box,{attributes:true,attributeFilter:['class']});
   box.addEventListener('cancel',e=>{e.preventDefault();close.click();});
-  box.addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();close.focus();}});
+  box.addEventListener('keydown',e=>{if(e.key==='Tab'){const buttons=[close,...zoomButtons],index=buttons.indexOf(document.activeElement);e.preventDefault();buttons[(index+(e.shiftKey?-1:1)+buttons.length)%buttons.length].focus();}});
   new MutationObserver(refresh).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  }
  function enhance(){
